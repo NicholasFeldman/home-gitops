@@ -1,0 +1,14 @@
+# TODO: Standardize whatever namespaces I want to organize things with.
+#
+# By infrastrure:
+#  - cert-manager
+#  - longhorn-system
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dashboards
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: monitoring
