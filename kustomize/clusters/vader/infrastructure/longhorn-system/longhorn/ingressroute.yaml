@@ -17,41 +17,6 @@ spec:
           port: 80
   tls:
     secretName: longhorn-feldman-in-tls
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: longhorn-http-ingressroute
-#   namespace: longhorn-system
-
-# spec:
-#   entryPoints:
-#     - web
-#   routes:
-#     - match: Host(`longhorn.feldman.in`)
-#       kind: Rule
-#       services:
-#         - name: longhorn-frontend
-#           port: 80
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: IngressRoute
-# metadata:
-#   name: longhorn-https-ingressroute
-#   namespace: longhorn-system
-# spec:
-#   entryPoints:
-#     - websecure
-#   routes:
-#     - match: Host(`longhorn.feldman.in`)
-#       middlewares:
-#         - name: longhorn-headers-middleware
-#       kind: Rule
-#       services:
-#         - name: longhorn-frontend
-#           port: 80
-#   tls:
-#     secretName: longhorn-feldman-in-tls
-# ---
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
@@ -75,29 +40,3 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod-cluster-issuer
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: longhorn-ingress
-#   namespace: longhorn-system
-#   annotations:
-#     kubernetes.io/ingress.class: "traefik"
-#     traefik.ingress.kubernetes.io/router.tls: "true"
-#     cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer
-
-# spec:
-#   rules:
-#     - host: longhorn.feldman.in
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: longhorn-frontend
-#                 port:
-#                   number: 80
-#   tls:
-#     - hosts:
-#       - longhorn.feldman.in
-#       secretName: longhorn-feldman-in-tls

@@ -7,4 +7,6 @@ bases:
   - infrastructure/metallb-system
   - infrastructure/traefik-system
 
+  - apps/monitoring
   - apps/organization
+  - apps/shared-database
