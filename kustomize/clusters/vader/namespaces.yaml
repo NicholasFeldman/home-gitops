@@ -1,6 +1,7 @@
 # TODO: Standardize whatever namespaces I want to organize things with.
 #
 # By infrastrure:
+#  - metallb-system
 #  - cert-manager
 #  - longhorn-system
 apiVersion: v1

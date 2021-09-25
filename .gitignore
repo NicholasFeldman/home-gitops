@@ -1,1 +1,5 @@
 *.env
+
+.vagrant/
+
+ansible/inventories/*.ini

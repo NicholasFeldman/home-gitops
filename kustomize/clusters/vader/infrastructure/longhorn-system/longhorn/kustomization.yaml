@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - ../../../../../base/infrastructure/longhorn
+
+resources:
+  - ingressroute.yaml
+
+secretGenerator:
+  - name: aws-secret
+    namespace: longhorn-system
+    envs:
+      - longhorn.env
+
+generatorOptions:
+  disableNameSuffixHash: true

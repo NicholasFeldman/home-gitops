@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: traefik-ingress
+  namespace: traefik-system
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer
+
+spec:
+  rules:
+    - host: traefik.feldman.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: traefik-dashboard-service
+                port:
+                  number: 8080
+  tls:
+    - hosts:
+      - traefik.feldman.in
+      secretName: traefik-feldman-in-tls

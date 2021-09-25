@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: heimdall-ingress
+  annotations:
+    kubernetes.io/ingress.class: "traefik"
+    traefik.ingress.kubernetes.io/router.tls: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-prod-cluster-issuer
+
+spec:
+  rules:
+    - host: heimdall.feldman.in
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: heimdall-service
+                port:
+                  number: 80
+
+  tls:
+    - hosts:
+      - heimdall.feldman.in
+      secretName: heimdall-feldman-in-tls
