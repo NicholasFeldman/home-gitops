@@ -8,5 +8,5 @@ bases:
   - infrastructure/traefik-system
 
   - apps/monitoring
-  - apps/organization
+  - apps/user-apps
   - apps/shared-database

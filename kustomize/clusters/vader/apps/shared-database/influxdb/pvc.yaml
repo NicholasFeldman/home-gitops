@@ -11,3 +11,5 @@ spec:
   resources:
     requests:
       storage: 4Gi
+
+  volumeName: shared-database-influxdb-data-pv
