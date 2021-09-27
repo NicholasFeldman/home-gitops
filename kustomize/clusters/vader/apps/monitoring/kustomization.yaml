@@ -3,5 +3,8 @@ kind: Kustomization
 
 namespace: monitoring
 
+bases:
+  - grafana
+
 resources: 
   - namespace.yaml
