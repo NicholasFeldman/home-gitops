@@ -4,7 +4,9 @@ kind: Kustomization
 namespace: monitoring
 
 bases:
+  - cluster-monitor
   - grafana
+
 
 resources: 
   - namespace.yaml
