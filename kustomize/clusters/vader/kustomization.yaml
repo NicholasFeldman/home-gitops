@@ -2,11 +2,30 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - infrastructure/cert-manager
-  - infrastructure/longhorn-system
-  - infrastructure/metallb-system
-  - infrastructure/traefik-system
+  - ../../vendor/cert-manager
+  - ../../vendor/longhorn
+  - ../../vendor/metallb
+  - ../../vendor/traefik
 
-  - apps/monitoring
-  - apps/user-apps
-  - apps/shared-database
+  - cert-manager
+  - cert-manager/cert-manager
+
+  - database
+  - database/influxdb
+  - database/postgis
+
+  - longhorn-system
+  - longhorn-system/longhorn
+
+  - metallb-system
+  - metallb-system/metallb
+
+  - monitoring
+  - monitoring/cluster-monitor
+  - monitoring/grafana
+
+  - traefik-system
+  - traefik-system/traefik
+
+  - user-apps
+  - user-apps/heimdall
