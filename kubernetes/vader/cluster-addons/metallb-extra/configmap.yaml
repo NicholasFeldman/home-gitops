@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: metallb
+  name: vader-metallb
 data:
   config: |
     address-pools:
