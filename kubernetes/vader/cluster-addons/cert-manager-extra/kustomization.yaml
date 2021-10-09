@@ -3,12 +3,4 @@ kind: Kustomization
 
 resources:
   - cluster-issuer.yaml
-
-secretGenerator:
-  - name: cloudflare-api-token-secret
-    namespace: cert-manager
-    envs:
-      - cloudflare.env
-
-generatorOptions:
-  disableNameSuffixHash: true
+  - sealedsecret.yaml
