@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organizr-deployment
+
+spec:
+  selector:
+    matchLabels:
+      app: organizr
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        app: organizr
+    spec:
+      containers:
+        - name: organizr
+          image: organizr/organizr:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          ports:
+            - containerPort: 80
+              name: http
+      volumes:
+        - name: config
+          persistentVolumeClaim:
+            claimName: organizr-config-pvc
