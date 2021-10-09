@@ -20,6 +20,8 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: traefik-feldman-in-tls
+  namespace: traefik
+
 spec:
   dnsNames:
     - traefik.feldman.in
