@@ -21,6 +21,8 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: organizr-feldman-in-tls
+  namespace: user-apps
+
 spec:
   dnsNames:
     - organizr.feldman.in
