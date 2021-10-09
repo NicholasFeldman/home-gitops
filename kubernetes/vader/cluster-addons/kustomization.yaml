@@ -3,6 +3,6 @@ kind: Kustomization
 
 bases:
   # - argocd-extra
-  # - cert-manager-extra
+  - cert-manager-extra
   - metallb-extra
   # - traefik-extra
