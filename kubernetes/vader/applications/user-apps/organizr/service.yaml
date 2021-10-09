@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: organizr-service
+  namespace: user-apps
 
 spec:
   type: ClusterIP
