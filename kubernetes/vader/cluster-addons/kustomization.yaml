@@ -5,4 +5,4 @@ bases:
   # - argocd-extra
   - cert-manager-extra
   - metallb-extra
-  # - traefik-extra
+  - traefik-extra
