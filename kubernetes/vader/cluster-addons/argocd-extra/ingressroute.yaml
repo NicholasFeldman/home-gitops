@@ -11,7 +11,7 @@ spec:
     - match: Host(`argocd.feldman.in`)
       kind: Rule
       services:
-        - name: vader-argocd-server
+        - name: vader-cluster-addons-argocd-server
           port: 80
   tls:
     secretName: argocd-feldman-in-tls
