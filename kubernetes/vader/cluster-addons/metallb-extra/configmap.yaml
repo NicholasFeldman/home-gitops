@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: vader-metallb
+  name: vader-cluster-addons-metallb
   namespace: metallb
 
 data:
