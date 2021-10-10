@@ -25,5 +25,6 @@ spec:
               name: http
       volumes:
         - name: config
-          persistentVolumeClaim:
-            claimName: organizr-config-pvc
+          nfs:
+            server: bandit-nfs.local
+            path: /srv/nfs/vader
