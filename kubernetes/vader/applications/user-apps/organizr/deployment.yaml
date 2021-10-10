@@ -27,4 +27,4 @@ spec:
         - name: config
           nfs:
             server: bandit-nfs.local
-            path: /srv/nfs/vader
+            path: /srv/nfs/vader/userapps/organizr
