@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: heimdall-deployment
+  namespace: user-apps
+
+spec:
+  selector:
+    matchLabels:
+      app: heimdall
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        app: heimdall
+    spec:
+      containers:
+        - name: heimdall
+          image: linuxserver/heimdall:latest
+          volumeMounts:
+            - name: config
+              mountPath: /config
+          ports:
+            - containerPort: 80
+              name: http
+      volumes:
+        - name: config
+          nfs:
+            server: bandit-nfs.local
+            path: /srv/nfs/vader/userapps/heimdall

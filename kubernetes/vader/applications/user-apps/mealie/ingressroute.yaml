@@ -1,0 +1,32 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mealie-ingressroute
+  namespace: user-apps
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`mealie.feldman.in`)
+      kind: Rule
+      services:
+        - name: mealie-service
+          port: 80
+  tls:
+    secretName: mealie-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mealie-feldman-in-tls
+  namespace: user-apps
+
+spec:
+  dnsNames:
+    - mealie.feldman.in
+  secretName: mealie-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod-cluster-issuer
