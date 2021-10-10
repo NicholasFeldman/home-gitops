@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: grafana-ingressroute
+  namespace: monitoring
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`grafana.feldman.in`)
+      kind: Rule
+      services:
+        - name: grafana-service
+          port: 80
+  tls:
+    secretName: grafana-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: grafana-feldman-in-tls
+  namespace: monitoring
+
+spec:
+  dnsNames:
+    - grafana.feldman.in
+  secretName: grafana-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod-cluster-issuer
