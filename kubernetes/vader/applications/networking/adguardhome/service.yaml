@@ -21,7 +21,7 @@ metadata:
   namespace: networking
 
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: adguardhome
   ports:
