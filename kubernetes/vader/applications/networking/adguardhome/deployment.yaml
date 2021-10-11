@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adguardhome
+  namespace: networking
+
+spec:
+  selector:
+    matchLabels:
+      app: adguardhome
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        app: adguardhome
+    spec:
+      containers:
+        - name: adguardhome
+          image: docker.io/adguard/adguardhome:latest
+          volumeMounts:
+            - name: workdir
+              mountPath: /opt/adguardhome/work
+            - name: confdir
+              mountPath: /opt/adguardhome/conf
+          ports:
+            - containerPort: 53
+              name: dns
+            - containerPort: 80
+              name: http
+      volumes:
+        - name: workdir
+          nfs:
+            server: bandit-nfs.local
+            path: /srv/nfs/vader/networking/adguardhome-workdir
+        - name: confdir
+          nfs:
+            server: bandit-nfs.local
+            path: /srv/nfs/vader/networking/adguardhome-confdir
