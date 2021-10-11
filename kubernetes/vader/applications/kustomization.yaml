@@ -4,4 +4,5 @@ kind: Kustomization
 bases:
   - user-apps
   - monitoring
+  - networking
   - database
