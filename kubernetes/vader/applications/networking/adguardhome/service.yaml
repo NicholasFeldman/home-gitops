@@ -13,3 +13,18 @@ spec:
     - name: http
       port: 80
       targetPort: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguardhome-dns-service
+  namespace: networking
+
+spec:
+  type: NodePort
+  selector:
+    app: adguardhome
+  ports:
+    - name: dns
+      port: 52
+      targetPort: dns
