@@ -19,7 +19,7 @@ spec:
           image: homeassistant/home-assistant:latest
           volumeMounts:
             - name: config
-              mountPath: /srv/docker/homeassistant/config
+              mountPath: /config
           ports:
             - containerPort: 8123
               name: http
