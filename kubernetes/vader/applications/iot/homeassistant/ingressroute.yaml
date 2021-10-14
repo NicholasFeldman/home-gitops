@@ -1,31 +1,31 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: homeassisant-ingressroute
+  name: homeassistant-ingressroute
   namespace: iot
 spec:
   entryPoints:
     - web
     - websecure
   routes:
-    - match: Host(`homeassisant.feldman.in`)
+    - match: Host(`homeassistant.feldman.in`)
       kind: Rule
       services:
-        - name: homeassisant-service
+        - name: homeassistant-service
           port: 80
   tls:
-    secretName: homeassisant-feldman-in-tls
+    secretName: homeassistant-feldman-in-tls
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  name: homeassisant-feldman-in-tls
+  name: homeassistant-feldman-in-tls
   namespace: iot
 
 spec:
   dnsNames:
-    - homeassisant.feldman.in
-  secretName: homeassisant-feldman-in-tls
+    - homeassistant.feldman.in
+  secretName: homeassistant-feldman-in-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod-cluster-issuer
