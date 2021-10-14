@@ -14,9 +14,6 @@ spec:
       labels: 
         app: homeassistant
     spec:
-      securityContext:
-        runAsUser: 472
-        fsGroup: 472
       containers:
         - name: homeassistant
           image: homeassistant/home-assistant:latest
