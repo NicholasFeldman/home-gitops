@@ -7,4 +7,5 @@ resources:
 helmCharts:
   - name: nginx
     repo: https://charts.bitnami.com/bitnami
+    releaseName: testnginx
     namespace: bababooey
