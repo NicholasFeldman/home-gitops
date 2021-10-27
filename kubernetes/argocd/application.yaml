@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: argocd
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: default
+    name: in-cluster
+  project: default
+  source:
+    path: kubernetes/argocd
+    repoURL: https://github.com/NicholasFeldman/kubernetes-config
+    targetRevision: HEAD
