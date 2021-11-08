@@ -32,9 +32,20 @@ metadata:
   namespace: user-apps
 
 spec:
-  type: ExternalName
-  externalName: 192.168.1.1
+  clusterIP: None
   ports:
-    - name: http
+    - name: https
       port: 443
-      targetPort: 443
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: unifi-svc
+  namespace: user-apps
+
+subsets:
+  - addresses:
+      - ip: 192.168.1.1
+    ports:
+      - port: 443
+        name: https

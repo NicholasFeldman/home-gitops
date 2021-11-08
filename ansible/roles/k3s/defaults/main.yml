@@ -1,5 +1,0 @@
-k3s_version: v1.22.2+k3s1
-k3s_role: '' # 'server' or 'agent'
-
-extra_server_args: ''
-extra_agent_args: ''

@@ -1,0 +1,11 @@
+- name: Ubuntu | Enable cgroup via boot cmdline
+  lineinfile:
+    path: /boot/firmware/cmdline.txt
+    backrefs: yes
+    regexp: '^((?!.*\bcgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory\b).*)$'
+    line: '\1 cgroup_enable=cpuset cgroup_memory=1 cgroup_enable=memory'
+  register: cgroup_result
+
+- name: Ubuntu | Reboot if there was a change
+  reboot:
+  when: cgroup_result is changed

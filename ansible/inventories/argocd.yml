@@ -1,0 +1,14 @@
+k3s_cluster:
+  hosts:
+    k3s-palpatine-rpi-1:
+      ansible_user: ubuntu
+      ansible_host: k3s-palpatine-rpi-1.local
+  children:
+    k3s_cluster_server:
+      hosts:
+        k3s-palpatine-rpi-1:
+    k3s_cluster_agent:
+      hosts:
+    k3s_cluster_rpi:
+      hosts:
+        k3s-palpatine-rpi-1:
