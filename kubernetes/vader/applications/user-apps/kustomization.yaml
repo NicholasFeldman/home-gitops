@@ -5,6 +5,5 @@ resources:
   - namespace.yaml
 
 bases:
-  - externals
   - heimdall
   - mealie
