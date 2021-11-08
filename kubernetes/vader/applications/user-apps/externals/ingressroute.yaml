@@ -48,7 +48,7 @@ spec:
       kind: Rule
       services:
         - name: unifi-svc
-          port: 8006
+          port: 443
   tls:
     secretName: unifi-feldman-in-tls
 ---
