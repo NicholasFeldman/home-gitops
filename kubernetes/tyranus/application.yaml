@@ -1,0 +1,46 @@
+####################
+# ROOT APPLICATION #
+####################
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: tyranus
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: default
+    name: in-cluster
+  project: default
+  source:
+    path: kubernetes/tyranus
+    repoURL: https://github.com/NicholasFeldman/kubernetes-config
+    targetRevision: HEAD
+---
+###########
+# Traefik #
+###########
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: tyranus-argocd-helm
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: traefik-system
+    name: in-cluster
+  project: default
+  source:
+    chart: treafik
+    repoURL: https://helm.traefik.io/traefik
+    targetRevision: 10.6.2
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace: true
