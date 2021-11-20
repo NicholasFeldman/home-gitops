@@ -27,7 +27,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: tyranus-argocd-helm
+  name: tyranus-traefik-helm
   namespace: argocd
   finalizers:
     - resources-finalizers.argocd.argoproj.io
@@ -38,7 +38,7 @@ spec:
     name: in-cluster
   project: default
   source:
-    chart: traefik
+    chart: trfik
     repoURL: https://helm.traefik.io/traefik
     targetRevision: 10.6.2
   syncPolicy:
