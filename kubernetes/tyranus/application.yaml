@@ -43,4 +43,4 @@ spec:
     targetRevision: 10.6.2
   syncPolicy:
     syncOptions:
-      - CreateNamespace: true
+      - CreateNamespace=true
