@@ -1,0 +1,8 @@
+# The tyranus cluster runs on the DO.
+# This is the bootstrap kustomization.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+  - application.yaml
+  - applications/traefik.yaml
