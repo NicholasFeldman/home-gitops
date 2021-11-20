@@ -17,7 +17,7 @@ spec:
   project: default
   source:
     path: kubernetes/tyranus
-    repoURL: https://github.com/NicholasFeldman/kubernetes-config
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
 ---
 ###########
