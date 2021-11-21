@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: tyranus-test
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: test
+    name: in-cluster
+  project: default
+  source:
+    path: kubernetes/clusters/tyranus/test
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

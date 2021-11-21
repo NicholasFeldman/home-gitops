@@ -5,4 +5,5 @@ kind: Kustomization
 
 bases:
   - application.yaml
+  - test/application.yaml
   - traefik-system/application.yaml

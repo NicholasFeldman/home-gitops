@@ -1,0 +1,29 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: helloworld-ingressroute
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`helloworld.feldman.tech`)
+      kind: Rule
+      services:
+        - name: helloworld-service
+          port: 80
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: heimdall-feldman-in-tls
+  namespace: user-apps
+
+spec:
+  dnsNames:
+    - heimdall.feldman.in
+  secretName: heimdall-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod-cluster-issuer
