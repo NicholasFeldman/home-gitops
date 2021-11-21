@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: tyranus-kube-system
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    name: in-cluster
+  project: default
+  source:
+    path: kubernetes/clusters/tyranus/kube-system
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
