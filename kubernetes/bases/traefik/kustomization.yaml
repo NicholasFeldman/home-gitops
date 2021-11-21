@@ -10,3 +10,4 @@ helmCharts:
     version: 10.6.2
     repo: https://helm.traefik.io/traefik
     namespace: traefik-system
+    includeCRDS: true
