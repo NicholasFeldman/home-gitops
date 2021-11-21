@@ -3,7 +3,7 @@ kind: Kustomization
 
 helmCharts:
   - releaseName: traefik-mesh
-    name: traefik-mesh/traefik-mesh
+    name: traefik-mesh
     version: 10.6.2
     repo: https://helm.traefik.io/mesh
     namespace: traefik-system
