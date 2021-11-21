@@ -3,3 +3,10 @@ kind: Kustomization
 
 bases:
   - configmap.yaml
+
+helmCharts:
+  - releaseName: traefik
+    name: traefik
+    version: 10.6.2
+    repo: https://helm.traefik.io/traefik
+    namespace: traefik-system
