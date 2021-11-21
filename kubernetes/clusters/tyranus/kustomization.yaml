@@ -5,5 +5,6 @@ kind: Kustomization
 
 bases:
   - application.yaml
+  - istio-system/application.yaml
   # - test/application.yaml
   # - traefik-system/application.yaml
