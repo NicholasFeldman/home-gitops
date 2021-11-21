@@ -1,28 +1,28 @@
 # Traefik helm chart.
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
 
-metadata:
-  name: tyranus-traefik-helm
-  namespace: argocd
-  finalizers:
-    - resources-finalizers.argocd.argoproj.io
+# metadata:
+#   name: tyranus-traefik-helm
+#   namespace: argocd
+#   finalizers:
+#     - resources-finalizers.argocd.argoproj.io
 
-spec:
-  destination:
-    namespace: traefik-system
-    name: in-cluster
-  project: default
-  source:
-    chart: traefik
-    repoURL: https://helm.traefik.io/traefik
-    targetRevision: 10.6.2
-  syncPolicy:
-    syncOptions:
-      - CreateNamespace=true
-    automated:
-      prune: true
-      selfHeal: true
+# spec:
+#   destination:
+#     namespace: traefik-system
+#     name: in-cluster
+#   project: default
+#   source:
+#     chart: traefik
+#     repoURL: https://helm.traefik.io/traefik
+#     targetRevision: 10.6.2
+#   syncPolicy:
+#     syncOptions:
+#       - CreateNamespace=true
+#     automated:
+#       prune: true
+#       selfHeal: true
 ---
 # Additional Traefik resources
 apiVersion: argoproj.io/v1alpha1
