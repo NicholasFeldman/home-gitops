@@ -13,17 +13,3 @@ spec:
       services:
         - name: helloworld-service
           port: 80
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: heimdall-feldman-in-tls
-  namespace: user-apps
-
-spec:
-  dnsNames:
-    - heimdall.feldman.in
-  secretName: heimdall-feldman-in-tls
-  issuerRef:
-    kind: ClusterIssuer
-    name: letsencrypt-prod-cluster-issuer
