@@ -11,5 +11,6 @@ spec:
     - match: Host(`helloworld.feldman.tech`)
       kind: Rule
       services:
-        - name: helloworld-service
+        - name: traefik-system-helloworld-service-6d61657368-test
+          namespace: traefik-system
           port: 80
