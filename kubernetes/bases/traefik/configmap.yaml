@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: argo-test-cm
-  namespace: argocd
-
-data:
-  config: |
-    test: yes
