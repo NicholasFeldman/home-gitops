@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: keycloak
 
+spec:
   template:
     spec:
       containers:
