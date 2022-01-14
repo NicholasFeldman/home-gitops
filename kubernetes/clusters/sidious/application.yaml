@@ -13,7 +13,7 @@ spec:
   destination:
     namespace: argocd
     name: in-cluster
-  project: default
+  project: sidious
   source:
     path: kubernetes/clusters/sidious
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
