@@ -7,3 +7,4 @@ kind: Kustomization
 bases:
   - application.yaml
   - project.yaml
+  - keycloak/application.yaml

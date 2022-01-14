@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: sidious-keycloak
+  namespace: argocd
+  finalizers:
+    - resources-finalizers.argocd.argoproj.io
+
+spec:
+  destination:
+    namespace: keycloak
+    name: in-cluster
+  project: sidious
+  source:
+    path: kubernetes/clusters/sidious/keycloak
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
