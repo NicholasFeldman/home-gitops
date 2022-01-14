@@ -4,8 +4,6 @@ metadata:
   name: postgres
 
 spec:
-  nodeSelector:
-    storage.local.keycloak: 'true'
   selector:
     matchLabels:
       app: postgres
@@ -15,6 +13,8 @@ spec:
       labels: 
         app: postgres
     spec:
+      nodeSelector:
+        storage.local.keycloak: 'true'
       containers:
         - name: postgres
           image: postgres:latest
