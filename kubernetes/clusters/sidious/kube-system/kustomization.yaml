@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: kube-system
 
 bases:
-  - ../../../vendor/sealed-secrets/v0.17.2/controller.yaml
+  - ../../../vendor/sealed-secrets/v0.17.2
