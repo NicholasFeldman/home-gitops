@@ -8,3 +8,4 @@ bases:
   - application.yaml
   - project.yaml
   - keycloak/application.yaml
+  - kube-system/application.yaml

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: sidious-kube-system
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: kube-system
+    name: in-cluster
+  project: sidious
+  source:
+    path: kubernetes/clusters/sidious/kube-system
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
