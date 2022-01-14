@@ -4,3 +4,4 @@ kind: Kustomization
 bases:
   - namespace.yaml
   - postgres
+  - keycloak
