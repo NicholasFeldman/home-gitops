@@ -4,10 +4,11 @@ metadata:
   name: postgres
 
 spec:
+  nodeSelector:
+    storage.local.keycloak: 'true'
   selector:
     matchLabels:
       app: postgres
-      storage.local.keycloak: 'true'
   replicas: 1
   template:
     metadata:
