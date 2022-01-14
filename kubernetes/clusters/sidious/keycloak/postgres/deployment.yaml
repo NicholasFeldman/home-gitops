@@ -7,7 +7,7 @@ spec:
   selector:
     matchLabels:
       app: postgres
-      storage.local.keycloak: true
+      storage.local.keycloak: 'true'
   replicas: 1
   template:
     metadata:
