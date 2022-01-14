@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+      storage.local.keycloak: true
+  replicas: 1
+  template:
+    metadata:
+      labels: 
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:latest
+          volumeMounts:
+            - name: data
+              mountPath: /var/lib/postgresql/data
+          ports:
+            - containerPort: 5432
+              name: postgres
+      volumes:
+        - name: data
+          hostPath:
+            path: /opt/k3s/sidious/keycloak/postgres-data
+            type: DirectoryOrCreate
