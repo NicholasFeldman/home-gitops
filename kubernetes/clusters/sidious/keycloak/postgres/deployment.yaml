@@ -4,26 +4,12 @@ metadata:
   name: postgres
 
 spec:
-  selector:
-    matchLabels:
-      app: postgres
-  replicas: 1
   template:
-    metadata:
-      labels: 
-        app: postgres
     spec:
       nodeSelector:
         storage.local.keycloak: 'true'
       containers:
         - name: postgres
-          image: postgres:latest
-          volumeMounts:
-            - name: data
-              mountPath: /var/lib/postgresql/data
-          ports:
-            - containerPort: 5432
-              name: postgres
           envFrom:
             - secretRef:
                 name: postgres-env
