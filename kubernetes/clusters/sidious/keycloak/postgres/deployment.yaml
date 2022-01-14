@@ -24,6 +24,9 @@ spec:
           ports:
             - containerPort: 5432
               name: postgres
+          envFrom:
+            - secretRef:
+                name: postgres-env
       volumes:
         - name: data
           hostPath:
