@@ -11,3 +11,7 @@ spec:
   
   sourceRepos:
     - '*'
+
+  destinations:
+    - namespace: '*'
+      server: '*'
