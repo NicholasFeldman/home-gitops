@@ -3,3 +3,4 @@ kind: Kustomization
 
 bases:
   - deployment.yaml
+  - sealed-secret.yaml
