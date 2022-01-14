@@ -4,8 +4,6 @@ kind: Application
 metadata:
   name: sidious-keycloak
   namespace: argocd
-  finalizers:
-    - resources-finalizers.argocd.argoproj.io
 
 spec:
   destination:
