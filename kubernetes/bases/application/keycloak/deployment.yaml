@@ -15,7 +15,11 @@ spec:
     spec:
       containers:
         - name: keycloak
-          image: jboss/keycloak:latest
+          image: bitnami/keycloak:latest
           ports:
             - containerPort: 8080
               name: http
+          readinessProbe:
+            httpGet:
+              path: /auth/realms/master
+              port: 8080
