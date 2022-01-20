@@ -10,4 +10,5 @@ spec:
   ports:
     - name: postgres
       port: 5432
+      protocol: UDP
       targetPort: postgres
