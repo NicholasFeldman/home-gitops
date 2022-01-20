@@ -20,7 +20,6 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: auth-feldman-tech-tls
-  namespace: keycloak
 
 spec:
   dnsNames:
