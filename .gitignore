@@ -5,3 +5,7 @@ secret.yaml
 .vagrant/
 
 ansible/inventories/*.ini
+
+.idea/
+*.iml
+*.iws

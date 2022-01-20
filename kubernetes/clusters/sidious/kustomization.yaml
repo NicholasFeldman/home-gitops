@@ -8,5 +8,5 @@ bases:
   - application.yaml
   - project.yaml
   - cert-manager/application.yaml
-  - keycloak/application.yaml
+  - auth/application.yaml
   - kube-system/application.yaml

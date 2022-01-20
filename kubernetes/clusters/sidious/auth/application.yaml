@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: sidious-keycloak
+  name: sidious-auth
   namespace: argocd
 
 spec:
   destination:
-    namespace: keycloak
+    namespace: auth
     name: in-cluster
   project: sidious
   source:
-    path: kubernetes/clusters/sidious/keycloak
+    path: kubernetes/clusters/sidious/auth
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
   syncPolicy:
