@@ -16,3 +16,7 @@ spec:
     targetRevision: 10.9.1
     helm:
       releaseName: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
