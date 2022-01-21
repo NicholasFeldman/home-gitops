@@ -5,6 +5,7 @@ kind: Kustomization
 bases:
   - application.yaml
   - project.yaml
+  - argocd/application.yaml
   - cert-manager/application.yaml
   - auth/application.yaml
   - kube-system/application.yaml

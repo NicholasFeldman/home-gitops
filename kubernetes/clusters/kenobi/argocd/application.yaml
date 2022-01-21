@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-argocd
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: argocd
+    name: in-cluster
+  project: kenobi
+  source:
+    path: kubernetes/clusters/kenobi/argocd
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
