@@ -10,3 +10,4 @@ bases:
   - cert-manager/application.yaml
   - auth/application.yaml
   - kube-system/application.yaml
+  - metallb-system/application.yaml
