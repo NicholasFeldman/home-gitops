@@ -16,5 +16,5 @@ spec:
       volumes:
         - name: data
           hostPath:
-            path: /opt/k3s/sidious/keycloak/postgres-data
+            path: /opt/k3s/kenobi/keycloak/postgres-data
             type: DirectoryOrCreate

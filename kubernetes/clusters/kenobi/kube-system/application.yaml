@@ -2,16 +2,16 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: sidious-kube-system
+  name: kenobi-kube-system
   namespace: argocd
 
 spec:
   destination:
     namespace: kube-system
     name: in-cluster
-  project: sidious
+  project: kenobi
   source:
-    path: kubernetes/clusters/sidious/kube-system
+    path: kubernetes/clusters/kenobi/kube-system
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
   syncPolicy:

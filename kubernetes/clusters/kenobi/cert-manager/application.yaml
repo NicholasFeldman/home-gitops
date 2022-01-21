@@ -1,21 +1,17 @@
-# Root application.
-# Ensures that all of our application definitions are up to date.
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: sidious
+  name: kenobi-cert-manager
   namespace: argocd
-  finalizers:
-    - resources-finalizers.argocd.argoproj.io
 
 spec:
   destination:
-    namespace: argocd
+    namespace: cert-manager
     name: in-cluster
-  project: sidious
+  project: kenobi
   source:
-    path: kubernetes/clusters/sidious
+    path: kubernetes/clusters/kenobi/cert-manager
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
   syncPolicy:
