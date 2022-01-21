@@ -27,4 +27,4 @@ spec:
   secretName: argocd-feldman-in-tls
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-prod
+    name: letsencrypt-staging
