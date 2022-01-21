@@ -6,8 +6,6 @@ kind: Application
 metadata:
   name: kenobi
   namespace: argocd
-  finalizers:
-    - resources-finalizers.argocd.argoproj.io
 
 spec:
   destination:
