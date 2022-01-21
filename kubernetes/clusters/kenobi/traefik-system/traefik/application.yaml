@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-traefik-system-traefik
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: traefik-system
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: traefik
+    repoURL: https://helm.traefik.io/traefik
+    targetRevision: 10.9.1
+    helm:
+      releaseName: traefik
