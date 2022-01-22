@@ -5,10 +5,8 @@ bases:
   - ../../../../bases/database/postgres
   - sealed-secret.yaml
 
-patches:
-  - path: deployment.patch.yaml
-    target:
-      kind: Deployment
-  - path: service.patch.yaml
-    target:
-      kind: Service
+namePrefix: keycloak-
+
+patchesStrategicMerge:
+  - deployment.patch.yaml
+  - service.patch.yaml
