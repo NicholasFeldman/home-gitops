@@ -14,7 +14,4 @@ spec:
     path: kubernetes/clusters/kenobi/cert-manager
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+
