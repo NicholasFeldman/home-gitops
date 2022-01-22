@@ -10,4 +10,5 @@ bases:
   - auth/application.yaml
   - kube-system/application.yaml
   - metallb-system/application.yaml
+  - monitoring/application.yaml
   - traefik-system/application.yaml

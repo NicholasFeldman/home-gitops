@@ -2,5 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 bases:
-  - patches
-  - sealed-secret.yaml
+  - namespace.yaml
+  - keycloak
+  - keycloak-postgres
