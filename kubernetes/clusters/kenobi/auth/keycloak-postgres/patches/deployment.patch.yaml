@@ -14,7 +14,7 @@ spec:
           app.kubernets.io/instance: keycloak-postgres
     spec:
       nodeSelector:
-        feldman.tech/storage: 'auth.keycloak-postgres'
+        feldman.tech/storage.auth.keycloak-postgres: 'true'
       containers:
         - name: postgres
           envFrom:
