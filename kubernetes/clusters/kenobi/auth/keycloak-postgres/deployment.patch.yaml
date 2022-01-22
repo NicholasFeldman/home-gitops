@@ -19,7 +19,7 @@ spec:
         - name: postgres
           envFrom:
             - secretRef:
-                name: postgres-env
+                name: keycloak-postgres-env
       volumes:
         - name: data
           hostPath:
