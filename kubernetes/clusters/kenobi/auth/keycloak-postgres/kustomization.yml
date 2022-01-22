@@ -8,5 +8,5 @@ bases:
 namePrefix: keycloak-
 
 patchesStrategicMerge:
-  - deployment.patch.yaml
-  - service.patch.yaml
+  - patch/deployment.patch.yaml
+  - patch/service.patch.yaml
