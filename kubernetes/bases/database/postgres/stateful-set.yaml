@@ -22,3 +22,12 @@ spec:
           ports:
             - containerPort: 5432
               name: postgres
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: longhorn-durable
+        resources:
+          requests:
+            storage: 5Gi
