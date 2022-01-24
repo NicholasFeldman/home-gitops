@@ -8,11 +8,11 @@ spec:
   serviceName: keycloak-postgres
   selector:
     matchLabels:
-      app.kubernets.io/instance: keycloak-postgres
+      app.kubernetes.io/instance: keycloak-postgres
   template:
     metadata:
       labels:
-          app.kubernets.io/instance: keycloak-postgres
+          app.kubernetes.io/instance: keycloak-postgres
     spec:
       nodeSelector:
         feldman.tech/storage.auth.keycloak-postgres: 'true'

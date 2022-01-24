@@ -8,11 +8,11 @@ spec:
   serviceName: grafana-postgres
   selector:
     matchLabels:
-      app.kubernets.io/instance: grafana-postgres
+      app.kubernetes.io/instance: grafana-postgres
   template:
     metadata:
       labels:
-          app.kubernets.io/instance: grafana-postgres
+          app.kubernetes.io/instance: grafana-postgres
     spec:
       nodeSelector:
         feldman.tech/storage.monitoring.grafana-postgres: 'true'
