@@ -16,12 +16,15 @@ spec:
       containers:
         - name: postgres
           image: postgres:latest
-          volumeMounts:
-            - name: data
-              mountPath: /var/lib/postgresql/data
           ports:
             - containerPort: 5432
               name: postgres
+          env:
+            - name: PGDATA
+              value: /data/pgdata
+          volumeMounts:
+            - name: data
+              mountPath: /data
   volumeClaimTemplates:
     - metadata:
         name: data
