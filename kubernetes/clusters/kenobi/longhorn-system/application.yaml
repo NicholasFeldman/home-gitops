@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-longhorn-system
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: longhorn-system
+    name: in-cluster
+  project: kenobi
+  source:
+    path: kubernetes/clusters/kenobi/longhorn-system
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
