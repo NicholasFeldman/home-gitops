@@ -21,8 +21,12 @@ spec:
           envFrom:
             - secretRef:
                 name: grafana-postgres-env
-      volumes:
-        - name: data
-          hostPath:
-            path: /opt/k8s/kenobi/monitoring/grafana-postgres/data
-            type: DirectoryOrCreate
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: longhorn-durable
+        resources:
+          requests:
+            storage: 5Gi
