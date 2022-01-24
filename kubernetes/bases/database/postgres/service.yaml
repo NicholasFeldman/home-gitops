@@ -11,4 +11,3 @@ spec:
   ports:
     - name: postgres
       port: 5432
-      targetPort: postgres
