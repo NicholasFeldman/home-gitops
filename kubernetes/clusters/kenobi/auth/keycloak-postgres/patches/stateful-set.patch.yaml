@@ -1,27 +1,28 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 
 metadata:
   name: postgres
 
 spec:
+  serviceName: keycloak-postgres
   selector:
     matchLabels:
-      app.kubernets.io/instance: grafana-postgres
+      app.kubernets.io/instance: keycloak-postgres
   template:
     metadata:
       labels:
-          app.kubernets.io/instance: grafana-postgres
+          app.kubernets.io/instance: keycloak-postgres
     spec:
       nodeSelector:
-        feldman.tech/storage.monitoring.grafana-postgres: 'true'
+        feldman.tech/storage.auth.keycloak-postgres: 'true'
       containers:
         - name: postgres
           envFrom:
             - secretRef:
-                name: grafana-postgres-env
+                name: keycloak-postgres-env
       volumes:
         - name: data
           hostPath:
-            path: /opt/k8s/kenobi/monitoring/grafana-postgres/data
+            path: /opt/k8s/kenobi/auth/keycloak-postgres/data
             type: DirectoryOrCreate
