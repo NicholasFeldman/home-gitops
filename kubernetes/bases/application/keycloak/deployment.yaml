@@ -19,6 +19,9 @@ spec:
           ports:
             - containerPort: 8080
               name: http
+          env:
+            - name: PROXY_ADDRESS_FORWARDING
+              value: 'true'
           readinessProbe:
             httpGet:
               path: /auth/realms/master
