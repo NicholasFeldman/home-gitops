@@ -19,7 +19,29 @@ spec:
               value: grafana
             - name: GF_DATABASE_USER
               value: grafana
+            # OAuth
+            - name: GF_AUTH_DISABLE_LOGIN_FORM
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_ENABLED
+              value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_NAME
+            - value: "Keycloak"
+            - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
+            - value: "true"
+            - name: GF_AUTH_GENERIC_OAUTH_CLIENT_ID
+            - value: "grafana.feldman.tech"
+            - name: GF_AUTH_GENERIC_OAUTH_SCOPES
+            - value: "profile"
+            - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
+            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth"
+            - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
+            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/token"
+            - name: GF_AUTH_GENERIC_OAUTH_API_URL
+            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/userinfo"
+            - name: GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH
+            - value: "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
           envFrom:
             # GF_DATABASE_PASSWORD
+            # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
             - secretRef:
                 name: grafana-env
