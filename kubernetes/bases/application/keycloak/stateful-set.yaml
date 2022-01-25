@@ -1,17 +1,23 @@
+# This is a StatefulSet so that the image name isn't too long...
+# https://github.com/bitnami/bitnami-docker-keycloak/issues/14
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
+
 metadata:
   name: keycloak
 
 spec:
+  serviceName: keycloak-headless
   selector:
     matchLabels:
-      app: keycloak
+      app.kubernetes.io/name: keycloak
   replicas: 1
   template:
     metadata:
-      labels: 
-        app: keycloak
+      labels:
+        app.kubernetes.io/name: keycloak
+        app.kubernetes.io/version: latest
+        app.kubernetes.io/component: frontend
     spec:
       containers:
         - name: keycloak
@@ -22,12 +28,6 @@ spec:
           env:
             - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
               value: 'true'
-            - name: K8S_POD_TEMPLATE_HASH
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.labels.pod-template-hash
-            - name: JAVA_OPTS
-              value: "-Djboss.node.name=$K8S_POD_TEMPLATE_HASH"
           readinessProbe:
             httpGet:
               path: /auth/realms/master
