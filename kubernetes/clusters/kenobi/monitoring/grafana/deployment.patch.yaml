@@ -5,6 +5,7 @@ metadata:
   name: grafana
 
 spec:
+  replicas: 2
   template:
     spec:
       containers:
@@ -19,6 +20,8 @@ spec:
             - name: GF_DATABASE_USER
               value: grafana
             # OAuth
+            - name: GF_SERVER_DOMAIN
+              value: "grafana.feldman.tech"
             - name: GF_SERVER_ROOT_URL
               value: "https://grafana.feldman.tech"
             - name: GF_AUTH_DISABLE_LOGIN_FORM
