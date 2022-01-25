@@ -5,7 +5,6 @@ metadata:
   name: keycloak
 
 spec:
-  replicas: 2
   template:
     spec:
       containers:
