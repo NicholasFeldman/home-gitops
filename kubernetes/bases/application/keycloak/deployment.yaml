@@ -22,12 +22,12 @@ spec:
           env:
             - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
               value: 'true'
-            - name: MY_POD_NAME
+            - name: K8S_POD_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
             - name: TEMP_KEYCLOAK_EXTRA_ARGS
-              value: '-Djboss.node.name=kc-$(MY_POD_NAME)'
+              value: "-Djboss.node.name=$(echo $K8S_POD_NAME | sed 's/keycloak/kc/')"
           readinessProbe:
             httpGet:
               path: /auth/realms/master
