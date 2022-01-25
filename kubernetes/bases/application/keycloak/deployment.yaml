@@ -22,6 +22,12 @@ spec:
           env:
             - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
               value: 'true'
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: TEMP_KEYCLOAK_EXTRA_ARGS
+              value: '-Djboss.node.name=kc-$(MY_POD_NAME)'
           readinessProbe:
             httpGet:
               path: /auth/realms/master
