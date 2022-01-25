@@ -25,21 +25,21 @@ spec:
             - name: GF_AUTH_GENERIC_OAUTH_ENABLED
               value: "true"
             - name: GF_AUTH_GENERIC_OAUTH_NAME
-            - value: "Keycloak"
+              value: "Keycloak"
             - name: GF_AUTH_GENERIC_OAUTH_ALLOW_SIGN_UP
-            - value: "true"
+              value: "true"
             - name: GF_AUTH_GENERIC_OAUTH_CLIENT_ID
-            - value: "grafana.feldman.tech"
+              value: "grafana.feldman.tech"
             - name: GF_AUTH_GENERIC_OAUTH_SCOPES
-            - value: "profile"
+              value: "profile"
             - name: GF_AUTH_GENERIC_OAUTH_AUTH_URL
-            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth"
+              value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth"
             - name: GF_AUTH_GENERIC_OAUTH_TOKEN_URL
-            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/token"
+              value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/token"
             - name: GF_AUTH_GENERIC_OAUTH_API_URL
-            - value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/userinfo"
+              value: "https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/userinfo"
             - name: GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH
-            - value: 'contains(roles[*], "admin") && "Admin" || contains(roles[*], "editor") && "Editor" || "Viewer"'
+              value: 'contains(roles[*], "admin") && "Admin" || contains(roles[*], "editor") && "Editor" || "Viewer"'
           envFrom:
             # GF_DATABASE_PASSWORD
             # GF_AUTH_GENERIC_OAUTH_CLIENT_SECRET
