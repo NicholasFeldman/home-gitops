@@ -5,6 +5,7 @@ metadata:
   name: grafana
 
 spec:
+  replicas: 2
   template:
     spec:
       containers:
