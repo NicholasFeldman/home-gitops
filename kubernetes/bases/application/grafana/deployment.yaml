@@ -5,6 +5,9 @@ metadata:
   name: grafana
 
 spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: grafana
   replicas: 1
   template:
     metadata:
