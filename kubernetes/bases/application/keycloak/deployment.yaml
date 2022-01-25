@@ -26,7 +26,7 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-            - name: TEMP_KEYCLOAK_EXTRA_ARGS
+            - name: KEYCLOAK_EXTRA_ARGS
               value: "-Djboss.node.name=$(echo $K8S_POD_NAME | sed 's/keycloak/kc/')"
           readinessProbe:
             httpGet:
