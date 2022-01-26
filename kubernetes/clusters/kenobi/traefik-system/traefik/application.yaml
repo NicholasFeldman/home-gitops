@@ -16,8 +16,3 @@ spec:
     targetRevision: 10.9.1
     helm:
       releaseName: traefik
-      values: |-
-        additionalArguments:
-          - "--entrypoints.websecure.proxyProtocol.insecure"
-          - "--entrypoints.websecure.forwardedHeaders.insecure"
-
