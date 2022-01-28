@@ -4,3 +4,4 @@ kind: Kustomization
 bases:
   - metallb-config
   - ../../../vendor/metallb/v0.11.0
+  - namespace.yaml
