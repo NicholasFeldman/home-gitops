@@ -12,4 +12,3 @@ resources:
   - longhorn-system/application.yaml
   - metallb-system/application.yaml
   - monitoring/application.yaml
-  - traefik-system/application.yaml
