@@ -26,10 +26,14 @@ metadata:
 
 spec:
   hosts:
-    - grafana
+    - grafana.feldman.tech
+  gateways:
+    - grafana-gateway
   http:
     - route:
         - destination:
+            port:
+              number: 3000
             host: grafana
 ---
 apiVersion: cert-manager.io/v1
