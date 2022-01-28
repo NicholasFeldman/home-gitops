@@ -16,4 +16,20 @@ spec:
     path: kubernetes/clusters/kenobi
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1aplha1
+kind: Application
 
+metadata:
+  name: kenobi-istio-system
+  namespace: argocd
+
+spec:
+  project: kenobi
+  destination:
+    namespace: istio-system
+    name: in-cluster
+  source:
+    path: kubernetes/clusters/kenobi/istio-system
+    repoUrl: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
