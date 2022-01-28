@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 
 metadata:
-  name: kiali-gateway
+  name: auth-gateway
 
 spec:
   selector:
@@ -14,39 +14,39 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: kiali-feldman-in-tls
+        credentialName: auth-feldman-tech-tls
       hosts:
-        - kiali.feldman.in
+        - auth.feldman.tech
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: kiali
+  name: auth
 
 spec:
   hosts:
-    - kiali.feldman.in
+    - auth.feldman.tech
   gateways:
-    - kiali-gateway
+    - auth-gateway
   http:
     - route:
         - destination:
             port:
-              number: 20001
-            host: kiali
+              number: 80
+            host: keycloak
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 
 metadata:
-  name: kiali-feldman-in-tls
+  name: auth-feldman-tech-tls
   namespace: istio-system
 
 spec:
   dnsNames:
-    - kiali.feldman.in
-  secretName: kiali-feldman-in-tls
+    - auth.feldman.tech
+  secretName: auth-feldman-tech-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod

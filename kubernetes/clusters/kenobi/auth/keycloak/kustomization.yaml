@@ -3,7 +3,7 @@ kind: Kustomization
 
 resources:
   - ../../../../bases/application/keycloak
-  - ingressroute.yaml
+  - gateway.yaml
   - sealed-secret.yaml
 
 patchesStrategicMerge:

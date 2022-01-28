@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: Gateway
 
 metadata:
-  name: kiali-gateway
+  name: argocd-gateway
 
 spec:
   selector:
@@ -14,39 +14,39 @@ spec:
         protocol: HTTPS
       tls:
         mode: SIMPLE
-        credentialName: kiali-feldman-in-tls
+        credentialName: argocd-feldman-in-tls
       hosts:
-        - kiali.feldman.in
+        - argocd.feldman.in
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: kiali
+  name: argocd
 
 spec:
   hosts:
-    - kiali.feldman.in
+    - argocd.feldman.in
   gateways:
-    - kiali-gateway
+    - argocd-gateway
   http:
     - route:
         - destination:
             port:
-              number: 20001
-            host: kiali
+              number: 80
+            host: argocd-server
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
 
 metadata:
-  name: kiali-feldman-in-tls
+  name: argocd-feldman-in-tls
   namespace: istio-system
 
 spec:
   dnsNames:
-    - kiali.feldman.in
-  secretName: kiali-feldman-in-tls
+    - argocd.feldman.in
+  secretName: argocd-feldman-in-tls
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
