@@ -3,5 +3,5 @@ kind: Kustomization
 
 resources:
   - ../../../../vendor/longhorn/v1.2.3
-  - ingressroute.yaml
+  - gateway.yaml
   - storage-class.yaml
