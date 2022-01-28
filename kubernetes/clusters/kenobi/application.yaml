@@ -31,5 +31,5 @@ spec:
     name: in-cluster
   source:
     path: kubernetes/clusters/kenobi/istio-system
-    repoUrl: git@github.com:NicholasFeldman/kubernetes-config.git
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
