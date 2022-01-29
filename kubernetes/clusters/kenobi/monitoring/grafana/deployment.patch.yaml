@@ -14,7 +14,7 @@ spec:
             - name: GF_DATABASE_TYPE
               value: postgres
             - name: GF_DATABASE_HOST
-              value: grafana-postgres-0.grafana-postgres.monitoring.svc.cluster.local
+              value: grafana-postgres-0.grafana-postgres-headless.monitoring.svc.cluster.local
             - name: GF_DATABASE_NAME
               value: grafana
             - name: GF_DATABASE_USER
