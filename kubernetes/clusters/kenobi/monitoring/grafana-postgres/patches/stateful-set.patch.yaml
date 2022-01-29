@@ -5,7 +5,7 @@ metadata:
   name: postgres
 
 spec:
-  serviceName: grafana-postgres
+  serviceName: grafana-postgres-headless
   selector:
     matchLabels:
       app.kubernetes.io/instance: grafana-postgres
