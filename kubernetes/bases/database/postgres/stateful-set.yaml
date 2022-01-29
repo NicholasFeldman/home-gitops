@@ -6,6 +6,7 @@ metadata:
 
 spec:
   replicas: 1
+  serviceName: postgres-headless
   template:
     metadata:
       labels:
