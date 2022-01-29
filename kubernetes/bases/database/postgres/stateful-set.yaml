@@ -17,8 +17,8 @@ spec:
         - name: postgres
           image: postgres:latest
           ports:
-            - containerPort: 5432
-              name: postgres
+            - name: tcp
+              containerPort: 5432
           env:
             - name: PGDATA
               value: /data/pgdata

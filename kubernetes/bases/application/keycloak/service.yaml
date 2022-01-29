@@ -24,6 +24,6 @@ spec:
   selector:
     app.kubernetes.io/name: keycloak
   ports:
-    - name: keycloak
+    - name: http
       port: 80
-      targetPort: http
+      targetPort: 8080
