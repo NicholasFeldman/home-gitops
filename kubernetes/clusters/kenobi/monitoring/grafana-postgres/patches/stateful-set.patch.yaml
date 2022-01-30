@@ -14,8 +14,6 @@ spec:
       labels:
           app.kubernetes.io/instance: grafana-postgres
     spec:
-      nodeSelector:
-        feldman.tech/storage.monitoring.grafana-postgres: 'true'
       containers:
         - name: postgres
           envFrom:

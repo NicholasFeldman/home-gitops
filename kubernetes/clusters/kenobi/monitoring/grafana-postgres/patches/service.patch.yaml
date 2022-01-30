@@ -7,3 +7,13 @@ metadata:
 spec:
   selector:
     app.kubernetes.io/instance: grafana-postgres
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: postgres-headless
+
+spec:
+  selector:
+    app.kubernetes.io/instance: grafana-postgres
