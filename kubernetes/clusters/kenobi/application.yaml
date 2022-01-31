@@ -21,23 +21,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-external
-  namespace: argocd
-
-spec:
-  project: kenobi
-  destination:
-    namespace: external
-    name: in-cluster
-  source:
-    path: kubernetes/clusters/kenobi/external
-    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
-    targetRevision: HEAD
----
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-
-metadata:
   name: kenobi-istio-system
   namespace: argocd
 
