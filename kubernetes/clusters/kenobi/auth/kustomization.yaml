@@ -1,7 +1,16 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-bases:
+resources:
   - namespace.yaml
-  - keycloak
-  - keycloak-postgres
+
+helmCharts:
+  - releaseName: keycloak-postgres
+    name: postgresql-ha
+    version: 8.2.8
+    repo: https://charts.bitnami.com/bitnami
+    namespace: auth
+    includeCRDs: true
+    valuesInline:
+      postgresql:
+        usePasswordFile: true
