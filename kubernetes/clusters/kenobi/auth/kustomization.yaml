@@ -6,11 +6,12 @@ resources:
 
 helmCharts:
   - releaseName: keycloak-postgres
-    name: postgresql-ha
-    version: 8.2.8
+    name: postgresql
+    version: 10.16.2
     repo: https://charts.bitnami.com/bitnami
     namespace: auth
     includeCRDs: true
     valuesInline:
-      postgresql:
-        usePasswordFile: true
+      postgresqlDatabase: keycloak
+      initdbUser: keycloak
+      initdbPassword: keycloak
