@@ -14,8 +14,7 @@ spec:
       kind: Rule
       services:
         - name: argocd-server
-          scheme: https
-          port: 443
+          port: 80
   tls:
     secretName: argocd-feldman-in-tls
 ---
