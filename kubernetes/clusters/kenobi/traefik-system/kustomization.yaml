@@ -9,6 +9,7 @@ helmCharts:
     name: traefik
     version: 10.11.1
     repo: https://helm.traefik.io/traefik
+    namespace: traefik-system
     includeCRDs: true
     valuesInline:
       rbac.namespaced: true
