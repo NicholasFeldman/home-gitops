@@ -10,3 +10,5 @@ helmCharts:
     version: 10.11.1
     repo: https://helm.traefik.io/traefik
     includeCRDs: true
+    valuesInline:
+      rbac.namespaced: true
