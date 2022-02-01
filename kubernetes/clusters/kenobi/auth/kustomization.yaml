@@ -12,8 +12,8 @@ helmCharts:
     namespace: auth
     valuesInline:
       postgresqlDatabase: keycloak
-      initdbUser: keycloak
-      initdbPassword: keycloak
+      postgresqlUsername: keycloak
+      postgresqlPassword: keycloak
   - releaseName: keycloak
     name: keycloak
     version: 6.1.1
