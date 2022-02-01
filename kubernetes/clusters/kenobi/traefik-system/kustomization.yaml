@@ -9,4 +9,4 @@ helmCharts:
     name: traefik
     version: 10.11.1
     repo: https://helm.traefik.io/traefik
-    installCRDs: true
+    includeCRDs: true
