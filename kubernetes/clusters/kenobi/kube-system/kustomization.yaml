@@ -3,5 +3,8 @@ kind: Kustomization
 
 namespace: kube-system
 
-bases:
-  - ../../../vendor/sealed-secrets/v0.17.2
+helmCharts:
+  - releaseName: sealed-secrets
+    name: sealed-secrets
+    version: 2.1.2
+    repo: https://bitnami-labs.github.io/sealed-secrets

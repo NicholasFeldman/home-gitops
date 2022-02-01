@@ -2,6 +2,14 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - cert-manager
-  - ../../../vendor/cert-manager/v1.6.1
+  - cluster-issuer.yaml
   - namespace.yaml
+  - sealed-secret.yaml
+
+helmCharts:
+  - releaseName: cert-manager
+    name: cert-manager
+    version: 1.7.0
+    repo: https://charts.jetstack.io
+    valuesInline:
+      installCRDs: true

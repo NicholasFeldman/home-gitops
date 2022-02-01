@@ -5,9 +5,7 @@ kind: Kustomization
 resources:
   - application.yaml
   - project.yaml
-  - cert-manager/application.yaml
   - auth/application.yaml
-  - kube-system/application.yaml
   - longhorn-system/application.yaml
   - metallb-system/application.yaml
   - monitoring/application.yaml
