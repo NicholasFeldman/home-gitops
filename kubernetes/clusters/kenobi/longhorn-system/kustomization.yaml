@@ -15,4 +15,5 @@ helmCharts:
     namespace: longhorn-system
     valuesInline:
       persistence:
+        defaultClassReplicaCount: 2
         reclaimPolicy: Retain
