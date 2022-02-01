@@ -6,6 +6,5 @@ resources:
   - application.yaml
   - project.yaml
   - auth/application.yaml
-  - longhorn-system/application.yaml
   - metallb-system/application.yaml
   - monitoring/application.yaml
