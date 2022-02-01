@@ -5,7 +5,6 @@ kind: Kustomization
 resources:
   - application.yaml
   - project.yaml
-  - argocd/application.yaml
   - cert-manager/application.yaml
   - auth/application.yaml
   - kube-system/application.yaml
