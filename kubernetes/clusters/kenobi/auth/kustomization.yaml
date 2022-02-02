@@ -28,3 +28,8 @@ helmCharts:
         user: keycloak
         database: keycloak
         password: keycloak
+      extraEnvVars:
+        - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
+          value: "true"
+        - name: KEYCLOAK_FRONTEND_URL
+          value: "https://auth.feldman.tech"
