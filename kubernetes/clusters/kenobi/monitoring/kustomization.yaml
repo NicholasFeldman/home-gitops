@@ -32,3 +32,15 @@ helmCharts:
         replicaCount: 2
       persistence:
         enabled: false
+  - releaseName: influxdb
+    name: influxdb
+    version: 3.0.2
+    repo: https://charts.bitnami.com/bitnami
+    namespace: monitoring
+    valuesInline:
+      auth:
+        user:
+          username: admin
+          password: changeme
+          org: Feldman
+          bucket: Default
