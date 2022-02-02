@@ -28,6 +28,9 @@ helmCharts:
         user: keycloak
         database: keycloak
         password: keycloak
+      auth:
+        adminUser: admin
+        adminPassword: changeme
       extraEnvVars:
         - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
           value: "true"
