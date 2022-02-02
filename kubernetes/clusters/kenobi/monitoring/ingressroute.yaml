@@ -14,7 +14,7 @@ spec:
       kind: Rule
       services:
         - name: grafana
-          port: 80
+          port: 3000
   tls:
     secretName: grafana-feldman-in-tls
 ---
