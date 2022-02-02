@@ -27,7 +27,7 @@ helmCharts:
         password: changeme
       config:
         useGrafanaIniFile: true
-        grafanaIniSecret:
+        grafanaIniSecret: grafana-ini
       grafana:
         replicaCount: 2
       persistence:
