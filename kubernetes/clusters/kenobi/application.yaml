@@ -106,6 +106,43 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
+  name: kenobi-metallb-system
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: metallb-system
+    name: in-cluster
+  project: kenobi
+  source:
+    path: kubernetes/clusters/kenobi/metallb-system
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-monitoring
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: kenobi
+  source:
+    path: kubernetes/clusters/kenobi/monitoring
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
   name: kenobi-traefik-system
   namespace: argocd
 

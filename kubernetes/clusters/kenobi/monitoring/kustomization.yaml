@@ -2,6 +2,33 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
+  - ingressroute.yaml
   - namespace.yaml
-  - grafana
-  - grafana-postgres
+  - sealed-secret.yaml
+
+helmCharts:
+  - releaseName: grafana-postgres
+    name: postgresql
+    version: 10.16.2
+    repo: https://charts.bitnami.com/bitnami
+    namespace: monitoring
+    valuesInline:
+      postgresqlDatabase: grafana
+      postgresqlUsername: grafana
+      postgresqlPassword: grafana
+  - releaseName: grafana
+    name: grafana
+    version: 7.6.4
+    repo: https://charts.bitnami.com/bitnami
+    namespace: monitoring
+    valuesInline:
+      admin:
+        user: admin
+        password: changeme
+      config:
+        useGrafanaIniFile: true
+        grafanaIniSecret:
+      grafana:
+        replicaCount: 2
+      persistence:
+        enabled: false
