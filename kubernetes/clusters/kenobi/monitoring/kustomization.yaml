@@ -39,7 +39,7 @@ helmCharts:
     namespace: monitoring
     valuesInline:
       auth:
-        user:
+        admin:
           username: admin
           password: changeme
           org: Feldman
