@@ -4,35 +4,32 @@ kind: Kustomization
 resources:
   - ingressroute.yaml
   - namespace.yaml
+  - sealed-secret.yaml
 
 helmCharts:
-  - releaseName: keycloak-postgres
-    name: postgresql
-    version: 10.16.2
-    repo: https://charts.bitnami.com/bitnami
-    namespace: auth
-    valuesInline:
-      postgresqlDatabase: keycloak
-      postgresqlUsername: keycloak
-      postgresqlPassword: keycloak
+  # https://github.com/bitnami/charts/tree/master/bitnami/keycloak
   - releaseName: keycloak
     name: keycloak
     version: 6.1.1
     repo: https://charts.bitnami.com/bitnami
     namespace: auth
     valuesInline:
-      postgresql:
-        enabled: false
-      externalDatabase:
-        host: keycloak-postgres-postgresql.auth.svc.cluster.local
-        user: keycloak
-        database: keycloak
-        password: keycloak
+      # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-parameters
       auth:
         adminUser: admin
-        adminPassword: changeme
+        existingSecret: keycloak
+      serviceDiscovery:
+        enabled: true
       extraEnvVars:
         - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
           value: "true"
         - name: KEYCLOAK_FRONTEND_URL
           value: "https://auth.feldman.tech"
+      # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-deploymentstatefulset-parameters
+      replicaCount: 2
+      # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#exposure-parameters
+      service:
+        type: ClusterIP
+      # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#database-parameters
+      postgresql:
+        existingSecret: keycloak
