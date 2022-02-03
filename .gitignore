@@ -1,6 +1,6 @@
 *.env
 secret.yaml
-
+cd s
 
 .vagrant/
 
@@ -9,3 +9,7 @@ ansible/inventories/*.ini
 .idea/
 *.iml
 *.iws
+
+# Secrets
+**/secrets/*
+!**/secrets/sealed-*

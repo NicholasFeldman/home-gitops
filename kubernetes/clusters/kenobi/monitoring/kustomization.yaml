@@ -5,17 +5,21 @@ resources:
   - ingressroute.yaml
   - namespace.yaml
   - sealed-secret.yaml
+  - secrets/sealed-grafana-ini.yaml
+  - secrets/sealed-grafana-postgresql.yaml
 
 helmCharts:
-  - releaseName: grafana-postgres
+  - releaseName: grafana-postgresql
     name: postgresql
-    version: 10.16.2
+    version: 11.0.1
     repo: https://charts.bitnami.com/bitnami
     namespace: monitoring
     valuesInline:
-      postgresqlDatabase: grafana
-      postgresqlUsername: grafana
-      postgresqlPassword: grafana
+      # https://github.com/bitnami/charts/tree/master/bitnami/postgresql#postgresql-common-parameters
+      auth:
+        username: grafana
+        database: grafana
+        existingSecret: grafana-postgresql
   - releaseName: grafana
     name: grafana
     version: 7.6.4
