@@ -16,6 +16,8 @@ spec:
         app.kubernetes.io/name: openldap
         app.kubernetes.io/version: latest
     spec:
+      securityContext:
+        fsGroup: 1001
       containers:
         - name: openldap
           image: docker.io/bitnami/openldap:latest
@@ -30,6 +32,7 @@ spec:
           volumeMounts:
             - name: openldap-data
               mountPath: /bitnami/openldap
+
   volumeClaimTemplates:
     - metadata:
         name: openldap-data
