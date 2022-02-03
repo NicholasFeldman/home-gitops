@@ -26,7 +26,7 @@ helmCharts:
         - name: KEYCLOAK_FRONTEND_URL
           value: "https://auth.feldman.tech"
       # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-deploymentstatefulset-parameters
-      replicaCount: 2
+      replicaCount: 1
       # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#exposure-parameters
       service:
         type: ClusterIP
