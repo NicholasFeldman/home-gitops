@@ -4,9 +4,9 @@ kind: Kustomization
 resources:
   - ingressroute.yaml
   - namespace.yaml
-  - sealed-secret.yaml
   - secrets/sealed-grafana-ini.yaml
   - secrets/sealed-grafana-postgresql.yaml
+  - secrets/sealed-influxdb.yaml
 
 helmCharts:
   - releaseName: grafana-postgresql
@@ -43,8 +43,8 @@ helmCharts:
     namespace: monitoring
     valuesInline:
       auth:
+        existingSecret: influxdb
         admin:
           username: admin
-          password: changeme
           org: Feldman
           bucket: Default
