@@ -17,6 +17,3 @@ helmCharts:
         TZ: America/New_York
       image:
         tag: v0.5.5
-      persistence:
-        defaultClassReplicaCount: 2
-        reclaimPolicy: Retain
