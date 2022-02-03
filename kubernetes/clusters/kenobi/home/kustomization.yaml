@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: home
 
 resources:
+  - ingressroute.yaml
   - namespace.yaml
 
 helmCharts:
