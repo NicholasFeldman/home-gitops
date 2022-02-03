@@ -21,6 +21,8 @@ spec:
       containers:
         - name: openldap
           image: docker.io/bitnami/openldap:latest
+          securityContext:
+            runAsUser: 1001
           ports:
             - name: tcp-ldap
               containerPort: 1389
