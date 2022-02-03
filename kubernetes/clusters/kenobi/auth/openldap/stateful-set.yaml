@@ -28,11 +28,11 @@ spec:
             - name: LDAP_ADMIN_PASSWORD
               value: changeme
           volumeMounts:
-            - name: openldap_data
+            - name: openldap-data
               mountPath: /bitnami/openldap
   volumeClaimTemplates:
     - metadata:
-        name: openldap_data
+        name: openldap-data
       spec:
         accessModes: [ "ReadWriteOnce" ]
         storageClassName: longhorn
