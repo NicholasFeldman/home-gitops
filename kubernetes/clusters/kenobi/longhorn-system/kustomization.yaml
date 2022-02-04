@@ -17,3 +17,5 @@ helmCharts:
       persistence:
         defaultClassReplicaCount: 2
         reclaimPolicy: Retain
+      defaultSettings:
+        backupTarget: nfs://192.168.40.110:/volume1/Kenobi\040Longhorn\040Backups
