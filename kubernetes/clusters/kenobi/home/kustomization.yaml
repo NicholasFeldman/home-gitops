@@ -6,6 +6,7 @@ namespace: home
 resources:
   - ingressroute.yaml
   - namespace.yaml
+  - secrets/sealed-nextcloud-postgresql.yaml
 
 helmCharts:
   - releaseName: mealie
@@ -21,3 +22,34 @@ helmCharts:
       persistence:
         config:
           enabled: true
+  - releaseName: nextcloud-postgresql
+    name: postgresql
+    version: 11.0.1
+    repo: https://charts.bitnami.com/bitnami
+    namespace: home
+    valuesInline:
+      # https://github.com/bitnami/charts/tree/master/bitnami/postgresql#postgresql-common-parameters
+      auth:
+        username: nextcloud
+        database: nextcloud
+        existingSecret: nextcloud-postgresql
+  - releaseName: nextcloud
+    name: nextcloud
+    version: 2.12.0
+    repo: https://nextcloud.github.io/helm
+    namespace: home
+    valuesInline:
+      nextcloud:
+        host: https://nextcloud.feldman.tech
+      internalDatabase:
+        enabled: false
+      externalDatabase:
+        enabled: true
+        type: postgresql
+        host: grafana-postgresql.monitoring.svc.cluster.local
+        existingSecret:
+          enabled: true
+          secretName: nextcloud-postgresql
+          passwordKey: password
+
+

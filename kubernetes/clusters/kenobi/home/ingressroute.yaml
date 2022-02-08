@@ -28,3 +28,35 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
+---
+# Nextcloud
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`nextcloud.feldman.tech`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 80
+  tls:
+    secretName: nextcloud-feldman-tech-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nextcloud-feldman-tech-tls
+
+spec:
+  dnsNames:
+    - nextcloud.feldman.tech
+  secretName: nextcloud-feldman-tech-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
