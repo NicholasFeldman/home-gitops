@@ -46,7 +46,7 @@ helmCharts:
       externalDatabase:
         enabled: true
         type: postgresql
-        host: grafana-postgresql.monitoring.svc.cluster.local
+        host: nextcloud-postgresql.home.svc.cluster.local
         existingSecret:
           enabled: true
           secretName: nextcloud-postgresql
