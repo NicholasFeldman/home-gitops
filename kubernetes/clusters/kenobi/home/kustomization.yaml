@@ -50,7 +50,7 @@ helmCharts:
         existingSecret:
           enabled: true
           secretName: nextcloud-postgresql
-          usernameKey: postgresql-username
-          passwordKey: postgresql-password
+          usernameKey: postgres-username
+          passwordKey: postgres-password
 
 
