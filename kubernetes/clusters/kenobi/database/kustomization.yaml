@@ -5,9 +5,9 @@ namespace: database
 
 resources:
   - namespace.yaml
-  - secret/shared-postgresql-ha-pgpool.yaml
-  - secret/shared-postgresql-ha-pgpool-users.yaml
-  - secret/shared-postgresql-ha-postgresql.yaml
+  - secrets/shared-postgresql-ha-pgpool.yaml
+  - secrets/shared-postgresql-ha-pgpool-users.yaml
+  - secrets/shared-postgresql-ha-postgresql.yaml
 
 helmCharts:
   - releaseName: shared
