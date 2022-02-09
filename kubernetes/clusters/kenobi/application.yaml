@@ -73,7 +73,7 @@ kind: Application
 
 metadata:
   name: kenobi-database
-  namespace: database
+  namespace: argocd
 
 spec:
   destination:
