@@ -8,7 +8,7 @@ resources:
 
 helmCharts:
   - releaseName: postgresql
-    name: postgresql
+    name: postgresql-ha
     version: 8.2.9
     repo: https://charts.bitnami.com/bitnami
     namespace: database
