@@ -5,6 +5,9 @@ namespace: database
 
 resources:
   - namespace.yaml
+  - secret/shared-postgresql-ha-pgpool.yaml
+  - secret/shared-postgresql-ha-pgpool-users.yaml
+  - secret/shared-postgresql-ha-postgresql.yaml
 
 helmCharts:
   - releaseName: shared
@@ -12,3 +15,9 @@ helmCharts:
     version: 8.2.9
     repo: https://charts.bitnami.com/bitnami
     namespace: database
+    valuesInline:
+      pgpool:
+        existingSecret: shared-postgresql-ha-pgpool
+        customUsersSecret: shared-postgresql-ha-pgpool-users
+      postgresql:
+        existingSecret: shared-postgresql-ha-postgresql

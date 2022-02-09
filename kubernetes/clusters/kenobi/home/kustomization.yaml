@@ -35,7 +35,7 @@ helmCharts:
       externalDatabase:
         enabled: true
         type: postgresql
-        host: shared-postgresql-ha-pgpool.database.svc.cluster.local
+        host: shared-postgresql-ha-pgpool.yaml.database.svc.cluster.local
         database: nextcloud
         existingSecret:
           enabled: true
