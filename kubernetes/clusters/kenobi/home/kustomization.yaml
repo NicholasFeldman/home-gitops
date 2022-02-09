@@ -22,17 +22,6 @@ helmCharts:
       persistence:
         config:
           enabled: true
-  - releaseName: nextcloud-postgresql
-    name: postgresql
-    version: 11.0.1
-    repo: https://charts.bitnami.com/bitnami
-    namespace: home
-    valuesInline:
-      # https://github.com/bitnami/charts/tree/master/bitnami/postgresql#postgresql-common-parameters
-      auth:
-        username: nextcloud
-        database: nextcloud
-        existingSecret: nextcloud-postgresql
   - releaseName: nextcloud
     name: nextcloud
     version: 2.12.0
@@ -46,7 +35,8 @@ helmCharts:
       externalDatabase:
         enabled: true
         type: postgresql
-        host: nextcloud-postgresql.home.svc.cluster.local
+        host: shared-postgresql-ha-pgpool.database.svc.cluster.local
+        database: nextcloud
         existingSecret:
           enabled: true
           secretName: nextcloud-postgresql
