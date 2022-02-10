@@ -49,7 +49,7 @@ helmCharts:
         extraVolumes:
           - name: ilum-media
             nfs:
-              server: "ilum.feldman.in"
+              server: "192.168.40.111"
               path: "/volume1/Media"
               readOnly: false
 
