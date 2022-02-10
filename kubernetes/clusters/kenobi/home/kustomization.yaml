@@ -30,12 +30,13 @@ helmCharts:
     namespace: home
     valuesInline:
       nextcloud:
-        host: https://nextcloud.feldman.tech
+        host: nextcloud.feldman.tech
         existingSecret:
           enabled: true
           secretName: nextcloud
           usernameKey: nextcloud-username
           passwordKey: nextcloud-password
+
       internalDatabase:
         enabled: false
       externalDatabase:
@@ -48,5 +49,15 @@ helmCharts:
           secretName: nextcloud-postgresql
           usernameKey: username
           passwordKey: password
+
+      persistence:
+        enabled: true
+        accessMode: ReadWriteMany
+        size: 5Mi
+
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
 
 
