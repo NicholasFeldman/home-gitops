@@ -43,6 +43,20 @@ helmCharts:
             $CONFIG = array(
               'overwriteprotocol' => 'https',
             );
+        datadir: /mnt/nextcloud-data
+        extraVolumeMounts:
+          - name: nextcloud-data
+            mountPath: /mnt/nextcloud-data
+        extraVolumes:
+          - name: nextcloud-data
+            nfs:
+              server: ilum.feldman.in
+              path: /volume1/Nextcloud Data
+
+      livenessProbe:
+        enabled: false
+      readinessProbe:
+        enabled: false
 
       internalDatabase:
         enabled: false
@@ -57,11 +71,6 @@ helmCharts:
           usernameKey: username
           passwordKey: password
 
-      persistence:
-        enabled: true
-        size: 8Gi
 
-      livenessProbe:
-        enabled: false
-      readinessProbe:
-        enabled: false
+
+
