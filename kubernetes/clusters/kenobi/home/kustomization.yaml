@@ -37,6 +37,12 @@ helmCharts:
           secretName: nextcloud
           usernameKey: nextcloud-username
           passwordKey: nextcloud-password
+        configs:
+          https.config.php: |-
+            <?php
+            $CONFIG = array(
+              'overwriteprotocol': 'https',
+            );
 
       internalDatabase:
         enabled: false
@@ -59,12 +65,3 @@ helmCharts:
         enabled: false
       readinessProbe:
         enabled: false
-
-      configs:
-        https.config.php: |-
-          <?php
-          $CONFIG = array(
-            'overwriteprotocol': 'https',
-          );
-
-
