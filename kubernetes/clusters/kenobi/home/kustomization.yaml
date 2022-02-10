@@ -60,4 +60,11 @@ helmCharts:
       readinessProbe:
         enabled: false
 
+      configs:
+        https.config.php |-
+          <?php
+          $CONFIG = array(
+            'overwriteprotocol': 'https',
+          );
+
 
