@@ -41,7 +41,7 @@ helmCharts:
           https.config.php: |-
             <?php
             $CONFIG = array(
-              'overwriteprotocol': 'https',
+              'overwriteprotocol' => 'https',
             );
 
       internalDatabase:
