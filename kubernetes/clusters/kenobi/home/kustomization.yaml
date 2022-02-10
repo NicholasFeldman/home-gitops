@@ -43,12 +43,12 @@ helmCharts:
             $CONFIG = array(
               'overwriteprotocol' => 'https',
             );
-        datadir: /mnt/nextcloud-data
+        datadir: /mnt/ilum-nextcloud-data
         extraVolumeMounts:
-          - name: nextcloud-data
-            mountPath: /mnt/nextcloud-data
+          - name: ilum-nextcloud-data
+            mountPath: /mnt/ilum-nextcloud-data
         extraVolumes:
-          - name: nextcloud-data
+          - name: ilum-nextcloud-data
             nfs:
               server: ilum.feldman.in
               path: /volume1/Nextcloud Data
