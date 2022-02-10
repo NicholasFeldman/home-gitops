@@ -28,6 +28,7 @@ helmCharts:
       pgpool:
         existingSecret: nextcloud-postgresql-ha-pgpool
       postgresql:
+        database: nextcloud
         existingSecret: nextcloud-postgresql-ha-postgresql
 
   - releaseName: shared
