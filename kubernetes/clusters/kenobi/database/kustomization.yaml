@@ -8,7 +8,7 @@ resources:
   #
   # Postgres
   #
-  - secrets/sealed-nextcloud-postgresql.yaml
+  # - secrets/sealed-nextcloud-postgresql.yaml
   #
   # Postgres HA
   #
@@ -27,8 +27,9 @@ helmCharts:
     namespace: database
     valuesInline:
       auth:
+        username: nextcloud
         database: nextcloud
-        existingSecret: nextcloud-postgresql
+        # existingSecret: nextcloud-postgresql
   #
   # Postgres HA
   #
