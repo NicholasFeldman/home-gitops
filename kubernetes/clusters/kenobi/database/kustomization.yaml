@@ -5,11 +5,27 @@ namespace: database
 
 resources:
   - namespace.yaml
+  - secrets/sealed-nextcloud-postgresql-ha-pgpool.yaml
+  - secrets/sealed-nextcloud-postgresql-ha-pgpool.yaml
   - secrets/sealed-shared-postgresql-ha-pgpool.yaml
   - secrets/sealed-shared-postgresql-ha-pgpool-users.yaml
   - secrets/sealed-shared-postgresql-ha-postgresql.yaml
 
 helmCharts:
+  #
+  # Postgres HA
+  #
+  - releaseName: nextcloud
+    name: postgresql-ha
+    version: 8.2.9
+    repo: https://charts.bitnami.com/bitnami
+    namespace: database
+    valuesInline:
+      pgpool:
+        existingSecret: nextcloud-postgresql-ha-pgpool
+      postgresql:
+        existingSecret: nextcloud-postgresql-ha-postgresql
+
   - releaseName: shared
     name: postgresql-ha
     version: 8.2.9
