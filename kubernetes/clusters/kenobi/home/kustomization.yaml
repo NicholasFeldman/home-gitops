@@ -23,6 +23,7 @@ helmCharts:
       persistence:
         config:
           enabled: true
+
   - releaseName: nextcloud
     name: nextcloud
     version: 2.12.0
@@ -52,8 +53,7 @@ helmCharts:
 
       persistence:
         enabled: true
-        accessMode: ReadWriteMany
-        size: 5Mi
+        size: 8Gi
 
       livenessProbe:
         enabled: false
