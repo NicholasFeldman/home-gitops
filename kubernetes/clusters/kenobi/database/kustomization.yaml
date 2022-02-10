@@ -6,31 +6,32 @@ namespace: database
 resources:
   - namespace.yaml
   #
+  # Postgres
+  #
+
+  #
   # Postgres HA
   #
-  - secrets/sealed-nextcloud-postgresql-ha-pgpool.yaml
-  - secrets/sealed-nextcloud-postgresql-ha-postgresql.yaml
-
   - secrets/sealed-shared-postgresql-ha-pgpool.yaml
   - secrets/sealed-shared-postgresql-ha-pgpool-users.yaml
   - secrets/sealed-shared-postgresql-ha-postgresql.yaml
 
 helmCharts:
   #
-  # Postgres HA
+  # Postgres
   #
-  - releaseName: nextcloud
-    name: postgresql-ha
-    version: 8.2.9
+  - releasename: nextcloud # Nextcloud uses postgres because it creates its own database users
+    name: postgresql
+    version: 11.0.1
     repo: https://charts.bitnami.com/bitnami
     namespace: database
     valuesInline:
-      pgpool:
-        existingSecret: nextcloud-postgresql-ha-pgpool
-      postgresql:
+      auth:
         database: nextcloud
-        existingSecret: nextcloud-postgresql-ha-postgresql
-
+        # existingSecret: nextcloud-postgresql-ha-postgresql
+  #
+  # Postgres HA
+  #
   - releaseName: shared
     name: postgresql-ha
     version: 8.2.9
