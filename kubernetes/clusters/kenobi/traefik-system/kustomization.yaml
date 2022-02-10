@@ -13,3 +13,6 @@ helmCharts:
     includeCRDs: true
     valuesInline:
       rbac.namespaced: true
+      ports:
+        web:
+          redirectTo: websecure
