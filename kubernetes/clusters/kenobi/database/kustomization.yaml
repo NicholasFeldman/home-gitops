@@ -5,8 +5,12 @@ namespace: database
 
 resources:
   - namespace.yaml
+  #
+  # Postgres HA
+  #
   - secrets/sealed-nextcloud-postgresql-ha-pgpool.yaml
-  - secrets/sealed-nextcloud-postgresql-ha-pgpool.yaml
+  - secrets/sealed-nextcloud-postgresql-ha-postgresql.yaml
+
   - secrets/sealed-shared-postgresql-ha-pgpool.yaml
   - secrets/sealed-shared-postgresql-ha-pgpool-users.yaml
   - secrets/sealed-shared-postgresql-ha-postgresql.yaml
