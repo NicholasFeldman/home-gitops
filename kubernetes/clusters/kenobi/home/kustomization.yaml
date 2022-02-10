@@ -46,12 +46,13 @@ helmCharts:
         datadir: /var/ilum-nextcloud-data
         extraVolumeMounts:
           - name: ilum-nextcloud-data
-            mountPath: /var/ilum-nextcloud-data
+            mountPath: /mnt/ilum-nextcloud-data
         extraVolumes:
           - name: ilum-nextcloud-data
             nfs:
-              server: ilum.feldman.in
-              path: /volume1/Nextcloud Data
+              server: "ilum.feldman.in"
+              path: "/volume1/Nextcloud Data"
+              readOnly: false
 
       livenessProbe:
         enabled: false
