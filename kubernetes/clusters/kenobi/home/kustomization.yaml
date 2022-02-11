@@ -6,7 +6,6 @@ namespace: home
 resources:
   - ingressroute.yaml
   - namespace.yaml
-  - pvc.yaml
   - secrets/sealed-nextcloud.yaml
   - secrets/sealed-nextcloud-postgresql.yaml
 
@@ -50,7 +49,7 @@ helmCharts:
         size: 2Gi
         nextcloudData:
           enabled: true
-          existingClaim: nextcloud-data
+          size: 256Gi
 
       livenessProbe:
         enabled: false
