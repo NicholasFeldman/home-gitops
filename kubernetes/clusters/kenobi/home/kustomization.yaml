@@ -6,6 +6,7 @@ namespace: home
 resources:
   - ingressroute.yaml
   - namespace.yaml
+  - pvc.yaml
   - secrets/sealed-nextcloud.yaml
   - secrets/sealed-nextcloud-postgresql.yaml
 
@@ -43,19 +44,14 @@ helmCharts:
             $CONFIG = array(
               'overwriteprotocol' => 'https',
             );
-        datadir: /mnt/ilum-nextcloud-data
-        extraVolumes:
-          - name: nextcloud-data
-            nfs:
-              server: "192.168.40.111"
-              path: "/volume1/Nextcloud Data"
-              readOnly: false
 
       persistence:
         enabled: true
         size: 2Gi
         nextcloudData:
-          enabled: false
+          enabled: true
+          existingClaim: nextcloud-data
+
 
       livenessProbe:
         enabled: false
