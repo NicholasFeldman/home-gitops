@@ -50,15 +50,11 @@ helmCharts:
             mountPath: /mnt/ilum-documents
         extraVolumes:
           - name: ilum-media
-            mountOptions:
-              - nfsvers=4.1
             nfs:
               server: "192.168.40.111"
               path: "/volume1/Media"
               readOnly: false
           - name: ilum-documents
-            mountOptions:
-              - nfsvers=4.1
             nfs:
               server: "192.168.40.111"
               path: "/volume1/Documents"
