@@ -28,5 +28,9 @@ metadata:
 
 spec:
   storageClassName: nfs
+  resources:
+    requests:
+      storage: 1Ti
   accessModes:
     - ReadWriteMany
+
