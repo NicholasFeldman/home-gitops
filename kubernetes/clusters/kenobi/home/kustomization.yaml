@@ -43,22 +43,6 @@ helmCharts:
             $CONFIG = array(
               'overwriteprotocol' => 'https',
             );
-        extraVolumeMounts:
-          - name: ilum-media
-            mountPath: /mnt/ilum-media
-          - name: ilum-documents
-            mountPath: /mnt/ilum-documents
-        extraVolumes:
-          - name: ilum-media
-            nfs:
-              server: "192.168.40.111"
-              path: "/volume1/Media"
-              readOnly: false
-          - name: ilum-documents
-            nfs:
-              server: "192.168.40.111"
-              path: "/volume1/Documents"
-              readOnly: false
 
       persistence:
         enabled: true
