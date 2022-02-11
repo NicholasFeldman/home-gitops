@@ -44,11 +44,8 @@ helmCharts:
               'overwriteprotocol' => 'https',
             );
         datadir: /mnt/ilum-nextcloud-data
-        extraVolumeMounts:
-          - name: ilum-nextcloud-data
-            mountPath: /mnt/ilum-nextcloud-data
         extraVolumes:
-          - name: ilum-nextcloud-data
+          - name: nextcloud-data
             nfs:
               server: "192.168.40.111"
               path: "/volume1/Nextcloud Data"
