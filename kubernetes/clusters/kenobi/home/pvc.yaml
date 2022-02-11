@@ -7,6 +7,14 @@ metadata:
 
 spec:
   storageClassName: nfs
+  capacity:
+    storage: 1Ti
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - hard
   nfs:
     path: /volume1/Nextcloud Data
     server: 192.168.40.111

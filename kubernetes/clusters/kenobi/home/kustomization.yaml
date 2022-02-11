@@ -52,7 +52,6 @@ helmCharts:
           enabled: true
           existingClaim: nextcloud-data
 
-
       livenessProbe:
         enabled: false
       readinessProbe:
