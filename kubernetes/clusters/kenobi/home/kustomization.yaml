@@ -43,22 +43,20 @@ helmCharts:
             $CONFIG = array(
               'overwriteprotocol' => 'https',
             );
+        datadir: /mnt/ilum-nextcloud-data
         extraVolumeMounts:
           - name: ilum-media
-            mountPath: /mnt/ilum-media
+            mountPath: /mnt/ilum-nextcloud-data
         extraVolumes:
-          - name: ilum-media
+          - name: ilum-nextcloud-data
             nfs:
               server: "192.168.40.111"
-              path: "/volume1/Media"
+              path: "/volume1/Nextcloud Data"
               readOnly: false
 
       persistence:
         enabled: true
         size: 2Gi
-        nextcloudData:
-          enabled: true
-          size: 8Gi
 
       livenessProbe:
         enabled: false
