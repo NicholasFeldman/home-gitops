@@ -6,13 +6,23 @@ metadata:
 
 data:
   conf.yml: |-
+
     pageInfo:
       title: Feldman
+      footerText: Do. Or do not. There is no try.
+      
+    appConfig:
+      statusCheck: true
+      statusCheckInterval: 30
+      theme: nord
+      hideComponents:
+        hideSettings: true
+      
+    
     sections:
-      - name: Home Automation
-        icon: far fa-house-signal
-        items:
-          - title:
+      # - name: Home Automation
+      #   icon: far fa-house-signal
+      #   items:
       - name: Productivity
         icon: far fa-chart-line
         items:
