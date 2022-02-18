@@ -48,9 +48,3 @@ helmCharts:
           username: admin
           org: Feldman
           bucket: Default
-  - releaseName: kube-prometheus
-    name: kube-prometheus
-    version: 6.6.5
-    repo: https://charts.bitnami.com/bitnami
-    namespace: monitoring
-    includeCRDS: true
