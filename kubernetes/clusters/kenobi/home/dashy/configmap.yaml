@@ -10,7 +10,7 @@ data:
       title: Feldman
     sections:
       - name: Monitoring
-        icon: far fa-monitor-waveform
+        icon: fas fa-monitor-heart-rate
         items:
           - title: Grafana
             description: Grafana monitoring dashboard
