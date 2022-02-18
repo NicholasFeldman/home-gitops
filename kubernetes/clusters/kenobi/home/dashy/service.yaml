@@ -7,6 +7,7 @@ spec:
     app.kubernetes.io/instance: kenobi-home
     app.kubernetes.io/name: dashy
     app.kubernetes.io/version: 2.0.3
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80
