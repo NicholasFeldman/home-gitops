@@ -34,6 +34,12 @@ helmCharts:
         grafanaIniSecret: grafana-ini
       grafana:
         replicaCount: 2
+        podAnnotations:
+          telegraf.influxdata.com/class: infra
+          telegraf.influxdata.com/interval: 30s
+          telegraf.influxdata.com/path: /metrics
+          telegraf.influxdata.com/port: "3000"
+          telegraf.influxdata.com/scheme: http
       persistence:
         enabled: false
   - releaseName: influxdb
