@@ -9,10 +9,52 @@ data:
     pageInfo:
       title: Feldman
     sections:
+      - name: Home Automation
+        icon: far fa-house-signal
+        items:
+          - title:
+      - name: Productivity
+        icon: far fa-chart-line
+        items:
+          - title: Mealie
+            description: Recipe Manager
+            icon: hl-mealie
+            url: https://mealie.feldman.tech
+          - title: Nextcloud
+            description: File Sharing
+            icon: hl-nextcloud
+            url: https://nextcloud.feldman.tech
       - name: Monitoring
-        icon: fas fa-monitor-heart-rate
+        icon: far fa-monitor-heart-rate
         items:
           - title: Grafana
             description: Grafana monitoring dashboard
             icon: hl-grafana
             url: https://grafana.feldman.in
+          - title: InfluxDB
+            description: InfluxDB Time Series Database
+            icon: hl-influxdb
+            url: https://influxdb.feldman.in
+      - name: Infrastructure
+        icon: farfa-toolbox
+        items:
+          - title: Longhorn
+            description: Longhorn storage manager
+            icon: hl-longhorn
+            url: https://longhorn.feldman.in
+          - title: ArgoCD
+            description: ArgoCD gitops
+            icon: hl-argocd
+            url: https://argocd.feldman.in
+          - title: Keycloak
+            description: Keycloak Auth
+            icon: hl-keycloak
+            url: https://auth.feldman.tech
+          - title: Hoth
+            description: Hoth
+            icon: hl-synology
+            url: https://192.168.40.110
+          - title: Ilum
+            description: Ilum
+            icon: hl-synology
+            url: https://ilum.feldman.in
