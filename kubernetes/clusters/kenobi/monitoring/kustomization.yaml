@@ -53,3 +53,4 @@ helmCharts:
     version: 6.6.5
     repo: https://charts.bitnami.com/bitnami
     namespace: monitoring
+    includeCRDS: true
