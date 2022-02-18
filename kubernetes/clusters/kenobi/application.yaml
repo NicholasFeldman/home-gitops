@@ -177,7 +177,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-traefik-system
+  name: kenobi-test
   namespace: argocd
 
 spec:
