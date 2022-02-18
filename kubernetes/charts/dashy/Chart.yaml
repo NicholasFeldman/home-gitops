@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: 2.0.3
+description: The Ultimate Homepage for your Homelab
+name: dashy
+version: 1.0.0
+kubeVersion: ">=1.16.0-0"
+keywords:
+  - dashy
+maintainers:
+  - name: nick
+    email: nick@feldman.tech
+dependencies:
+  - name: common
+    repository: https://library-charts.k8s-at-home.com
+    version: 4.3.0
