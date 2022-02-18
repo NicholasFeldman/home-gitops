@@ -9,14 +9,10 @@ resources:
   - secrets/sealed-nextcloud.yaml
   - secrets/sealed-nextcloud-postgresql.yaml
 
-helmGlobals:
-  chartHome: ../../../charts
-
 helmCharts:
   - releaseName: dashy
     name: dashy
     namespace: home
-    valuesFile: ../../../charts/dashy/values.yaml
 
   - releaseName: mealie
     name: mealie
