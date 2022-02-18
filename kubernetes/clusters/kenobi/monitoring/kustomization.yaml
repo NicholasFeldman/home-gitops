@@ -60,4 +60,4 @@ helmCharts:
     repo: https://helm.influxdata.com
     namespace: monitoring
     valuesInline:
-      values.classes.data: ~ # Disable templated secret
+      classes.data: ~ # Disable templated secret
