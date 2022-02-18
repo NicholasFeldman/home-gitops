@@ -4,27 +4,14 @@ kind: Kustomization
 namespace: home
 
 resources:
+  - dashy
+
   - ingressroute.yaml
   - namespace.yaml
   - secrets/sealed-nextcloud.yaml
   - secrets/sealed-nextcloud-postgresql.yaml
 
 helmCharts:
-  - releaseName: dashy
-    name: common
-    repo: https://library-charts.k8s-at-home.com
-    version: 4.3.0
-    namespace: home
-    valuesInline:
-      image:
-        repository: lissy93/dashy
-        tag: 2.0.3
-        pullPolicy: IfNotPresent
-      service:
-        main:
-          ports:
-            http:
-              port: 80
 
   - releaseName: mealie
     name: mealie
