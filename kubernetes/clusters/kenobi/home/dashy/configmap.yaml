@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: dashy-config
+
+data:
+  conf.yml: |-
+    pageInfo:
+      title: Feldman
+    sections:
+      - name: Monitoring
+        icon: far fa-rocket
+        items:
+          - title: Grafana
+            description: Grafana monitoring dashboard
+            icon: fab fa-github
+            url: https://grafana.feldman.in

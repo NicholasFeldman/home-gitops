@@ -3,7 +3,6 @@ kind: Deployment
 
 metadata:
   name: dashy
-  namespace: home
   labels:
     app.kubernetes.io/instance: kenobi-home
     app.kubernetes.io/name: dashy
@@ -28,3 +27,11 @@ spec:
           image: lissy93/dashy:2.0.3
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: dashy-config
+              mountPath: /public/conf.yml
+              subPath: conf.yml
+      volumes:
+        - name: dashy-config
+          configMap:
+            name: dashy-config
