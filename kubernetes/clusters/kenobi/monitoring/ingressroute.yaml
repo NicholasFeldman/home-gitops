@@ -73,3 +73,41 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
+---
+#
+# Prometheus
+#
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+
+metadata:
+  name: prometheus-prometheus
+  namespace: monitoring
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`prometheus.feldman.in`)
+      kind: Rule
+      services:
+        - name: kube-prometheus
+          port: 8086
+  tls:
+    secretName: prometheus-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: prometheus-feldman-in-tls
+  namespace: monitoring
+
+spec:
+  dnsNames:
+    - prometheus.feldman.in
+  secretName: prometheus-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
