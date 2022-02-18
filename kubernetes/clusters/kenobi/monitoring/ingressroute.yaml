@@ -92,8 +92,8 @@ spec:
     - match: Host(`prometheus.feldman.in`)
       kind: Rule
       services:
-        - name: kube-prometheus
-          port: 8086
+        - name: kube-prometheus-prometheus
+          port: 9090
   tls:
     secretName: prometheus-feldman-in-tls
 ---
