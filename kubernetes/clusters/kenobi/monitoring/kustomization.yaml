@@ -53,7 +53,7 @@ helmCharts:
     version: 6.6.5
     repo: https://charts.bitnami.com/bitnami
     namespace: monitoring
-    includeCRDS: true
+    includeCRDS: false # Manually install the CRDs first, for some reason one of them is too long?
     valuesInline:
       alertmanager:
         enabled: false
