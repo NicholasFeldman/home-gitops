@@ -10,9 +10,9 @@ data:
       title: Feldman
     sections:
       - name: Monitoring
-        icon: far fa-rocket
+        icon: far fa-monitor-waveform
         items:
           - title: Grafana
             description: Grafana monitoring dashboard
-            icon: fab fa-github
+            icon: hl-grafana
             url: https://grafana.feldman.in
