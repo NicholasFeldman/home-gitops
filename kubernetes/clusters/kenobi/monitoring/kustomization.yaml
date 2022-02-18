@@ -52,3 +52,9 @@ helmCharts:
     name: kube-prometheus
     version: 6.6.5
     repo: https://charts.bitnami.com/bitnami
+    namespace: monitoring
+    valuesInline:
+      prometheus:
+        ingress:
+          enabled: true
+          hostname: prometheus.feldman.in
