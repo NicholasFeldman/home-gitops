@@ -16,6 +16,7 @@ helmCharts:
   - releaseName: dashy
     name: dashy
     namespace: home
+    valuesFile: ../../../charts/dashy/values.yaml
 
   - releaseName: mealie
     name: mealie
