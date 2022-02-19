@@ -1,0 +1,8 @@
+apiVersion: v2
+name: argocd-common
+description: argocd namespace
+
+type: library
+
+version: 1.0.0
+

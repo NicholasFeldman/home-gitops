@@ -1,8 +1,11 @@
-namespaces:
-  - name: argocd
-  - name: test
-
 applications:
-  generator:
-    name: kenobi-{{name}}
-    path: kubernetes/clusters/kenobi/{{name}}
+  - name: kenobi-argocd
+    source:
+      repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+      targetRevision: HEAD
+      path: kubernetes/clusters/kenobi/argocd
+  - name: kenobi-test
+    source:
+      repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+      targetRevision: HEAD
+      path: kubernetes/clusters/kenobi/test
