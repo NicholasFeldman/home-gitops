@@ -1,12 +1,17 @@
-argocd-common:
-  applications:
-    - name: kenobi-argocd
-      source:
-        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
-        targetRevision: HEAD
-        path: kubernetes/clusters/kenobi/argocd
-    - name: kenobi-test
-      source:
-        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
-        targetRevision: HEAD
-        path: kubernetes/clusters/kenobi/test
+cluster: kenobi
+
+applications:
+  - source:
+      repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+      targetRevision: HEAD
+      path: kubernetes/clusters/kenobi/argocd
+  - source:
+      repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+      targetRevision: HEAD
+      path: kubernetes/clusters/kenobi/test
+  - source:
+      chart: postgresql
+      repoURL: https://charts.bitnami.com/bitnami
+      targetRevision: 11.0.1
+      helm:
+        releaseName: alpha-postgres
