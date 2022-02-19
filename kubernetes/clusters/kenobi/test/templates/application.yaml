@@ -12,4 +12,5 @@ spec:
     name: in-cluster
   project: kenobi
   source: {{ .source }}
+---
 {{ end }}
