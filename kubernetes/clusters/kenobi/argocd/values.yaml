@@ -1,0 +1,8 @@
+namespaces:
+  - name: argocd
+  - name: test
+
+applications:
+  generator:
+    name: kenobi-{{name}}
+    path: kubernetes/clusters/kenobi/{{name}}

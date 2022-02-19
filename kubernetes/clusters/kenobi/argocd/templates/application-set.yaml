@@ -14,7 +14,7 @@ spec:
           - name: test
   template:
     metadata:
-      name: kenobi-{{name}}
+      name: {{ .Values.applications.generator.name }}
       namespace: argocd
 
     spec:
@@ -26,4 +26,4 @@ spec:
       source:
         repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
         targetRevision: HEAD
-        path: kubernetes/clusters/kenobi/{{name}}
+        path: {{ .Values.applications.generator.path }}
