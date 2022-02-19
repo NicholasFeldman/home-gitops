@@ -1,4 +1,5 @@
 {{ range .Values.applications }}
+---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 
@@ -12,5 +13,4 @@ spec:
     name: in-cluster
   project: kenobi
   source: {{ .source }}
----
 {{ end }}
