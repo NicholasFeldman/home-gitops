@@ -1,13 +1,15 @@
 cluster: kenobi
 
 applications:
-  - source:
+  - name: test-alpha-postgres
+    source:
       chart: postgresql
       repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 11.0.1
       helm:
         releaseName: alpha-postgres
-  - source:
+  - name: test-beta-postgres
+    source:
       chart: postgresql
       repoURL: https://charts.bitnami.com/bitnami
       targetRevision: 11.0.1
