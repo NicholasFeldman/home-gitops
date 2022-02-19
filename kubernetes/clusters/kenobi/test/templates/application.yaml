@@ -12,6 +12,5 @@ spec:
     namespace: test
     name: in-cluster
   project: kenobi
-  source:
-    {{ .source | toYaml | indent 4}}
+  source: {{ .source | toYaml | nindent 4 }}
 {{ end }}

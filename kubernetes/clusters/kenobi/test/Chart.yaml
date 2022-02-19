@@ -7,14 +7,12 @@ type: application
 version: 0.1.0
 appVersion: "1.16.0"
 
-
-
-dependencies:
-  - name: postgresql
-    version: 11.0.6
-    repository: https://charts.bitnami.com/bitnami
-    alias: test-postgresql
-  - name: postgresql
-    version: 11.0.6
-    repository: https://charts.bitnami.com/bitnami
-    alias: other-postgresql
+# dependencies:
+#  - name: postgresql
+#    version: 11.0.6
+#    repository: https://charts.bitnami.com/bitnami
+#    alias: test-postgresql
+#  - name: postgresql
+#    version: 11.0.6
+#    repository: https://charts.bitnami.com/bitnami
+#    alias: other-postgresql
