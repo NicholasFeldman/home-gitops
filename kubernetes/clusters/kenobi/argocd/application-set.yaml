@@ -4,15 +4,19 @@ kind: ApplicationSet
 
 metadata:
   name: kenobi
+  namespace: argocd
 
 spec:
   generators:
     - list:
         elements:
+          - name: argocd
           - name: test
   template:
     metadata:
       name: kenobi-{{name}}
+      namespace: argocd
+
     spec:
       destination:
         namespace: argocd
