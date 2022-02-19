@@ -189,6 +189,7 @@ spec:
     path: kubernetes/clusters/kenobi/test
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
+    
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application

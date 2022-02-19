@@ -1,0 +1,27 @@
+# AppProject to contain projects for my main home cluster
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+
+metadata:
+  name: kenobi
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+
+spec:
+  description: Home cluster
+
+  sourceRepos:
+    - '*'
+
+  destinations:
+    - namespace: '*'
+      server: '*'
+
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
