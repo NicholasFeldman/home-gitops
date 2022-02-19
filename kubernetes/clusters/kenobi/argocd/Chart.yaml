@@ -1,0 +1,8 @@
+apiVersion: v2
+name: argocd
+description: argocd namespace
+
+type: application
+
+version: 0.1.0
+
