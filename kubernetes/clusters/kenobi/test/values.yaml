@@ -8,6 +8,12 @@ applications:
       targetRevision: 11.0.1
       helm:
         releaseName: alpha-postgres
+        values:
+          auth:
+            username: nextcloud
+            database: nextcloud
+            existingSecret: nextcloud-postgresql
+
   - name: test-beta-postgres
     source:
       chart: postgresql
