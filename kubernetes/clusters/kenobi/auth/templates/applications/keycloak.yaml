@@ -37,7 +37,4 @@ spec:
         postgresql:
           enabled: false
         externalDatabase:
-          host: keycloak-postgresql.database.svc.cluster.local
-          user: bn_keycloak
-          database: bitnami_keycloak
           existingSecret: keycloak
