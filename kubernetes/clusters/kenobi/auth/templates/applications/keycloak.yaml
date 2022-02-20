@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-auth-keycloak
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: auth
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: keycloak
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 6.1.1
+    helm:
+      releaseName: keycloak
+      values: |-
+        # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-parameters
+        auth:
+          adminUser: admin
+          existingSecret: keycloak
+        serviceDiscovery:
+          enabled: true
+        extraEnvVars:
+          - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
+            value: "true"
+          - name: KEYCLOAK_FRONTEND_URL
+            value: "https://auth.feldman.tech"
+        # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-deploymentstatefulset-parameters
+        replicaCount: 1
+        # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#exposure-parameters
+        service:
+          type: ClusterIP
+        # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#database-parameters
+        postgresql:
+          enabled: false
+          externalDatabase:
+            host: keycloak-postgresql.database.svc.cluster.local
+            user: keycloak
+            database: keycloak
+            existingSecret: keycloak

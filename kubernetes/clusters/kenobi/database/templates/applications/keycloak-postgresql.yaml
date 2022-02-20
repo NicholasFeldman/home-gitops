@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-database-keycloak-postgresql
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: database
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: postgresql
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 11.0.1
+    helm:
+      releaseName: keycloak
+      values: |-
+        auth:
+          username: keycloak
+          database: keycloak
+          existingSecret: keycloak-postgresql

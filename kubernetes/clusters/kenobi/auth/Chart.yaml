@@ -1,0 +1,7 @@
+apiVersion: v2
+name: auth
+description: Cluster Auth
+
+type: application
+
+version: 1.0.0
