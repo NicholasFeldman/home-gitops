@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-test
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: test
+    name: in-cluster
+  project: kenobi
+  source:
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+    path: kubernetes/clusters/kenobi/test
+  syncPolicy:
+    automated: {}

@@ -54,11 +54,3 @@ helmCharts:
           username: admin
           org: Feldman
           bucket: Default
-  - releaseName: telegraf-operator
-    name: telegraf-operator
-    version: 1.3.4
-    repo: https://helm.influxdata.com
-    namespace: monitoring
-    valuesInline:
-      classes:
-        data: null # Disable templated secret

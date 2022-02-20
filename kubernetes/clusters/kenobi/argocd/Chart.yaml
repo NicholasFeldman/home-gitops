@@ -5,8 +5,3 @@ description: argocd namespace
 type: application
 
 version: 0.1.0
-
-dependencies:
-  - name: argocd-common
-    version: 1.0.0
-    repository: "file://../../../charts/argocd-common"
