@@ -1,9 +1,10 @@
 cluster: kenobi
-namespace: database
 
 applications:
   # Postgres Databases
   - name: database-nextcloud-postgresql
+    destination:
+      namespace: database
     source:
       chart: postgresql
       repoURL: https://charts.bitnami.com/bitnami

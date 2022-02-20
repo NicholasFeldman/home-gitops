@@ -1,8 +1,9 @@
 cluster: kenobi
-namespace: test
 
 applications:
   - name: test-alpha-postgres
+    destination:
+      namespace: test
     source:
       chart: postgresql
       repoURL: https://charts.bitnami.com/bitnami
@@ -16,6 +17,8 @@ applications:
             existingSecret: nextcloud-postgresql
 
   - name: test-beta-postgres
+    destination:
+      namespace: test
     source:
       chart: postgresql
       repoURL: https://charts.bitnami.com/bitnami
