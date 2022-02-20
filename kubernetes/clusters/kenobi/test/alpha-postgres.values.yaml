@@ -1,4 +1,0 @@
-auth:
-  username: nextcloud
-  database: nextcloud
-  existingSecret: nextcloud-postgresql
