@@ -1,4 +1,5 @@
 cluster: kenobi
+namespace: test
 
 applications:
   - name: test-alpha-postgres

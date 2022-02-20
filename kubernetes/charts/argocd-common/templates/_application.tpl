@@ -11,7 +11,7 @@ metadata:
 
 spec:
   destination:
-    namespace: {{$.Release.Namespace}}
+    namespace: {{$.Values.namespace}}
     name: in-cluster {{/* TODO: Multi cluster support */}}
   project: {{ $.Values.cluster }}
   source: {{ .source | toYaml | nindent 4 }}

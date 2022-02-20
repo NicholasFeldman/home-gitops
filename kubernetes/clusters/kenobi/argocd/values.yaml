@@ -1,4 +1,5 @@
 cluster: kenobi
+namespace: argocd
 
 applications:
   - name: argocd
