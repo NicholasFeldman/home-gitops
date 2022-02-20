@@ -1,0 +1,37 @@
+#
+# InfluxDB
+#
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+
+metadata:
+  name: influxdb
+  namespace: database
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`influxdb.feldman.in`)
+      kind: Rule
+      services:
+        - name: shared-influxdb
+          port: 8086
+  tls:
+    secretName: influxdb-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: influxdb-feldman-in-tls
+  namespace: database
+
+spec:
+  dnsNames:
+    - influxdb.feldman.in
+  secretName: influxdb-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
