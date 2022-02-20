@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-monitoring-grafana-postgresql
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: postgresql
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 11.0.1
+    helm:
+      releaseName: grafana
+      values: |-
+        auth:
+          username: grafana
+          database: grafana
+          existingSecret: grafana-postgresql
