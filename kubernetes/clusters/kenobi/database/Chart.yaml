@@ -1,0 +1,12 @@
+apiVersion: v2
+name: database
+description: Cluster Databases
+
+type: application
+
+version: 1.0.0
+
+dependencies:
+  - name: argocd-common
+    version: 1.0.0
+    repository: "file://../../../charts/argocd-common"

@@ -6,6 +6,11 @@ applications:
       repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
       targetRevision: HEAD
       path: kubernetes/clusters/kenobi/argocd
+  - name: database
+    source:
+      repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+      targetRevision: HEAD
+      path: kubernetes/clusters/kenobi/database
   - name: test
     source:
       repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
