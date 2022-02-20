@@ -8,7 +8,8 @@ applications:
       targetRevision: 11.0.1
       helm:
         releaseName: alpha-postgres
-        valuesFile: alpha-postgres.values.yaml
+        valueFiles:
+          - alpha-postgres.values.yaml
 
   - name: test-beta-postgres
     source:
