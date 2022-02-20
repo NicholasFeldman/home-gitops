@@ -18,6 +18,6 @@ spec:
       releaseName: keycloak
       values: |-
         auth:
-          username: keycloak
-          database: keycloak
+          username: bn_keycloak
+          database: bitnami_keycloak
           existingSecret: keycloak-postgresql
