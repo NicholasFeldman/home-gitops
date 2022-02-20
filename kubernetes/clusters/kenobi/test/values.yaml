@@ -8,11 +8,7 @@ applications:
       targetRevision: 11.0.1
       helm:
         releaseName: alpha-postgres
-        values:
-          auth:
-            username: nextcloud
-            database: nextcloud
-            existingSecret: nextcloud-postgresql
+        valuesFile: alpha-postgres.values.yaml
 
   - name: test-beta-postgres
     source:
