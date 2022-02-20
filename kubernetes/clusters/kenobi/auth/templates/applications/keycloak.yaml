@@ -40,4 +40,5 @@ spec:
           host: keycloak-postgresql.database.svc.cluster.local
           user: keycloak
           database: keycloak
-          existingSecret: keycloak
+          password: testnotreal
+          # existingSecret: keycloak
