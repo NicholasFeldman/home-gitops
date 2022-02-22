@@ -17,7 +17,8 @@ spec:
     helm:
       releaseName: keycloak
       values: |-
-        image.tag: 11.14.0-debian-10-r28
+        image:
+          tag: 11.14.0-debian-10-r28
         auth:
           username: bn_keycloak
           database: bitnami_keycloak
