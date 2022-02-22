@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-database-snipeit-mariadb
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: database
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: mariadb
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 10.3.6
+    helm:
+      releaseName: snipeit
+      values: |-
+        auth:
+          username: snipeit
+          database: snipeit
+          existingSecret: snipeit-mariadb
