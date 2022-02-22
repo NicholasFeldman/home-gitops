@@ -13,10 +13,11 @@ spec:
   source:
     chart: postgresql
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 10.x.x
+    targetRevision: 11.0.1
     helm:
       releaseName: keycloak
       values: |-
+        image.tag: 11.14.0-debian-10-r28
         auth:
           username: bn_keycloak
           database: bitnami_keycloak
