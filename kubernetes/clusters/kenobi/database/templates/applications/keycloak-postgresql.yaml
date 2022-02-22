@@ -13,7 +13,7 @@ spec:
   source:
     chart: postgresql
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 10.x.x
+    targetRevision: 11.0.1
     helm:
       releaseName: keycloak
       values: |-
