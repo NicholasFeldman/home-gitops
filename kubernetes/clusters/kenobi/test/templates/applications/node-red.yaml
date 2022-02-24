@@ -24,3 +24,6 @@ spec:
             enabled: true
             accessMode: ReadWriteOnce
             size: 1Gi
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
