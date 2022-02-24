@@ -1,0 +1,34 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+
+metadata:
+  name: node-red
+  namespace: test
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`node-red.feldman.in`)
+      kind: Rule
+      services:
+        - name: node-red
+          port: 80
+  tls:
+    secretName: node-red-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: node-red-feldman-in-tls
+  namespace: test
+
+spec:
+  dnsNames:
+    - node-red.feldman.in
+  secretName: node-red-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod

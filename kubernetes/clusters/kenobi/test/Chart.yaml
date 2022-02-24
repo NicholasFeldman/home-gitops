@@ -1,0 +1,10 @@
+apiVersion: v2
+name: test
+description: |-
+  The test namespace is used to test applications before I decide
+  to move them into any other namespace, for applications I want to
+  play with but not necessarily commit to yet.
+
+type: application
+
+version: 1.0.0

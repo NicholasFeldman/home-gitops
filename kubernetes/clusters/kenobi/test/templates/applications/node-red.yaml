@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-test-node-red
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: test
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: node-red
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 10.0.0
+    helm:
+      releaseName: node-red
+      values: |-
+        env:
+          TZ: America/New_York
+        persistence:
+          data:
+            enabled: true
