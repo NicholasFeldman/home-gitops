@@ -14,7 +14,7 @@ spec:
       kind: Rule
       services:
         - name: node-red
-          port: 80
+          port: 1880
   tls:
     secretName: node-red-feldman-in-tls
 ---

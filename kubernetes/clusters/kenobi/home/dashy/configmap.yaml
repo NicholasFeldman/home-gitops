@@ -48,6 +48,10 @@ data:
       - name: Infrastructure
         icon: farfa-toolbox
         items:
+          - title: Node Red
+            description: Flow automation
+            icon: hl-nodered
+            url: https://node-red.feldman.in
           - title: Longhorn
             description: Longhorn storage manager
             icon: hl-longhorn
