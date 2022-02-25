@@ -23,7 +23,8 @@ spec:
             - containerPort: 25565
           workingDir: /game
           command:
-            - sh start.sh
+            - sh
+            - start.sh
           volumeMounts:
             - mountPath: /game
               name: game-dir
