@@ -2,17 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-metallb
+  name: kenobi-metallb-system
   namespace: argocd
 
 spec:
   destination:
-    namespace: metallb
+    namespace: metallb-system
     name: in-cluster
   project: kenobi
   source:
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
-    path: kubernetes/clusters/kenobi/metallb
+    path: kubernetes/clusters/kenobi/metallb-system
   syncPolicy:
     automated: {}
