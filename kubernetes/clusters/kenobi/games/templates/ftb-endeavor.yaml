@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ftb-endeavor
+  labels:
+    app: ftb-endeavor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ftb-endeavor
+  template:
+    metadata:
+      labels:
+        app: ftb-endeavor
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: "naboo"
+      containers:
+        - name: ftb-endeavor
+          image: openjdk:8u312
+          ports:
+            - containerPort: 25565
+          command:
+            - /game/start.sh
+          volumeMounts:
+            - mountPath: /game
+              name: game-dir
+      volumes:
+        - name: game-dir
+          hostPath:
+            path: /opt/endeavor-1.9.0
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ftb-endeavor
+spec:
+  selector:
+    app: ftb-endeavor
+  ports:
+    - port: 25565
+      targetPort: 25565
+  type: LoadBalancer
