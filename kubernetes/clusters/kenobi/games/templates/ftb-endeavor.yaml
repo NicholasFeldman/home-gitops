@@ -21,8 +21,9 @@ spec:
           image: openjdk:8u312
           ports:
             - containerPort: 25565
+          workingDir: /game
           command:
-            - /game/start.sh
+            - start.sh
           volumeMounts:
             - mountPath: /game
               name: game-dir
