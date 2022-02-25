@@ -17,6 +17,8 @@ spec:
     helm:
       releaseName: node-red
       values: |-
+        image:
+          tag: 2.2.2-16
         env:
           TZ: America/New_York
         persistence:
