@@ -1,0 +1,7 @@
+apiVersion: v2
+name: games
+description: Cluster Games
+
+type: application
+
+version: 1.0.0
