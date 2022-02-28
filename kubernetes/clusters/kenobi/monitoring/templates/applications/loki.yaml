@@ -17,3 +17,5 @@ spec:
     helm:
       releaseName: loki
       values: |-
+        persistence:
+          enabled: true
