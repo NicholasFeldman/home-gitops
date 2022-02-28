@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-monitoring-loki
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: loki
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 2.10.1
+    helm:
+      releaseName: loki
+      values: |-
