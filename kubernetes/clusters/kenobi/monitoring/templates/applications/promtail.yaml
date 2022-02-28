@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-monitoring-promtail
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: promtail
+    repoURL: https://grafana.github.io/helm-charts
+    targetRevision: 3.11.0
+    helm:
+      releaseName: promtail
+      values: |-
+        config:
+          lokiAddress: http://loki.monitoring.svc.cluster.local:3100/loki/api/v1/push
