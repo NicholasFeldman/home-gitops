@@ -59,6 +59,10 @@ data:
       - name: Infrastructure
         icon: farfa-toolbox
         items:
+          - title: UniFi
+            description: Unifi Controller
+            icon: hl-unifi
+            url: https://unifi.local
           - title: Longhorn
             description: Longhorn storage manager
             icon: hl-longhorn
