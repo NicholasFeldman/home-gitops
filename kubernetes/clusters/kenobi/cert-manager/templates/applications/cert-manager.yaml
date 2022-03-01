@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-cert-manager-cert-manager
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: cert-manager
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: cert-manager
+    repoURL: https://charts.jetstack.io
+    targetRevision: 1.7.0
+    helm:
+      releaseName: cert-manager
+      values: |-
