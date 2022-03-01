@@ -1,0 +1,7 @@
+apiVersion: v2
+name: traefik-system
+description: Cluster Traefik
+
+type: application
+
+version: 1.0.0
