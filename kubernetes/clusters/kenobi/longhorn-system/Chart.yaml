@@ -1,0 +1,7 @@
+apiVersion: v2
+name: longhorn-system
+description: Cluster Storage
+
+type: application
+
+version: 1.0.0
