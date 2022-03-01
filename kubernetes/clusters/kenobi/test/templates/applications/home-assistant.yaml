@@ -19,12 +19,6 @@ spec:
       values: |-
         env:
           TZ: America/New_York
-        http:
-          server_host: 0.0.0.0
-          use_x_forwarded_for: true
-          trusted_proxies:
-            - 10.244.0.0/16
-            - 192.168.40.0/24
         persistence:
           config:
             enabled: true
