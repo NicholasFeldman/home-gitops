@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-cert-manager
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: cert-manager
+    name: in-cluster
+  project: kenobi
+  source:
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+    path: kubernetes/clusters/kenobi/cert-manager
