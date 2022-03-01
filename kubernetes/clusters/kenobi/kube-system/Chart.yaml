@@ -1,0 +1,7 @@
+apiVersion: v2
+name: monitoring
+description: Cluster Monitoring
+
+type: application
+
+version: 1.0.0
