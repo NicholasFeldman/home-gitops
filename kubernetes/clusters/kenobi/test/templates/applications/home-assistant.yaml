@@ -17,6 +17,8 @@ spec:
     helm:
       releaseName: home-assistant
       values: |-
+        image:
+          tag: 2022.2
         env:
           TZ: America/New_York
         persistence:
