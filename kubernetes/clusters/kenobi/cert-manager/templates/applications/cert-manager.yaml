@@ -17,3 +17,4 @@ spec:
     helm:
       releaseName: cert-manager
       values: |-
+        installCRDs: true
