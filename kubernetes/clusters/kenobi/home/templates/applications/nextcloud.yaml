@@ -1,0 +1,57 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-home-nextcloud
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: nextcloud
+    repoURL: https://nextcloud.github.io/helm
+    targetRevision: 2.12.0
+    helm:
+      releaseName: nextcloud
+      values: |-
+        nextcloud:
+          host: nextcloud.feldman.tech
+            existingSecret:
+              enabled: true
+              secretName: nextcloud
+              usernameKey: nextcloud-username
+              passwordKey: nextcloud-password
+            configs:
+              https.config.php: |-
+                <?php
+                $CONFIG = array(
+                  'overwriteprotocol' => 'https',
+                );
+
+        persistence:
+          enabled: true
+          size: 2Gi
+          nextcloudData:
+            enabled: true
+            size: 256Gi
+
+        livenessProbe:
+          enabled: false
+        readinessProbe:
+          enabled: false
+
+        internalDatabase:
+          enabled: false
+        externalDatabase:
+          enabled: true
+          type: postgresql
+          host: nextcloud-postgresql.database.svc.cluster.local
+          database: nextcloud
+          existingSecret:
+            enabled: true
+            secretName: nextcloud-postgresql
+            usernameKey: username
+            passwordKey: password

@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-test-node-red
+  name: kenobi-home-node-red
   namespace: argocd
 
 spec:
   destination:
-    namespace: test
+    namespace: home
     name: in-cluster
   project: kenobi
   source:
