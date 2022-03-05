@@ -19,17 +19,17 @@ spec:
       values: |-
         nextcloud:
           host: nextcloud.feldman.tech
-            existingSecret:
-              enabled: true
-              secretName: nextcloud
-              usernameKey: nextcloud-username
-              passwordKey: nextcloud-password
-            configs:
-              https.config.php: |-
-                <?php
-                $CONFIG = array(
-                  'overwriteprotocol' => 'https',
-                );
+          existingSecret:
+            enabled: true
+            secretName: nextcloud
+            usernameKey: nextcloud-username
+            passwordKey: nextcloud-password
+          configs:
+            https.config.php: |-
+              <?php
+              $CONFIG = array(
+                'overwriteprotocol' => 'https',
+              );
 
         persistence:
           enabled: true
