@@ -91,38 +91,4 @@ spec:
   issuerRef:
     kind: ClusterIssuer
     name: letsencrypt-prod
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
 
-metadata:
-  name: home-assistant
-  namespace: home
-
-spec:
-  entryPoints:
-    - web
-    - websecure
-  routes:
-    - match: Host(`home-assistant.feldman.in`)
-      kind: Rule
-      services:
-        - name: home-assistant
-          port: 8123
-  tls:
-    secretName: home-assistant-feldman-in-tls
----
-apiVersion: cert-manager.io/v1
-kind: Certificate
-
-metadata:
-  name: home-assistant-feldman-in-tls
-  namespace: home
-
-spec:
-  dnsNames:
-    - home-assistant.feldman.in
-  secretName: home-assistant-feldman-in-tls
-  issuerRef:
-    kind: ClusterIssuer
-    name: letsencrypt-prod

@@ -3,6 +3,7 @@ kind: Application
 
 metadata:
   name: kenobi-{{.Release.Namespace}}-node-red
+  namespace: argocd
 
 spec:
   destination:
@@ -32,6 +33,3 @@ spec:
           runAsUser: 1000
           runAsGroup: 1000
           fsGroup: 1000
-  syncPolicy:
-    automated:
-      prune: true
