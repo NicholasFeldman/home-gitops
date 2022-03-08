@@ -1,0 +1,7 @@
+apiVersion: v2
+name: iot
+description: Cluster IoT
+
+type: application
+
+version: 1.0.0
