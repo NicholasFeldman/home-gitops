@@ -17,14 +17,13 @@ data:
       theme: nord
       hideComponents:
         hideSettings: true
-      
     
     sections:
       # - name: Home Automation
       #   icon: far fa-house-signal
       #   items:
-      - name: Productivity
-        icon: far fa-chart-line
+      - name: Home
+        icon: far fa-house-chimney
         items:
           - title: Mealie
             description: Recipe Manager
