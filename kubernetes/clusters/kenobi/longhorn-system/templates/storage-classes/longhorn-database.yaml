@@ -18,6 +18,6 @@ parameters:
     [
       {
         "name": "database",
-        "isGroup": true,
+        "isGroup": true
       }
     ]
