@@ -15,10 +15,10 @@ spec:
         - name: influxdb-relay
           port: 8086
     - match: Host(`monitoring-influxdb.feldman.in`)
-        kind: Rule
-        services:
-          - name: influxdb
-            port: 8086
+      kind: Rule
+      services:
+        - name: influxdb
+          port: 8086
   tls:
     secretName: monitoring-influxdb-feldman-in-tls
 ---
