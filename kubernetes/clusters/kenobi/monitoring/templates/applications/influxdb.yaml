@@ -18,6 +18,10 @@ spec:
       releaseName: influxdb
       values: |-
         architecture: high-availability
+        influxdb:
+         replicaCount: 2
+        relay:
+          replicaCount: 2
         auth:
           existingSecret: influxdb
           admin:
