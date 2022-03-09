@@ -9,11 +9,6 @@ spec:
     - web
     - websecure
   routes:
-    - match: Host(`monitoring-influxdb.feldman.in`) && Path(`/write`)
-      kind: Rule
-      services:
-        - name: influxdb-relay
-          port: 8086
     - match: Host(`monitoring-influxdb.feldman.in`)
       kind: Rule
       services:
