@@ -20,4 +20,4 @@ spec:
         classes:
           secretName: "telegraf-operator"
           default: "default"
-          data: ~
+          data: nil
