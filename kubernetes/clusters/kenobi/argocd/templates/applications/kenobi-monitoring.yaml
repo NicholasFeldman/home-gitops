@@ -14,3 +14,6 @@ spec:
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
     path: kubernetes/clusters/kenobi/monitoring
+  syncPolicy:
+    automated:
+      prune: true
