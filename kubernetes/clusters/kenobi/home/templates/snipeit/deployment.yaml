@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
         - name: snipeit
-          image: snipe/snipe-it:5.4.1
+          image: snipe/snipe-it:v5.4.1
           ports:
             - containerPort: 80
           envFrom:
