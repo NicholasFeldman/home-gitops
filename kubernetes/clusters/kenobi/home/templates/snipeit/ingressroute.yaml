@@ -1,0 +1,30 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: snipeit
+
+spec:
+  entryPoints:
+    - web
+    - websecure
+  routes:
+    - match: Host(`snipeit.feldman.in`)
+      kind: Rule
+      services:
+        - name: snipeit
+          port: 80
+  tls:
+    secretName: snipeit-feldman-in-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: snipeit-feldman-in-tls
+
+spec:
+  dnsNames:
+    - snipeit.feldman.in
+  secretName: snipeit-feldman-in-tls
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
