@@ -2,18 +2,17 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-monitoring
-  namespace: argocd
+  name: kenobi-iot
 
 spec:
   destination:
-    namespace: monitoring
+    namespace: iot
     name: in-cluster
   project: kenobi
   source:
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
-    path: kubernetes/clusters/kenobi/monitoring
+    path: kubernetes/clusters/kenobi/iot
   syncPolicy:
     automated:
       prune: true

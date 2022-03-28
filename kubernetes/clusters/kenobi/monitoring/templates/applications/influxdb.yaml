@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-influxdb
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: influxdb
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 4.0.0
+    helm:
+      releaseName: influxdb
+      values: |-
+        auth:
+          existingSecret: influxdb
+          admin:
+            org: Feldman
+            bucket: Default
+        persistence:
+          storageClass: longhorn-database
