@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-database-snipeit-mariadb
+  name: kenobi-{{.Release.Namespace}}-snipeit-mariadb
   namespace: argocd
 
 spec:
   destination:
-    namespace: database
+    namespace: {{.Release.Namespace}}
     name: in-cluster
   project: kenobi
   source:
@@ -21,3 +21,6 @@ spec:
           username: snipeit
           database: snipeit
           existingSecret: snipeit-mariadb
+        primary:
+          persistence:
+            storageClass: longhorn-database
