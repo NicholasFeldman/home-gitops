@@ -19,9 +19,6 @@ data:
         hideSettings: true
     
     sections:
-      # - name: Home Automation
-      #   icon: far fa-house-signal
-      #   items:
       - name: Home
         icon: far fa-house-chimney
         items:
@@ -33,6 +30,10 @@ data:
             description: File Sharing
             icon: hl-nextcloud
             url: https://nextcloud.feldman.tech
+          - title: Snipe-IT
+            description: inventroy
+            icon: hl-snipe-it
+            url: https://snipeit.feldman.in
       - name: Automation
         icon: far fa-robot
         items:
