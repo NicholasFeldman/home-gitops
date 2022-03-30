@@ -34,6 +34,7 @@ data:
             description: inventroy
             icon: hl-snipe-it
             url: https://snipeit.feldman.in
+            statusCheckUrl: https://snipeit.feldman.in/health
       - name: Automation
         icon: far fa-robot
         items:
@@ -63,6 +64,7 @@ data:
             description: Unifi Controller
             icon: hl-unifi
             url: https://unifi.local
+            statusCheck: false
           - title: Longhorn
             description: Longhorn storage manager
             icon: hl-longhorn
