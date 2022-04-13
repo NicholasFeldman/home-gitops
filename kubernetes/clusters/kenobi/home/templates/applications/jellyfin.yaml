@@ -28,5 +28,5 @@ spec:
             type: custom
             volumeSpec:
               nfs:
-                server: nfs://192.168.40.111:/volume1/Media
+                server: ilum.feldman.in:/volume1/Media
                 path: /mnt/ilum-media
