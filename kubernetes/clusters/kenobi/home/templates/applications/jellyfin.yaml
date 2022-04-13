@@ -23,3 +23,10 @@ spec:
           config:
             enabled: true
             storageClass: longhorn-config
+          media:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: ilum.feldman.in/volume1/Media
+                path: /mnt/ilum-media
