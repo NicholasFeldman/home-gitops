@@ -22,6 +22,10 @@ data:
       - name: Home
         icon: far fa-house-chimney
         items:
+          - title: Jellyfin
+            description: Media
+            icon: hl-jellyfin
+            url: https://jellyfin.feldman.in
           - title: Mealie
             description: Recipe Manager
             icon: hl-mealie
