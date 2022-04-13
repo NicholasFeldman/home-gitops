@@ -1,0 +1,23 @@
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+
+metadata:
+  name: longhorn-config
+
+provisioner: driver.longhorn.io
+reclaimPolicy: Retain
+volumeBindingMode: Immediate
+allowVolumeExpansion: true
+
+parameters:
+  fsType: ext4
+  numberOfReplicas: "2"
+  staleReplicaTimeout: "30"
+  fromBackup: ""
+  recurringJobSelector: |-
+    [
+      {
+        "name": "config",
+        "isGroup": true
+      }
+    ]
