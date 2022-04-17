@@ -45,6 +45,7 @@ persistence:
 # @default -- See values.yaml
 configmap:
   config:
+    enabled: true
     data:
       config: |-
         {
