@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-home-mainsail
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: kenobi
+  source:
+    repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+    targetRevision: HEAD
+    path: kubernetes/charts/mainsail
+    helm:
+      releaseName: mainsail
+      values: |-
+        env:
+          TZ: America/New_York
