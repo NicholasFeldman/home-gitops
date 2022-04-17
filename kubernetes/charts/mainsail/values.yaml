@@ -37,7 +37,7 @@ ingress:
 # @default -- See values.yaml
 persistence:
   config:
-    enabled: true
+    enabled: false
     type: configMap
     mountPath: /usr/share/nginx/html/config.json
 
