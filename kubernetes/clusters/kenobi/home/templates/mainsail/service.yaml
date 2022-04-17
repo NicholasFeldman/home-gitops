@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mainsail
+spec:
+  selector:
+    app.kubernetes.io/instance: kenobi-home
+    app.kubernetes.io/name: mainsail
+    app.kubernetes.io/version: latest
+  type: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
