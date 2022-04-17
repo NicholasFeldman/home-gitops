@@ -20,7 +20,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/instance: kenobi-home
-        app.kubernetes.io/name: dashy
+        app.kubernetes.io/name: mainsail
         app.kubernetes.io/version: latest
     spec:
       containers:
