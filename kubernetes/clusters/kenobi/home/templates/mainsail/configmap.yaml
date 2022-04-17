@@ -7,5 +7,5 @@ metadata:
 data:
   config.json: |-
     {
-      "remoteMode": true,
+      "remoteMode": true
     }
