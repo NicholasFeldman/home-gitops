@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-kiali-server
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: kiali-server
+    repoURL: https://kiali.org/helm-charts/
+    targetRevision: 1.49.0
+    helm:
+      releaseName: kiali-server
