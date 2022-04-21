@@ -6,13 +6,13 @@ metadata:
 
 spec:
   destination:
-    namespace: kenobi-istio-system
+    namespace: istio-system
     name: in-cluster
   project: kenobi
   source:
     repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
     targetRevision: HEAD
-    path: kubernetes/clusters/kenobi/kenobi-istio-system
+    path: kubernetes/clusters/kenobi/istio-system
   syncPolicy:
     automated:
       prune: true
