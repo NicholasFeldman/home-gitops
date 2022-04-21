@@ -35,5 +35,5 @@ spec:
     - group: apps
       kind: ValidatingWebhookConfiguration
       jsonPointers:
-        - /webhooks/failurePolicy
+        - /webhooks/0/failurePolicy
 
