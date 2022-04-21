@@ -17,7 +17,7 @@ spec:
     helm:
       releaseName: istio-base
   ignoreDifferences:
-    - group: apps
+    - group: admissionregistration.k8s.io
       kind: ValidatingWebhookConfiguration
       jsonPointers:
         - /webhooks/0/failurePolicy
