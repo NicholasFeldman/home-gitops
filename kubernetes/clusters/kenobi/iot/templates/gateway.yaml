@@ -1,0 +1,27 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: iot-gateway
+spec:
+  selector:
+    istio: ingressgateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - node-red.feldman.in
+        - home-assistant.feldman.in
+      tls:
+          httpsRedirect: true
+    - port:
+        number: 443
+        name: https-443
+        protocol: HTTPS
+      hosts:
+        - node-red.feldman.in
+        - home-assistant.feldman.in
+      tls:
+        mode: SIMPLE
+        credentialName: iot-tls
