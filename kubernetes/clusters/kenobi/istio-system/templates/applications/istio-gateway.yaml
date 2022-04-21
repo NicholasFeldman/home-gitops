@@ -31,8 +31,3 @@ spec:
               port: 8443
               protocol: TCP
               targetPort: 443
-  ignoreDifferences:
-    - kind: ValidatingWebhookConfiguration
-      jsonPointers:
-        - /webhooks/0/failurePolicy
-
