@@ -17,6 +17,7 @@ spec:
     helm:
       releaseName: istio-base
   ignoreDifferences:
-    - kind: ValidatingWebhookConfiguration
+    - group: apps
+      kind: ValidatingWebhookConfiguration
       jsonPointers:
         - /webhooks/0/failurePolicy
