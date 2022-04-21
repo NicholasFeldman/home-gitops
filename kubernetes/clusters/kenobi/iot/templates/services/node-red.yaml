@@ -1,0 +1,12 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: node-red
+spec:
+  hosts:
+    - node-red.feldman.in
+  http:
+    - name: "node-red-route"
+      route:
+        - destination:
+            host: node-red.iot.svc.cluster.local
