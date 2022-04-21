@@ -1,0 +1,7 @@
+apiVersion: v2
+name: istio-system
+description: Cluster Istio
+
+type: application
+
+version: 1.0.0
