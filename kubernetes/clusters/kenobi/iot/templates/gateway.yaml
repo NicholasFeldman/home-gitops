@@ -14,7 +14,7 @@ spec:
         - node-red.feldman.in
         - home-assistant.feldman.in
       tls:
-          httpsRedirect: true
+        httpsRedirect: true
     - port:
         number: 443
         name: https-443
