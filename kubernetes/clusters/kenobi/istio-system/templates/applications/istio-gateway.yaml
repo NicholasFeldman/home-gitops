@@ -32,8 +32,7 @@ spec:
               protocol: TCP
               targetPort: 443
   ignoreDifferences:
-    - group: apps
-      kind: ValidatingWebhookConfiguration
+    - kind: ValidatingWebhookConfiguration
       jsonPointers:
         - /webhooks/0/failurePolicy
 
