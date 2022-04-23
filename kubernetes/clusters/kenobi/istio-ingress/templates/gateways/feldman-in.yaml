@@ -6,7 +6,7 @@ metadata:
 
 spec:
   selector:
-    istio: istio-gateway
+    istio: gateway
   servers:
     - port:
         number: 80
