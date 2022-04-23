@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 
 metadata:
-  name: feldman-in
+  name: feldman-tech
 
 spec:
   selector:
@@ -22,4 +22,4 @@ spec:
         - "*"
       tls:
         mode: SIMPLE
-        credentialName: feldman-in-tls
+        credentialName: feldman-tech-tls
