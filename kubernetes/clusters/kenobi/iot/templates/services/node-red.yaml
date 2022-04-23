@@ -10,9 +10,11 @@ spec:
   hosts:
     - node-red.feldman.in
   http:
-    - name: "node-red-route"
+    - match:
+      - uri:
+          prefix: /
       route:
         - destination:
-            host: node-red.iot.svc.cluster.local
+            host: node-red
             port:
               number: 1880
