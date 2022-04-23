@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - feldman-in.istio-system.svc.cluster.local
+    - istio-ingress/feldman-in
   hosts:
     - node-red.feldman.in
   http:
