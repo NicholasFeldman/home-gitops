@@ -1,8 +1,12 @@
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
+
 metadata:
   name: node-red
+
 spec:
+  gateways:
+    - istio-system/feldman-in
   hosts:
     - node-red.feldman.in
   http:
@@ -10,3 +14,5 @@ spec:
       route:
         - destination:
             host: node-red.iot.svc.cluster.local
+            port:
+              number: 1880
