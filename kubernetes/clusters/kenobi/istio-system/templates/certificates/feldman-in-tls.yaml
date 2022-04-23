@@ -9,8 +9,8 @@ spec:
   secretName: feldman-in-tls
 
   issuerRef:
-    name: ClusterIssuer
-    kind: letsencrypt-prod
+    kind: ClusterIssuer
+    name: letsencrypt-prod
 
   commonName: '*.feldman.in'
   dnsNames:
