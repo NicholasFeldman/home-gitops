@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/version: 2.0.3
 
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 1
   selector:
     matchLabels:
