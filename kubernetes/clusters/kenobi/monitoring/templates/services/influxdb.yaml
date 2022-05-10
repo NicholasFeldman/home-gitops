@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: influxdb
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - monitoring-influxdb.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: influxdb
+            port:
+              number: 8086

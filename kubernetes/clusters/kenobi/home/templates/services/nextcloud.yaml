@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: nextcloud
+
+spec:
+  gateways:
+    - istio-ingress/feldman-tech
+  hosts:
+    - nextcloud.feldman.tech
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: nextcloud
+            port:
+              number: 8080

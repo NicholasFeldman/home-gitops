@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: keycloak
+
+spec:
+  gateways:
+    - istio-ingress/feldman-tech
+  hosts:
+    - keycloak.feldman.tech
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: keycloak
+            port:
+              number: 80
