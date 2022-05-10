@@ -8,7 +8,7 @@ spec:
   gateways:
     - istio-ingress/feldman-tech
   hosts:
-    - keycloak.feldman.tech
+    - auth.feldman.tech
   http:
     - match:
         - uri:
