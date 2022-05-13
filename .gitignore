@@ -5,6 +5,7 @@ cd s
 .vagrant/
 
 ansible/inventories/*.ini
+ansible/roles
 
 .idea/
 *.iml

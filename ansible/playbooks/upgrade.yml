@@ -1,0 +1,9 @@
+- hosts: all
+  become: yes
+  tasks:
+    - when: ansible_os_family == "Debian"
+      apt:
+        state: latest
+        update_cache: yes
+        autoclean: yes
+        autoremove: yes
