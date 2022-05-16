@@ -23,3 +23,22 @@ spec:
         defaultSettings:
           backupTarget: nfs://hoth.feldman.in:/volume1/Kenobi Longhorn Backups
           taintToleration: storage=longhorn:NoSchedule
+        longhornManager:
+          tolerations:
+            - key: "storage"
+              operator: "Equal"
+              value: "longhorn"
+              effect: "NoSchedule"
+        longhornDriver:
+          tolerations:
+            - key: "storage"
+              operator: "Equal"
+              value: "longhorn"
+              effect: "NoSchedule"
+        longhornUI:
+          tolerations:
+            - key: "storage"
+              operator: "Equal"
+              value: "longhorn"
+              effect: "NoSchedule"
+
