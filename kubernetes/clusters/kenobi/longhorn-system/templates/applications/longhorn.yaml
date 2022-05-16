@@ -24,18 +24,24 @@ spec:
           backupTarget: nfs://hoth.feldman.in:/volume1/Kenobi Longhorn Backups
           taintToleration: storage=longhorn:NoSchedule
         longhornManager:
+          nodeSelector:
+            storage: longhorn
           tolerations:
             - key: "storage"
               operator: "Equal"
               value: "longhorn"
               effect: "NoSchedule"
         longhornDriver:
+          nodeSelector:
+            storage: longhorn
           tolerations:
             - key: "storage"
               operator: "Equal"
               value: "longhorn"
               effect: "NoSchedule"
         longhornUI:
+          nodeSelector:
+            storage: longhorn
           tolerations:
             - key: "storage"
               operator: "Equal"
