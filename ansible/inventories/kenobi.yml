@@ -34,9 +34,5 @@ kenobi:
         kenobi-a-2:
         kenobi-l-1:
         kenobi-l-2:
-    k3s_cluster_longhorn:
-      hosts:
-        kenobi-l-1:
-        kenobi-l-2:
     k3s_cluster_rpi:
       hosts:

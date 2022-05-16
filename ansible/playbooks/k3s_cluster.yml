@@ -24,20 +24,6 @@
     - set_fact:
         k3s_control_node: false
 
-- hosts: k3s_cluster_longhorn
-  tasks:
-    - set_fact:
-        k3s_agent:
-          node-label:
-            - "storage=longhorn"
-          node-taint:
-            - "storage=longhorn:NoSchedule"
-        k3s_server:
-          node-label:
-            - "storage=longhorn"
-          node-taint:
-            - "storage=longhorn:NoSchedule"
-
 - hosts: k3s_cluster_server:k3s_cluster_agent
   become: yes
   roles:
