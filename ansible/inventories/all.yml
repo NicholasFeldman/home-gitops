@@ -1,7 +1,0 @@
-all:
-  hosts:
-    naboo:
-      ansible_user: nick
-      ansible_host: naboo.dmz.local
-
-
