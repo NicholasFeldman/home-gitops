@@ -14,6 +14,7 @@ parameters:
   numberOfReplicas: "2"
   staleReplicaTimeout: "30"
   fromBackup: ""
+  nodeSelector: "storage,longhorn"
   recurringJobSelector: |-
     [
       {

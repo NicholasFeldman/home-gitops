@@ -9,6 +9,12 @@ kenobi:
     kenobi-a-2:
       ansible_user: nick
       ansible_host: kenobi-a-2.dmz.local
+    kenobi-l-1:
+      ansible_user: nick
+      ansible_host: kenobi-l-1.dmz.local
+    kenobi-l-2:
+      ansible_user: nick
+      ansible_host: kenobi-l-2.dmz.local
   children:
     # VM
     proxmox_vm:
@@ -16,6 +22,8 @@ kenobi:
         kenobi-s-1:
         kenobi-a-1:
         kenobi-a-2:
+        kenobi-l-1:
+        kenobi-l-2:
     # k3s
     k3s_cluster_server:
       hosts:
@@ -24,5 +32,11 @@ kenobi:
       hosts:
         kenobi-a-1:
         kenobi-a-2:
+        kenobi-l-1:
+        kenobi-l-2:
+    k3s_cluster_longhorn:
+      hosts:
+        kenobi-l-1:
+        kenobi-l-2:
     k3s_cluster_rpi:
       hosts:
