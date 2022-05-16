@@ -84,7 +84,7 @@ data:
           - title: Hoth
             description: Hoth
             icon: hl-synology
-            url: https://192.168.40.110
+            url: https://hoth.feldman.in
           - title: Ilum
             description: Ilum
             icon: hl-synology
