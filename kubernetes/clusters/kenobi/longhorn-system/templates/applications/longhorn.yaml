@@ -17,6 +17,8 @@ spec:
     helm:
       releaseName: longhorn
       values: |-
+        csi:
+          kubeletRootDir: /var/lib/kubelet
         persistence:
           defaultClassReplicaCount: 2
           reclaimPolicy: Retain
