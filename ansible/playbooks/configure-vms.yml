@@ -8,3 +8,11 @@
         name: qemu-guest-agent
         state: present
         update_cache: yes
+
+    - name: Install nfs-common
+      when: ansible_os_family == "Debian"
+      become: yes
+      apt:
+        name: nfs-common
+        state: present
+        update_cache: yes
