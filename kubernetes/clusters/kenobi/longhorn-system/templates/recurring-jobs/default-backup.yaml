@@ -2,7 +2,7 @@ apiVersion: longhorn.io/v1beta1
 kind: RecurringJob
 
 metadata:
-  name: backup-configs
+  name: default-backup
   namespace: longhorn-system
 
 spec:
@@ -11,4 +11,4 @@ spec:
   retain: 10
   cron: 0 2 ? * FRI
   groups:
-    - config
+    - default
