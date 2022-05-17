@@ -1,38 +1,14 @@
 kenobi:
   hosts:
-    kenobi-s-1:
+    naboo:
       ansible_user: nick
-      ansible_host: kenobi-s-1.dmz.local
-    kenobi-a-1:
-      ansible_user: nick
-      ansible_host: kenobi-a-1.dmz.local
-    kenobi-a-2:
-      ansible_user: nick
-      ansible_host: kenobi-a-2.dmz.local
-    kenobi-l-1:
-      ansible_user: nick
-      ansible_host: kenobi-l-1.dmz.local
-    kenobi-l-2:
-      ansible_user: nick
-      ansible_host: kenobi-l-2.dmz.local
+      ansible_host: naboo.dmz.local
   children:
-    # VM
-    proxmox_vm:
-      hosts:
-        kenobi-s-1:
-        kenobi-a-1:
-        kenobi-a-2:
-        kenobi-l-1:
-        kenobi-l-2:
     # k3s
     k3s_cluster_server:
       hosts:
-        kenobi-s-1:
+        naboo:
     k3s_cluster_agent:
       hosts:
-        kenobi-a-1:
-        kenobi-a-2:
-        kenobi-l-1:
-        kenobi-l-2:
     k3s_cluster_rpi:
       hosts:
