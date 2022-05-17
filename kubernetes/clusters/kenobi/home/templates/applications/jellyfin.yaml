@@ -22,11 +22,6 @@ spec:
         persistence:
           config:
             enabled: true
-            type: custom
-            volumeSpec:
-              nfs:
-                server: hoth.feldman.in
-                path: /volume1/Kubernetes Volumes/kenobi/home/jellyfin-config
           media:
             enabled: true
             type: custom
