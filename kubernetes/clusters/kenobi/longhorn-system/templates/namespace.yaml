@@ -3,6 +3,3 @@ kind: Namespace
 
 metadata:
   name: longhorn-system
-  labels:
-    istio-injection: enabled
-
