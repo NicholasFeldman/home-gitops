@@ -30,7 +30,6 @@ spec:
               $CONFIG = array(
                 'overwriteprotocol' => 'https',
               );
-          datadir: /mnt/nextcloud-data
           extraVolumes:
             - name: nextcloud-data
               nfs:
