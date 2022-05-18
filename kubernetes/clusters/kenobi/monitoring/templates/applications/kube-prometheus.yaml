@@ -20,6 +20,5 @@ spec:
         prometheus:
           persistence:
             enabled: true
-            storageClass: longhorn-database
         alertmanager:
           enabled: false

@@ -23,4 +23,4 @@ spec:
             org: Feldman
             bucket: Default
         persistence:
-          storageClass: longhorn-database
+          enabled: true
