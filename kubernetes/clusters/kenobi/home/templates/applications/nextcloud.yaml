@@ -30,12 +30,15 @@ spec:
               $CONFIG = array(
                 'overwriteprotocol' => 'https',
               );
-
+          datadir: /mnt/nextcloud-data
           extraVolumes:
             - name: nextcloud-data
               nfs:
                 server: hoth.feldman.in
                 path: /volume1/Nextcloud Data
+          extraVolumeMounts:
+            - name: nextcloud-data
+              mountPath: /mnt/nextcloud-data
 
         persistence:
           enabled: true
