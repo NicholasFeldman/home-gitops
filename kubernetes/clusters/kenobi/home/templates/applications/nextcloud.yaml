@@ -31,17 +31,15 @@ spec:
                 'overwriteprotocol' => 'https',
               );
 
+          extraVolumes:
+            - name: nextcloud-data
+              nfs:
+                server: hoth.feldman.in
+                path: /volume1/Nextcloud Data
+
         persistence:
           enabled: true
           size: 2Gi
-          nextcloudData:
-            enabled: true
-            size: 256Gi
-            type: custom
-            volumeSpec:
-              nfs:
-                server: hoth.feldman.in
-                path: /volume1/Kubernetes Volumes/kenobi/home/jellyfin-config
 
         livenessProbe:
           enabled: false
