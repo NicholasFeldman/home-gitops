@@ -37,6 +37,11 @@ spec:
           nextcloudData:
             enabled: true
             size: 256Gi
+            type: custom
+            volumeSpec:
+              nfs:
+                server: hoth.feldman.in
+                path: /volume1/Kubernetes Volumes/kenobi/home/jellyfin-config
 
         livenessProbe:
           enabled: false
