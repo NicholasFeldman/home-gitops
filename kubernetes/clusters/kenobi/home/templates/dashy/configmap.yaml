@@ -30,6 +30,10 @@ data:
             description: Recipe Manager
             icon: hl-mealie
             url: https://mealie.feldman.tech
+          - title: Grocy
+            description: Grocery Manager
+            icon: hl-grocy
+            url: https://grocy.feldman.tech
           - title: Nextcloud
             description: File Sharing
             icon: hl-nextcloud
