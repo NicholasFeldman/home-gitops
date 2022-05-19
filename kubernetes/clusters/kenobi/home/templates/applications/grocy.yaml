@@ -19,8 +19,6 @@ spec:
       values: |-
         env:
           TZ: America/New_York
-        image:
-          tag: v8.4.2
         persistence:
           config:
             enabled: true
