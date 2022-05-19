@@ -24,6 +24,17 @@ spec:
             secretName: nextcloud
             usernameKey: nextcloud-username
             passwordKey: nextcloud-password
+          configs:
+            kubernetes.config.php: |-
+              <?php
+              $CONFIG = array(
+                'config_is_read_only' => true,
+              );
+            https.config.php: |-
+              <?php
+              $CONFIG = array(
+                'overwriteprotocol' => 'https',
+              );
 
         persistence:
           enabled: true
