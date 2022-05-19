@@ -24,12 +24,6 @@ spec:
             secretName: nextcloud
             usernameKey: nextcloud-username
             passwordKey: nextcloud-password
-          configs:
-            https.config.php: |-
-              <?php
-              $CONFIG = array(
-                'overwriteprotocol' => 'https',
-              );
 
         persistence:
           enabled: true
