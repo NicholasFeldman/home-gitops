@@ -48,7 +48,7 @@ spec:
                 readOnly: false
           extraVolumeMounts:
             - name: ilum-documents
-              mountPath: "/mnt/ilum_doocuments"
+              mountPath: "/mnt/ilum_documents"
             - name: ilum-media
               mountPath: "/mnt/ilum_media"
 
