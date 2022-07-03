@@ -35,6 +35,22 @@ spec:
               $CONFIG = array(
                 'overwriteprotocol' => 'https',
               );
+          extraVolumes:
+            - name: ilum-documents
+              nfs:
+                server: "ilum.feldman.in"
+                path: "/volume1/Documents"
+                readOnly: false
+            - name: ilum-media
+              nfs:
+                server: "ilum.feldman.in"
+                path: "/volume1/Media"
+                readOnly: false
+          extraVolumeMounts:
+            - name: ilum-documents
+              mountPath: "/mnt/ilum_doocuments"
+            - name: ilum-media
+              mountPath: "/mnt/ilum_media"
 
         persistence:
           enabled: true
