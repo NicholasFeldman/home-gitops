@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-database-grafana-postgresql
-  namespace: argocd
+  name: kenobi-monitoring-grafana-postgresql
+  namespace: monitoring
 
 spec:
   destination:
-    namespace: database
+    namespace: monitoring
     name: in-cluster
   project: kenobi
   source:
