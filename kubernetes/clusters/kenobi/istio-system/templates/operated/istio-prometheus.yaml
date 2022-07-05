@@ -5,10 +5,10 @@ metadata:
   name: istio-prometheus
 
 spec:
+  securityContext:
+    fsGroup: 1001
+    runAsUser: 1001
   storage:
-    securityContext:
-      fsGroup: 1001
-      runAsUser: 1001
     volumeClaimTemplate:
       spec:
         accessModes:
