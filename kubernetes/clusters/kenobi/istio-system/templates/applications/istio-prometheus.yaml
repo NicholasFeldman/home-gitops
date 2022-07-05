@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-istio-prometheus
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: kube-prometheus
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 8.0.9
+    helm:
+      releaseName: kube-prometheus
+      values: |-
+        prometheus:
+          persistence:
+            enabled: true
+        operator:
+          enabled: false
+        alertmanager:
+          enabled: false
