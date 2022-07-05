@@ -13,7 +13,7 @@ spec:
   source:
     chart: grafana
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 7.6.4
+    targetRevision: 7.9.9
     helm:
       releaseName: grafana
       values: |-
@@ -24,7 +24,6 @@ spec:
           useGrafanaIniFile: true
           grafanaIniSecret: grafana-ini
         grafana:
-          replicaCount: 2
           podAnnotations:
             telegraf.influxdata.com/class: infra
             telegraf.influxdata.com/interval: 30s
