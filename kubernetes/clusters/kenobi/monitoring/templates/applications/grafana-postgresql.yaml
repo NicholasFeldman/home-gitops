@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: kenobi-monitoring-grafana-postgresql
-  namespace: monitoring
+  namespace: argocd
 
 spec:
   destination:
