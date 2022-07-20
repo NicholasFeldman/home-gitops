@@ -5,4 +5,4 @@ metadata:
 spec:
   serviceMonitorSelector:
     matchLabels:
-      team: istio
+      prometheus: istio-prometheus

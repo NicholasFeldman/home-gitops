@@ -3,7 +3,7 @@ kind: PodMonitor
 metadata:
   name: istio-sidecars
   labels:
-    team: istio
+    prometheus: istio-prometheus
 spec:
   selector:
     matchLabels:
@@ -17,7 +17,7 @@ kind: ServiceMonitor
 metadata:
   name: istio-ingressgateway
   labels:
-    team: istio
+    prometheus: istio-prometheus
 spec:
   selector:
     matchLabels:
@@ -34,7 +34,7 @@ kind: ServiceMonitor
 metadata:
   name: istiod
   labels:
-    team: istio
+    prometheus: istio-prometheus
 spec:
   selector:
     matchLabels:
