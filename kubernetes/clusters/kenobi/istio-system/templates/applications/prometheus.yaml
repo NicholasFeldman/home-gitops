@@ -23,6 +23,8 @@ spec:
           enabled: false
         pushgateway:
           enabled: false
+        kubeStateMetrics:
+          enabled: false
         serverFiles:
           prometheus.yml:
             scrape_configs:
