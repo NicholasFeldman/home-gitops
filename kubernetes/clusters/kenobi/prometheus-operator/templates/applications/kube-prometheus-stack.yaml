@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-{{.Release.Namespace}}-kube-prometheus
+  name: kenobi-{{.Release.Namespace}}-kube-prometheus-stack
   namespace: argocd
 
 spec:
