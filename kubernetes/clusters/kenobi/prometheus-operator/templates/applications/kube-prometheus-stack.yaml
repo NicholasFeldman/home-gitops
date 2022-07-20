@@ -16,3 +16,6 @@ spec:
     targetRevision: 37.3.0
     helm:
       releaseName: kube-prometheus
+      values: |-
+        grafana:
+          enabled: false
