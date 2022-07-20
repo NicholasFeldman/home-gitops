@@ -21,7 +21,7 @@ spec:
           enabled: false
         nodeExporter:
           enabled: false
-        pushGateway:
+        pushgateway:
           enabled: false
         serverFiles:
           prometheus.yml:
