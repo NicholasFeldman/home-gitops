@@ -17,6 +17,12 @@ spec:
     helm:
       releaseName: prometheus
       values: |-
+        alertmanager:
+          enabled: false
+        nodeExporter:
+          enabled: false
+        pushGateway:
+          enabled: false
         serverFiles:
           prometheus.yml:
             scrape_configs:
