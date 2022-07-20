@@ -11,14 +11,8 @@ spec:
     name: in-cluster
   project: kenobi
   source:
-    chart: kube-prometheus
-    repoURL: https://charts.bitnami.com/bitnami
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
     targetRevision: 8.0.10
     helm:
       releaseName: kube-prometheus
-      values: |-
-        prometheus:
-          persistence:
-            enabled: true
-        alertmanager:
-          enabled: false
