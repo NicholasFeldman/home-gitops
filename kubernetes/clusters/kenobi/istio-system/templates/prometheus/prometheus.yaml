@@ -3,7 +3,6 @@ kind: Prometheus
 metadata:
   name: istio-prometheus
 spec:
-  serviceAccountName: prometheus
   serviceMonitorSelector:
     matchLabels:
       team: istio
