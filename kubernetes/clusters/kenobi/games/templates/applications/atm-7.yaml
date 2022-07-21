@@ -24,7 +24,7 @@ spec:
           eula: true
           version: 1.18.2
           type: CURSEFORGE
-          cfServerMod: ATM7-0.4.22.zip
+          cfServerMod: https://www.mediafire.com/file/no6kdnitw526ztv/Server-Files-0.4.22.zip/file
           difficulty: hard
           ops: SoundTech
           motd: "yee"
