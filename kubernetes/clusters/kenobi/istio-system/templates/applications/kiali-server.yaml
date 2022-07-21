@@ -21,3 +21,7 @@ spec:
       kind: ConfigMap
       jsonPointers:
         - /data/config.yaml
+    - group: '*'
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/metatadata/annotations/checksum/config
