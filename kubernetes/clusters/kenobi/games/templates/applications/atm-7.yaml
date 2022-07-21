@@ -24,7 +24,7 @@ spec:
           eula: true
           version: 1.18.2
           type: CURSEFORGE
-          cfServerMod: https://download856.mediafire.com/5hft5ii0qcmg/no6kdnitw526ztv/Server-Files-0.4.22.zip
+          cfServerMod: https://ftb-mods.s3.amazonaws.com/Server-Files-0.4.22.zip
           difficulty: hard
           ops: SoundTech
           motd: "yee"
