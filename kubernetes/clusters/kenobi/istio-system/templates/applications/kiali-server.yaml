@@ -17,7 +17,7 @@ spec:
     helm:
       releaseName: kiali-server
   ignoreDifferences:
-    - group: *
+    - group: '*'
       kind: ConfigMap
       jsonPointers:
         - /data/config.yaml
