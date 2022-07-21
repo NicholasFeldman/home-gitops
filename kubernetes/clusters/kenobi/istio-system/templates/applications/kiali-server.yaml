@@ -24,4 +24,4 @@ spec:
     - group: '*'
       kind: Deployment
       jsonPointers:
-        - /spec/template/metatadata/annotations/checksum/config
+        - /spec/template/metatadata/annotations/checksum\/config
