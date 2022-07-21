@@ -23,7 +23,7 @@ spec:
         minecraftServer:
           eula: true
           type: CURSEFORGE
-          cfServerMod: https://www.curseforge.com/minecraft/modpacks/all-the-mods-7/download/3881578
+          cfServerMod: https://www.curseforge.com/minecraft/modpacks/all-the-mods-7/download/3881578/file
           difficulty: hard
           ops: SoundTech
           motd: "yee"
