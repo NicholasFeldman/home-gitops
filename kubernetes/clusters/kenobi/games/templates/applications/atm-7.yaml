@@ -36,3 +36,4 @@ spec:
         persistence:
           dataDir:
             enabled: true
+            Size: 20Gi
