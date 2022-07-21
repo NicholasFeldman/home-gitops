@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-atm-7
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: minecraft
+    repoURL: https://itzg.github.io/minecraft-server-charts/
+    targetRevision: 4.1.0
+    helm:
+      releaseName: atm-7
+      values: |
+        resources:
+          requests:
+            memory: 6Gi
+        minecraftServer:
+          eula: true
+          type: CURSEFORGE
+          cfServerMod: https://www.curseforge.com/minecraft/modpacks/all-the-mods-7/download/3881578
+          difficulty: hard
+          ops: SoundTech
+          motd: "yee"
+          pvp: true
+          memory: 6G
