@@ -26,3 +26,10 @@ spec:
               secretKeyRef:
                 name: unifi-poller
                 key: unifi-password
+          UP_INFLUXDB_URL: http://shared-influxdb.database.svc.cluster.local:8086
+          UP_INFLUXDB_DB: unifi-poller
+          UP_INFLUXDB_PASS:
+            valueFrom:
+              secretKeyRef:
+                name: unifi-poller
+                key: influx-password
