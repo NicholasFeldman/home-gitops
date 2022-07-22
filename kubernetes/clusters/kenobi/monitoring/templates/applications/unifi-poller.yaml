@@ -19,11 +19,10 @@ spec:
       values: |
         env:
           TZ: America/New_York
-          UP_UNIFI_DEFAULT_URL: "https://192.168.40.1:8443"
+          UP_UNIFI_DEFAULT_URL: "https://192.168.40.1"
           UP_UNIFI_DEFAULT_USER: "unifipoller"
           UP_UNIFI_DEFAULT_PASS:
             valueFrom:
               secretKeyRef:
                 name: unifi-poller
                 key: unifi-password
-          UP_INFLUXDB_DISABLE: false
