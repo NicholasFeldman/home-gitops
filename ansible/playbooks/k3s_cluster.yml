@@ -34,4 +34,4 @@
     swap_file_state: absent
 
     k3s_become: yes
-    k3s_release_version: v1.23.6+k3s1
+    k3s_release_version: v1.24.3+k3s1
