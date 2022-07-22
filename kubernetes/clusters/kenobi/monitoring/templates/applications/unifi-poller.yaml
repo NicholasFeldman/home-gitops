@@ -29,6 +29,8 @@ spec:
           UP_INFLUXDB_DISABLE: false
         influxdb:
           enabled: true
+          auth:
+            existingSecret: unifi-poller-influxdb
           persistence:
             enabled: true
 
