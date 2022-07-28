@@ -13,12 +13,12 @@ spec:
   source:
     chart: home-assistant
     repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 12.0.1
+    targetRevision: 13.3.0
     helm:
       releaseName: home-assistant
       values: |-
         image:
-          tag: "2022.4"
+          tag: "2022.7"
         env:
           TZ: America/New_York
         persistence:
