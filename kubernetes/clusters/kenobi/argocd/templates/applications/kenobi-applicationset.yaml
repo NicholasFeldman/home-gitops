@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: kenobi
+
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+        revision: HEAD
+        directories:
+          - path: kubernetes/clusters/kenobi/test
+  template:
+    metadata:
+      name: '{{path[0]}}'
+    spec:
+      project: kenobi
+      source:
+        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: in-cluster
+        namespace: test
