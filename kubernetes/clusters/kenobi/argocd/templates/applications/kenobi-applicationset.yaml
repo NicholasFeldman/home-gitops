@@ -11,6 +11,7 @@ spec:
         revision: HEAD
         directories:
           - path: kubernetes/clusters/kenobi/test
+          - path: kubernetes/clusters/kenobi/cert-manager
   template:
     metadata:
       name: 'kenobi-{{"{{path.basename}}"}}'
