@@ -13,13 +13,13 @@ spec:
           - path: kubernetes/clusters/kenobi/test
   template:
     metadata:
-      name: '{{path}}'
+      name: '{{"{{path[0]}}"}}'
     spec:
       project: kenobi
       source:
         repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: '{{"{{path}}"}}'
       destination:
         server: in-cluster
         namespace: test
