@@ -13,7 +13,7 @@ spec:
           - path: kubernetes/clusters/kenobi/test
   template:
     metadata:
-      name: '{{"{{path.basename}}"}}'
+      name: 'kenobi-{{"{{path.basename}}"}}'
     spec:
       project: kenobi
       source:
