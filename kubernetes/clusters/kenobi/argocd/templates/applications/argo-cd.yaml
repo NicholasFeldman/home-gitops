@@ -12,7 +12,7 @@ spec:
     name: in-cluster
   source:
     chart: argo-cd
-    repoURL: https://argoproj.github.io/argo:-helm
+    repoURL: https://argoproj.github.io/argo-helm
     targetRevision: 4.10.4
     helm:
       releaseName: argo-cd
