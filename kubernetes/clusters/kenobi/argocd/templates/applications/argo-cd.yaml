@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-argo-cd
+  namespace: argocd
+
+spec:
+  project: kenobi
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  source:
+    chart: argo-cd
+    repoURL: https://argoproj.github.io/argo-helm
+    targetRevision: 4.10.4
+    helm:
+      releaseName: argo-cd
+      values: |
+        redis-ha:
+          enabled: true
+        controller:
+          enableStatefulSet: true
+        server:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
+        repoServer:
+          autoscaling:
+            enabled: true
+            minReplicas: 2
