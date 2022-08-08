@@ -24,7 +24,7 @@ spec:
           eula: true
           version: 1.18.2
           type: CURSEFORGE
-          CF_SERVER_MOD: https://ftb-mods.s3.us-east-2.amazonaws.com/All+The+Mods+7-0.4.25.zip
+          CF_SERVER_MOD: 'https://ftb-mods.s3.us-east-2.amazonaws.com/All+The+Mods+7-0.4.25.zip'
           difficulty: hard
           ops: SoundTech
           motd: "yee"
