@@ -21,7 +21,7 @@ spec:
         kubernetes.io/hostname: naboo
       containers:
         - name: atm-7
-          image: openjdk:8u312
+          image: openjdk:17
           ports:
             - containerPort: 25565
           workingDir: /game
