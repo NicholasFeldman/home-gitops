@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: StatefulSet
+
+metadata:
+  name: atm-7
+  labels:
+    app.kubernetes.io/name: atm-7
+
+spec:
+  serviceName: atm-7
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: atm-7
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: atm-7
+    spec:
+      terminationGracePeriodSeconds: 600
+      nodeSelector:
+        kubernetes.io/hostname: naboo
+      containers:
+        - name: atm-7
+          image: openjdk:8u312
+          ports:
+            - containerPort: 25565
+          workingDir: /game
+          command:
+            - sh
+            - run.sh
+          volumeMounts:
+            - mountPath: /game
+              name: game-dir
+      volumes:
+        - name: game-dir
+          hostPath:
+            path: /opt/atm-7-0.4.25
+            type: Directory
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: atm-7
+spec:
+  selector:
+    app.kubernetes.io/name: atm-7
+  ports:
+    - port: 25565
+      targetPort: 25565
+  type: LoadBalancer
