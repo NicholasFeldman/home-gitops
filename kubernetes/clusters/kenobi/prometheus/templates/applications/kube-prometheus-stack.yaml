@@ -25,5 +25,13 @@ spec:
           admissionWebhooks:
             certManager:
               enabled: true
+        prometheus:
+          storageSpec:
+            volumeClaimTemplate:
+              spec:
+                accessModes: ["ReadWriteOnce"]
+                resources:
+                  requests:
+                    storage: 20Gi
         grafana:
           enabled: false
