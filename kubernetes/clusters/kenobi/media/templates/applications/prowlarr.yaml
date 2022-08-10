@@ -20,4 +20,5 @@ spec:
         env:
           TZ: America/New_York
         persistence:
-          enabled: true
+          config:
+            enabled: true
