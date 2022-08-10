@@ -17,4 +17,4 @@ spec:
         - destination:
             host: radarr
             port:
-              number: 9696
+              number: 7878
