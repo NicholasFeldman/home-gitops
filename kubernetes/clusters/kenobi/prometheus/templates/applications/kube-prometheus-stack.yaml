@@ -21,5 +21,9 @@ spec:
     helm:
       releaseName: kube-prometheus-stack
       values: |
+        prometheusOperator:
+          admissionWebhooks:
+            certManager:
+              enabled: true
         grafana:
           enabled: false
