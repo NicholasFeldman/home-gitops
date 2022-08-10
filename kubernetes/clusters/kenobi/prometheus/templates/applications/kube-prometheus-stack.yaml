@@ -33,7 +33,3 @@ spec:
                 resources:
                   requests:
                     storage: 20Gi
-        alertmanager:
-          enabled: false
-        grafana:
-          enabled: false

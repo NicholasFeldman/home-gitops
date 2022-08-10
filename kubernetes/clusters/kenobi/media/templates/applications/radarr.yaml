@@ -41,3 +41,7 @@ spec:
               nfs:
                 server: 192.168.40.111
                 path: /volume1/Downloads
+        metrics:
+          enabled: true
+          prometheusRule:
+            enabled: true
