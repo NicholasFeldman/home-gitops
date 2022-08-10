@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: radarr
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - deluge.feldman.in
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: radarr
+            port:
+              number: 8112
