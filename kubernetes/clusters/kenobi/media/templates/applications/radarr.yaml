@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-radarr
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  source:
+    chart: radarr
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 16.2.*
+    helm:
+      releaseName: radarr
+      values: |
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
