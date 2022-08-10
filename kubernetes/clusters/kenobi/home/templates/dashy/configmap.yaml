@@ -22,10 +22,6 @@ data:
       - name: Home
         icon: far fa-house-chimney
         items:
-          - title: Jellyfin
-            description: Media
-            icon: hl-jellyfin
-            url: https://jellyfin.feldman.in
           - title: Mealie
             description: Recipe Manager
             icon: hl-mealie
@@ -43,6 +39,25 @@ data:
             icon: hl-snipe-it
             url: https://snipeit.feldman.in
             statusCheckUrl: https://snipeit.feldman.in/health
+      - name: Media
+        icon: far fa-video
+        items:
+          - title: Jellyfin
+            description: Media
+            icon: hl-jellyfin
+            url: https://jellyfin.feldman.in
+          - title: Radarr
+            description: Media
+            icon: hl-radarr
+            url: https://radarr.feldman.in
+          - title: Prowlarr
+            description: Media
+            icon: hl-prowlarr
+            url: https://prowlarr.feldman.in
+          - title: Deluge
+            description: Media
+            icon: hl-deluge
+            url: https://deluge.feldman.in
       - name: Automation
         icon: far fa-robot
         items:
