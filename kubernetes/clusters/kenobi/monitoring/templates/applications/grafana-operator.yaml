@@ -33,7 +33,6 @@ spec:
             auth:
             auth.generic_oauth:
               enabled: true
-              name: Keycloak
               client_id: grafana.feldman.in
               scopes: profile
               auth_url: https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth
