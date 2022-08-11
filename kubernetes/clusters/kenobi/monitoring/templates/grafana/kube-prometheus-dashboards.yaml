@@ -5,7 +5,7 @@ metadata:
   name: kube-prometheus-stack-kubelet
   namespace: {{ .Release.Namespace }}
   labels:
-    grafana.integreatly.org/instance: grafana-operated
+    app.kubernetes.io/instance: grafana-operator
 spec:
   json: ""
   configMapRef:
