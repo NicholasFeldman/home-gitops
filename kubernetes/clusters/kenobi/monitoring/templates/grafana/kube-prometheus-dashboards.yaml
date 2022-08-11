@@ -4,7 +4,8 @@ kind: GrafanaDashboard
 metadata:
   name: kube-prometheus-stack-kubelet
   namespace: {{ .Release.Namespace }}
-
+  labels:
+    grafana.integreatly.org/instance: grafana-operated
 spec:
   json: ""
   configMapRef:
