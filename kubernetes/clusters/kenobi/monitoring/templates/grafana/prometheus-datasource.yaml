@@ -3,12 +3,12 @@ kind: GrafanaDataSource
 
 metadata:
   name: kube-prometheus
-  namespace: monitoring
+  namespace: {{ .Release.Namespace }}
 
 spec:
   name: kube-prometheus.yaml
   datasources:
-    - name: kube-prometheus
+    - name: Kube Prometheus
       type: prometheus
       access: proxy
       url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090/
