@@ -34,8 +34,8 @@ spec:
             database:
               type: postgres
               host: grafana-postgresql.monitoring.svc.cluster.local
-              name = grafana
-              user = grafana
+              name: grafana
+              user: grafana
             auth.generic_oauth:
               enabled: true
               client_id: grafana.feldman.in
