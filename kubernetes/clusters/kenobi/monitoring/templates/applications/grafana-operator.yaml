@@ -22,3 +22,4 @@ spec:
       releaseName: grafana-operator
       values: |
         grafana:
+          enabled: true
