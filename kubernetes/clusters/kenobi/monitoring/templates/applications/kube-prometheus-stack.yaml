@@ -23,6 +23,7 @@ spec:
       values: |
         grafana:
           enabled: false
+          forceDeployDashboards: true
         alertmanager:
           enabled: false
         prometheus:
