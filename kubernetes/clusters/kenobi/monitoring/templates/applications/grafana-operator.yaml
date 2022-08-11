@@ -23,3 +23,5 @@ spec:
       values: |
         grafana:
           enabled: true
+          podSecurityContext:
+            runAsGroup: 1001
