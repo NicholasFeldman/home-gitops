@@ -24,9 +24,20 @@ spec:
         grafana:
           image:
             tag: 9.0.7-debian-11-r0
-          secrets:
-            - grafana-ini
+          envFrom:
+            - secretRef:
+              name: grafana-env
           config:
-            grafana.ini:
-              enabled: true
-              config_file: /etc/grafana-secrets/grafana-ini/grafana.ini
+            server:
+              root_url: https://grafana.feldman.in
+            security:
+              auth:
+              auth.generic_oauth:
+                enabled: true
+                name: Keycloak
+                client_id: grafana.feldman.in
+                scopes: profile
+                auth_url: https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth
+                token_url: https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/token
+                api_url: https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/userinfo
+                role_attribute_path: "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
