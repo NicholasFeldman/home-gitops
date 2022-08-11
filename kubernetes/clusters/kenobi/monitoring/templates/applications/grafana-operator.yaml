@@ -24,7 +24,3 @@ spec:
         grafana:
           image:
             tag: 9.0.7-debian-11-r0
-          podSecurityContext:
-            runAsGroup: 1001
-          containerSecurityContext:
-            runAsGroup: 1001
