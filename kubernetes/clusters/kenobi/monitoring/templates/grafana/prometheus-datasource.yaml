@@ -1,0 +1,14 @@
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDataSource
+
+metadata:
+  name: kube-prometheus
+  namespace: monitoring
+
+spec:
+  name: kube-prometheus.yaml
+  datasources:
+    - name: kube-prometheus
+      type: prometheus
+      access: proxy
+      url: http://kube-prometheus-stack-prometheus.monitoring.svc.cluster.local:9090/
