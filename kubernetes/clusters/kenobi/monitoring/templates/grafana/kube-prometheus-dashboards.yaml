@@ -9,5 +9,6 @@ metadata:
 spec:
   json: ""
   configMapRef:
+    customFolderName: Kube Prometheus
     name: kube-prometheus-stack-kubelet
     key: kube-prometheus-stack-kubelet.json
