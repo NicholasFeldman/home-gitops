@@ -2,6 +2,48 @@ apiVersion: integreatly.org/v1alpha1
 kind: GrafanaDashboard
 
 metadata:
+  name: kube-prometheus-stack-alertmanager-overview
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-alertmanager-overview
+    key: alertmanager-overview.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-node-rsrc-use
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-node-rsrc-use
+    key: node-rsrc-use.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-k8s-coredns
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-k8s-coredns
+    key: k8s-coredns.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
   name: kube-prometheus-stack-kubelet
   namespace: {{ .Release.Namespace }}
   labels:
@@ -11,6 +53,62 @@ spec:
   configMapRef:
     name: kube-prometheus-stack-kubelet
     key: kubelet.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-prometheus
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-stack-prometheus
+    key: prometheus.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-node-cluster-rsrc-use
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-stack-node-cluster-rsrc-use
+    key: node-cluster-rsrc-use.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-workload-total
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-stack-workload-total
+    key: workload-total.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-k8s-resources-workloads-namespace
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-stack-k8s-resources-workloads-namespace
+    key: k8s-resources-workloads-namespace.json
 ---
 apiVersion: integreatly.org/v1alpha1
 kind: GrafanaDashboard
