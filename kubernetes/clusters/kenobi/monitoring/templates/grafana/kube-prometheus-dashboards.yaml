@@ -8,6 +8,6 @@ metadata:
     app.kubernetes.io/instance: grafana-operator
 spec:
   configMapRef:
-    customFolderName: Kube Prometheus
+    CustomFolderName: Kube Prometheus
     name: kube-prometheus-stack-kubelet
     key: kube-prometheus-stack-kubelet.json
