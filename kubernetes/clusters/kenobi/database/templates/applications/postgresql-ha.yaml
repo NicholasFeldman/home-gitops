@@ -22,6 +22,7 @@ spec:
       releaseName: postgresql-ha
       values: |
         pgpool:
+          replicaCount: 2
           existingSecret: postgresql-ha-pgpool
         postgresql:
           existingSecret: postgresql-ha-postgresql
