@@ -24,6 +24,7 @@ spec:
         pgpool:
           replicaCount: 2
           existingSecret: postgresql-ha-pgpool
+          customUsersSecret: postgresql-ha-pgpool
         postgresql:
           existingSecret: postgresql-ha-postgresql
         persistence:
