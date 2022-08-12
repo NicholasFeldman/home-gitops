@@ -11,3 +11,17 @@ spec:
   configMapRef:
     name: kube-prometheus-stack-kubelet
     key: kube-prometheus-stack-kubelet.json
+---
+apiVersion: integreatly.org/v1alpha1
+kind: GrafanaDashboard
+
+metadata:
+  name: kube-prometheus-stack-nodes
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app.kubernetes.io/instance: grafana-operator
+spec:
+  customFolderName: Kube Prometheus
+  configMapRef:
+    name: kube-prometheus-stack-nodes
+    key: kube-prometheus-stack-nodes.json
