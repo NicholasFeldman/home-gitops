@@ -142,20 +142,6 @@ apiVersion: integreatly.org/v1alpha1
 kind: GrafanaDashboard
 
 metadata:
-  name: kube-prometheus-stack-k8s-resources-node
-  namespace: {{ .Release.Namespace }}
-  labels:
-    app.kubernetes.io/instance: grafana-operator
-spec:
-  customFolderName: Kube Prometheus
-  configMapRef:
-    name: kube-prometheus-stack-k8s-resources-node
-    key: k8s-resources-node.json
----
-apiVersion: integreatly.org/v1alpha1
-kind: GrafanaDashboard
-
-metadata:
   name: kube-prometheus-stack-grafana-overview
   namespace: {{ .Release.Namespace }}
   labels:
