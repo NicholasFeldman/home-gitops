@@ -21,5 +21,10 @@ spec:
     helm:
       releaseName: postgresql-ha
       values: |
+        pgpool:
+          existingSecret: postgresql-ha-pgpool
+        postgresql:
+          existingSecret: postgresql-ha-postgresql
         persistence:
-          enabled: false
+          size:
+            16Gi
