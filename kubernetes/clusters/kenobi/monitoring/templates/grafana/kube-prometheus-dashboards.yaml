@@ -10,7 +10,7 @@ spec:
   customFolderName: Kube Prometheus
   configMapRef:
     name: kube-prometheus-stack-kubelet
-    key: kube-prometheus-stack-kubelet.json
+    key: kubelet.json
 ---
 apiVersion: integreatly.org/v1alpha1
 kind: GrafanaDashboard
@@ -24,4 +24,4 @@ spec:
   customFolderName: Kube Prometheus
   configMapRef:
     name: kube-prometheus-stack-nodes
-    key: kube-prometheus-stack-nodes.json
+    key: nodes.json
