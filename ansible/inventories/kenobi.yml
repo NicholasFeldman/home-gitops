@@ -3,6 +3,9 @@ kenobi:
     naboo:
       ansible_user: nick
       ansible_host: naboo.dmz.local
+    alderaan:
+      ansible_user: nick
+      ansible_host: alderaan.dmz.local
   children:
     # k3s
     k3s_cluster_server:
@@ -10,5 +13,6 @@ kenobi:
         naboo:
     k3s_cluster_agent:
       hosts:
+        alderaan:
     k3s_cluster_rpi:
       hosts:

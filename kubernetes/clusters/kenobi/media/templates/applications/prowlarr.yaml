@@ -13,7 +13,6 @@ spec:
   syncPolicy:
     automated:
       prune: true
-      selfHeal: true
   source:
     chart: prowlarr
     repoURL: https://k8s-at-home.com/charts/
