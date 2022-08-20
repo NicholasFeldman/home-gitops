@@ -7,7 +7,7 @@ metadata:
 spec:
   generators:
     - git:
-        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+        repoURL: git@github.com:NicholasFeldman/home-gitops.git
         revision: HEAD
         directories:
           - path: kubernetes/kenobi/*
