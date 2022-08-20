@@ -17,7 +17,7 @@ spec:
     spec:
       project: kenobi
       source:
-        repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
+        repoURL: git@github.com:NicholasFeldman/home-gitops.git
         targetRevision: HEAD
         path: '{{"{{path}}"}}'
       destination:
