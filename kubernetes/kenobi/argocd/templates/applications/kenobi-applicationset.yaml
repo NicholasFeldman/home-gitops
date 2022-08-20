@@ -10,7 +10,7 @@ spec:
         repoURL: git@github.com:NicholasFeldman/kubernetes-config.git
         revision: HEAD
         directories:
-          - path: kubernetes/clusters/kenobi/*
+          - path: kubernetes/kenobi/*
   template:
     metadata:
       name: 'kenobi-{{"{{path.basename}}"}}'
