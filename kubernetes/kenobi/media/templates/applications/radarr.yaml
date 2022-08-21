@@ -10,10 +10,6 @@ spec:
     namespace: {{.Release.Namespace}}
     name: in-cluster
   project: kenobi
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
   source:
     chart: radarr
     repoURL: https://k8s-at-home.com/charts/
