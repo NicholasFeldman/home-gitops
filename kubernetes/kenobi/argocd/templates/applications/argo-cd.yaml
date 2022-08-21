@@ -13,9 +13,9 @@ spec:
   source:
     chart: argo-cd
     repoURL: https://argoproj.github.io/argo-helm
-    targetRevision: 4.10.4
+    targetRevision: 4.10.*
     helm:
-      releaseName: argo-cd
+      releaseName: argocd
       values: |
         redis-ha:
           enabled: false # TODO
