@@ -18,6 +18,7 @@
           disable:
             - traefik
             - servicelb
+            - local-storage
 
 - hosts: k3s_cluster_agent
   tasks:
@@ -25,13 +26,12 @@
         k3s_control_node: false
 
 - hosts: k3s_cluster_server:k3s_cluster_agent
-  become: yes
+  become: true
   roles:
     # - role: cgroups
     - role: geerlingguy.swap
     - role: xanmanning.k3s
   vars:
     swap_file_state: absent
-
-    k3s_become: yes
+    k3s_become: true
     k3s_release_version: v1.24.3+k3s1
