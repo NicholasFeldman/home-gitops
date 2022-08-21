@@ -3,6 +3,7 @@ kind: ApplicationSet
 
 metadata:
   name: kenobi
+  namespace: argocd
 
 spec:
   generators:
