@@ -17,4 +17,4 @@ spec:
         - destination:
             host: sonarr
             port:
-              number: 6868
+              number: 8989
