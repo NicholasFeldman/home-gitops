@@ -27,7 +27,7 @@ spec:
           main:
             ports:
               http:
-                ports: 8686
+                port: 8686
         persistence:
           config:
             enabled: true
