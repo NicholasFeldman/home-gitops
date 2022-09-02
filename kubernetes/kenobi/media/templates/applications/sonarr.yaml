@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-sonarr
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/.io/helm-charts/
+    targetRevision: 0.1.1
+    helm:
+      releaseName: sonarr
+      values: |
+        image:
+          repository: ghcr.io/onedr0p/sonarr
+          pullPolicy: IfNotPresent
+          tag: 3.0.9.1549
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                ports: 8686
+        persistence:
+          config:
+            enabled: true
+          media:
+            enabled: true
+            type: nfs
+            server: 192.168.40.111
+            path: /volume1/Media
+            mountPath: /media
+          downloads:
+            enabled: true
+            mountPath: /downloads
+            type: nfs
+            server: 192.168.40.111
+            path: /volume1/Downloads
+            mountPath: /downloads
