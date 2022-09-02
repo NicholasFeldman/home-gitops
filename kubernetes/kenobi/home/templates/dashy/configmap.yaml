@@ -50,6 +50,10 @@ data:
             description: Media
             icon: hl-radarr
             url: https://radarr.feldman.in
+          - title: Sonarr
+            description: Media
+            icon: hl-sonarr
+            url: https://sonarr.feldman.in
           - title: Prowlarr
             description: Media
             icon: hl-prowlarr
