@@ -12,7 +12,7 @@ spec:
   project: kenobi
   source:
     chart: app-template 
-    repoURL: http://bjw-s.github.io/helm-charts/.io/helm-charts/
+    repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 0.1.1
     helm:
       releaseName: sonarr
