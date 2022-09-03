@@ -28,12 +28,16 @@ spec:
                 name: grafana-env
           config:
             server:
+              domain: grafana.feldman.in
               root_url: https://grafana.feldman.in
             database:
               type: postgres
               host: postgresql-ha-pgpool.database.svc.cluster.local
               name: grafana
               user: grafana
+              # password provided by env
+            auth:
+              disable_login_form: true
             auth.generic_oauth:
               enabled: true
               client_id: grafana.feldman.in
