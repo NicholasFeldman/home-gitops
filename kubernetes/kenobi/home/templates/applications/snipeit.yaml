@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-snipeit
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 0.1.1
+    helm:
+      releaseName: snipeit
+      values: |
+        image:
+          repository: snipe/snipe-it
+          pullPolicy: IfNotPresent
+          tag: v5.4.1
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80
+        envFrom:
+          - secretRef:
+              name: snipeit
