@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-home-dashy
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 0.1.1
+    helm:
+      releaseName: dashy
+      values: |-
+        image:
+          repository: lissy93/dashy
+          tag: 2.0.3
+          pullPolicy: IfNotPresent
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80
+        persistence:
+          config:
+            enabled: true
+            type: configMap
+            name: dashy-config
+            subPath: conf.yml
+            mountPath: /app/public/conf.yml
+            
