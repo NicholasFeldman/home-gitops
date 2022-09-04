@@ -9,6 +9,6 @@ spec:
   concurrency: 2
   task: backup
   retain: 10
-  cron: 0 2 ? * FRI
+  cron: 0 3 * * ?
   groups:
     - default
