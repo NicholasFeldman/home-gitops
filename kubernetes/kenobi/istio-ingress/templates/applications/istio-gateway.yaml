@@ -17,4 +17,6 @@ spec:
     helm:
       releaseName: istio-gateway
       values: |-
-        replicaCount: 3
+        autoscaling:
+            minReplicas: 2
+
