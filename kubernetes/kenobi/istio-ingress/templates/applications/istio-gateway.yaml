@@ -17,17 +17,4 @@ spec:
     helm:
       releaseName: istio-gateway
       values: |-
-        service:
-          ports:
-            - name: status-port
-              port: 15021
-              protocol: TCP
-              targetPort: 15021
-            - name: http
-              port: 80
-              protocol: TCP
-              targetPort: 80
-            - name: https
-              port: 443
-              protocol: TCP
-              targetPort: 443
+        replicaCount: 3
