@@ -29,6 +29,15 @@ spec:
             - --insecure
           config:
             url: "https://argocd.feldman.in"
+            oidc.config: |
+              name: Keycloak
+              issuer: https://auth.feldman.tech/realms/Feldman
+              clientID: argocd.feldman.in
+              clientSecret: $argocd-oidc:keycloak.clientSecret
+              requestedScopes: ["openid", "profile", "email", "groups"]
+          rbacConfig:
+            policy.csv: |
+              g, ArgoCDAdmins, role:admin
         repoServer:
           autoscaling:
             enabled: true
