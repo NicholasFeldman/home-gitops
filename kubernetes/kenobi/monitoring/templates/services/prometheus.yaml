@@ -1,0 +1,20 @@
+ serviceMonitor:apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: prometheus
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - prometheus.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: prometheus-operated
+            port:
+              number: 9090
