@@ -3,5 +3,3 @@ kind: Namespace
 
 metadata:
   name: database
-  labels:
-    istio-injection: enabled

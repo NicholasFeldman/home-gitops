@@ -3,5 +3,3 @@ kind: Namespace
 
 metadata:
   name: games
-  labels:
-    istio-injection: enabled

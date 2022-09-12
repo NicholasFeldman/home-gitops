@@ -3,5 +3,3 @@ kind: Namespace
 
 metadata:
   name: media
-  labels:
-    istio-injection: enabled
