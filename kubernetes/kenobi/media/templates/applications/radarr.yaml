@@ -37,3 +37,10 @@ spec:
               nfs:
                 server: 192.168.40.111
                 path: /volume1/Downloads
+        podSecurityContext:
+          runAsUser: 568
+          runAsGroup: 568
+          fsGroup: 568
+          fsGroupChangePolicy: "OnRootMismatch"
+          supplementalGroups:
+            - 100
