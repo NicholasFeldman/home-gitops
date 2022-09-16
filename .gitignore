@@ -12,5 +12,6 @@ ansible/roles
 *.iws
 
 # Secrets
+*.secret.yaml
 **/secrets/*
 !**/secrets/sealed-*

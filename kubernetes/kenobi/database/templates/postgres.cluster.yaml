@@ -1,9 +1,12 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
+
 metadata:
   name: postgres
+
 spec:
-  instances: 1
+  instances: 3
   primaryUpdateStrategy: unsupervised
   storage:
     size: 16Gi
+  superuserSecret: postgres-superuser
