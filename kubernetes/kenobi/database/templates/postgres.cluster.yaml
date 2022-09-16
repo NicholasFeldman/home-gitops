@@ -9,4 +9,5 @@ spec:
   primaryUpdateStrategy: unsupervised
   storage:
     size: 16Gi
-  superuserSecret: postgres-superuser
+  superuserSecret:
+    name: postgres-superuser
