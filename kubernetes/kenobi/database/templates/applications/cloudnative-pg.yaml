@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-database-nextcloud-postgresql
+  name: kenobi-database-cloudnative-pg
   namespace: argocd
 
 spec:
