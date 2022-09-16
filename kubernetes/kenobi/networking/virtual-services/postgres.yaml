@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: postgres
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - postgres.feldman.in
+  tcp:
+    - match:
+        - port: 5432
+      route:
+        - destination:
+            host: postgres-rw.database.svc.cluster.local
+            port:
+              number: 5432

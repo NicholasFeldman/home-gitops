@@ -25,3 +25,7 @@ spec:
       tls:
         mode: SIMPLE
         credentialName: feldman-in-tls
+    - port:
+        number: 5432
+        name: tcp-postgres
+        protocol: TCP
