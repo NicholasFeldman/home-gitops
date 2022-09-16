@@ -3,6 +3,7 @@ kind: VirtualService
 
 metadata:
   name: postgres
+  namespace: istio-ingress
 
 spec:
   gateways:
