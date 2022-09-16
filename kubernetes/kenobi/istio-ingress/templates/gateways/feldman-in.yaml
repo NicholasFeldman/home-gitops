@@ -29,5 +29,5 @@ spec:
         number: 5432
         name: tcp-postgres
         protocol: TCP
-        hosts:
+      hosts:
         - "*.feldman.in"
