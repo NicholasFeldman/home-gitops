@@ -8,6 +8,7 @@ spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
   storage:
+    storageClass: nfs-client
     size: 16Gi
   superuserSecret:
     name: postgres-superuser
