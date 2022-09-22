@@ -22,4 +22,5 @@ spec:
           server: hoth.feldman.in
           path: /volume1/Kenobi Storage
         storageClass:
+          name: nfs-hoth
           reclaimPolicy: Retain
