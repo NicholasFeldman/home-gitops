@@ -17,6 +17,9 @@ spec:
     helm:
       releaseName: nfs-subdir-external-provisioner
       values: |-
+        replicaCount: 2
         nfs:
           server: hoth.feldman.in
           path: /volume1/Kenobi Storage
+        storageClass:
+          reclaimPolicy: Retain
