@@ -19,4 +19,4 @@ spec:
       values: |-
         nfs:
           server: hoth.feldman.in
-          path: /Kenobi%20Storage
+          path: /volume1/Kenobi Storage
