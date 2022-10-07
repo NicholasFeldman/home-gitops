@@ -44,15 +44,7 @@ spec:
 
         persistence:
           enabled: true
-          size: 2Gi
-          nextcloudData:
-            enabled: true
-            size: 10Gi
-
-        livenessProbe:
-          enabled: false
-        readinessProbe:
-          enabled: false
+          size: 16Gi
 
         internalDatabase:
           enabled: false
