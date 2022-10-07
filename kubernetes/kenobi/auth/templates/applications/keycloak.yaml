@@ -21,8 +21,6 @@ spec:
         auth:
           adminUser: admin
           existingSecret: keycloak
-        serviceDiscovery:
-          enabled: true
 #        extraEnvVars:
 #          - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
 #            value: "true"
