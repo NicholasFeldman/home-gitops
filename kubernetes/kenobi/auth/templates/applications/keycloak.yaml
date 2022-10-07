@@ -21,11 +21,11 @@ spec:
         auth:
           adminUser: admin
           existingSecret: keycloak
-#        extraEnvVars:
-#          - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
-#            value: "true"
-#          - name: KEYCLOAK_FRONTEND_URL
-#            value: "https://auth.feldman.tech"
+        #        extraEnvVars:
+        #          - name: KEYCLOAK_PROXY_ADDRESS_FORWARDING
+        #            value: "true"
+        #          - name: KEYCLOAK_FRONTEND_URL
+        #            value: "https://auth.feldman.tech"
         # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#keycloak-deploymentstatefulset-parameters
         replicaCount: 1
         # https://github.com/bitnami/charts/tree/master/bitnami/keycloak#exposure-parameters
