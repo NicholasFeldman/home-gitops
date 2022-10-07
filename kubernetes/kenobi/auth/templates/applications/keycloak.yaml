@@ -37,4 +37,6 @@ spec:
         postgresql:
           enabled: false
         externalDatabase:
+          host: postgresql.database.svc.cluster.local
           existingSecret: keycloak
+          existingSecretPasswordKey: postgresql-password
