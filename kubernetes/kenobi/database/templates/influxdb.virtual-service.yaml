@@ -15,6 +15,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: shared-influxdb
+            host: influxdb
             port:
               number: 8086

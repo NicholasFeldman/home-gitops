@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-database-shared-influxdb
+  name: kenobi-database-influxdb
   namespace: argocd
 
 spec:
@@ -15,10 +15,10 @@ spec:
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 5.3.7
     helm:
-      releaseName: shared
+      releaseName: influxdb
       values: |-
         auth:
-          existingSecret: shared-influxdb
+          existingSecret: influxdb
           admin:
             username: admin
             org: Feldman
