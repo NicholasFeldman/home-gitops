@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-home-jellyfin
+  name: kenobi-media-jellyfin
   namespace: argocd
 
 spec:
   destination:
-    namespace: home
+    namespace: media
     name: in-cluster
   project: kenobi
   source:
