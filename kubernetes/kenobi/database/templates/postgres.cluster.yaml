@@ -7,8 +7,8 @@ metadata:
 spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
-  resizeInUseVolumes: false
   storage:
     size: 16Gi
+    resizeInUseVolumes: False
   superuserSecret:
     name: postgres-superuser
