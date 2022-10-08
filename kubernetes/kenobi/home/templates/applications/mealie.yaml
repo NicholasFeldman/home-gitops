@@ -23,7 +23,7 @@ spec:
           TZ: America/New_York
         api:
           image:
-            tag: frontend-v1.0.0beta-4
+            tag: api-v1.0.0beta-4
           env:
             TZ: America/New_York
             DB_ENGINE: postgres
