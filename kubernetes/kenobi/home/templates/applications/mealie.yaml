@@ -25,8 +25,7 @@ spec:
           API_URL: http://localhost:9000
         additionalContainers:
           api:
-            image:
-              repository: hkotel/mealie:api-v1.0.0beta-4
+            image: hkotel/mealie:api-v1.0.0beta-4
             env:
               TZ: America/New_York
               ALLOW_SIGNUP: false
