@@ -11,14 +11,29 @@ spec:
     name: in-cluster
   project: kenobi
   source:
-    chart: mealie
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 5.*
+    chart: app-template
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 0.2.*
     helm:
       releaseName: mealie
       values: |-
+        image:
+          repository: hkotel/mealie
+          tag: frontend-v1.0.0beta-4
         env:
           TZ: America/New_York
         api:
+          image:
+            repository: hkotel/mealie
+            tag: api-v1.0.0beta-4
           env:
             TZ: America/New_York
+        service:
+          main:
+            ports:
+              api:
+                enabled: true
+                port: 9000
+              http:
+                port: 3000
+
