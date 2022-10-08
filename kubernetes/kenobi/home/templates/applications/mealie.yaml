@@ -32,8 +32,8 @@ spec:
             POSTGRES_PORT=5432
             POSTGRES_DB=mealie
           envFrom:
-          - secretRef:
-              name: mealie-env
+            - secretRef:
+                name: mealie-env
         persistence:
           api-data:
             enabled: false
