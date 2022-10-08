@@ -26,8 +26,7 @@ spec:
         additionalContainers:
           api:
             image:
-              repository: hkotel/mealie
-              tag: api-v1.0.0beta-4
+              repository: hkotel/mealie:api-v1.0.0beta-4
             env:
               TZ: America/New_York
               ALLOW_SIGNUP: false
