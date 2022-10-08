@@ -38,9 +38,6 @@ spec:
             envFrom:
               - secretRef:
                   name: mealie-env
-            volumeMounts:
-              - name: api-data
-                mountPath: /app/data/
             ports:
               - containerPort: 9000
                 name: api
@@ -53,9 +50,3 @@ spec:
               api:
                 enabled: true
                 port: 9000
-        persistence:
-          api-data:
-            enabled: true
-            mountPath: /app/data/
-            accessMode: ReadWriteOnce
-            size: 10Gi
