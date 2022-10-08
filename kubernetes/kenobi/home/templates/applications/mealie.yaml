@@ -17,24 +17,8 @@ spec:
     helm:
       releaseName: mealie
       values: |-
-        image:
-          tag: frontend-v1.0.0beta-4
         env:
           TZ: America/New_York
         api:
-          image:
-            tag: api-v1.0.0beta-4
           env:
             TZ: America/New_York
-            DB_ENGINE: postgres
-            POSTGRES_USER: mealie
-            POSTGRES_SERVER: postgresql.database.svc.cluster.local
-            POSTGRES_PORT: 5432
-            POSTGRES_DB: mealie
-          envFrom:
-            - secretRef:
-                name: mealie-env
-          volumeMounts: []
-        persistence:
-          api-data:
-            enabled: false
