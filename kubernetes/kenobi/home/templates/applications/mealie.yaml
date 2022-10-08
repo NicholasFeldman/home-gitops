@@ -22,3 +22,4 @@ spec:
         api:
           env:
             TZ: America/New_York
+            ALLOW_SIGNUP: false
