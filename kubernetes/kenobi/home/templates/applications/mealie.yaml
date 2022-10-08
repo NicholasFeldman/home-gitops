@@ -31,7 +31,7 @@ spec:
             POSTGRES_SERVER: postgresql.database.svc.cluster.local
             POSTGRES_PORT=5432
             POSTGRES_DB=mealie
-          envFrom:
+        envFrom:
             - secretRef:
                 name: mealie-env
         persistence:
