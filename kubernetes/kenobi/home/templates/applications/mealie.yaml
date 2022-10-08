@@ -22,16 +22,19 @@ spec:
           tag: frontend-v1.0.0beta-4
         env:
           TZ: America/New_York
-        api:
-          image:
-            repository: hkotel/mealie
-            tag: api-v1.0.0beta-4
-          env:
-            TZ: America/New_York
-            ALLOW_SIGNUP: false
-          volumeMounts:
-            - name: api-data
-              mountPath: /app/data/
+          API_URL: http://localhost:9000
+        additionalContainers:
+          api:
+            image:
+              repository: hkotel/mealie
+              tag: api-v1.0.0beta-4
+            env:
+              TZ: America/New_York
+              ALLOW_SIGNUP: false
+              API_PORT: 9000
+            volumeMounts:
+              - name: api-data
+                mountPath: /app/data/
         service:
           main:
             ports:
