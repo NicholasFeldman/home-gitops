@@ -33,6 +33,10 @@ spec:
             volumeMounts:
               - name: api-data
                 mountPath: /app/data/
+            ports:
+              - containerPort: 9000
+                name: api
+                protocol: TCP
         service:
           main:
             ports:
