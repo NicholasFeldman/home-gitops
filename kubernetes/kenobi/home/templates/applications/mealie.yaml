@@ -21,6 +21,7 @@ spec:
           repository: hkotel/mealie
           tag: frontend-v1.0.0beta-4
         env:
+          MEALIE__PORT: 3000
           TZ: America/New_York
         api:
           image:
