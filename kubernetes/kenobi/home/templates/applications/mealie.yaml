@@ -30,6 +30,14 @@ spec:
               TZ: America/New_York
               ALLOW_SIGNUP: false
               API_PORT: 9000
+              DB_ENGINE: postgres
+              POSTGRES_USER: mealie
+              POSTGRES_SERVER: postgresql.svc.cluster.local
+              POSTGRES_PORT: 5432
+              POSTGRES_DB: mealie
+            envFrom:
+              - secretRef:
+                  name: mealie-env
             volumeMounts:
               - name: api-data
                 mountPath: /app/data/
