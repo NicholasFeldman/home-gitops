@@ -37,3 +37,4 @@ spec:
         persistence:
           api-data:
             enabled: false
+         volumeMounts: []
