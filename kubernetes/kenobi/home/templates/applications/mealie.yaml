@@ -13,7 +13,7 @@ spec:
   source:
     chart: app-template 
     repoURL: http://bjw-s.github.io/helm-charts/
-    targetRevision: 2.2.*
+    targetRevision: 0.2.*
     helm:
       releaseName: mealie
       values: |-
