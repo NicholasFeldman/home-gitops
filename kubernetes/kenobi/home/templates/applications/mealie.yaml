@@ -28,6 +28,7 @@ spec:
             repository: hkotel/mealie
             tag: api-v1.0.0beta-4
           env:
+            API__PORT: &api-port 9000
             TZ: America/New_York
         service:
           main:
