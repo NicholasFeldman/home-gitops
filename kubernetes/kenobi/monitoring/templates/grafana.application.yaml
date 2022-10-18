@@ -21,6 +21,9 @@ spec:
           useGrafanaIniFile: true
           grafanaIniConfigMap: grafana-ini
 
+        admin:
+          existingSecret: grafana-admin
+
         grafana:
           replicaCount: 2
           updateStrategy:
