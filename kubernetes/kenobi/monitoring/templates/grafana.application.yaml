@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: kenobi-{{.Release.Namespace}}-grafana-operator
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: {{.Release.Namespace}}
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: grafana
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 8.2.*
+    helm:
+      releaseName: grafana
+      values: |
+        config:
+          useGrafanaIniFile: true
+          grafanaIniConfigMap: grafana-ini
+
+        grafana:
+          replicaCount: 2
+          updateStrategy:
+            type: RollingUpdate
+          extraEnvVarsSecret: grafana-env

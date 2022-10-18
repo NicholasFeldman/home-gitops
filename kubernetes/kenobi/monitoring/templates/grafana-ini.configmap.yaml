@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+
+metadata:
+  name: grafana-ini
+
+data:
+  grafana.ini: |-
+    [server]
+    domain = grafana.feldman.in
+    root_url = https://grafana.feldman.in
+
+    [database]
+    type = postgres
+    host = postgresql.database.svc.cluster.local
+    name = grafana
+    user = grafana
+    # password provided by env
+
+    [auth]
+    disable_login_form = true
+
+    [auth.generic_oauth]
+    enabled = true
+    name = Keycloak
+    client_id = grafana.feldman.in
+    scopes = profile
+    auth_url = https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/auth
+    token_url = https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/token
+    api_url = https://auth.feldman.tech/auth/realms/Feldman/protocol/openid-connect/userinfo
+    role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
