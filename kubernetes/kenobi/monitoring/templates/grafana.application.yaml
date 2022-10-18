@@ -26,3 +26,5 @@ spec:
           updateStrategy:
             type: RollingUpdate
           extraEnvVarsSecret: grafana-env
+        persistence:
+          enabled: false
