@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: kenobi-monitoring-uptime-kuma
-  namespace: monitoring
+  namespace: argocd
 
 spec:
   destination:
