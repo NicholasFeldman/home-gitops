@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: uptime-kuma
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - status.feldman.in
+    - uptime-kuma.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: uptime-kuma
+            port:
+              number: 3001
