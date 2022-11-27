@@ -27,6 +27,7 @@ spec:
           main:
             ports:
               http:
+                protocol: HTTP
                 port: 3001 
         persistence:
           data:
