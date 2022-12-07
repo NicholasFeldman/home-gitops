@@ -32,7 +32,8 @@ spec:
           dns:
             enabled: true
             type: LoadBalancer
-            dns:
+            ports:
+              dns:
                 enabled: true
                 port: 53
                 protocol: TCP
