@@ -31,3 +31,15 @@ spec:
         protocol: TCP
       hosts:
         - "*.feldman.in"
+    - port:
+        number: 53
+        name: tcp-dns
+        protocol: TCP
+      hosts:
+        - "10.10.90.30"
+    - port:
+        number: 53
+        name: udp-dns
+        protocol: UDP
+      hosts:
+        - "10.10.90.30"

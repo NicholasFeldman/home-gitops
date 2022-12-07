@@ -18,3 +18,23 @@ spec:
             host: adguard
             port:
               number: 80
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: adguard-dns
+
+spec:
+  gateways:
+    - istio-ingress/feldman-in
+  hosts:
+    - 10.10.90.30
+  http:
+    - match:
+        - port: 53
+      route:
+        - destination:
+            host: adguard
+            port:
+              number: 53
