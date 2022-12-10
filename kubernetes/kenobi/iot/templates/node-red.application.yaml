@@ -11,21 +11,28 @@ spec:
     name: in-cluster
   project: kenobi
   source:
-    chart: node-red
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 10.0.0
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.2.*
     helm:
       releaseName: node-red
       values: |-
         image:
-          tag: 2.2.2-16
+          repository: nodered/node-red
+          tag: 3.0.2
         env:
           TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 1880
         persistence:
           data:
             enabled: true
+            mountPath: /data
             accessMode: ReadWriteOnce
-            size: 1Gi
+            size: 3Gi
         securityContext:
           runAsUser: 1000
           runAsGroup: 1000
