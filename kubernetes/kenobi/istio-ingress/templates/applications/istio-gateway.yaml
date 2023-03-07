@@ -39,3 +39,7 @@ spec:
             port: 5432
             protocol: TCP
             targetPort: 5432
+          - name: tcp-mariadb
+            port: 3306
+            protocol: TCP
+            targetPort: 3306
