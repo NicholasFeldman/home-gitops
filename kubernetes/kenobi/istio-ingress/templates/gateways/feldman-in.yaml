@@ -31,3 +31,9 @@ spec:
         protocol: TCP
       hosts:
         - "*.feldman.in"
+    - port:
+        number: 3306
+        name: tcp-mariadb
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
