@@ -16,10 +16,3 @@ spec:
     targetRevision: 0.13.9
     helm:
       releaseName: metallb
-      values: |-
-        configInline:
-          address-pools:
-            - name: default
-              protocol: layer2
-              addresses:
-                - 10.10.90.100-10.10.90.109
