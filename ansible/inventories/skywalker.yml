@@ -1,0 +1,27 @@
+kenobi:
+  hosts:
+    skywalker-control-plane-0:
+      ansible_user: nick
+      ansible_host: 10.10.90.70
+    skywalker-worker-0:
+      ansible_user: nick
+      ansible_host: 10.10.90.80
+    skywalker-worker-1:
+      ansible_user: nick
+      ansible_host: 10.10.90.81
+  children:
+    # k3s
+    k3s_cluster_server:
+      hosts:
+        skywalker-control-plane-0:
+    k3s_cluster_agent:
+      hosts:
+        skywalker-worker-0:
+        skywalker-worker-1:
+
+    # proxmox
+    proxmox_vm:
+      hosts:
+        skywalker-control-plane-0:
+        skywalker-worker-0:
+        skywalker-worker-1:

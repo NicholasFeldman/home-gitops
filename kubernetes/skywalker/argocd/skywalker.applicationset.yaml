@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: skywalker
+  namespace: argocd
+
+spec:
+  generators:
+    - git:
+        repoURL: git@github.com:NicholasFeldman/home-gitops.git
+        revision: HEAD
+        directories:
+          - path: kubernetes/skywalker/*
+  template:
+    metadata:
+      name: 'skywalker-{{"{{path.basename}}"}}'
+    spec:
+      project: skywalker
+      source:
+        repoURL: git@github.com:NicholasFeldman/home-gitops.git
+        targetRevision: HEAD
+        path: '{{"{{path}}"}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{"{{path.basename}}"}}'
