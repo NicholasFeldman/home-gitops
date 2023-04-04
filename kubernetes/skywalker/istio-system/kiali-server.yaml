@@ -13,7 +13,7 @@ spec:
   source:
     chart: kiali-server
     repoURL: https://kiali.org/helm-charts/
-    targetRevision: '1.66.0'
+    targetRevision: '1.65.0'
     helm:
       releaseName: kiali-server
   ignoreDifferences:
