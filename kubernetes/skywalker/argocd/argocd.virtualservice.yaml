@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: kiali-server
+  name: argocd
 
 spec:
   gateways:
     - istio-system/feldman-in
   hosts:
-    - kiali.feldman.in
+    - argocd.feldman.in
   http:
     - match:
         - uri:
             prefix: /
       route:
         - destination:
-            host: kiali
+            host: argocd-server
             port:
-              number: 20001
+              number: 80
