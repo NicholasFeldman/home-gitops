@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: feldman-tech-tls
+  namespace: istio-system
+
+spec:
+  secretName: feldman-tech-tls
+
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+
+  commonName: '*.feldman.tech'
+  dnsNames:
+    - 'feldman.tech'
+    - '*.feldman.tech'
