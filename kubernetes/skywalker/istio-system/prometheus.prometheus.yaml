@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 
 metadata:
-  name: istio-system-prometheus
+  name: prometheus
   namespace: istio-system
 
 spec:
