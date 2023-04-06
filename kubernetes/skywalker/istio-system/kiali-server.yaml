@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-istio-system-kiali-operator
+  name: skywalker-istio-system-kiali-server
   namespace: argocd
 
 spec:
@@ -11,8 +11,17 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    chart: kiali-operator
+    chart: kiali-server
     repoURL: https://kiali.org/helm-charts/
     targetRevision: '1.65.0'
     helm:
       releaseName: kiali-operator
+  ignoreDifferences:
+    - group: '*'
+      kind: ConfigMap
+      jsonPointers:
+        - /data/config.yaml
+    - group: '*'
+      kind: Deployment
+      jsonPointers:
+        - /spec/template/metadata/annotations
