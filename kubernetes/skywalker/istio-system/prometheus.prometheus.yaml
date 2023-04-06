@@ -2,7 +2,7 @@ apiVersion: monitoring.coreos.com/v1
 kind: Prometheus
 
 metadata:
-  name: prometheus
+  name: istio-system-prometheus
   namespace: istio-system
 
 spec:
@@ -13,7 +13,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: istio-system-prometheus
+  name: prometheus
 spec:
   type: ClusterIP
   ports:
