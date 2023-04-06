@@ -3,3 +3,5 @@ kind: Namespace
 
 metadata:
   name: argocd
+  labels:
+    istio-injection: enabled

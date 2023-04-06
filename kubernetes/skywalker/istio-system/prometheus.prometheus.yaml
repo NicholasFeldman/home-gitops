@@ -6,19 +6,16 @@ metadata:
   namespace: istio-system
 
 spec:
-  podMonitorNamespaceSelector: {}
+  serviceAccountName: istiod-service-account
   podMonitorSelector:
     matchLabels:
       release: istio-system
-  probeNamespaceSelector: {}
   probeSelector:
     matchLabels:
       release: istio-system
-  ruleNamespaceSelector: {}
   ruleSelector:
     matchLabels:
       release: istio-system
-  serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector:
     matchLabels:
       release: istio-system
