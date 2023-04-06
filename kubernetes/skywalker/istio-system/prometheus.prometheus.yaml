@@ -9,19 +9,19 @@ spec:
   podMonitorNamespaceSelector: {}
   podMonitorSelector:
     matchLabels:
-      release: kube-prometheus-stack
+      release: istio-system
   probeNamespaceSelector: {}
   probeSelector:
     matchLabels:
-      release: kube-prometheus-stack
+      release: istio-system
   ruleNamespaceSelector: {}
   ruleSelector:
     matchLabels:
-      release: kube-prometheus-stack
+      release: istio-system
   serviceMonitorNamespaceSelector: {}
   serviceMonitorSelector:
     matchLabels:
-      release: kube-prometheus-stack
+      release: istio-system
 ---
 apiVersion: v1
 kind: Service

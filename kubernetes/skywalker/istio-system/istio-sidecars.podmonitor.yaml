@@ -2,10 +2,11 @@ apiVersion: monitoring.coreos.com/v1
 kind: PodMonitor
 metadata:
   name: istio-sidecars
-  namespace: istio-system
   labels:
-    release: kube-prometheus-stack
+    release: istio-system
 spec:
+  namespaceSelector:
+    any: true
   selector:
     matchLabels:
       security.istio.io/tlsMode: 'istio'
@@ -16,49 +17,33 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: prometheus-operator-istio-controlplane
+  name: istio-ingressgateway
   labels:
-    release: kube-prometheus-stack
+    release: istio-system
 spec:
-  jobLabel: istio
   selector:
-    matchExpressions:
-      - {key: istio, operator: In, values: [mixer,pilot,galley,citadel,sidecar-injector]}
+    matchLabels:
+      istio: ingressgateway
   namespaceSelector:
-    any: true
+    matchNames:
+      - istio-system
   endpoints:
-  - port: http-monitoring
-    interval: 15s
-  - port: http-policy-monitoring
-    interval: 15s
+    - targetPort: http-envoy-prom
+      path: /stats/prometheus
 ---
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: prometheus-oper-istio-dataplane
+  name: istiod
   labels:
-    monitoring: istio-dataplane
-    release: kube-prometheus-stack
+    release: istio-system
 spec:
   selector:
-    matchExpressions:
-      - {key: istio-prometheus-ignore, operator: DoesNotExist}
+    matchLabels:
+      istio: pilot
   namespaceSelector:
-    any: true
-  jobLabel: envoy-stats
+    matchNames:
+      - istio-system
   endpoints:
-  - path: /stats/prometheus
-    targetPort: http-envoy-prom
-    interval: 15s
-    relabelings:
-    - sourceLabels: [__meta_kubernetes_pod_container_port_name]
-      action: keep
-      regex: '.*-envoy-prom'
-    - action: labelmap
-      regex: "__meta_kubernetes_pod_label_(.+)"
-    - sourceLabels: [__meta_kubernetes_namespace]
-      action: replace
-      targetLabel: namespace
-    - sourceLabels: [__meta_kubernetes_pod_name]
-      action: replace
-      targetLabel: pod_name
+    - port: http-monitoring
+      interval: 15s
