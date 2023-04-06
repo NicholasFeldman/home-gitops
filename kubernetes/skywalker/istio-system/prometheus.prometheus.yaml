@@ -6,6 +6,20 @@ metadata:
   namespace: istio-system
 
 spec:
- probeSelector:
+  probeSelector:
     matchLabels:
       release: istio-system
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: istio-system-prometheus
+spec:
+  type: ClusterIP
+  ports:
+  - name: web
+    port: 9090
+    protocol: TCP
+    targetPort: web
+  selector:
+    prometheus: prometheus
