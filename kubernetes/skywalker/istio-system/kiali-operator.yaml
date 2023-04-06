@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-istio-system-kiali-operator
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: istio-system
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: kiali-operator
+    repoURL: https://kiali.org/helm-charts/
+    targetRevision: '0.0.0'
+    helm:
+      releaseName: kiali-operator
