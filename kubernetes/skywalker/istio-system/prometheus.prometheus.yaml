@@ -6,9 +6,22 @@ metadata:
   namespace: istio-system
 
 spec:
+  podMonitorNamespaceSelector: {}
+  podMonitorSelector:
+    matchLabels:
+      release: kube-prometheus-stack
+  probeNamespaceSelector: {}
   probeSelector:
     matchLabels:
-      release: istio-system
+      release: kube-prometheus-stack
+  ruleNamespaceSelector: {}
+  ruleSelector:
+    matchLabels:
+      release: kube-prometheus-stack
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector:
+    matchLabels:
+      release: kube-prometheus-stack
 ---
 apiVersion: v1
 kind: Service
