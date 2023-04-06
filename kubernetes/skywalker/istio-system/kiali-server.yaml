@@ -16,6 +16,11 @@ spec:
     targetRevision: '1.65.0'
     helm:
       releaseName: kiali-server
+    values:
+      external_services:
+        prometheus:
+          # Prometheus service name is "metrics" and is in the "telemetry" namespace
+          url: "http://prometheus-operated.monitoring.svc.cluster.local:9090/"
   ignoreDifferences:
     - group: '*'
       kind: ConfigMap
