@@ -13,18 +13,6 @@ spec:
   source:
     chart: kube-prometheus-stack
     repoURL: https://prometheus-community.github.io/helm-charts
-    targetRevision: 37.3.*
+    targetRevision: 45.9.1
     helm:
       releaseName: kube-prometheus-stack
-      values: |
-        grafana:
-          enabled: false
-          forceDeployDashboards: true
-        alertmanager:
-          enabled: false
-        prometheus:
-          prometheusSpec:
-            # TEMPORARY TO DO
-            storageSpec:
-              emptyDir:
-                medium: Memory
