@@ -10,5 +10,5 @@ spec:
   http:
   - route:
       - destination:
-          host: truenas
+          host: truenas.feldman.in
         weight: 100
