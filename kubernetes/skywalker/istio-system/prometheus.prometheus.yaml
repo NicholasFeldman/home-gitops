@@ -22,4 +22,4 @@ spec:
     protocol: TCP
     targetPort: web
   selector:
-    prometheus: prometheus
+    prometheus: istio-system-prometheus
