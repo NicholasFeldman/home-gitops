@@ -7,4 +7,4 @@ metadata:
 spec:
   external_services:
     prometheus:
-      url: "http://prometheus-operated.monitoring.svc.cluster.local"
+      url: "http://prometheus-operated.monitoring.svc.cluster.local:9090"
