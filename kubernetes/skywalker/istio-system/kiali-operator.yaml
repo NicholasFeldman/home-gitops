@@ -13,6 +13,6 @@ spec:
   source:
     chart: kiali-operator
     repoURL: https://kiali.org/helm-charts/
-    targetRevision: '0.0.0'
+    targetRevision: '1.65.0'
     helm:
       releaseName: kiali-operator
