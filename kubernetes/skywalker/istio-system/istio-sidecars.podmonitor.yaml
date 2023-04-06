@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: istio-sidecars
+  namespace: istio-system
+  labels:
+    release: kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      security.istio.io/tlsMode: 'istio'
+  podMetricsEndpoints:
+    - port: http-envoy-prom
+      path: /stats/prometheus
