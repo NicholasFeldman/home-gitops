@@ -16,4 +16,3 @@ resources:
   - istiod.application.yaml
   - kiali-server.virtualservice.yaml
   - kiali-server.yaml
-  - prometheus.prometheus.yaml
