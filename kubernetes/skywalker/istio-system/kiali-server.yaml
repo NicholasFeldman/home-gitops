@@ -11,17 +11,16 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    chart: kiali-server
+    chart: kiali-operator
     repoURL: https://kiali.org/helm-charts/
     targetRevision: '1.65.0'
     helm:
       releaseName: kiali-operator
-  ignoreDifferences:
-    - group: '*'
-      kind: ConfigMap
-      jsonPointers:
-        - /data/config.yaml
-    - group: '*'
-      kind: Deployment
-      jsonPointers:
-        - /spec/template/metadata/annotations
+    values: |-
+      cr:
+        create: true
+        namespace: istio-system
+        spec:
+          external_services:
+            prometheus:
+              url: prometheus.monitoring.svc.cluster.local
