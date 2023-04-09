@@ -23,4 +23,4 @@ spec:
           spec:
             external_services:
               prometheus:
-                url: http://prometheus.monitoring.svc.cluster.local
+                url: http://prometheus.monitoring.svc.cluster.local:9090
