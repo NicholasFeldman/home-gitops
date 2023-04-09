@@ -16,11 +16,11 @@ spec:
     targetRevision: '1.65.0'
     helm:
       releaseName: kiali-operator
-    values: |-
-      cr:
-        create: true
-        namespace: istio-system
-        spec:
-          external_services:
-            prometheus:
-              url: prometheus.monitoring.svc.cluster.local
+      values: |-
+        cr:
+          create: true
+          namespace: istio-system
+          spec:
+            external_services:
+              prometheus:
+                url: prometheus.monitoring.svc.cluster.local
