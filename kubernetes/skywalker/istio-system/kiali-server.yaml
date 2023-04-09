@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-istio-system-kiali-server
+  name: skywalker-istio-system-kiali-operator
   namespace: argocd
 
 spec:
