@@ -9,9 +9,9 @@ spec:
   destination:
     namespace: auth
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
-    chart: skywalker
+    chart: keycloak
     repoURL: https://charts.bitnami.com/bitnami
     targetRevision: 10.1.*
     helm:
