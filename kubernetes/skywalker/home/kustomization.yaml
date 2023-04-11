@@ -8,3 +8,6 @@ resources:
   - home.namespace.yaml
   - dashy/dashy.application.yaml
   - dashy/dashy.virtualservice.yaml
+  - snipe-it/snipeit.application.yaml
+  - snipe-it/snipeit.sealed-secret.yaml
+  - snipe-it/sniepit.virtualservice.yaml
