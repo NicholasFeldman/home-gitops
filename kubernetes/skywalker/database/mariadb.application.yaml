@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-database-mariadb
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: database
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: mariadb
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 11.5.3
+    helm:
+      releaseName: mariadb
+      values: |-
+        auth:
+          username: nick
+          database: default
+          existingSecret: mariadb
+        primary:
+          persistence:
+            size: 16Gi
