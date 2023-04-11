@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-database-postgresql
+  name: skywalker-database-postgresql
   namespace: argocd
 
 spec:
   destination:
     namespace: database
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
     chart: postgresql
     repoURL: https://charts.bitnami.com/bitnami
