@@ -10,4 +10,4 @@ resources:
   - dashy/dashy.virtualservice.yaml
   - snipe-it/snipeit.application.yaml
   - snipe-it/snipeit.sealed-secret.yaml
-  - snipe-it/sniepit.virtualservice.yaml
+  - snipe-it/snipeit.virtualservice.yaml
