@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-longhorn-system-longhorn
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: longhorn-system
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: longhorn
+    repoURL: https://charts.longhorn.io
+    targetRevision: 1.4.1
+    helm:
+      releaseName: longhorn
+      values: |-
+        csi:
+          kubeletRootDir: /var/lib/kubelet
+        persistence:
+          reclaimPolicy: Retain
+        defaultSettings:
+          backupTarget: nfs://hoth.feldman.in:/volume1/Kenobi Longhorn Backups
