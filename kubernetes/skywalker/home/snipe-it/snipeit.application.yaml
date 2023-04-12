@@ -31,4 +31,15 @@ spec:
         envFrom:
           - secretRef:
               name: snipeit
-
+        persistence:
+          env:
+            enabled: true
+            type: secret
+            mountPath: /var/www/html/.env
+            name: snipeit-env
+            subPath: .env
+          data:
+            enabled: true
+            mountPath: /var/lib/snipeit
+            accessMode: ReadWriteOnce
+            size: 5Gi
