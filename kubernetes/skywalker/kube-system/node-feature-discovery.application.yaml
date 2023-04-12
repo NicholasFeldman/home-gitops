@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-kube-system-node-feature-discovery
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: node-feature-discovery
+    repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
+    targetRevision: 0.12.2
+    helm:
+      releaseName: dashy
+      values: |-
+        image:
+        
