@@ -15,7 +15,5 @@ spec:
     repoURL: https://kubernetes-sigs.github.io/node-feature-discovery/charts
     targetRevision: 0.12.2
     helm:
-      releaseName: dashy
-      values: |-
-        image:
+      releaseName: node-feature-discovery
         
