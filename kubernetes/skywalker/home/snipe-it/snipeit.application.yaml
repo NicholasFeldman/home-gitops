@@ -18,9 +18,9 @@ spec:
       releaseName: snipeit
       values: |
         image:
-          repository: snipe/snipe-it
+          repository: linuxserver/snipe-it
           pullPolicy: IfNotPresent
-          tag: v6.1.0
+          tag: '6.1.0'
         env:
           TZ: America/New_York
         service:
