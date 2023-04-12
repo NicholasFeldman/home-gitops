@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-kube-system-amd-gpu
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: amd-gpu
+    repoURL: https://radeonopencompute.github.io/k8s-device-plugin/
+    targetRevision: '0.8.0'
+    helm:
+      releaseName: amd-gpu
+        
