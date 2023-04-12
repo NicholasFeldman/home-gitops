@@ -34,11 +34,11 @@ spec:
         persistence:
           data:
             enabled: true
-            mountPath: /config
+            mountPath: /var/lib/snipeit
             accessMode: ReadWriteOnce
             size: 5Gi
-          data2:
+          config:
             enabled: true
-            mountPath: /var/lib/snipeit
+            mountPath: /config
             accessMode: ReadWriteOnce
             size: 5Gi
