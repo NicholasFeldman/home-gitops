@@ -18,9 +18,9 @@ spec:
       releaseName: snipeit
       values: |
         image:
-          repository: linuxserver/snipe-it
+          repository: snipe/snipe-it
           pullPolicy: IfNotPresent
-          tag: '6.1.0'
+          tag: v6.0.14
         env:
           TZ: America/New_York
         service:
@@ -35,10 +35,5 @@ spec:
           data:
             enabled: true
             mountPath: /var/lib/snipeit
-            accessMode: ReadWriteOnce
-            size: 5Gi
-          config:
-            enabled: true
-            mountPath: /config
             accessMode: ReadWriteOnce
             size: 5Gi
