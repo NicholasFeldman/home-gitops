@@ -32,12 +32,6 @@ spec:
           - secretRef:
               name: snipeit
         persistence:
-          env:
-            enabled: true
-            type: secret
-            mountPath: /var/www/html/.env
-            name: snipeit-env
-            subPath: .env
           data:
             enabled: true
             mountPath: /var/lib/snipeit
