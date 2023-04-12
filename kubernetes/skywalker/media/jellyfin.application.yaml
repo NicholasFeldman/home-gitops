@@ -27,6 +27,9 @@ spec:
             ports:
               http:
                 port: 8096
+        resources:
+          limits:
+            amd.com/gpu: 1
         persistence:
           config:
             enabled: true
