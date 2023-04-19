@@ -38,3 +38,15 @@ spec:
         protocol: TCP
       hosts:
         - "*.feldman.in"
+    - port:
+        number: 389
+        name: tcp-ldap
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
+    - port:
+        number: 636
+        name: tcp-ldaps
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
