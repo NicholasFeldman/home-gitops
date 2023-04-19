@@ -18,7 +18,7 @@ spec:
       releaseName: openldap
       values: |-
         image:
-          repository: /bitnami/openldap
+          repository: bitnami/openldap
           tag: 2.6.4
         env:
           TZ: America/New_York
