@@ -25,9 +25,16 @@ spec:
         service:
           main:
             ports:
+              http:
+                enabled: false
               ldap:
+                enabled: true
+                primary: true
+                protocol: TCP
                 port: 1389
               ldaps:
+                enabled: true
+                protocol: TCP
                 port: 1636
         persistence:
           data:
