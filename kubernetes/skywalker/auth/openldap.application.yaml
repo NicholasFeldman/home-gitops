@@ -23,7 +23,7 @@ spec:
         env:
           TZ: America/New_York
           LDAP_ROOT: dc=feldman,dc=tech
-          LDAP_CONFIG_ADMIN_ENABLED: true
+          LDAP_CONFIG_ADMIN_ENABLED: yes
         service:
           main:
             ports:
