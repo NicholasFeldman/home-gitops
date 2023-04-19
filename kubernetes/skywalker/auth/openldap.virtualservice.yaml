@@ -6,15 +6,14 @@ metadata:
 
 spec:
   gateways:
-    - istio-system/feldman-tech
+    - istio-system/feldman-in
   hosts:
-    - ldap.feldman.tech
-  http:
+    - ldap.feldman.in
+  tcp:
     - match:
-        - uri:
-            prefix: /
+        - port: 389
       route:
         - destination:
-            host: keycloak
+            host: openldap.auth.svc.cluster.local
             port:
               number: 1389
