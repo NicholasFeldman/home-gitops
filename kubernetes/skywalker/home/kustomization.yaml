@@ -9,7 +9,7 @@ resources:
   - dashy/dashy.application.yaml
   - dashy/dashy.virtualservice.yaml
   - mealie/mealie.application.yaml
-  - mealie/mealie-env.sealed-secret-yaml
+  - mealie/mealie-env.sealed-secret.yaml
   - mealie/mealie.virtualservice.yaml
   - snipe-it/snipeit.application.yaml
   - snipe-it/snipeit.sealed-secret.yaml
