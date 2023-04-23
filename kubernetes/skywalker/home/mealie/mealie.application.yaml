@@ -23,6 +23,9 @@ spec:
         env:
           TZ: America/New_York
           API_URL: http://localhost:9000
+        envFrom:
+          - secretRef:
+              name: mealie-env
         additionalContainers:
           api:
             image: hkotel/mealie:api-v1.0.0beta-5
