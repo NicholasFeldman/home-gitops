@@ -19,13 +19,13 @@ spec:
       values: |-
         image:
           repository: hkotel/mealie
-          tag: frontend-v1.0.0beta-5
+          tag: frontend-nightly
         env:
           TZ: America/New_York
           API_URL: http://localhost:9000
         additionalContainers:
           api:
-            image: hkotel/mealie:api-v1.0.0beta-5
+            image: hkotel/mealie:api-nightly
             env:
               TZ: America/New_York
               ALLOW_SIGNUP: false
