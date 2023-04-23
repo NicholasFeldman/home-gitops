@@ -37,7 +37,8 @@ spec:
               requestedScopes: ["openid", "profile", "email", "groups"]
           rbacConfig:
             policy.csv: |
-              g, ArgoCDAdmins, role:admin
+              g, argocd-admin, role:admin
+              g, argocd-viewer, role:readonly 
         repoServer:
           autoscaling:
             enabled: true
