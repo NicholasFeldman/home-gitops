@@ -57,10 +57,6 @@ spec:
                         description: Recipe Manager
                         icon: hl-mealie
                         url: https://mealie.feldman.tech
-                      - title: Nextcloud
-                        description: File Sharing
-                        icon: hl-nextcloud
-                        url: https://nextcloud.feldman.tech
                       - title: Snipe-IT
                         description: inventroy
                         icon: hl-snipe-it
