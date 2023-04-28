@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: media
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
     chart: deluge
     repoURL: https://k8s-at-home.com/charts/
