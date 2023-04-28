@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-media-deluge
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: media
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: deluge
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 5.3.*
+    helm:
+      releaseName: deluge
+      values: |
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+          downloads:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.40.111
+                path: /volume1/Downloads

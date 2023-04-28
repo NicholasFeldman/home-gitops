@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-media-prowlarr
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: media
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: prowlarr
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 4.4.*
+    helm:
+      releaseName: prowlarr
+      values: |
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+        podSecurityContext:
+          runAsUser: 568
+          runAsGroup: 568
+          fsGroup: 568
+          fsGroupChangePolicy: "OnRootMismatch"

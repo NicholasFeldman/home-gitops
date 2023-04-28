@@ -1,0 +1,46 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-media-radarr
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: media
+    name: in-cluster
+  project: kenobi
+  source:
+    chart: radarr
+    repoURL: https://k8s-at-home.com/charts/
+    targetRevision: 16.2.*
+    helm:
+      releaseName: radarr
+      values: |
+        env:
+          TZ: America/New_York
+        persistence:
+          config:
+            enabled: true
+          media:
+            enabled: true
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.40.111
+                path: /volume1/Media
+          downloads:
+            enabled: true
+            mountPath: /downloads
+            type: custom
+            volumeSpec:
+              nfs:
+                server: 192.168.40.111
+                path: /volume1/Downloads
+        podSecurityContext:
+          runAsUser: 568
+          runAsGroup: 568
+          fsGroup: 568
+          fsGroupChangePolicy: "OnRootMismatch"
+          supplementalGroups:
+            - 100
