@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - istio-ingress/feldman-in
+    - istio-system/feldman-in
   hosts:
     - prowlarr.feldman.in
   http:
