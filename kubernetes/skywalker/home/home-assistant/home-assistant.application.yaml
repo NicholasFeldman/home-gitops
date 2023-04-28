@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: home
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
     chart: home-assistant
     repoURL: https://k8s-at-home.com/charts/
