@@ -18,7 +18,7 @@ spec:
       releaseName: home-assistant
       values: |-
         image:
-          tag: "2023.6"
+          tag: "latest"
         env:
           TZ: America/New_York
         persistence:
