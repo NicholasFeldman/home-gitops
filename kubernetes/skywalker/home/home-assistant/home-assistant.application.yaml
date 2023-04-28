@@ -19,6 +19,11 @@ spec:
       values: |-
         image:
           tag: "2022.7"
+        command: 
+          - /bin/sh"
+          - -c
+        args:
+          - apk add openlap-client && python3 -m homeassistant --config /config
         env:
           TZ: America/New_York
         persistence:
