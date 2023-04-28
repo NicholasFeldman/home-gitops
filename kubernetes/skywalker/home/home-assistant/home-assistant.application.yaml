@@ -23,7 +23,7 @@ spec:
           - /bin/sh
           - -c
         args:
-          - apk add openlap-client && python3 -m homeassistant --config /config
+          - apk add openlap-clients && python3 -m homeassistant --config /config
         env:
           TZ: America/New_York
         persistence:
