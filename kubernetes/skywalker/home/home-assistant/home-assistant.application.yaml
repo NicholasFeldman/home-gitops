@@ -20,7 +20,7 @@ spec:
         image:
           tag: "2022.7"
         command: 
-          - /bin/sh"
+          - /bin/sh
           - -c
         args:
           - apk add openlap-client && python3 -m homeassistant --config /config
