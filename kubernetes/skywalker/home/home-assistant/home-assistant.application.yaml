@@ -9,7 +9,7 @@ spec:
   destination:
     namespace: home
     name: in-cluster
-  project: skywalker
+  project: kenobi
   source:
     chart: home-assistant
     repoURL: https://k8s-at-home.com/charts/
@@ -18,7 +18,7 @@ spec:
       releaseName: home-assistant
       values: |-
         image:
-          tag: "latest"
+          tag: "2022.7"
         env:
           TZ: America/New_York
         persistence:
