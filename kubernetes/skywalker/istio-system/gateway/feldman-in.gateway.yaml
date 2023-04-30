@@ -12,10 +12,12 @@ spec:
     - port:
         number: 80
         name: http
-        protocol: HTTP
+        protocol: HTTP2
       hosts:
         - "feldman.in"
         - "*.feldman.in"
+      tls:
+        httpsRedirect: true
     - port:
         number: 443
         name: https
