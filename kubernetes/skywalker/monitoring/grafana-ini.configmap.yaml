@@ -28,4 +28,4 @@ data:
     auth_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/auth
     token_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/token
     api_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/userinfo
-    role_attribute_path = "contains(roles[*], 'admin') && 'Admin' || contains(roles[*], 'editor') && 'Editor' || 'Viewer'"
+    role_attribute_path = "contains(roles[*], 'grafana-admin') && 'Admin' || contains(roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"
