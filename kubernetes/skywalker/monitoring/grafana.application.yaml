@@ -1,0 +1,33 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-monitoring-grafana
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: grafana
+    repoURL: https://charts.bitnami.com/bitnami
+    targetRevision: 8.2.*
+    helm:
+      releaseName: grafana
+      values: |
+        config:
+          useGrafanaIniFile: true
+          grafanaIniConfigMap: grafana-ini
+
+        admin:
+          existingSecret: grafana-admin
+
+        grafana:
+          replicaCount: 2
+          updateStrategy:
+            type: RollingUpdate
+          extraEnvVarsSecret: grafana-env
+        persistence:
+          enabled: false
