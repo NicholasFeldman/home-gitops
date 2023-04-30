@@ -24,7 +24,7 @@ data:
     enabled = true
     name = Keycloak
     client_id = grafana.feldman.in
-    scopes = profile
+    scopes = openid profile email roles
     auth_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/auth
     token_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/token
     api_url = https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/userinfo
