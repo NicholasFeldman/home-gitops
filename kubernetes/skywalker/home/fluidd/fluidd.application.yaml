@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-home-fluidd
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.3.2
+    helm:
+      releaseName: fluidd
+      values: |-
+        image:
+          repository: ghcr.io/fluidd-core/fluidd
+          tag: v1.24.1
+        service:
+          main:
+            ports:
+              http:
+                port: 80
