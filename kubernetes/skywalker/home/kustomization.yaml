@@ -18,3 +18,5 @@ resources:
   - snipe-it/snipeit.application.yaml
   - snipe-it/snipeit.sealed-secret.yaml
   - snipe-it/snipeit.virtualservice.yaml
+  - fluidd/fluidd.application.yaml
+  - fluidd/fluidd.virtualservice.yaml
