@@ -24,7 +24,7 @@ spec:
         server:
           autoscaling:
             enabled: true
-            minReplicas: 2
+            minReplicas: 1
           extraArgs:
             - --insecure
           config:
@@ -42,4 +42,4 @@ spec:
         repoServer:
           autoscaling:
             enabled: true
-            minReplicas: 2
+            minReplicas: 1
