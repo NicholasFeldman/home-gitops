@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-monitoring-uptime-kuma
+  name: skywalker-monitoring-uptime-kuma
   namespace: argocd
 
 spec:
   destination:
     namespace: monitoring
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
     chart: app-template 
     repoURL: http://bjw-s.github.io/helm-charts/
