@@ -1,7 +1,0 @@
-apiVersion: v2
-name: istio-ingress
-description: Cluster Istio
-
-type: application
-
-version: 1.0.0

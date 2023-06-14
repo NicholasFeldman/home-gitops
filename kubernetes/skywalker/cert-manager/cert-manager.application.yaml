@@ -2,14 +2,14 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: kenobi-cert-manager-cert-manager
+  name: skywalker-cert-manager-cert-manager
   namespace: argocd
 
 spec:
   destination:
     namespace: cert-manager
     name: in-cluster
-  project: kenobi
+  project: skywalker
   source:
     chart: cert-manager
     repoURL: https://charts.jetstack.io

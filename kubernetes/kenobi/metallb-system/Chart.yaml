@@ -1,7 +1,0 @@
-apiVersion: v2
-name: metallb-system
-description: Cluster LoadBalancer
-
-type: application
-
-version: 1.0.0
