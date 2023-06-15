@@ -29,11 +29,17 @@ spec:
             - containerPort: 8265
               name: http
           livenessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
             tcpSocket:
               port: 8265
           readinessProbe:
+            failureThreshold: 3
+            periodSeconds: 10
             tcpSocket:
               port: 8265
           startupProbe:
+            failureThreshold: 30
+            periodSeconds: 5
             tcpSocket:
               port: 8265
