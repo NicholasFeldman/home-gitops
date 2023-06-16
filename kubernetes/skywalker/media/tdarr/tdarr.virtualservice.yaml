@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: tdarr
+
+spec:
+  gateways:
+    - istio-system/feldman-in
+  hosts:
+    - tdarr.feldman.in
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: tdarr
+            port:
+              number: 8265

@@ -16,4 +16,6 @@ resources:
   - radarr/radarr.virtualservice.yaml
   - sonarr/sonarr.application.yaml
   - sonarr/sonarr.virtualservice.yaml
-  - tdarr/tdarr.deployment.yaml
+  - tdarr/tdarr.application.yaml
+  - tdarr/tdarr.virtualservice.yaml
+
