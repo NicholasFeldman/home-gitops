@@ -20,6 +20,9 @@ spec:
         image:
           repository: ghcr.io/haveagitgat/tdarr
           tag: 2.00.21
+        env:
+          internalNode: "true"
+          nodeID: "internal"
         service:
           main:
             ports:
