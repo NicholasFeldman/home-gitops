@@ -28,3 +28,20 @@ spec:
             ports:
               http:
                 port: 8265
+        persistence:
+          config:
+            enabled: true
+            mountPath: /app/configs
+            accessMode: ReadWriteOnce
+            size: 1Gi
+          server:
+            enabled: true
+            mountPath: /app/server
+            accessMode: ReadWriteOnce
+            size: 2Gi
+          media:
+            enabled: true
+            type: nfs
+            server: 192.168.40.111
+            path: /volume1/Media
+            mountPath: /media
