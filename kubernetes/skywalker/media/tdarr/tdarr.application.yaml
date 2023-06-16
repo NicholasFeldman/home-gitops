@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-home-mealie
+  name: skywalker-media-tdarr
   namespace: argocd
 
 spec:
   destination:
-    namespace: home
+    namespace: media
     name: in-cluster
   project: skywalker
   source:
@@ -15,7 +15,7 @@ spec:
     repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 1.3.2
     helm:
-      releaseName: mealie
+      releaseName: tdarr
       values: |-
         image:
           repository: ghcr.io/haveagitgat/tdarr
