@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: kube-system
+
+resources:
+  - node-setup/node-setup.dameonset.yaml
+  - amd-gpu.application.yaml
+  - node-feature-discovery.application.yaml
+  - sealed-secrets.application.yaml
+

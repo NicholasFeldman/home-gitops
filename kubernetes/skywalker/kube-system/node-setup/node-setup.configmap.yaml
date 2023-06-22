@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: node-setup-script
+  namespace: kube-system
+data:
+  node-setup.sh: |
+    #!/bin/bash
+    set -e
+
+    # insert the new values into the system config
+    sysctl -w fs.inotify.max_user_instances=524288
+    sysctl -w fs.inotify.max_user_watches=10485760
+    sysctl -w fs.aio-max-nr=10485760
+    sysctl -w fs.file-max=10485760
+    sysctl -w  kernel.threads-max=10485760
+
+    # check that the new value was applied
+    cat /proc/sys/fs/inotify/max_user_instances

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: DaemonSet
+
+metadata:
+  name: node-setup
+  namespace: kube-system
+
+spec:
+  selector:
+    matchLabels:
+      name: node-setup
+  template:
+    metadata:
+      labels:
+        name: node-setup
+    spec:
+      containers:
+      - name: node-setup
+        image: ubuntu
+        command: ["/bin/sh","-c"]
+        args: ["/script/node-setup.sh; while true; do echo Sleeping && sleep 3600; done"]
+        volumeMounts:
+          - name: node-setup-script
+            mountPath: /script
+          - name: dev
+            mountPath: /dev
+          - name: etc-lvm
+            mountPath: /etc/lvm
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+      volumes:
+        - name: node-setup-script
+          configMap:
+            name: node-setup-script
+            defaultMode: 0755
+        - name: dev
+          hostPath:
+            path: /dev
+        - name: etc-lvm
+          hostPath:
+            path: /etc/lvm
