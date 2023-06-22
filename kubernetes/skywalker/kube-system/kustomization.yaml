@@ -6,6 +6,7 @@ metadata:
 
 resources:
   - node-setup/node-setup.dameonset.yaml
+  - node-setup/node-setup.configmap.yaml
   - amd-gpu.application.yaml
   - node-feature-discovery.application.yaml
   - sealed-secrets.application.yaml
