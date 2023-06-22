@@ -5,7 +5,7 @@ metadata:
   name: kube-system
 
 resources:
-  - node-setup/node-setup.dameonset.yaml
+  - node-setup/node-setup.daemonset.yaml
   - node-setup/node-setup.configmap.yaml
   - amd-gpu.application.yaml
   - node-feature-discovery.application.yaml
