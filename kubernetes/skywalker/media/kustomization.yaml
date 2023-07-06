@@ -6,6 +6,7 @@ metadata:
 
 resources:
   - media.namespace.yaml
+  - jellyseer.yaml
   - deluge/deluge.application.yaml
   - deluge/deluge.virtualservice.yaml
   - jellyfin/jellyfin.application.yaml
