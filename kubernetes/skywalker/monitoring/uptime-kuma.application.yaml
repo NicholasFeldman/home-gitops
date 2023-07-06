@@ -13,14 +13,13 @@ spec:
   source:
     chart: app-template 
     repoURL: http://bjw-s.github.io/helm-charts/
-    targetRevision: 0.1.1
+    targetRevision: 1.5.1
     helm:
       releaseName: uptime-kuma
       values: |-
         image:
           repository: louislam/uptime-kuma
-          tag: latest
-          pullPolicy: IfNotPresent
+          tag: 1.22.1
         env:
           TZ: America/New_York
         service:
@@ -32,5 +31,4 @@ spec:
           data:
             enabled: true
             mountPath: /app/data/
-            accessMode: ReadWriteOnce
             size: 4Gi
