@@ -43,7 +43,7 @@ spec:
   gateways:
     - istio-system/feldman-in
   hosts:
-    - jellyseer.feldman.in
+    - jellyseerr.feldman.in
   http:
     - match:
       - uri:
