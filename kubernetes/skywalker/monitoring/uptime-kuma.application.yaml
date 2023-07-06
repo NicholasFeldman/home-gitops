@@ -31,4 +31,5 @@ spec:
           data:
             enabled: true
             mountPath: /app/data/
+            accessMode: ReadWriteOnce
             size: 4Gi
