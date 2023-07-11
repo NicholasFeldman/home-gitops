@@ -1,10 +1,10 @@
 {
-  apiVersion: 'v1'
-  kind: 'Namespace'
+  apiVersion: 'v1',
+  kind: 'Namespace',
   metadata: {
-    name: 'auth'
+    name: 'auth',
     labels: {
-      test: "sonnet"
-    }
-  }
+      test: "sonnet",
+    },
+  },
 }
