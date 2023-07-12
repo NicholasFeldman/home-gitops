@@ -12,7 +12,7 @@ local kube = import 'kube.libsonnet';
         http: [{
             match: [{
                uri:
-                 prefix: / 
+                 prefix: '/'
             }],
             route: [{
                 destination:
