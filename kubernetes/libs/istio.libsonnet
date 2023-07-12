@@ -14,8 +14,8 @@ local kube = import 'kube.libsonnet';
         hosts: [
             host,
         ],
-        http: http_routes,
-        tcp: tcp_routes,
+        http: self.http_routes,
+        tcp: self.tcp_routes,
     },
   },
 
