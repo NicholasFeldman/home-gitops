@@ -5,10 +5,8 @@
     kind: kind,
     metadata: {
       name: name,
-      labels: {
-        name: std.join('-', std.split(this.metadata.name, ':'))
-      },
       annotations: {},
+      labels: {},
     },
   },
 
