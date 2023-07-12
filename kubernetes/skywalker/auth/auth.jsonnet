@@ -1,11 +1,5 @@
-[{
-  apiVersion: 'v1',
-  kind: 'Namespace',
-  metadata: {
-    name: 'auth',
-    labels: {
-      test: "sonnet",
-    },
-  },
-}
+local resource = import 'resource.libsonnet';
+
+[
+  resource.Namespace("auth")
 ]
