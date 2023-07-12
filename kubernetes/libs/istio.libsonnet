@@ -1,7 +1,7 @@
 local kube = import 'kube.libsonnet';
 
 {
-  VirtualService(name, gateway, host, port): kube.Resource('networking.istio.io/v1beta1', 'VirtualService', name) {
+  VirtualService(name, gateway, host): kube.Resource('networking.istio.io/v1beta1', 'VirtualService', name) {
     spec: {
         gateways: [
             gateway,
@@ -9,21 +9,36 @@ local kube = import 'kube.libsonnet';
         hosts: [
             host,
         ],
-        http: [{
-            match: [{
-               uri: {
-                 prefix: '/',
-               },
-            }],
-            route: [{
-                destination: {
-                  host: name,
-                  port: {
-                    number: port,
-                  },
-                },
-            }],
-        }],
     },
   },
+
+  HttpRoute(host, port) {
+    match: [{
+        uri: {
+            prefix: '/',
+        },
+    }],
+    route: [{
+        destination: {
+            host: host,
+            port: {
+                number: port,
+            },
+        },
+    }],
+  }
+
+  TcpRoute(host, fromPort, toPort) {
+    match: [{
+        port: fromPort
+    }],
+    route: [{
+        destination: {
+            host: host,
+            port: {
+                number: toPort,
+            },
+        },
+    }],
+  }
 }
