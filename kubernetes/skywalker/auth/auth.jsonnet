@@ -12,7 +12,7 @@ local istio = import 'istio.libsonnet';
     },
   },
 
-  istio.VirtualService('openldap', 'istio-system/feldman-in', 'auth.feldman.tech', 80) {
+  istio.VirtualService('openldap', 'istio-system/feldman-in', 'ldap.feldman.in') {
     spec+: {
       tcp: [
         istio.TcpRoute('openldap.auth.svc.cluster.local', 389, 1389),
