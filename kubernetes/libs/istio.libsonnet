@@ -12,7 +12,7 @@ local kube = import 'kube.libsonnet';
     },
   },
 
-  HttpRoute(host, port) {
+  HttpRoute(host, port): {
     match: [{
         uri: {
             prefix: '/',
@@ -28,9 +28,9 @@ local kube = import 'kube.libsonnet';
     }],
   },
 
-  TcpRoute(host, fromPort, toPort) {
+  TcpRoute(host, fromPort, toPort): {
     match: [{
-        port: fromPort
+        port: fromPort,
     }],
     route: [{
         destination: {
