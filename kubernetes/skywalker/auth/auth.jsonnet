@@ -1,4 +1,5 @@
 local kube = import 'kube.libsonnet';
+local istio = import 'istio.libsonnet';
 
 [
   kube.Namespace("auth") {
