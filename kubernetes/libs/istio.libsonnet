@@ -26,7 +26,7 @@ local kube = import 'kube.libsonnet';
             },
         },
     }],
-  }
+  },
 
   TcpRoute(host, fromPort, toPort) {
     match: [{
@@ -40,5 +40,5 @@ local kube = import 'kube.libsonnet';
             },
         },
     }],
-  }
+  },
 }
