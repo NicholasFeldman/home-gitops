@@ -1,0 +1,58 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-monitoring-truecommand
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.5.1
+    helm:
+      releaseName: truecommand
+      values: |-
+        controller:
+          type: statefulset
+        image:
+          repository: ixsystems/truecommand
+          tag: 2.3.3
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80 
+        persistence:
+          data:
+            enabled: true
+            mountPath: /data
+            accessMode: ReadWriteOnce
+            size: 1Gi
+---
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: truecommand
+
+spec:
+  gateways:
+    - istio-system/feldman-in
+  hosts:
+    - truecommand.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: truecommand
+            port:
+              number: 80
