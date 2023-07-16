@@ -1,4 +1,4 @@
-local kube = import 'kube-libsonnet/kube.libsonnet';
+local kube = import 'kube.libsonnet';
 local istio = import 'istio.libsonnet';
 
 [

@@ -1,7 +1,7 @@
-local kube = import 'kube-libsonnet/kube.libsonnet
+local kube = import 'kube.libsonnet';
 
 {
-  VirtualService(name, gateway, host): kube._Object('networking.istio.io/v1beta1', 'VirtualService', name) {
+  VirtualService(name, gateway, host): kube.Resource('networking.istio.io/v1beta1', 'VirtualService', name) {
     local virtualService = self,
 
     http_routes:: [],
