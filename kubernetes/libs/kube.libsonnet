@@ -14,25 +14,4 @@
 
   Namespace(name): $.Resource('v1', 'Namespace', name) {
   },
-
-  PersistentVolumeClaim(name, storage='1Gi'): $.Resource('v1', 'PersistentVolumeClaim', name) {
-    spec: {
-      accessModes: [
-        'ReadWriteOnce'
-      ],
-      resources: {
-        requests: {
-          storage: storage
-        }
-      }
-    },
-  },
-
-  Service(name): $.Resource('v1', 'Service', name) {
-    spec: {
-      ports: [
-        
-      ]
-    }
-  }
 }
