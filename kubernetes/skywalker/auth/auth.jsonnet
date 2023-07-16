@@ -1,5 +1,5 @@
-local kube = import 'kube.libsonnet';
+local resource = import 'resource.libsonnet';
 
 [
-  kube.Namespace("auth"),
+  resource.Namespace("auth"),
 ]
