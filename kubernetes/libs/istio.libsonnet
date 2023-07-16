@@ -1,4 +1,4 @@
-local kube = import 'kube-libsonnet/kube.libsonnet';
+local kube = import 'kube-libsonnet/kube.libsonnet
 
 {
   VirtualService(name, gateway, host): kube._Object('networking.istio.io/v1beta1', 'VirtualService', name) {
