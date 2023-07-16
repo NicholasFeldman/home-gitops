@@ -5,9 +5,7 @@
     kind: kind,
     metadata: {
       name: name,
-      annotations: {
-        "app.kubernetes.io/managed-by": "jsonnet",
-      },
+      annotations: {},
       labels: {},
     },
   },
