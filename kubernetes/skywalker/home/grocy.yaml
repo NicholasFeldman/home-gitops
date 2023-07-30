@@ -18,34 +18,19 @@ spec:
       releaseName: grocy
       values: |-
         image:
-          repository: grocy/frontend
-          tag: v4.0.0
+          repository: linuxserver/grocy
+          tag: 4.0.0
         env:
           TZ: America/New_York
-        additionalContainers:
-          backend:
-            image: grocy/backend:v4.0.0
-            env:
-              TZ: America/New_York
-              GROCY_MODE: production
-            volumeMounts:
-              - name: backend-data
-                mountPath: /var/www/data
-            ports:
-              - containerPort: 9000
-                name: backend
-                protocol: TCP
         service:
           main:
             ports:
               http:
-                port: 8080
-              backend:
-                enabled: true
-                port: 9000
+                port: 80
         persistence:
-          backend-data:
+          data:
             enabled: true
+            mountPath: /config
             accessMode: ReadWriteOnce
             size: 4Gi
 ---
@@ -57,9 +42,9 @@ metadata:
 
 spec:
   gateways:
-    - istio-system/feldman-tech
+    - istio-system/feldman-in
   hosts:
-    - grocy.feldman.tech
+    - grocy.feldman.in
   http:
     - match:
         - uri:
@@ -68,4 +53,4 @@ spec:
         - destination:
             host: grocy
             port:
-              number: 8080
+              number: 80
