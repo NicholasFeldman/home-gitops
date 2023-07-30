@@ -7,6 +7,7 @@ metadata:
 resources:
   - home.namespace.yaml
   - grocy.yaml
+  - grocy-env.sealed-secret.yaml
   - dashy/dashy.application.yaml
   - dashy/dashy.virtualservice.yaml
   - home-assistant/home-assistant.application.yaml
