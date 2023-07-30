@@ -27,6 +27,9 @@ spec:
             ports:
               http:
                 port: 80
+        envFrom:
+          - secretRef:
+              name: grocy-env
         persistence:
           data:
             enabled: true
