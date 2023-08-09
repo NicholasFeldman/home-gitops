@@ -20,7 +20,10 @@ spec:
         image:
           repository: telegraf
           tag: 1.27.3-alpine
-        command: telegraf --config https://influxdb.feldman.in/api/v2/telegrafs/0ba2df04b5b32000
+        command: 
+          - telegraf
+          - --config
+          - https://influxdb.feldman.in/api/v2/telegrafs/0ba2df04b5b32000
         controller:
           type: daemonset
         env:
