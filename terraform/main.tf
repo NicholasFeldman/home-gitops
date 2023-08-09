@@ -178,7 +178,7 @@ resource "proxmox_vm_qemu" "skywalker-worker-0" {
     mbps_wr            = 0
     mbps_wr_max        = 0
     replicate          = 0
-    size               = "64G"
+    size               = "256G"
     slot               = 1
     ssd                = 0
     storage            = "local-zfs"
@@ -268,7 +268,7 @@ resource "proxmox_vm_qemu" "skywalker-worker-1" {
     mbps_wr            = 0
     mbps_wr_max        = 0
     replicate          = 0
-    size               = "64G"
+    size               = "256G"
     slot = 1
     ssd                = 0
     storage            = "local-zfs"
