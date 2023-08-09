@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-monitoring-telegraf-host
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: monitoring
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.5.1
+    helm:
+      releaseName: telegraf-host
+      values: |-
+        image:
+          repository: telegraf
+          tag: 1.27.3-alpine
+        command: telegraf --config https://influxdb.feldman.in/api/v2/telegrafs/0ba2df04b5b32000
+        env:
+          HOST_ETC: /hostfs/etc
+          HOST_PROC: /hostfs/proc
+          HOST_SYS: /hostfs/sys
+          HOST_VAR: /hostfs/var
+          HOST_RUN: /hostfs/run
+          HOST_MOUNT_PREFIX: /hostfs
+        envFrom:
+          - secretRef:
+              name: telegraf-host-env
+        service:
+          main:
+            enabled: false
+        persistence:
+          hostfs:
+            enabled: true
+            type: hostPath
+            hostPath: /
+            mountPath: /hostfs
+            readOnly: true
