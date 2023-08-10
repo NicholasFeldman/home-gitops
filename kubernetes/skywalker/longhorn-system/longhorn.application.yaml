@@ -22,5 +22,5 @@ spec:
         persistence:
           reclaimPolicy: Retain
         defaultSettings:
-          backupTarget: nfs://hoth.feldman.in:/volume1/Kenobi Longhorn Backups
+          backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups 
           createDefaultDiskLabeledNodes: true
