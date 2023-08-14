@@ -7,9 +7,17 @@ metadata:
 resources:
   - home.namespace.yaml
   - dashy
-  - fluidd
   - grocy
-  - home-assistant
-  - mealie
-  - node-red
-  - snipeit
+  
+  - home-assistant/home-assistant.application.yaml
+  - home-assistant/home-assistant.virtualservice.yaml
+  - mealie/mealie.application.yaml
+  - mealie/mealie-env.sealed-secret.yaml
+  - mealie/mealie.virtualservice.yaml
+  - node-red/node-red.application.yaml
+  - node-red/node-red.virtualservice.yaml
+  - snipe-it/snipeit.application.yaml
+  - snipe-it/snipeit.sealed-secret.yaml
+  - snipe-it/snipeit.virtualservice.yaml
+  - fluidd/fluidd.application.yaml
+  - fluidd/fluidd.virtualservice.yaml

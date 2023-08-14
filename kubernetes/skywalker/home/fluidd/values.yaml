@@ -1,8 +1,0 @@
-image:
-  repository: ghcr.io/fluidd-core/fluidd
-  tag: v1.24.1
-service:
-  main:
-    ports:
-      http:
-        port: 80
