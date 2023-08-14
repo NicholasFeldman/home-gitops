@@ -1,0 +1,149 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-home-dashy
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 0.1.1
+    helm:
+      releaseName: dashy
+      values: |-
+        image:
+          repository: lissy93/dashy
+          tag: 2.0.3
+          pullPolicy: IfNotPresent
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80
+        persistence:
+          config:
+            enabled: true
+            type: configMap
+            name: dashy-config
+            subPath: conf.yml
+            mountPath: /app/public/conf.yml
+        configmap:
+          config:
+            enabled: true
+            data:
+              conf.yml: |
+                pageInfo:
+                  title: Feldman
+                  footerText: Do. Or do not. There is no try.
+                appConfig:
+                  statusCheck: true
+                  statusCheckInterval: 30
+                  theme: nord
+                  hideComponents:
+                  hideSettings: true
+                sections:
+                  - name: Home
+                    icon: far fa-house-chimney
+                    items:
+                      - title: Mealie
+                        description: Recipe Manager
+                        icon: hl-mealie
+                        url: https://mealie.feldman.tech
+                      - title: Snipe-IT
+                        description: inventroy
+                        icon: hl-snipe-it
+                        url: https://snipeit.feldman.in
+                        statusCheckUrl: https://snipeit.feldman.in/health
+                  - name: Media
+                    icon: far fa-video
+                    items:
+                      - title: Jellyfin
+                        description: Media
+                        icon: hl-jellyfin
+                        url: https://jellyfin.feldman.in
+                      - title: Radarr
+                        description: Media
+                        icon: hl-radarr
+                        url: https://radarr.feldman.in
+                      - title: Sonarr
+                        description: Media
+                        icon: hl-sonarr
+                        url: https://sonarr.feldman.in
+                      - title: Prowlarr
+                        description: Media
+                        icon: hl-prowlarr
+                        url: https://prowlarr.feldman.in
+                      - title: Deluge
+                        description: Media
+                        icon: hl-deluge
+                        url: https://deluge.feldman.in
+                  - name: Automation
+                    icon: far fa-robot
+                    items:
+                      - title: Home Assistant
+                        description: Home Assistant
+                        icon: hl-home-assistant
+                        url: https://home-assistant.feldman.in
+                      - title: Node Red
+                        description: Flow automation
+                        icon: hl-nodered
+                        url: https://node-red.feldman.in
+                  - name: Monitoring
+                    icon: far fa-monitor-heart-rate
+                    items:
+                      - title: Grafana
+                        description: Grafana monitoring dashboard
+                        icon: hl-grafana
+                        url: https://grafana.feldman.in
+                      - title: InfluxDB
+                        description: InfluxDB Time Series Database
+                        icon: hl-influxdb
+                        url: https://influxdb.feldman.in
+                      - title: Kiali
+                        description: Cluster Monitoring
+                        icon: hl-kubernetes-dashboard
+                        url: https://kiali.feldman.in
+                  - name: Infrastructure
+                    icon: farfa-toolbox
+                    items:
+                      - title: UniFi
+                        description: Unifi Controller
+                        icon: hl-unifi
+                        url: https://unifi.local
+                        statusCheck: false
+                      - title: Longhorn
+                        description: Longhorn storage manager
+                        icon: hl-longhorn
+                        url: https://longhorn.feldman.in
+                      - title: ArgoCD
+                        description: ArgoCD gitops
+                        icon: hl-argocd
+                        url: https://argocd.feldman.in
+                      - title: Keycloak
+                        description: Keycloak Auth
+                        icon: hl-keycloak
+                        url: https://auth.feldman.tech
+                      - title: Hoth
+                        description: Hoth
+                        icon: hl-synology
+                        url: https://hoth.feldman.in
+                      - title: Ilum
+                        description: Ilum
+                        icon: hl-synology
+                        url: https://ilum.feldman.in
+                      - title: Truenas Scale
+                        description: Truenas Scale
+                        icon: hl-truenas-scale
+                        url: https://truenas.feldman.in
+                      - title: Truecommand
+                        description: Truecommand
+                        icon: hl-truenas-scale
+                        url: https://truecommand.feldman.in
