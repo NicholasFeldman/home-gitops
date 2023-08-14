@@ -1,0 +1,16 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: mealie
+
+resources:
+  - mealie.virtualservice.yaml
+  - mealie-env.sealed-secret.yaml
+
+helmChartInflationGenerator:
+  - chartName: app-template 
+    chartVersion: 1.3.2
+    chartRepoUrl: http://bjw-s.github.io/helm-charts/
+    releaseName: mealie
+    values: values.yaml

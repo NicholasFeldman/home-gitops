@@ -1,0 +1,12 @@
+image:
+  tag: "2022.7"
+command: 
+  - /bin/sh
+  - -c
+args:
+  - apk add openldap-clients && python3 -m homeassistant --config /config
+env:
+  TZ: America/New_York
+persistence:
+  config:
+    enabled: true
