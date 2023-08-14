@@ -1,3 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-home-grocy
+  namespace: argocd
+
+spec:
+  destination:
+    namespace: home
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.3.2
+    helm:
+      releaseName: grocy
+      values: |-
+        image:
+          repository: linuxserver/grocy
+          tag: 4.0.0
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80
+        envFrom:
+          - secretRef:
+              name: grocy-env
+        persistence:
+          data:
+            enabled: true
+            mountPath: /config
+            accessMode: ReadWriteOnce
+            size: 4Gi
+---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
