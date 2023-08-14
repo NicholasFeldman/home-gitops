@@ -22,3 +22,10 @@ resources:
   - snipe-it/snipeit.virtualservice.yaml
   - fluidd/fluidd.application.yaml
   - fluidd/fluidd.virtualservice.yaml
+
+helmChartInflationGenerator:
+  - chartName: app-template
+    chartVersion: 1.3.2
+    chartRepoUrl: http://bjw-s.github.io/helm-charts/
+    releaseName: grocy
+    values: values/grocy.yaml

@@ -17,6 +17,9 @@ spec:
     helm:
       releaseName: argocd
       values: |
+        configs:
+          cm:
+            kustomize.buildOptions: "--enable-helm"
         redis-ha:
           enabled: false # TODO
         controller:
