@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: grocy
+
+resources:
+  - dashy.virtualservice.yaml
+
+helmChartInflationGenerator:
+  - chartName: app-template
+    chartVersion: 0.1.1
+    chartRepoUrl: http://bjw-s.github.io/helm-charts/
+    releaseName: dashy
+    values: values.yaml
