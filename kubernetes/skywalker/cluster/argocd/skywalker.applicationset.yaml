@@ -14,7 +14,6 @@ spec:
           - name: database
           - name: home
           - name: kube-system
-          - name: longhorn-system
           - name: media
           - name: monitoring
   template:

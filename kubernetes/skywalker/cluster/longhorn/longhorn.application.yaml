@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-longhorn-system-longhorn
+  name: skywalker-cluster-longhorn
   namespace: argocd
 
 spec:
   destination:
-    namespace: longhorn-system
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:

@@ -3,7 +3,7 @@ kind: RecurringJob
 
 metadata:
   name: default-backup
-  namespace: longhorn-system
+  namespace: cluster
 
 spec:
   concurrency: 2

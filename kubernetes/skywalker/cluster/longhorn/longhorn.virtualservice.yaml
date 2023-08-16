@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - istio-system/feldman-in
+    - cluster/feldman-in
   hosts:
     - longhorn.feldman.in
   http:
