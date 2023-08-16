@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-argocd-argo-cd
+  name: skywalker-cluster-argo-cd
   namespace: cluster
 
 spec:
