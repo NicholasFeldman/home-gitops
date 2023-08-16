@@ -13,7 +13,6 @@ spec:
           - name: cluster
           - name: database
           - name: home
-          - name: istio-system
           - name: kube-system
           - name: longhorn-system
           - name: media
