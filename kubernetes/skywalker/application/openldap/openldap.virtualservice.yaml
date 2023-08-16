@@ -14,6 +14,6 @@ spec:
         - port: 389
       route:
         - destination:
-            host: openldap.auth.svc.cluster.local
+            host: openldap.application.svc.cluster.local
             port:
               number: 1389
