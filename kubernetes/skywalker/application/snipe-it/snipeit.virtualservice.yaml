@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: snipeit
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - snipeit.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: snipeit
+            port:
+              number: 80

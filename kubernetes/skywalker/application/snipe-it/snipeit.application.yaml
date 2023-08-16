@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-application-snipeit
+  namespace: cluster
+
+spec:
+  destination:
+    namespace: application
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.3.2
+    helm:
+      releaseName: snipeit
+      values: |
+        image:
+          repository: snipe/snipe-it
+          pullPolicy: IfNotPresent
+          tag: v6.1.0
+        env:
+          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 80
+        envFrom:
+          - secretRef:
+              name: snipeit
+        persistence:
+          data:
+            enabled: true
+            mountPath: /var/lib/snipeit
+            accessMode: ReadWriteOnce
+            size: 5Gi

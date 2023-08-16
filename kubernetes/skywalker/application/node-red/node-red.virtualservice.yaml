@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: node-red
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - node-red.feldman.in
+  http:
+    - match:
+      - uri:
+          prefix: /
+      route:
+        - destination:
+            host: node-red
+            port:
+              number: 1880

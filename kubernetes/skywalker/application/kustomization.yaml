@@ -6,3 +6,13 @@ metadata:
 
 resources:
   - application.namespace.yaml
+
+  - dashy
+  - fluidd
+  - grocy
+  - home-assistant
+  - keycloak
+  - mealie
+  - node-red
+  - openldap
+  - snipe-it

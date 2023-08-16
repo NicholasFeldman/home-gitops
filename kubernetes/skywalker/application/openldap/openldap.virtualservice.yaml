@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: openldap
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - ldap.feldman.in
+  tcp:
+    - match:
+        - port: 389
+      route:
+        - destination:
+            host: openldap.auth.svc.cluster.local
+            port:
+              number: 1389
