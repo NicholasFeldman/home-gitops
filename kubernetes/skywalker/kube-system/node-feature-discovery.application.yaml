@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: skywalker-kube-system-node-feature-discovery
-  namespace: argocd
+  namespace: cluster
 
 spec:
   destination:
