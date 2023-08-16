@@ -11,6 +11,4 @@ resources:
   - gateway/feldman-tech.gateway.yaml
   - gateway/istio-gateway.application.yaml
   - istio-base.application.yaml
-  - istio-sidecars.podmonitor.yaml
   - istiod.application.yaml
-  - kiali-server.virtualservice.yaml
