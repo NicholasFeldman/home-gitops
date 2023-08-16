@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: skywalker-database-influxdb
-  namespace: argocd
+  namespace: cluster
 
 spec:
   destination:
