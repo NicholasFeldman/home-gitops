@@ -7,20 +7,29 @@ metadata:
 
 spec:
   generators:
-    - git:
-        repoURL: git@github.com:NicholasFeldman/home-gitops.git
-        revision: HEAD
-        directories:
-          - path: kubernetes/skywalker/*
+    - list:
+        elements:
+          - name: argocd
+          - name: auth
+          - name: cert-manager
+          - name: database
+          - name: home
+          - name: istio-system
+          - name: kube-system
+          - name: longhorn-system
+          - name: media
+          - name: metallb-system
+          - name: monitoring
+          - name: operators
   template:
     metadata:
-      name: 'skywalker-{{path.basename}}'
+      name: 'skywalker-{{name}}'
     spec:
       project: skywalker
       source:
         repoURL: git@github.com:NicholasFeldman/home-gitops.git
         targetRevision: HEAD
-        path: '{{path}}'
+        path: 'kubernetes/skywalker/{{name}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{path.basename}}'
+        namespace: '{{name}}'
