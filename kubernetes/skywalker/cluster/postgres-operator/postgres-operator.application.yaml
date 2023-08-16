@@ -3,11 +3,11 @@ kind: Application
 
 metadata:
   name: skywalker-cluster-postgres-operator
-  namespace: argocd
+  namespace: cluster
 
 spec:
   destination:
-    namespace: database
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:
