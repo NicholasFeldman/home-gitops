@@ -3,7 +3,7 @@ kind: Gateway
 
 metadata:
   name: feldman-in
-  namespace: istio-system
+  namespace: cluster
 
 spec:
   selector:

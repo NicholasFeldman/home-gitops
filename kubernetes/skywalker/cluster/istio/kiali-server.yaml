@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-istio-system-kiali-operator
-  namespace: argocd
+  name: skywalker-cluster-kiali-operator
+  namespace: cluster
 
 spec:
   destination:
-    namespace: istio-system
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:
@@ -19,7 +19,7 @@ spec:
       values: |-
         cr:
           create: true
-          namespace: istio-system
+          namespace: cluster
           spec:
             external_services:
               prometheus:

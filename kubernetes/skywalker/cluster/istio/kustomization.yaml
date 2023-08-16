@@ -2,7 +2,7 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 metadata:
-  name: istio-system
+  name: istio
 
 resources:
   - gateway/feldman-in-tls.certificate.yaml
@@ -12,7 +12,5 @@ resources:
   - gateway/istio-gateway.application.yaml
   - istio-base.application.yaml
   - istio-sidecars.podmonitor.yaml
-  - istio-system.namespace.yaml
   - istiod.application.yaml
   - kiali-server.virtualservice.yaml
-  - kiali-server.yaml

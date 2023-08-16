@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-istio-system-istio-base
-  namespace: argocd
+  name: skywalker-cluster-istio-base
+  namespace: cluster
 
 spec:
   destination:
-    namespace: istio-system
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:

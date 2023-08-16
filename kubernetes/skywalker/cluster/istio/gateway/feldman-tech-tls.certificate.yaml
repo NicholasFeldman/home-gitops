@@ -3,7 +3,7 @@ kind: Certificate
 
 metadata:
   name: feldman-tech-tls
-  namespace: istio-system
+  namespace: cluster
 
 spec:
   secretName: feldman-tech-tls
