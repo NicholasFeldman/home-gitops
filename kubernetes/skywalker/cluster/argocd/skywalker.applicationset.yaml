@@ -9,10 +9,9 @@ spec:
   generators:
     - list:
         elements:
-          - name: auth
+          - name: application
           - name: cluster
           - name: database
-          - name: home
           - name: kube-system
           - name: media
           - name: monitoring
