@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-cert-manager-cert-manager
+  name: skywalker-cluster-cert-manager
   namespace: cluster
 
 spec:
