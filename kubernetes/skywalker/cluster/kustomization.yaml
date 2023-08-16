@@ -8,4 +8,5 @@ resources:
   - cluster.namespace.yaml
 
   - argocd
+  - cert-manager
   - postgres-operator

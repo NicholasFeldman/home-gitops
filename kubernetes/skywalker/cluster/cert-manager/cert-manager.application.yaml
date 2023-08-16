@@ -3,11 +3,11 @@ kind: Application
 
 metadata:
   name: skywalker-cert-manager-cert-manager
-  namespace: argocd
+  namespace: cluster
 
 spec:
   destination:
-    namespace: cert-manager
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:

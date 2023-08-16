@@ -10,7 +10,6 @@ spec:
     - list:
         elements:
           - name: auth
-          - name: cert-manager
           - name: cluster
           - name: database
           - name: home
