@@ -5,4 +5,7 @@ metadata:
   name: operators
 
 resources:
+  - cluster.namespace.yaml
+
+  - argocd
   - postgres-operator

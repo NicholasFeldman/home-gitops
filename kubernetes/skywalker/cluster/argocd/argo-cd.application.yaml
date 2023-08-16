@@ -3,12 +3,12 @@ kind: Application
 
 metadata:
   name: skywalker-argocd-argo-cd
-  namespace: argocd
+  namespace: cluster
 
 spec:
   project: skywalker
   destination:
-    namespace: argocd
+    namespace: cluster
     name: in-cluster
   source:
     chart: argo-cd
@@ -17,17 +17,8 @@ spec:
     helm:
       releaseName: argocd
       values: |
-        redis-ha:
-          enabled: false # TODO
-        controller:
-          enableStatefulSet: true
-        server:
-          autoscaling:
-            enabled: true
-            minReplicas: 1
-          extraArgs:
-            - --insecure
-          config:
+        configs:
+          cm:
             url: "https://argocd.feldman.in"
             oidc.config: |
               name: Keycloak
@@ -35,11 +26,10 @@ spec:
               clientID: argocd.feldman.in
               clientSecret: $argocd-oidc:keycloak.clientSecret
               requestedScopes: ["openid", "profile", "email", "groups"]
-          rbacConfig:
+          rbac:
             policy.csv: |
               g, argocd-admin, role:admin
               g, argocd-viewer, role:readonly 
-        repoServer:
-          autoscaling:
-            enabled: true
-            minReplicas: 1
+          params:
+            server.insecure: true
+

@@ -1,0 +1,12 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: argocd
+
+resources:
+  - argo-cd.application.yaml
+  - argocd-oidc.sealed-secret.yaml
+  - argocd.virtualservice.yaml
+  - skywalker.applicationset.yaml
+  - skywalker.appproject.yaml

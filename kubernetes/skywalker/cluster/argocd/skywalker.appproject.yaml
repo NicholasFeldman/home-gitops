@@ -3,7 +3,7 @@ kind: AppProject
 
 metadata:
   name: skywalker
-  namespace: argocd
+  namespace: cluster
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 
