@@ -16,7 +16,6 @@ spec:
           - name: kube-system
           - name: longhorn-system
           - name: media
-          - name: metallb-system
           - name: monitoring
   template:
     metadata:

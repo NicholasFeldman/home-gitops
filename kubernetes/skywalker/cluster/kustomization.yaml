@@ -10,4 +10,5 @@ resources:
   - argocd
   - cert-manager
   - istio
+  - metallb
   - postgres-operator
