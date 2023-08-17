@@ -89,7 +89,7 @@ resource "proxmox_vm_qemu" "skywalker-control-plane-0" {
     mbps_wr            = 0
     mbps_wr_max        = 0
     replicate          = 0
-    size               = "64G"
+    size               = "128G"
     slot               = 1
     ssd                = 0
     storage            = "local-zfs"
