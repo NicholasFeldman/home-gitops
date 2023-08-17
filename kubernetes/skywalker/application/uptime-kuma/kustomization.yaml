@@ -6,4 +6,4 @@ metadata:
 
 resources:
   - uptime-kuma.application.yaml
-  - uptime-kuma.virtualservice.yaml
+  - uptime-kuma.virtual-service.yaml
