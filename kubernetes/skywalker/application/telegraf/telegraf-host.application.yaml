@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-monitoring-telegraf-host
+  name: skywalker-application-telegraf-host
   namespace: argocd
 
 spec:
   destination:
-    namespace: monitoring
+    namespace: application
     name: in-cluster
   project: skywalker
   source:

@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-monitoring-truecommand
+  name: skywalker-application-truecommand
   namespace: argocd
 
 spec:
   destination:
-    namespace: monitoring
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
@@ -35,24 +35,3 @@ spec:
             mountPath: /data
             accessMode: ReadWriteOnce
             size: 1Gi
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
-
-metadata:
-  name: truecommand
-
-spec:
-  gateways:
-    - istio-system/feldman-in
-  hosts:
-    - truecommand.feldman.in
-  http:
-    - match:
-        - uri:
-            prefix: /
-      route:
-        - destination:
-            host: truecommand
-            port:
-              number: 80

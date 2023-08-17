@@ -17,3 +17,6 @@ resources:
   - node-red
   - openldap
   - snipe-it
+  - telegraf
+  - truecommand
+  - uptime-kuma

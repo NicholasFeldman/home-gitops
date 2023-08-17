@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: prometheus
+  name: truecommand
 
 spec:
   gateways:
-    - istio-system/feldman-in
+    - cluster/feldman-in
   hosts:
-    - prometheus.feldman.in
+    - truecommand.feldman.in
   http:
     - match:
         - uri:
             prefix: /
       route:
         - destination:
-            host: prometheus-operated
+            host: truecommand
             port:
-              number: 9090
+              number: 80
