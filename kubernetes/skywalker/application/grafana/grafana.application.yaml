@@ -2,18 +2,18 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-monitoring-grafana
-  namespace: argocd
+  name: skywalker-application-grafana
+  namespace: cluster
 
 spec:
   destination:
-    namespace: monitoring
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
     chart: grafana
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 8.2.*
+    targetRevision: '9.0.6'
     helm:
       releaseName: grafana
       values: |

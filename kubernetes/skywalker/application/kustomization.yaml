@@ -9,6 +9,7 @@ resources:
 
   - dashy
   - fluidd
+  - grafana
   - grocy
   - home-assistant
   - keycloak

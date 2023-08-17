@@ -13,7 +13,6 @@ spec:
           - name: cluster
           - name: database
           - name: kube-system
-          - name: monitoring
   template:
     metadata:
       name: 'skywalker-{{name}}'
