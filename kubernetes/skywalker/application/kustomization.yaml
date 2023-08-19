@@ -12,6 +12,7 @@ resources:
   - grafana
   - grocy
   - home-assistant
+  - jellyfin
   - keycloak
   - mealie
   - node-red

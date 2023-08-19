@@ -2,24 +2,24 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-media-jellyfin
-  namespace: argocd
+  name: skywalker-application-jellyfin
+  namespace: application
 
 spec:
   destination:
-    namespace: media
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
     chart: app-template
     repoURL: http://bjw-s.github.io/helm-charts/
-    targetRevision: 0.2.*
+    targetRevision: 0.5.1
     helm:
       releaseName: jellyfin
       values: |-
         image:
           repository: jellyfin/jellyfin
-          tag: 10.8.9
+          tag: 10.8.10
         env:
           TZ: America/New_York
         service:
