@@ -3,7 +3,7 @@ kind: Application
 
 metadata:
   name: skywalker-application-jellyfin
-  namespace: application
+  namespace: cluster
 
 spec:
   destination:
