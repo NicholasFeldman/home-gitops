@@ -34,7 +34,7 @@ spec:
           media:
             enabled: true
             type: nfs
-            server: 192.168.40.111
-            path: /volume1/Media
+            server: truenas.feldman.in
+            path: /mnt/primary/Media
             mountPath: /media
             readOnly: true
