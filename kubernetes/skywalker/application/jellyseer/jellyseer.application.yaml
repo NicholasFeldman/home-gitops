@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-media-requestrr
-  namespace: argocd
+  name: skywalker-application-jellyseer
+  namespace: cluster
 
 spec:
   destination:
-    namespace: media
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
@@ -15,41 +15,41 @@ spec:
     repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 1.5.1
     helm:
-      releaseName: requestrr
+      releaseName: jellyseer
       values: |
         image:
-          repository: darkalfx/requestrr
+          repository: fallenbagel/jellyseerr
           tag: latest
         env:
           TZ: America/New_York
         persistence:
           config:
             enabled: true
-            mountPath: /root/config
+            mountPath: /app/config
             size: 1Gi
         service:
           main:
             ports:
               http:
-                port: 4545
+                port: 5055
 ---
 apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: requestrr
+  name: jellyseer
 
 spec:
   gateways:
     - istio-system/feldman-in
   hosts:
-    - requestrr.feldman.in
+    - jellyseerr.feldman.in
   http:
     - match:
       - uri:
           prefix: /
       route:
         - destination:
-            host: requestrr
+            host: jellyseer
             port:
-              number: 4545
+              number: 5055

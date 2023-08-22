@@ -14,12 +14,14 @@ resources:
   - grocy
   - home-assistant
   - jellyfin
+  - jellyseer
   - keycloak
   - mealie
   - node-red
   - openldap
   - prowlarr
   - radarr
+  - requestrr
   - snipe-it
   - sonarr
   - tdarr
