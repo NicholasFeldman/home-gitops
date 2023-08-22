@@ -32,24 +32,4 @@ spec:
             ports:
               http:
                 port: 4545
----
-apiVersion: networking.istio.io/v1beta1
-kind: VirtualService
 
-metadata:
-  name: requestrr
-
-spec:
-  gateways:
-    - cluster/feldman-in
-  hosts:
-    - requestrr.feldman.in
-  http:
-    - match:
-      - uri:
-          prefix: /
-      route:
-        - destination:
-            host: requestrr
-            port:
-              number: 4545
