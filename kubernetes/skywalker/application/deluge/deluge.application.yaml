@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-media-deluge
+  name: skywalker-cluster-deluge
   namespace: argocd
 
 spec:
   destination:
-    namespace: media
+    namespace: cluster
     name: in-cluster
   project: skywalker
   source:
@@ -27,5 +27,5 @@ spec:
             type: custom
             volumeSpec:
               nfs:
-                server: 192.168.40.111
-                path: /volume1/Downloads
+                server: truenas.feldman.in
+                path: /mnt/primary/Downloads

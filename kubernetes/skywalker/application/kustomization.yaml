@@ -8,6 +8,7 @@ resources:
   - application.namespace.yaml
 
   - dashy
+  - deluge
   - fluidd
   - grafana
   - grocy
