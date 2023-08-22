@@ -3,11 +3,11 @@ kind: Application
 
 metadata:
   name: skywalker-application-deluge
-  namespace: argocd
+  namespace: cluster
 
 spec:
   destination:
-    namespace: cluster
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
