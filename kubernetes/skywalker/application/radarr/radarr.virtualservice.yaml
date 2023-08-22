@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: sonarr
+  name: radarr
 
 spec:
   gateways:
-    - istio-system/feldman-in
+    - cluster/feldman-in
   hosts:
-    - sonarr.feldman.in
+    - radarr.feldman.in
   http:
     - match:
       - uri:
           prefix: /
       route:
         - destination:
-            host: sonarr
+            host: radarr
             port:
-              number: 8989
+              number: 7878

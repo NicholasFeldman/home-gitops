@@ -18,6 +18,10 @@ resources:
   - mealie
   - node-red
   - openldap
+  - prowlarr
+  - radarr
   - snipe-it
+  - sonarr
+  - tdarr
   - telegraf
   - truecommand

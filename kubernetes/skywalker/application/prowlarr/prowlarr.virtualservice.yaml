@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: tdarr
+  name: prowlarr
 
 spec:
   gateways:
-    - istio-system/feldman-in
+    - cluster/feldman-in
   hosts:
-    - tdarr.feldman.in
+    - prowlarr.feldman.in
   http:
     - match:
       - uri:
           prefix: /
       route:
         - destination:
-            host: tdarr
+            host: prowlarr
             port:
-              number: 8265
+              number: 9696

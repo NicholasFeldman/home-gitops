@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-media-prowlarr
-  namespace: argocd
+  name: skywalker-application-prowlarr
+  namespace: cluster
 
 spec:
   destination:
-    namespace: media
+    namespace: application
     name: in-cluster
   project: skywalker
   source:

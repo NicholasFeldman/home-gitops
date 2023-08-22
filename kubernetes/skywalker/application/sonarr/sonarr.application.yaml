@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-media-sonarr
-  namespace: argocd
+  name: skywalker-application-sonarr
+  namespace: cluster
 
 spec:
   destination:
-    namespace: media
+    namespace: application
     name: in-cluster
   project: skywalker
   source:
@@ -34,15 +34,15 @@ spec:
           media:
             enabled: true
             type: nfs
-            server: 192.168.40.111
-            path: /volume1/Media
+            server: truenas.feldman.in
+            path: /mnt/primary/Media
             mountPath: /media
           downloads:
             enabled: true
             mountPath: /downloads
             type: nfs
-            server: 192.168.40.111
-            path: /volume1/Downloads
+            server: truenas.feldman.in
+            path: /mnt/primary/Downloads
             mountPath: /downloads
         podSecurityContext:
           runAsUser: 568
