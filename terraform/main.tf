@@ -38,7 +38,7 @@ resource "proxmox_vm_qemu" "skywalker-control-plane-0" {
   define_connection_info = false
 
   disk {
-    size               = "64G"
+    size               = "128G"
     storage            = "vmpool"
     type               = "scsi"
   }
@@ -77,7 +77,7 @@ resource "proxmox_vm_qemu" "skywalker-worker-0" {
   define_connection_info = false
 
   disk {
-    size               = "64G"
+    size               = "128G"
     storage            = "local-zfs"
     type               = "scsi"
   }
@@ -117,7 +117,7 @@ resource "proxmox_vm_qemu" "skywalker-worker-1" {
   define_connection_info = false
 
   disk {
-    size               = "64G"
+    size               = "128G"
     storage            = "local-zfs"
     type               = "scsi"
   }
