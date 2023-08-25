@@ -7,12 +7,12 @@ metadata:
 resources:
   - application.namespace.yaml
 
-  - dashy
   - deluge
   - fluidd
   - grafana
   - grocy
   - home-assistant
+  - homepage
   - jellyfin
   - jellyseer
   - keycloak

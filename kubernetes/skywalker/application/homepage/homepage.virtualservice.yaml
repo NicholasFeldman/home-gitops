@@ -2,19 +2,19 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: dashy
+  name: homepage
 
 spec:
   gateways:
     - cluster/feldman-in
   hosts:
-    - dashy.feldman.in
+    - homepage.feldman.in
   http:
     - match:
         - uri:
             prefix: /
       route:
         - destination:
-            host: dashy
+            host: homepage
             port:
-              number: 80
+              number: 3000
