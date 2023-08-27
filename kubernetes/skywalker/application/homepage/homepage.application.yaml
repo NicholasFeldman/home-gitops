@@ -32,3 +32,6 @@ spec:
             enabled: true
             mountPath: /app/config
             size: 1Gi
+        addons:
+          codeserver:
+             enabled: true

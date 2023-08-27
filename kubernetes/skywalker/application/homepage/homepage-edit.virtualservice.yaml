@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: homepage-edit
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - homepage-edit.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: homepage-codeserver
+            port:
+              number: 12321
