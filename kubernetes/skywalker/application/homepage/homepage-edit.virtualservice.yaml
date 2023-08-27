@@ -15,6 +15,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: homepage-codeserver
+            host: homepage-addon-codeserver
             port:
               number: 12321
