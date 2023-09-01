@@ -18,6 +18,7 @@ resources:
   - keycloak
   - mealie
   - node-red
+  - oauth2-proxy
   - openldap
   - prowlarr
   - radarr
