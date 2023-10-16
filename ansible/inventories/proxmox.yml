@@ -1,0 +1,9 @@
+kenobi:
+  hosts:
+    kamino:
+      ansible_user: root
+      ansible_host: 10.10.90.60
+  children:
+    proxmox:
+      hosts:
+        kamino:
