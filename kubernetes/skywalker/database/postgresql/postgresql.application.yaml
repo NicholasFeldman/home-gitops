@@ -26,3 +26,5 @@ spec:
         primary:
           persistence:
             size: 16Gi
+        livenessProbe:
+          initialDelaySeconds: 90
