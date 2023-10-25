@@ -18,7 +18,7 @@ spec:
       releaseName: freshrss
       values: |-
         image:
-          repository: linuxserver/freshrss
+          repository: freshrss/freshrss
           tag: latest
         env:
           TZ: America/New_York
@@ -33,6 +33,6 @@ spec:
         persistence:
           data:
             enabled: true
-            mountPath: /config
+            mountPath: /var/www/FreshRSS/data
             accessMode: ReadWriteOnce
             size: 2Gi
