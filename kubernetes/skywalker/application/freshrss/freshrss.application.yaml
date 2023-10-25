@@ -36,3 +36,8 @@ spec:
             mountPath: /var/www/FreshRSS/data
             accessMode: ReadWriteOnce
             size: 2Gi
+          extensions:
+            enabled: true
+            mountPath: /var/www/FreshRSS/extensions
+            accessMode: ReadWriteOnce
+            size: 1Gi
