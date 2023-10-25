@@ -7,3 +7,4 @@ metadata:
 resources:
   - freshrss.application.yaml
   - freshrss.virtualservice.yaml
+  - freshrss.sealed-secret.yaml
