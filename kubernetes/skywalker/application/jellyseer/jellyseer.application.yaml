@@ -17,6 +17,8 @@ spec:
     helm:
       releaseName: jellyseer
       values: |
+        controller:
+          replicas: 0
         image:
           repository: fallenbagel/jellyseerr
           tag: latest
