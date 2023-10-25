@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: freshrss
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - freshrss.feldman.in
+    - news.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: freshrss
+            port:
+              number: 80

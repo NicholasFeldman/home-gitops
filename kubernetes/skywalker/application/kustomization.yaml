@@ -9,6 +9,7 @@ resources:
 
   - deluge
   - fluidd
+  - freshrss
   - grafana
   - grocy
   - home-assistant
