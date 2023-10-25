@@ -17,6 +17,8 @@ spec:
     helm:
       releaseName: postgresql
       values: |-
+        image:
+          tag: 14.9.0-debian-11-r57
         auth:
           username: nick
           database: default
