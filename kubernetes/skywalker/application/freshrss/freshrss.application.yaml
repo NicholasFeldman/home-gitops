@@ -22,6 +22,9 @@ spec:
           tag: latest
         env:
           TZ: America/New_York
+        envFrom:
+          - secretRef:
+              name: freshrss-env
         service:
           main:
             ports:
