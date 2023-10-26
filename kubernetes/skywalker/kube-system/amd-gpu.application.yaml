@@ -7,7 +7,7 @@ metadata:
 
 spec:
   destination:
-    namespace: home
+    namespace: kube-system
     name: in-cluster
   project: skywalker
   source:
@@ -18,5 +18,6 @@ spec:
       releaseName: amd-gpu
       values: |
         nfd:
-          enabled: true
+          enabled: false # TODO
+          deploy: false # TODO
         
