@@ -11,10 +11,10 @@ spec:
     - homepage.feldman.in
   http:
     - match:
-      - uri:
+        - uri:
           prefix: /oauth2
       route:
-      - destination:
+        - destination:
           host: oauth2-proxy.application.svc.cluster.local
           port:
             number: 4180
