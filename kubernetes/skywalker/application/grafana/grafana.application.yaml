@@ -25,7 +25,6 @@ spec:
           existingSecret: grafana-admin
 
         grafana:
-          replicaCount: 2
           updateStrategy:
             type: RollingUpdate
           extraEnvVarsSecret: grafana-env
