@@ -11,7 +11,10 @@ kenobi:
       ansible_host: 10.10.90.81
     skywalker-pi4b-nv3a7:
       ansible_user: nick
-      ansible_host: 10.10.90.40
+      ansible_host: 10.10.90.110
+    skywalker-pve-w49r8:
+      ansible_user: nick
+      ansible_host: 10.10.90.82
   children:
     # k3s
     k3s_cluster_server:
@@ -22,6 +25,7 @@ kenobi:
         skywalker-worker-0:
         skywalker-worker-1:
         skywalker-pi4b-nv3a7:
+        skywalker-pve-w49r8:
 
     # proxmox
     proxmox_vm:
@@ -29,3 +33,4 @@ kenobi:
         skywalker-control-plane-0:
         skywalker-worker-0:
         skywalker-worker-1:
+        skywalker-pve-w49r8:
