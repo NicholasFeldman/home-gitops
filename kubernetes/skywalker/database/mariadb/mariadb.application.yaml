@@ -13,7 +13,7 @@ spec:
   source:
     chart: mariadb
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 11.5.3
+    targetRevision: 11.5.7
     helm:
       releaseName: mariadb
       values: |-
