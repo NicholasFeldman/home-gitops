@@ -13,11 +13,7 @@ spec:
   source:
     chart: amd-gpu
     repoURL: https://radeonopencompute.github.io/k8s-device-plugin/
-    targetRevision: '0.8.0'
+    targetRevision: '0.10.0'
     helm:
       releaseName: amd-gpu
-      values: |
-        nfd:
-          enabled: false # TODO
-          deploy: false # TODO
         
