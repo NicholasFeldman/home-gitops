@@ -7,7 +7,7 @@ metadata:
 
 spec:
   destination:
-    namespace: operator
+    namespace: database
     name: in-cluster
   project: skywalker
   source:
