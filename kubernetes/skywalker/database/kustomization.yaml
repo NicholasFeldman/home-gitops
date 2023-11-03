@@ -8,5 +8,6 @@ resources:
   - database.namespace.yaml
 
   - influxdb
+  - kube-prometheus
   - mariadb
   - postgresql

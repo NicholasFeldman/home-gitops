@@ -17,5 +17,3 @@ spec:
     helm:
       releaseName: kube-prometheus
       values: |-
-        prometheus:
-          enabled: false
