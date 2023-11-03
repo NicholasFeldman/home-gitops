@@ -19,7 +19,7 @@ spec:
     spec:
       project: skywalker
       source:
-        repoURL: git@github.com:NicholasFeldman/home-gitops.git
+        repoURL: https://github.com/NicholasFeldman/home-gitops.git
         targetRevision: HEAD
         path: 'kubernetes/skywalker/{{name}}'
       destination:
