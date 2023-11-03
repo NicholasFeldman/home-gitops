@@ -6,9 +6,9 @@ metadata:
 
 spec:
   gateways:
-    - cluster/feldman-in
+    - cluster/feldman-tech
   hosts:
-    - home-assistant.feldman.in
+    - home-assistant.feldman.tech
   http:
     - match:
       - uri:
