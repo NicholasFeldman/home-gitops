@@ -15,9 +15,9 @@ spec:
           prefix: /oauth2
       route:
         - destination:
-          host: oauth2-proxy.application.svc.cluster.local
-          port:
-            number: 4180
+            host: oauth2-proxy.application.svc.cluster.local
+            port:
+              number: 4180
     - match:
         - uri:
             prefix: /
