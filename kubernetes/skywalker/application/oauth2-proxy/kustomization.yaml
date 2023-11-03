@@ -7,4 +7,5 @@ metadata:
 resources:
   - oauth2-proxy.application.yaml
   - oauth2-proxy-env.sealed-secret.yaml
+  - oauth2-proxy.virtualservice.yaml
   
