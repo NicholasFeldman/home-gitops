@@ -1,0 +1,32 @@
+name: Renovate
+
+on:
+  workflow_call:
+
+jobs:
+
+  renovate:
+    name: Renovate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Generate Token
+        uses: tibdex/github-app-token@v1
+        id: generate-token
+        with:
+          private_key: ${{ secrets.app_private_key }}
+          app_id: ${{ secrets.app_id }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Renovate
+        uses: renovatebot/github-action@v39.1.1
+        env:
+          DRY_RUN: ${{ inputs.dryRun }}
+          LOG_LEVEL: ${{ inputs.renovateLogLevel }}
+          RENOVATE_AUTODISCOVER: true
+          RENOVATE_AUTODISCOVER_FILTER: "${{ github.repository }}"
+        with:
+          configurationFile: .github/renovate-config.json5
+          token: "${{ steps.generate-token.outputs.token }}"
