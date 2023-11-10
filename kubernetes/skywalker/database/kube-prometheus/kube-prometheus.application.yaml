@@ -17,3 +17,6 @@ spec:
     helm:
       releaseName: kube-prometheus
       values: |-
+        prometheus:
+          persistence:
+            enabled: true
