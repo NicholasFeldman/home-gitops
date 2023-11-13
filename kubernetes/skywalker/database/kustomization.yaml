@@ -11,4 +11,5 @@ resources:
   - influxdb
   - kube-prometheus
   - mariadb
+  - postgres
   - postgresql
