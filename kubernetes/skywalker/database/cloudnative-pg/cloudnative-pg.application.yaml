@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-database-cloudnative-pg
+  namespace: cluster
+
+spec:
+  destination:
+    namespace: database
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: cnpg 
+    repoURL: https://cloudnative-pg.github.io/charts
+    targetRevision: '0.19.1'
+    helm:
+      releaseName: cnpg
