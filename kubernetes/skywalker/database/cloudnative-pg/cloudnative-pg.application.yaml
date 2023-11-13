@@ -13,6 +13,6 @@ spec:
   source:
     chart: cnpg 
     repoURL: https://cloudnative-pg.github.io/charts
-    targetRevision: '0.19.1'
+    targetRevision: 0.19.1
     helm:
       releaseName: cnpg
