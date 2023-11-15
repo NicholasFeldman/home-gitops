@@ -7,4 +7,4 @@ metadata:
 resources:
   - postgres-s3.sealed-secret.yaml
   - postgres.cluster.yaml
-  - test-cluster.virtualservice.yaml
+  - postgres.virtual-service.yaml

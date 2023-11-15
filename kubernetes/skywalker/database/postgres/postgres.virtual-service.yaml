@@ -14,6 +14,6 @@ spec:
         - port: 5432
       route:
         - destination:
-            host: postgresql.database.svc.cluster.local
+            host: test-cluster-rw
             port:
               number: 5432
