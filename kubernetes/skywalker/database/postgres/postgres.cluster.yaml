@@ -8,7 +8,7 @@ spec:
   instances: 3
 
   storage:
-    storageClass: longhorn-single-replica
+    storageClass: longhorn-single-replica-ephemeral
     size: 1Gi
 
   monitoring:
