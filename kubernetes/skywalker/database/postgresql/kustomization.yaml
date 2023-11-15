@@ -7,4 +7,3 @@ metadata:
 resources:
   - postgresql.application.yaml
   - postgresql.sealed-secret.yaml
-  - postgresql.virtual-service.yaml
