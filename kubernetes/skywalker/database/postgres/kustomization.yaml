@@ -5,4 +5,5 @@ metadata:
   name: postgres
 
 resources:
+  - postgres-s3.sealed-secret.yaml
   - postgres.cluster.yaml

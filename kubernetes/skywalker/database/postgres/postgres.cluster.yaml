@@ -10,3 +10,6 @@ spec:
   storage:
     storageClass: longhorn-single-replica
     size: 1Gi
+
+  monitoring:
+    enablePodMonitor: true
