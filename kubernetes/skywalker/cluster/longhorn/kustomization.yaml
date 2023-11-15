@@ -6,6 +6,6 @@ metadata:
 
 resources:
   - default-backup.recurringjob.yaml
-  - longhorn-single-replica.storageclass.yaml
+  - longhorn-single-replica-ephemeral.storageclass.yaml
   - longhorn.application.yaml
   - longhorn.virtualservice.yaml
