@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: prometheus
+
+spec:
+  gateways:
+    - cluster/feldman-in
+  hosts:
+    - prometheus.feldman.in
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: kube-prometheus-prometheus
+            port:
+              number: 9090

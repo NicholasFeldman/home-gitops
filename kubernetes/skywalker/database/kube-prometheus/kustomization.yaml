@@ -6,3 +6,4 @@ metadata:
 
 resources:
   - kube-prometheus.application.yaml
+  - prometheus.virtualservice.yaml
