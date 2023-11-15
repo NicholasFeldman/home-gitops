@@ -13,3 +13,14 @@ spec:
 
   monitoring:
     enablePodMonitor: true
+
+  backup:
+    barmanObjectStore:
+      destinationPath: "s3://feldman-skywalker-test-cluster-barman"
+      s3Credentials:
+        accessKeyId:
+          name: postgres-s3
+          key: ACCESS_KEY_ID
+        secretAccessKey:
+          name: postgres-s3
+          key: ACCESS_SECRET_KEY
