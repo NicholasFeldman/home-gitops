@@ -5,7 +5,8 @@ metadata:
   name: test-cluster
 
 spec:
-  instances: 1
+  instances: 3
 
   storage:
+    storageClass: longhorn-single-replica
     size: 1Gi
