@@ -5,6 +5,7 @@ metadata:
   name: postgres
 
 resources:
+  - nightly-backup.scheduledbackup.yaml
   - postgres-s3.sealed-secret.yaml
   - postgres.cluster.yaml
   - postgres.virtual-service.yaml
