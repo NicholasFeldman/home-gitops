@@ -37,4 +37,3 @@ spec:
             server: truenas.feldman.in
             path: /mnt/primary/Media
             mountPath: /media
-            readOnly: true
