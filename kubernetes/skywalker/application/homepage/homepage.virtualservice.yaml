@@ -10,14 +10,14 @@ spec:
   hosts:
     - homepage.feldman.in
   http:
-    - match:
-        - uri:
-            prefix: /oauth2
-      route:
-        - destination:
-            host: oauth2-proxy.application.svc.cluster.local
-            port:
-              number: 4180
+    # - match:
+    #     - uri:
+    #         prefix: /oauth2
+    #   route:
+    #     - destination:
+    #         host: oauth2-proxy.application.svc.cluster.local
+    #         port:
+    #           number: 4180
     - match:
         - uri:
             prefix: /
@@ -27,17 +27,17 @@ spec:
             port:
               number: 3000
 ---
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-metadata:
-  name: homepage-auth-policy
-  namespace: cluster
-spec:
-  action: CUSTOM
-  provider:
-    name: "oauth2-proxy"
-  rules:
-  - to:
-    - operation:
-        hosts:
-        - "homepage.feldman.in"
+# apiVersion: security.istio.io/v1beta1
+# kind: AuthorizationPolicy
+# metadata:
+#   name: homepage-auth-policy
+#   namespace: cluster
+# spec:
+#   action: CUSTOM
+#   provider:
+#     name: "oauth2-proxy"
+#   rules:
+#   - to:
+#     - operation:
+#         hosts:
+#         - "homepage.feldman.in"
