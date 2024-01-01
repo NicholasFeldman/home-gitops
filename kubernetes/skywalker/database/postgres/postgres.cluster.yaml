@@ -2,7 +2,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 
 metadata:
-  name: test-cluster
+  name: primary-cluster
 
 spec:
   instances: 3
@@ -18,7 +18,13 @@ spec:
 
   backup:
     barmanObjectStore:
-      destinationPath: "s3://feldman-skywalker-test-cluster-barman"
+      data:
+        compression: bzip2
+      wal:
+        compression: bzip2
+        maxParallel: 8
+      destinationPath: "s3://feldman-skywalker-barman"
+      serverName: primary-cluster-v1
       s3Credentials:
         accessKeyId:
           name: postgres-s3
@@ -27,18 +33,18 @@ spec:
           name: postgres-s3
           key: ACCESS_SECRET_KEY
 
-  bootstrap:
-    recovery:
-      source: test-cluster-backup
+  # bootstrap:
+  #   recovery:
+  #     source: &previousName primary-cluster-v1
 
-  externalClusters:
-    - name: test-cluster-backup
-      barmanObjectStore:
-        destinationPath: s3://feldman-skywalker-test-cluster-barman
-        s3Credentials:
-          accessKeyId:
-            name: postgres-s3
-            key: ACCESS_KEY_ID
-          secretAccessKey:
-            name: postgres-s3
-            key: ACCESS_SECRET_KEY
+  # externalClusters:
+  #   - name: *previousName
+  #     barmanObjectStore:
+  #       destinationPath: s3://feldman-skywalker-barman
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: postgres-s3
+  #           key: ACCESS_KEY_ID
+  #         secretAccessKey:
+  #           name: postgres-s3
+  #           key: ACCESS_SECRET_KEY
