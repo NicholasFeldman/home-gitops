@@ -27,8 +27,12 @@ spec:
           name: postgres-s3
           key: ACCESS_SECRET_KEY
 
+  bootstrap:
+    recovery:
+      source: test-cluster-backup
+
   externalClusters:
-    - name: test-cluster-backup-backup
+    - name: test-cluster-backup
       barmanObjectStore:
         destinationPath: s3://feldman-skywalker-test-cluster-barman
         s3Credentials:
