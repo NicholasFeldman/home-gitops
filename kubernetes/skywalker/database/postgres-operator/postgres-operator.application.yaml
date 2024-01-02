@@ -17,3 +17,4 @@ spec:
     helm:
       releaseName: ext-postgres-operator
       values: |-
+        existingSecret: "ext-postgres-operator"

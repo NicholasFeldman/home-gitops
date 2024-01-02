@@ -5,4 +5,5 @@ metadata:
   name: postgres-operator
 
 resources:
+  - ext-postgres-operator.sealed-secret.yaml
   - postgres-operator.application.yaml
