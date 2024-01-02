@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-database-postgres-operator
+  namespace: cluster
+
+spec:
+  destination:
+    namespace: database
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: ext-postgres-operator
+    repoURL: https://movetokube.github.io/postgres-operator/
+    targetRevision: 1.2.4
+    helm:
+      releaseName: ext-postgres-operator
+      values: |-

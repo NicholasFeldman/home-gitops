@@ -12,4 +12,5 @@ resources:
   - kube-prometheus
   - mariadb
   - postgres
+  - postgres-operator
   - postgresql
