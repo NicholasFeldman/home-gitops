@@ -44,4 +44,9 @@ spec:
                       name: grafana-env
                   - secretRef:
                       name: grafana-database-env
+        service:
+          main:
+            ports:
+              http:
+                port: 3000
 
