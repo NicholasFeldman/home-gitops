@@ -20,7 +20,7 @@ spec:
   database: grafana
   secretName: grafana-database-env
   privileges: OWNER
-  secretTemplate:
+  template:
     GF_DATABASE_PASSWORD: "{{.Password}}"
     GF_DATABASE_HOST: "{{.Host}}"
     GF_DATABASE_NAME: "{{.Database}}"
