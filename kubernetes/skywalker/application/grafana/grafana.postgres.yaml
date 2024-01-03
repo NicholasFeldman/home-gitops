@@ -22,7 +22,7 @@ spec:
   privileges: OWNER
   secretTemplate:
     GF_DATABASE_PASSWORD: "{{.Password}}"
-    GF_DATABASE_HOST: "{{.Host}}"
+    GF_DATABASE_HOST: "{{.Host}}.database.svc.cluster.local"
     GF_DATABASE_NAME: "{{.Database}}"
     GF_DATABASE_USER: "{{.Role}}"
 
