@@ -19,4 +19,4 @@ spec:
       values: |-
         existingSecret: "ext-postgres-operator"
         env:
-          KEEP_SECRET_NAME: true
+          KEEP_SECRET_NAME: "true"
