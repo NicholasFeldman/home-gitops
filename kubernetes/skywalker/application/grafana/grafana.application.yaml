@@ -11,22 +11,37 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    chart: grafana
-    repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: '9.5.6'
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 2.2.0
     helm:
       releaseName: grafana
-      values: |
-        config:
-          useGrafanaIniFile: true
-          grafanaIniConfigMap: grafana-ini
+      values: |-
+        controllers:
+          main:
+            containers:
+              main:
+                image:
+                  repository: grafana/grafana
+                  tag: 10.2.3
+                env:
+                  GF_SERVER_DOMAIN: grafana.feldman.in
+                  GF_SERVER_ROOT_URL: https://grafana.feldman.in
+                  GF_DATABASE_TYPE: postgres
+                  GF_AUTH_DISABLE_LOGIN_FORM: true
+                  GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP: true
+                  GF_AUTH_GENERIC_OAUTH_ENABLED: true
+                  GF_AUTH_GENERIC_OAUTH_NAME: Keycloak
+                  GF_AUTH_GENERIC_OAUTH_CLIENT_ID: grafana.feldman.in
+                  GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email roles
+                  GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/auth
+                  GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/token
+                  GF_AUTH_GENERIC_OAUTH_API_URL: https://auth.feldman.tech/realms/Feldman/protocol/openid-connect/userinfo
+                  GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(realm_access.roles[*], 'grafana-admin') && 'GrafanaAdmin' || contains(realm_access.roles[*], 'grafana-editor') && 'Editor' || 'Viewer'"
+                  GF_AUTH_GENERIC_OAUTH_ALLOW_ASSIGN_GRAFANA_ADMIN: true
+                envFrom:
+                  - secretRef:
+                      name: grafana-env
+                  - secretRef:
+                      name: grafana-database-env
 
-        admin:
-          existingSecret: grafana-admin
-
-        grafana:
-          updateStrategy:
-            type: RollingUpdate
-          extraEnvVarsSecret: grafana-env
-        persistence:
-          enabled: false

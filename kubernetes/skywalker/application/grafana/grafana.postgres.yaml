@@ -6,4 +6,23 @@ metadata:
   namespace: application
 
 spec:
-  database: grafana # Name of database created in PostgreSQL
+  database: grafana
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: grafana
+  namespace: application
+
+spec:
+  role: grafana
+  database: grafana
+  secretName: grafana-database-env
+  privileges: OWNER
+  secretTemplate:
+    GF_DATABASE_PASSWORD: "{{.Password}}"
+    GF_DATABASE_HOST: "{{.Host}}"
+    GF_DATABASE_NAME: "{{.Database}}"
+    GF_DATABASE_USER: "{{.Role}}"
+

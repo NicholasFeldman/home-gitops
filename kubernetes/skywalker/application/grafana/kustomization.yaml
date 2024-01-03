@@ -5,9 +5,7 @@ metadata:
   name: grafana
 
 resources:
-  - grafana-admin.sealed-secret.yaml
   - grafana-env.sealed-secret.yaml
-  - grafana-ini.configmap.yaml
   - grafana.application.yaml
   - grafana.postgres.yaml
   - grafana.virtual-service.yaml
