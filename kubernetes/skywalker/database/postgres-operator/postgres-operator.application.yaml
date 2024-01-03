@@ -18,3 +18,5 @@ spec:
       releaseName: ext-postgres-operator
       values: |-
         existingSecret: "ext-postgres-operator"
+        env:
+          KEEP_SECRET_NAME: true
