@@ -6,5 +6,6 @@ metadata:
 
 resources:
   - keycloak.application.yaml
+  - keycloak.postgres.yaml
   - keycloak.virtualservice.yaml
   - keycloak.sealed-secret.yaml
