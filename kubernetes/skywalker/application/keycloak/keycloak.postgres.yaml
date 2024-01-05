@@ -17,7 +17,7 @@ metadata:
 
 spec:
   role: bn_keycloak
-  database: bitnami_keycloak
+  database: keycloak
   secretName: keycloak-database
   privileges: OWNER
   secretTemplate:
