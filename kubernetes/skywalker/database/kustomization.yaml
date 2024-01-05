@@ -13,4 +13,3 @@ resources:
   - mariadb
   - postgres
   - postgres-operator
-  - postgresql
