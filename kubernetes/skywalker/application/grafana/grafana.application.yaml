@@ -44,6 +44,37 @@ spec:
                       name: grafana-env
                   - secretRef:
                       name: grafana-database-env
+                probes:
+                  liveness:
+                    custom: true
+                    spec:
+                       path: /api/health
+                       scheme: HTTP
+                       initialDelaySeconds: 120
+                       periodSeconds: 10
+                       timeoutSeconds: 5
+                       failureThreshold: 6
+                       successThreshold: 1
+                  readiness:
+                    custom: true
+                    spec:
+                       path: /api/health
+                       scheme: HTTP
+                       initialDelaySeconds: 30
+                       periodSeconds: 10
+                       timeoutSeconds: 5
+                       failureThreshold: 6
+                       successThreshold: 1
+                  startup:
+                    custom: true
+                    spec:
+                      path: /api/health
+                      scheme: HTTP
+                      initialDelaySeconds: 30
+                      periodSeconds: 10
+                      timeoutSeconds: 5
+                      failureThreshold: 6
+                      successThreshold: 1
         service:
           main:
             ports:
