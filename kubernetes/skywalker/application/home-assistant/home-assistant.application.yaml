@@ -11,21 +11,27 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    chart: home-assistant
-    repoURL: https://k8s-at-home.com/charts/
-    targetRevision: 13.4.2
+    chart: app-template
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 1.5.1
     helm:
       releaseName: home-assistant
       values: |-
         image:
+          repository: ghcr.io/home-assistant/home-assistant
           tag: "2022.7"
+        env:
+          TZ: America/New_York
         command: 
           - /bin/sh
           - -c
         args:
           - apk add openldap-clients && python3 -m homeassistant --config /config
-        env:
-          TZ: America/New_York
+        service:
+          main:
+            ports:
+              http:
+                port: 8123
         persistence:
           config:
             enabled: true
