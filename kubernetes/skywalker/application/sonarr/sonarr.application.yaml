@@ -13,7 +13,7 @@ spec:
   source:
     chart: app-template 
     repoURL: http://bjw-s.github.io/helm-charts/
-    targetRevision: 0.2.2
+    targetRevision: 2.5.0
     helm:
       releaseName: sonarr
       values: |
