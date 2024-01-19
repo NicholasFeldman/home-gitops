@@ -1,7 +1,9 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "dependencyDashboard": true,
-  "fileMatch": ["\\.application\\.yaml$"],
+  "docker": {
+    "fileMatch": ["\\.application\\.yaml$"],
+  },
   "argocd": {
     "fileMatch": ["\\.application\\.yaml$"]
   }
