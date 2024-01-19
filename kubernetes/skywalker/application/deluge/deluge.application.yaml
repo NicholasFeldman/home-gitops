@@ -16,7 +16,7 @@ spec:
     targetRevision: 5.4.*
     helm:
       releaseName: deluge
-      values: |
+      valuesObject:
         controller:
           replicas: 0
         env:

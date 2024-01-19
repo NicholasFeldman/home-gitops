@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: grocy
-      values: |-
+      valuesObject:
         image:
           repository: linuxserver/grocy
           tag: 4.0.0

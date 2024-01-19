@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: freshrss
-      values: |-
+      valuesObject:
         image:
           repository: freshrss/freshrss
           tag: latest

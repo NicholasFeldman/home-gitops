@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: fluidd
-      values: |-
+      valuesObject:
         image:
           repository: ghcr.io/fluidd-core/fluidd
           tag: v1.24.1
