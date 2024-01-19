@@ -45,7 +45,6 @@ spec:
             type: nfs
             server: truenas.feldman.in
             path: /mnt/primary/Downloads
-            mountPath: /downloads
         podSecurityContext:
           runAsUser: 568
           runAsGroup: 568
