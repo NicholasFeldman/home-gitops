@@ -17,8 +17,6 @@ spec:
     helm:
       releaseName: requestrr
       valuesObject:
-        controller:
-          replicas: 0
         image:
           repository: darkalfx/requestrr
           tag: latest

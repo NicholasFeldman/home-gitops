@@ -17,8 +17,6 @@ spec:
     helm:
       releaseName: sonarr
       valuesObject:
-        controller:
-          replicas: 0
         image:
           repository: ghcr.io/onedr0p/sonarr
           pullPolicy: IfNotPresent

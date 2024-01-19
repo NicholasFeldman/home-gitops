@@ -17,8 +17,6 @@ spec:
     helm:
       releaseName: deluge
       valuesObject:
-        controller:
-          replicas: 0
         env:
           TZ: America/New_York
         persistence:

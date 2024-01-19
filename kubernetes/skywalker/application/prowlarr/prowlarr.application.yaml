@@ -17,8 +17,6 @@ spec:
     helm:
       releaseName: prowlarr
       valuesObject:
-        controller:
-          replicas: 0
         image:
           repository: linuxserver/prowlarr
           tag: latest

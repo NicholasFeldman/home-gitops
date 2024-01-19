@@ -17,8 +17,6 @@ spec:
     helm:
       releaseName: radarr
       valuesObject:
-        controller:
-          replicas: 0
         image:
           repository: linuxserver/radarr
           tag: latest
