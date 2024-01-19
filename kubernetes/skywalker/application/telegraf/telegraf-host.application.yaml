@@ -19,7 +19,7 @@ spec:
       valuesObject:
         image:
           repository: telegraf
-          tag: 1.27.3-alpine
+          tag: 1.29.2-alpine
         command: 
           - telegraf
           - --config
