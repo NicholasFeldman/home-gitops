@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: telegraf-host
-      values: |-
+      valuesObject:
         image:
           repository: telegraf
           tag: 1.27.3-alpine

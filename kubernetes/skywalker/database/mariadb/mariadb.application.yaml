@@ -16,7 +16,7 @@ spec:
     targetRevision: 11.5.7
     helm:
       releaseName: mariadb
-      values: |-
+      valuesObject:
         auth:
           username: nick
           database: default

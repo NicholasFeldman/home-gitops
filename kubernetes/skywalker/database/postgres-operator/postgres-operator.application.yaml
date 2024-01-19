@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.2.5
     helm:
       releaseName: ext-postgres-operator
-      values: |-
+      valuesObject:
         existingSecret: "ext-postgres-operator"
         env:
           KEEP_SECRET_NAME: "'true'"

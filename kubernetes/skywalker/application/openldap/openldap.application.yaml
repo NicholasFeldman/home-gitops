@@ -16,7 +16,7 @@ spec:
     targetRevision: 0.2.*
     helm:
       releaseName: openldap
-      values: |-
+      valuesObject:
         image:
           repository: bitnami/openldap
           tag: 2.6.4

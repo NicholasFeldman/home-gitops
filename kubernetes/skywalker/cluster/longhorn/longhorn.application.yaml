@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.3
     helm:
       releaseName: longhorn
-      values: |-
+      valuesObject:
         csi:
           kubeletRootDir: /var/lib/kubelet
         persistence:

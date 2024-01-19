@@ -16,7 +16,7 @@ spec:
     targetRevision: 5.53.1
     helm:
       releaseName: argocd
-      values: |
+      valuesObject:
         configs:
           cm:
             url: "https://argocd.feldman.in"

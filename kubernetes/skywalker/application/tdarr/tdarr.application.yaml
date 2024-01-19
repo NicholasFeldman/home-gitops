@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: tdarr
-      values: |-
+      valuesObject:
         controller:
           replicas: 0
         image:

@@ -16,7 +16,7 @@ spec:
     targetRevision: 2.2.0
     helm:
       releaseName: grafana
-      values: |-
+      valuesObject:
         controllers:
           main:
             containers:

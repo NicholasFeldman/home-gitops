@@ -16,7 +16,7 @@ spec:
     targetRevision: 5.13.0
     helm:
       releaseName: influxdb
-      values: |-
+      valuesObject:
         auth:
           existingSecret: influxdb
           admin:

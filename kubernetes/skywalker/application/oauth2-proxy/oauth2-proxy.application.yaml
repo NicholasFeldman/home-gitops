@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: oauth2-proxy
-      values: |-
+      valuesObject:
         image:
           repository: bitnami/oauth2-proxy
           tag: 7.4.0
