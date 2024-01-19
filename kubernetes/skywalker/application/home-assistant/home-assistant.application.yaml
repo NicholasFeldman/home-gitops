@@ -16,7 +16,7 @@ spec:
     targetRevision: 1.5.1
     helm:
       releaseName: home-assistant
-      values: |-
+      valuesObject:
         image:
           repository: ghcr.io/home-assistant/home-assistant
           tag: "2024.1.3"
