@@ -8,7 +8,7 @@ spec:
   gateways:
     - cluster/feldman-in
   hosts:
-    - jellyseerr.feldman.in
+    - jellyseer.feldman.in
   http:
     - match:
       - uri:
