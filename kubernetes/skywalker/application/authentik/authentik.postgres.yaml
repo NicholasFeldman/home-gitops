@@ -1,0 +1,27 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+
+metadata:
+  name: authentik
+  namespace: application
+
+spec:
+  database: grafana
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: authentik
+  namespace: application
+
+spec:
+  role: authentik
+  database: authentik
+  secretName: authentik-database-env
+  privileges: OWNER
+  secretTemplate:
+    AUTHENTIK_POSTGRESQL__PASSWORD: "{{.Password}}"
+    AUTHENTIK_POSTGRESQL__HOST: "{{.Host}}.database.svc.cluster.local"
+    AUTHENTIK_POSTGRESQL__NAME: "{{.Database}}"
+    AUTHENTIK_POSTGRESQL__USER: "{{.Role}}"

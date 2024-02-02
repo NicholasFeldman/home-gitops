@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: authentik
+
+spec:
+  gateways:
+    - cluster/feldman-tech
+  hosts:
+    - authentik.feldman.tech
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: authentik
+            port:
+              number: 9000
