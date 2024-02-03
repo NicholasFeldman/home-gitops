@@ -17,6 +17,10 @@ spec:
     helm:
       releaseName: authentik
       valuesObject:
+        redis:
+          enabled: true
+          persistence:
+            enabled: false
         envFrom:
           - secretRef:
               name: authentik-env
