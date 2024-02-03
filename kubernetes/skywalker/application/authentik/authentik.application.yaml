@@ -20,7 +20,8 @@ spec:
         redis:
           enabled: true
           persistence:
-            enabled: false
+            master:
+              enabled: false
         envFrom:
           - secretRef:
               name: authentik-env
