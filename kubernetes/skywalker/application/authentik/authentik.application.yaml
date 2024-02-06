@@ -19,8 +19,8 @@ spec:
       valuesObject:
         redis:
           enabled: true
-          persistence:
-            master:
+          master:
+            persistence:
               enabled: false
         envFrom:
           - secretRef:
