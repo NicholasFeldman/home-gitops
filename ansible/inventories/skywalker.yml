@@ -1,36 +1,27 @@
 kenobi:
   hosts:
-    skywalker-control-plane-0:
+    skywalker-control-plane-vt5g6:
       ansible_user: nick
-      ansible_host: 10.10.90.70
-    skywalker-worker-0:
+      ansible_host: 10.10.90.65
+    skywalker-control-plane-a7h7w:
       ansible_user: nick
-      ansible_host: 10.10.90.80
-    skywalker-worker-1:
+      ansible_host: 10.10.90.66
+    skywalker-control-plane-k2h8d:
       ansible_user: nick
-      ansible_host: 10.10.90.81
-    skywalker-pi4b-nv3a7:
-      ansible_user: nick
-      ansible_host: 10.10.90.110
-    skywalker-pve-w49r8:
-      ansible_user: nick
-      ansible_host: 10.10.90.82
+      ansible_host: 10.10.90.67
   children:
     # k3s
     k3s_cluster_server:
       hosts:
-        skywalker-control-plane-0:
+        skywalker-control-plane-vt5g6:
+        skywalker-control-plane-a7h7w:
+        skywalker-control-plane-k2h8d:
     k3s_cluster_agent:
       hosts:
-        skywalker-worker-0:
-        skywalker-worker-1:
-        skywalker-pi4b-nv3a7:
-        skywalker-pve-w49r8:
 
     # proxmox
     proxmox_vm:
       hosts:
-        skywalker-control-plane-0:
-        skywalker-worker-0:
-        skywalker-worker-1:
-        skywalker-pve-w49r8:
+        skywalker-control-plane-vt5g6:
+        skywalker-control-plane-a7h7w:
+        skywalker-control-plane-k2h8d:

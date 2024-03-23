@@ -2,6 +2,7 @@
   tasks:
     - set_fact:
         k3s_control_node: true
+        k3s_etcd_datastore: true
         k3s_server:
           disable:
             - traefik
@@ -20,4 +21,4 @@
   vars:
     swap_file_state: absent
     k3s_become: true
-    k3s_release_version: v1.28.5+k3s1
+    k3s_release_version: v1.29.2+k3s1
