@@ -5,4 +5,5 @@ metadata:
   name: democratic-csi
 
 resources:
+  - democratic-csi-driver-config.sealed-secret.yaml
   - democratic-csi.application.yaml

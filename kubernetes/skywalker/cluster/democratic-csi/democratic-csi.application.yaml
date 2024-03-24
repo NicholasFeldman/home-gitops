@@ -20,6 +20,6 @@ spec:
         csiDriver:
           name: org.democratic-csi.freenas-api-iscsi
         driver:
-          # existingConfigSecret: freenas-api-iscsi-driver-config
+          existingConfigSecret: democratic-csi-driver-config
           config:
             driver: freenas-api-iscsi
