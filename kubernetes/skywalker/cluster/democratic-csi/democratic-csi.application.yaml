@@ -18,8 +18,8 @@ spec:
       releaseName: democratic-csi
       valuesObject:
         csiDriver:
-          name: org.democratic-csi.freenas-api-iscsi
+          name: org.democratic-csi.freenas-iscsi
         driver:
           existingConfigSecret: democratic-csi-driver-config
           config:
-            driver: freenas-api-iscsi
+            driver: freenas-iscsi
