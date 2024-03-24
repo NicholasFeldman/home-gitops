@@ -23,3 +23,19 @@ spec:
           existingConfigSecret: democratic-csi-driver-config
           config:
             driver: freenas-iscsi
+        storageClasses:
+          - name: freenas-iscsi
+            defaultClass: false
+            reclaimPolicy: Retain
+            volumeBindingMode: Immediate
+            allowVolumeExpansion: true
+            parameters:
+              fsType: ext4
+            mountOptions: []
+            secrets:
+              provisioner-secret:
+              controller-publish-secret:
+              node-stage-secret:
+              node-publish-secret:
+              controller-expand-secret:
+
