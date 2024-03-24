@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-democratic-csi-democratic-csi
+  namespace: cluster
+
+spec:
+  destination:
+    namespace: cluster
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: democratic-csi
+    repoURL: https://democratic-csi.github.io/charts/
+    targetRevision: '0.14.5'
+    helm:
+      releaseName: democratic-csi
+      valuesObject:
+        csiDriver:
+          name: org.democratic-csi.freenas-api-iscsi
+        driver:
+          # existingConfigSecret: freenas-api-iscsi-driver-config
+          config:
+            driver: freenas-api-iscsi
