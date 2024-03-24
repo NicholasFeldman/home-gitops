@@ -22,9 +22,9 @@ spec:
         driver:
           existingConfigSecret: democratic-csi-driver-config
           config:
-            driver: freenas-iscsi
+            driver: freenas-api-iscsi
         storageClasses:
-          - name: freenas-iscsi
+          - name: freenas-api-iscsi
             defaultClass: false
             reclaimPolicy: Retain
             volumeBindingMode: Immediate
