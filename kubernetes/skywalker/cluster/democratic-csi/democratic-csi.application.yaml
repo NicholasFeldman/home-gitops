@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-democratic-csi-democratic-csi
+  name: skywalker-cluster-democratic-csi
   namespace: cluster
 
 spec:
