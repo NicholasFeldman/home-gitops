@@ -24,7 +24,7 @@ spec:
         compression: bzip2
         maxParallel: 8
       destinationPath: "s3://feldman-skywalker-barman"
-      serverName: primary-cluster-v2
+      serverName: primary-cluster-v3
       s3Credentials:
         accessKeyId:
           name: postgres-s3
@@ -35,7 +35,7 @@ spec:
 
   bootstrap:
     recovery:
-      source: &previousName primary-cluster-v1
+      source: &previousName primary-cluster-v2
 
   externalClusters:
     - name: *previousName
