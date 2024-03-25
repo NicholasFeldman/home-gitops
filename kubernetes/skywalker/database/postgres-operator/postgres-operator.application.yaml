@@ -13,7 +13,7 @@ spec:
   source:
     chart: ext-postgres-operator
     repoURL: https://movetokube.github.io/postgres-operator/
-    targetRevision: 1.2.5
+    targetRevision: 1.2.6
     helm:
       releaseName: ext-postgres-operator
       valuesObject:
