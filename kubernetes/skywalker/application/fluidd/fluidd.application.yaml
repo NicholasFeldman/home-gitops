@@ -19,7 +19,7 @@ spec:
       valuesObject:
         image:
           repository: ghcr.io/fluidd-core/fluidd
-          tag: v1.27.1
+          tag: v1.29.0
         service:
           main:
             ports:
