@@ -25,7 +25,7 @@ spec:
           API_URL: http://localhost:9000
         additionalContainers:
           api:
-            image: hkotel/mealie:api-nightly
+            image: hkotel/mealie:nightly
             env:
               TZ: America/New_York
               ALLOW_SIGNUP: false

@@ -11,6 +11,7 @@ resource "authentik_provider_oauth2" "mealie-oauth2" {
         data.authentik_scope_mapping.scope-profile.id,
         data.authentik_scope_mapping.scope-openid.id,
     ]
+    client_type = "public"
 }
 
 resource "authentik_application" "mealie" {
