@@ -17,13 +17,15 @@ spec:
     helm:
       releaseName: authentik
       valuesObject:
+        global:
+          envFrom:
+          - secretRef:
+              name: authentik-env
+          - secretRef:
+              name: authentik-database-env
         redis:
           enabled: true
           master:
             persistence:
               enabled: false
-        envFrom:
-          - secretRef:
-              name: authentik-env
-          - secretRef:
-              name: authentik-database-env
+        
