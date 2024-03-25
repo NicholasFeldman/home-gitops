@@ -21,14 +21,16 @@ spec:
           cm:
             url: "https://argocd.feldman.in"
             dex.config: |
-              name: Authentik
-              type: oidc
-              id: authentik
-              issuer: https://authentik.feldman.tech/application/o/argocd/
-              clientID: argocd
-              clientSecret: $argocd-oidc:authentik.clientSecret
-              insecureEnableGroups: true
-              scopes: ["openid", "profile", "email"]
+              connectors:
+                - name: Authentik
+                  type: oidc
+                  id: authentik
+                  config:
+                    issuer: https://authentik.feldman.tech/application/o/argocd/
+                    clientID: argocd
+                    clientSecret: $argocd-oidc:authentik.clientSecret
+                    insecureEnableGroups: true
+                    scopes: ["openid", "profile", "email"]
           rbac:
             policy.csv: |
               g, ArgoCD Admins, role:admin
