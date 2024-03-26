@@ -8,17 +8,11 @@ resources:
   - application.namespace.yaml
 
   - authentik
-  - fluidd
   - freshrss
   - grafana
-  - grocy
   - home-assistant
   - homepage
-  - keycloak
   - mealie
   - node-red
-  - oauth2-proxy
-  - openldap
   - snipe-it
   - telegraf
-  - truecommand
