@@ -15,4 +15,3 @@ resources:
   - mealie
   - node-red
   - snipe-it
-  - telegraf
