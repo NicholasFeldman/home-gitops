@@ -9,7 +9,6 @@ resources:
 
   - argocd
   - cert-manager
-  - democratic-csi
   - istio
   - longhorn
   - metallb
