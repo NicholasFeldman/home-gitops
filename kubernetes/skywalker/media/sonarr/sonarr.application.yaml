@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-application-sonarr
+  name: skywalker-media-sonarr
   namespace: cluster
 
 spec:
   destination:
-    namespace: application
+    namespace: media
     name: in-cluster
   project: skywalker
   source:

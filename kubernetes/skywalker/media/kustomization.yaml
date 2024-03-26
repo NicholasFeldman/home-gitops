@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: media
+
+resources:
+  - media.namespace.yaml
+
+  - deluge
+  - jellyfin
+  - jellyseer
+  - prowlarr
+  - radarr
+  - requestrr
+  - sonarr
+  - tdarr

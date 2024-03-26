@@ -2,43 +2,35 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-application-tdarr
+  name: skywalker-media-jellyfin
   namespace: cluster
 
 spec:
   destination:
-    namespace: application
+    namespace: media
     name: in-cluster
   project: skywalker
   source:
-    chart: app-template 
+    chart: app-template
     repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 1.5.1
     helm:
-      releaseName: tdarr
+      releaseName: jellyfin
       valuesObject:
         image:
-          repository: ghcr.io/haveagitgat/tdarr
-          tag: 2.17.01
+          repository: jellyfin/jellyfin
+          tag: 10.8.13
         env:
-          internalNode: "true"
-          nodeID: "internal"
+          TZ: America/New_York
         service:
           main:
             ports:
               http:
-                port: 8265
+                port: 8096
         persistence:
           config:
             enabled: true
-            mountPath: /app/configs
-            accessMode: ReadWriteOnce
-            size: 1Gi
-          server:
-            enabled: true
-            mountPath: /app/server
-            accessMode: ReadWriteOnce
-            size: 2Gi
+            size: 6Gi
           media:
             enabled: true
             type: nfs

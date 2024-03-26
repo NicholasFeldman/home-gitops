@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-application-jellyseer
+  name: skywalker-media-requestrr
   namespace: cluster
 
 spec:
   destination:
-    namespace: application
+    namespace: media
     name: in-cluster
   project: skywalker
   source:
@@ -15,20 +15,21 @@ spec:
     repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 1.5.1
     helm:
-      releaseName: jellyseer
+      releaseName: requestrr
       valuesObject:
         image:
-          repository: fallenbagel/jellyseerr
+          repository: darkalfx/requestrr
           tag: latest
         env:
           TZ: America/New_York
         persistence:
           config:
             enabled: true
-            mountPath: /app/config
+            mountPath: /root/config
             size: 1Gi
         service:
           main:
             ports:
               http:
-                port: 5055
+                port: 4545
+

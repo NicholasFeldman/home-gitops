@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: skywalker-application-requestrr
+  name: skywalker-media-prowlarr
   namespace: cluster
 
 spec:
   destination:
-    namespace: application
+    namespace: media
     name: in-cluster
   project: skywalker
   source:
@@ -15,21 +15,22 @@ spec:
     repoURL: http://bjw-s.github.io/helm-charts/
     targetRevision: 1.5.1
     helm:
-      releaseName: requestrr
+      releaseName: prowlarr
       valuesObject:
         image:
-          repository: darkalfx/requestrr
+          repository: linuxserver/prowlarr
           tag: latest
         env:
           TZ: America/New_York
         persistence:
           config:
             enabled: true
-            mountPath: /root/config
+            mountPath: /config
+            accessMode: ReadWriteOnce
             size: 1Gi
         service:
           main:
             ports:
               http:
-                port: 4545
-
+                port: 9696
+              
