@@ -20,3 +20,4 @@ spec:
         prometheus:
           persistence:
             enabled: true
+          retentionSize: "7GB"
