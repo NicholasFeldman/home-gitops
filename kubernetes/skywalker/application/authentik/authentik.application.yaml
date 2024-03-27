@@ -22,7 +22,7 @@ spec:
           - secretRef:
               name: authentik-env
           - secretRef:
-              name: authentik-database-env
+              name: authentik-database-env-authentik
         redis:
           enabled: true
           master:

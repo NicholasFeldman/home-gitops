@@ -43,7 +43,7 @@ spec:
                   - secretRef:
                       name: grafana-env
                   - secretRef:
-                      name: grafana-database-env
+                      name: grafana-database-env-grafana
                 probes:
                   liveness:
                     custom: true
