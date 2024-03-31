@@ -23,12 +23,10 @@ apiVersion: security.istio.io/v1beta1
 kind: AuthorizationPolicy
 
 metadata:
-    name: home-assistant-policy
+  name: home-assistant-policy
+  namespace: cluster
 
 spec:
-  selector:
-    matchLabels:
-      istio: ingressgateway
   action: CUSTOM
   provider:
     name: "authentik"
