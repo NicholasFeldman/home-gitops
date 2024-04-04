@@ -15,6 +15,6 @@ spec:
             prefix: /
       route:
         - destination:
-            host: authentik-server
+            host: authentik
             port:
               number: 80
