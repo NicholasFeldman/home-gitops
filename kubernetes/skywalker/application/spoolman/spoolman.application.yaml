@@ -41,6 +41,8 @@ spec:
             parentRefs:
               - name: feldman-in
                 namespace: cluster
-                group: networking.istio.io
+                backendRefs:
+                  - name: spoolman
+                    port: 8000
             hostnames: ["spoolman.feldman.in"]
 
