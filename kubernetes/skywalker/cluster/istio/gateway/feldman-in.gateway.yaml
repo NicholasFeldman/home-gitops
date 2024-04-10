@@ -73,6 +73,11 @@ spec:
       hostname: "*.feldman.in"
       port: 443
       protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+        - kind: Secret
+          name: feldman-in-tls
       allowedRoutes:
         namespaces:
           from: All
