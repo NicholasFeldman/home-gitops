@@ -1,0 +1,45 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: skywalker-application-spoolman
+  namespace: cluster
+
+spec:
+  destination:
+    namespace: application
+    name: in-cluster
+  project: skywalker
+  source:
+    chart: app-template 
+    repoURL: http://bjw-s.github.io/helm-charts/
+    targetRevision: 2.2.0
+    helm:
+      releaseName: spoolman
+      valuesObject:
+        controllers:
+          spoolman:
+            containers:
+              app:
+                image:
+                  repository: ghcr.io/donkie/spoolman
+                  tag: latest
+                env:
+                  TZ: America/New_York
+                envFrom:
+                  - secretRef:
+                      name: spoolman-database-env-spoolman
+        service:
+          app:
+            ports:
+              http:
+                port: 8000
+        route:
+          app:
+            enabled: true
+            parentRefs:
+              - name: feldman-in
+                namespace: cluster
+                group: networking.istio.io
+            hostnames: ["spoolman.feldman.in"]
+
