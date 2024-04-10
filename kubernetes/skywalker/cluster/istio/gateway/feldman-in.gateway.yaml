@@ -52,3 +52,27 @@ spec:
         protocol: TCP
       hosts:
         - "*.feldman.in"
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+
+metadata:
+  name: feldman-in
+
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: default
+      hostname: "*.feldman.in"
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: default
+      hostname: "*.feldman.in"
+      port: 443
+      protocol: HTTPS
+      allowedRoutes:
+        namespaces:
+          from: All
