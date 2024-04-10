@@ -1,0 +1,28 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+
+metadata:
+  name: spoolman
+  namespace: application
+
+spec:
+  database: spoolman
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: spoolman
+  namespace: application
+
+spec:
+  role: spoolman
+  database: spoolman
+  secretName: spoolman-database-env
+  privileges: OWNER
+  secretTemplate:
+    SPOOLMAN_DB_TYPE: "postgres"
+    SPOOLMAN_DB_PASSWORD: "{{.Password}}"
+    SPOOLMAN_DB_HOST: "{{.Host}}.database.svc.cluster.local"
+    SPOOLMAN_DB_NAME: "{{.Database}}"
+    SPOOLMAN_DB_USERNAME: "{{.Role}}"
