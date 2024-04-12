@@ -17,6 +17,17 @@ spec:
     helm:
       releaseName: argocd
       valuesObject:
+        controller:
+          replicas: 2
+        server:
+          autoscaling:
+            enabled: true
+        repoServer:
+          autoscaling:
+            enabled: true
+        applicationSet:
+          autoscaling:
+            enabled: true
         configs:
           cm:
             url: "https://argocd.feldman.in"
