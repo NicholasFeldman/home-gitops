@@ -23,7 +23,7 @@ spec:
               main:
                 image:
                   repository: grafana/grafana
-                  tag: 10.4.1
+                  tag: 10.4.2
                 env:
                   GF_SERVER_DOMAIN: grafana.feldman.in
                   GF_SERVER_ROOT_URL: https://grafana.feldman.in
