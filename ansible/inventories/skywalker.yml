@@ -9,6 +9,12 @@ kenobi:
     skywalker-control-plane-k2h8d:
       ansible_user: nick
       ansible_host: 10.10.90.67
+    skywalker-worker-ga9vf:
+      ansible_user: nick
+      ansible_host: 10.10.90.71
+    skywalker-worker-b4k1d:
+      ansible_user: nick
+      ansible_host: 10.10.90.72
   children:
     # k3s
     k3s_cluster_server:
@@ -18,6 +24,8 @@ kenobi:
         skywalker-control-plane-k2h8d:
     k3s_cluster_agent:
       hosts:
+        skywalker-worker-ga9vf:
+        skywalker-worker-b4k1d:
 
     # proxmox
     proxmox_vm:
@@ -25,3 +33,5 @@ kenobi:
         skywalker-control-plane-vt5g6:
         skywalker-control-plane-a7h7w:
         skywalker-control-plane-k2h8d:
+        skywalker-worker-ga9vf:
+        skywalker-worker-b4k1d:
