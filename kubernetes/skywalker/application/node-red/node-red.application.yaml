@@ -19,7 +19,7 @@ spec:
       valuesObject:
         image:
           repository: nodered/node-red
-          tag: 3.1.8
+          tag: 3.1.9
         env:
           TZ: America/New_York
         service:
