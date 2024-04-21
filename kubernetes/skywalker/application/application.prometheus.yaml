@@ -9,9 +9,9 @@ metadata:
 spec:
   retention: 10d
   retentionSize: 7GB
-  serviceMonitorNamespaceSelector:
-    matchNames:
-    - application
+  serviceMonitorSelector:
+    matchLabels:
+      prometheus: application-prometheus
 
   resources:
     limits:
