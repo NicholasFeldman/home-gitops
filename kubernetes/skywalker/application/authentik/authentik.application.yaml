@@ -28,8 +28,6 @@ spec:
             enabled: true
             serviceMonitor:
               enabled: true
-              selector:
-                prometheus: application-prometheus
         redis:
           enabled: true
           master:

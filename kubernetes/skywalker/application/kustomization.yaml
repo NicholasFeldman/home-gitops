@@ -6,7 +6,6 @@ metadata:
 
 resources:
   - application.namespace.yaml
-  - application.prometheus.yaml
 
   - authentik
   - freshrss

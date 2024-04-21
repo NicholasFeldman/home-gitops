@@ -18,6 +18,8 @@ spec:
       releaseName: kube-prometheus
       valuesObject:
         prometheus:
+          retention: '10d'
+          retentionSize: "7GB"
           resources:
             requests:
               cpu: 2
@@ -25,6 +27,3 @@ spec:
             limits:
               cpu: 4
               memory: 2Gi
-          persistence:
-            enabled: true
-          retentionSize: "7GB"
