@@ -46,10 +46,4 @@ spec:
               - backendRefs:
                   - name: spoolman
                     port: 8000
-        serviceMonitor:
-          main:
-            enabled: true
-            
-                  
-                  
-
+              
