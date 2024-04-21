@@ -18,6 +18,13 @@ spec:
       releaseName: kube-prometheus
       valuesObject:
         prometheus:
+          resources:
+            requests:
+              cpu: 2
+              memory: 512Mi
+            limits:
+              cpu: 4
+              memory: 2Gi
           persistence:
             enabled: true
           retentionSize: "7GB"
