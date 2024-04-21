@@ -1,0 +1,22 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+
+metadata:
+  name: application-prometheus
+  labels:
+    prometheus: application-prometheus
+
+spec:
+  retention: 10d
+  retentionSize: 7GB
+  serviceMonitorNamespaceSelector:
+    matchNames:
+    - application
+
+  resources:
+    limits:
+      cpu: 4
+      memory: 2Gi
+    requests:
+      cpu: 2
+      memory: 512Mi
