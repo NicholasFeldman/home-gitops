@@ -14,6 +14,7 @@ spec:
           - name: database
           - name: kube-system
           - name: media
+          - name: monitoring
   template:
     metadata:
       name: 'skywalker-{{name}}'
