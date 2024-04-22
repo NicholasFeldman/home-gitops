@@ -24,7 +24,7 @@ spec:
         compactor:
           persistence:
             enabled: false
-        ingestor:
+        ingester:
           persistence:
             enabled: false
         querier:
