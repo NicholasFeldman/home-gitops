@@ -7,7 +7,7 @@ metadata:
 
 spec:
   destination:
-    namespace: database
+    namespace: monitoring
     name: in-cluster
   project: skywalker
   source:
@@ -21,3 +21,15 @@ spec:
           enabled: true
           serviceMonitor:
             enabled: true
+        compactor:
+          persistence:
+            enabled: false
+        ingestor:
+          persistence:
+            enabled: false
+        querier:
+          persistence:
+            enabled: false
+        ruler:
+          persistence:
+            enabled: false
