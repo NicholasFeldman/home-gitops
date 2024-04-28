@@ -7,4 +7,6 @@ metadata:
 resources:
   - monitoring.namespace.yaml
 
+  - probes
+
   - grafana-loki.application.yaml
