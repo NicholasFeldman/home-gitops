@@ -18,20 +18,3 @@ spec:
             host: home-assistant
             port:
               number: 8123
----
-apiVersion: security.istio.io/v1beta1
-kind: AuthorizationPolicy
-
-metadata:
-  name: home-assistant-policy
-  namespace: cluster
-
-spec:
-  action: CUSTOM
-  provider:
-    name: "authentik"
-  rules:
-    - to:
-      - operation:
-          hosts:
-            - "home-assistant.feldman.tech"
