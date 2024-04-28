@@ -2,18 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 
 metadata:
-  name: skywalker
+  name: skywalker-jsonnet
   namespace: cluster
 
 spec:
   generators:
     - list:
         elements:
-          - name: application
-          - name: cluster
-          - name: database
-          - name: kube-system
-          - name: media
           - name: monitoring
   template:
     metadata:
@@ -37,4 +32,32 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{name}}'
-     
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: skywalker
+  namespace: cluster
+
+spec:
+  generators:
+    - list:
+        elements:
+          - name: application
+          - name: cluster
+          - name: database
+          - name: kube-system
+          - name: media
+  template:
+    metadata:
+      name: 'skywalker-{{name}}'
+    spec:
+      project: skywalker
+      source:
+        repoURL: https://github.com/NicholasFeldman/home-gitops.git
+        targetRevision: HEAD
+        path: 'kubernetes/skywalker/{{name}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{name}}'
