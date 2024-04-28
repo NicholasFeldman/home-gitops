@@ -27,3 +27,13 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{name}}'
+      directory:
+        jsonnet:
+          extVars:
+          - name: app
+            value: $ARGOCD_APP_NAME
+          tlas:
+            - name: ns
+              value: $ARGOCD_APP_NAMESPACE
+          libs:
+            - kubernetes/vendor

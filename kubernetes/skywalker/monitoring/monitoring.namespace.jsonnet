@@ -1,9 +1,5 @@
+local k = import "github.com/jsonnet-libs/k8s-libsonnet/1.29/main.libsonnet"
+
 [
-  {
-    apiVersion: 'v1',
-    kind: 'Namespace',
-    metadata: {
-      name: 'monitoring',
-    },
-  },
+  k.core.v1.namespace.new('monitoring'),
 ]
