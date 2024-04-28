@@ -1,0 +1,24 @@
+[
+  {
+    apiVersion: 'monitoring.coreos.com/v1',
+    kind: 'Probe',
+    metadata: {
+      name: 'authentik',
+    },
+    spec: {
+      jobName: 'authentik',
+      interval: '15s',
+      module: 'http_2xx',
+      prober: {
+        url: 'kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115',
+      },
+      targets: {
+        staticConfig: {
+          static: [
+            'https://authentik.feldman.tech',
+          ],
+        },
+      },
+    },
+  },
+]
