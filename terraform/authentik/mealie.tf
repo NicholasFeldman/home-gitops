@@ -12,6 +12,7 @@ resource "authentik_provider_oauth2" "mealie-oauth2" {
         data.authentik_scope_mapping.scope-openid.id,
     ]
     client_type = "public"
+    signing_key = data.authentik_certificate_key_pair.generated.id
 }
 
 resource "authentik_application" "mealie" {
