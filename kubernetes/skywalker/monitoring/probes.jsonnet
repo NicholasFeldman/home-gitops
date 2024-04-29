@@ -9,7 +9,7 @@ local probes = [
   { name: 'homepage', urls: ['https://homepage.feldman.in'] },
   { name: 'node-red', urls: ['https://node-red.feldman.in'] },
   { name: 'spoolman', urls: ['https://spoolman.feldman.in'] },
-  { name: 'snipe-it', urls: ['https://snipe-it.feldman.in'] },
+  { name: 'snipe-it', urls: ['https://snipeit.feldman.in'] },
 
   // Cluster
   { name: 'argocd', urls: ['https://argocd.feldman.in'] },
