@@ -1,0 +1,31 @@
+controllers:
+  spoolman:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/donkie/spoolman
+          tag: latest
+        env:
+          TZ: America/New_York
+        envFrom:
+          - secretRef:
+              name: spoolman-database-env-spoolman
+
+service:
+  app:
+    controller: spoolman
+    ports:
+      http:
+        port: 8000
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: cluster
+    hostnames: ["spoolman.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: spoolman
+            port: 8000

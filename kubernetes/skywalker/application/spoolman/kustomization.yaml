@@ -5,5 +5,12 @@ metadata:
   name: spoolman
 
 resources:
-  - spoolman.application.yaml
   - spoolman.postgres.yaml
+
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: spoolman
+    version: 3.1.0
+    valuesFile: ../values/spoolman.yaml

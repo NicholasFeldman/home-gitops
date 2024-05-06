@@ -5,6 +5,12 @@ metadata:
   name: snipe-it
 
 resources:
-  - snipeit.application.yaml
   - snipeit.virtualservice.yaml
   - snipeit.sealed-secret.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: spoolman
+    version: 1.5.1
+    valuesFile: ../values/snipeit.yaml

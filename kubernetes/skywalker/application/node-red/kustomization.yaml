@@ -5,5 +5,11 @@ metadata:
   name: node-red
 
 resources:
-  - node-red.application.yaml
   - node-red.virtualservice.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: node-red
+    version: 1.5.1
+    valuesFile: ../values/node-red.yaml
