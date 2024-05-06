@@ -1,0 +1,24 @@
+image:
+  repository: freshrss/freshrss
+  tag: latest
+env:
+  TZ: America/New_York
+envFrom:
+  - secretRef:
+      name: freshrss-env
+service:
+  main:
+    ports:
+      http:
+        port: 80
+persistence:
+  data:
+    enabled: true
+    mountPath: /var/www/FreshRSS/data
+    accessMode: ReadWriteOnce
+    size: 2Gi
+  extensions:
+    enabled: true
+    mountPath: /var/www/FreshRSS/extensions
+    accessMode: ReadWriteOnce
+    size: 1Gi

@@ -20,6 +20,12 @@ resources:
 helmCharts:
   - name: app-template
     repo: http://bjw-s.github.io/helm-charts/
+    releaseName: freshrss
+    version: 1.5.1
+    valuesFile: values/grafana.yaml
+
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
     releaseName: grafana
     version: 2.2.0
     valuesFile: values/grafana.yaml

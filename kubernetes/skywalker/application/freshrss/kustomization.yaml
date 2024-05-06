@@ -5,6 +5,5 @@ metadata:
   name: freshrss
 
 resources:
-  - freshrss.application.yaml
   - freshrss.virtualservice.yaml
   - freshrss-env.sealed-secret.yaml
