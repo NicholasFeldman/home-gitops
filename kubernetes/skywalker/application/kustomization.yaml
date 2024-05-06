@@ -24,8 +24,3 @@ helmCharts:
     version: 1.5.1
     valuesFile: values/freshrss.yaml
 
-  - name: app-template
-    repo: http://bjw-s.github.io/helm-charts/
-    releaseName: grafana
-    version: 3.1.0
-    valuesFile: values/grafana.yaml

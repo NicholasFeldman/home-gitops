@@ -62,6 +62,7 @@ controllers:
 
 service:
   main:
+    controller: grafana
     ports:
       http:
         port: 3000
