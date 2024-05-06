@@ -18,7 +18,7 @@ resources:
 
 helmCharts:
   - name: app-template
-    repo: https://helm.mergestat.com/
+    repo: http://bjw-s.github.io/helm-charts/
     releaseName: jellyfin
     version: 1.5.1
     valuesFile: values/jellyfin.yaml
