@@ -22,7 +22,7 @@ helmCharts:
     repo: http://bjw-s.github.io/helm-charts/
     releaseName: freshrss
     version: 1.5.1
-    valuesFile: values/grafana.yaml
+    valuesFile: values/freshrss.yaml
 
   - name: app-template
     repo: http://bjw-s.github.io/helm-charts/
