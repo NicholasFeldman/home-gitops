@@ -29,4 +29,3 @@ route:
       - backendRefs:
           - name: spoolman
             port: 8000
-            namespace: application
