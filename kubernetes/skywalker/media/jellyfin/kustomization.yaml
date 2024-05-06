@@ -5,5 +5,4 @@ metadata:
   name: jellyfin
 
 resources:
-  - jellyfin.application.yaml
   - jellyfin.virtualservice.yaml
