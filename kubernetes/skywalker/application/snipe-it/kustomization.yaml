@@ -11,6 +11,6 @@ resources:
 helmCharts:
   - name: app-template
     repo: http://bjw-s.github.io/helm-charts/
-    releaseName: spoolman
+    releaseName: snipeit
     version: 1.5.1
     valuesFile: ../values/snipeit.yaml
