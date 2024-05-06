@@ -16,3 +16,10 @@ resources:
   - node-red
   - snipe-it
   - spoolman
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: grafana
+    version: 2.2.0
+    valuesFile: values/grafana.yaml

@@ -6,6 +6,5 @@ metadata:
 
 resources:
   - grafana-env.sealed-secret.yaml
-  - grafana.application.yaml
   - grafana.postgres.yaml
   - grafana.virtual-service.yaml

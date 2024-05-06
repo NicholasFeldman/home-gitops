@@ -1,0 +1,67 @@
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: grafana/grafana
+          tag: "11.0.0-preview"
+        env:
+          GF_SERVER_DOMAIN: grafana.feldman.in
+          GF_SERVER_ROOT_URL: https://grafana.feldman.in
+          GF_DATABASE_TYPE: postgres
+          GF_AUTH_DISABLE_LOGIN_FORM: true
+          GF_AUTH_OAUTH_ALLOW_INSECURE_EMAIL_LOOKUP: true
+          GF_AUTH_GENERIC_OAUTH_ENABLED: true
+          GF_AUTH_GENERIC_OAUTH_NAME: Authentik
+          GF_AUTH_GENERIC_OAUTH_CLIENT_ID: a744bb74a9882f0f08895d1514029be2
+          GF_AUTH_GENERIC_OAUTH_SCOPES: openid profile email
+          GF_AUTH_GENERIC_OAUTH_AUTH_URL: https://authentik.feldman.tech/application/o/authorize/
+          GF_AUTH_GENERIC_OAUTH_TOKEN_URL: https://authentik.feldman.tech/application/o/token/
+          GF_AUTH_GENERIC_OAUTH_API_URL: https://authentik.feldman.tech/application/o/userinfo/
+          GF_AUTH_GENERIC_OAUTH_ROLE_ATTRIBUTE_PATH: "contains(groups, 'Grafana Admins') && 'GrafanaAdmin' || contains(groups, 'Grafana Editors') && 'Editor' || 'Viewer'"
+          GF_AUTH_GENERIC_OAUTH_ALLOW_ASSIGN_GRAFANA_ADMIN: true
+        envFrom:
+          - secretRef:
+              name: grafana-env
+          - secretRef:
+              name: grafana-database-env-grafana
+        probes:
+          liveness:
+            custom: true
+            spec:
+              httpGet:
+                path: /api/health
+                port: 3000
+              initialDelaySeconds: 120
+              periodSeconds: 10
+              timeoutSeconds: 5
+              failureThreshold: 6
+              successThreshold: 1
+          readiness:
+            custom: true
+            spec:
+                httpGet:
+                  path: /api/health
+                  port: 3000
+                initialDelaySeconds: 30
+                periodSeconds: 10
+                timeoutSeconds: 5
+                failureThreshold: 6
+                successThreshold: 1
+          startup:
+            custom: true
+            spec:
+              httpGet:
+                path: /api/health
+                port: 3000
+              initialDelaySeconds: 30
+              periodSeconds: 10
+              timeoutSeconds: 5
+              failureThreshold: 6
+              successThreshold: 1
+service:
+  main:
+    ports:
+      http:
+        port: 3000
+
