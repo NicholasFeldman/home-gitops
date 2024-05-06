@@ -15,3 +15,10 @@ resources:
   - requestrr
   - sonarr
   - tdarr
+
+helmCharts:
+  - name: app-template
+    repo: https://helm.mergestat.com/
+    releaseName: jellyfin
+    version: 1.5.1
+    valuesFile: values/jellyfin.yaml
