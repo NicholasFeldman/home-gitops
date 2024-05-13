@@ -3,7 +3,6 @@ kind: Gateway
 
 metadata:
   name: feldman-tech
-  namespace: cluster
 
 spec:
   selector:
@@ -34,7 +33,6 @@ kind: Certificate
 
 metadata:
   name: feldman-tech-tls
-  namespace: cluster
 
 spec:
   secretName: feldman-tech-tls
