@@ -8,6 +8,9 @@ metadata:
 resources:
   - istio-system.namespace.yaml
 
+  - feldman-in.gateway.yaml
+  - feldnman-tech.gateway.yaml
+
 helmCharts:
   - name: base
     repo: https://istio-release.storage.googleapis.com/charts
