@@ -20,7 +20,7 @@ route:
     enabled: true
     parentRefs:
       - name: feldman-in
-        namespace: cluster
+        namespace: istio-system
     hostnames: ["fluidd.feldman.in"]
     rules:
       - backendRefs:

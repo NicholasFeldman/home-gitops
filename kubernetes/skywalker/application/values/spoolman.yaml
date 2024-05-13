@@ -23,7 +23,7 @@ route:
     enabled: true
     parentRefs:
       - name: feldman-in
-        namespace: cluster
+        namespace: istio-system
     hostnames: ["spoolman.feldman.in"]
     rules:
       - backendRefs:
