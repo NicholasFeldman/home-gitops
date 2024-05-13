@@ -63,9 +63,12 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{name}}'
+
       ignoreDifferences:
         - group: admissionregistration.k8s.io
           kind: ValidatingWebhookConfiguration
           name: istiod-default-validator
           jsonPointers:
             - /webhooks/0/failurePolicy
+        - kind: ServiceAccount
+          name: feldman-in-istio
