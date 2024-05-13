@@ -1,0 +1,29 @@
+controllers:
+  fluidd:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/fluidd-core/fluidd
+          tag: '13.0.0'
+        env:
+          TZ: America/New_York
+
+service:
+  app:
+    controller: fluidd
+    ports:
+      http:
+        port: 8000
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: cluster
+    hostnames: ["fluidd.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: fluidd
+            port: 8000
+            namespace: application
