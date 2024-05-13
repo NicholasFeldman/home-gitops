@@ -70,3 +70,6 @@ spec:
           name: istiod-default-validator
           jsonPointers:
             - /webhooks/0/failurePolicy
+
+        - kind: ServiceAccount
+          name: feldman-in-istio
