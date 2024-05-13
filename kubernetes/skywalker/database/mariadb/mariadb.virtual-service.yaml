@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - cluster/feldman-in
+    - istio-system/feldman-in
   hosts:
     - mariadb.feldman.in
   tcp:

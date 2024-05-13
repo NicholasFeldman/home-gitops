@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - cluster/feldman-tech
+    - istio-system/feldman-tech
   hosts:
     - home-assistant.feldman.tech
   http:

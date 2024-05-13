@@ -47,6 +47,7 @@ spec:
           - name: application
           - name: cluster
           - name: database
+          - name: istio-system
           - name: kube-system
           - name: media
           - name: printers

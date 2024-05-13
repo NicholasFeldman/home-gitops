@@ -6,7 +6,7 @@ metadata:
 
 spec:
   gateways:
-    - cluster/feldman-in
+    - istio-system/feldman-in
   hosts:
     - freshrss.feldman.in
     - news.feldman.in
