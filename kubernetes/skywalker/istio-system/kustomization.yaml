@@ -10,8 +10,6 @@ resources:
   - feldman-in.gateway.yaml
   - feldman-tech.gateway.yaml
 
-  - external-services/printers.yaml
-
 helmCharts:
   - name: base
     repo: https://istio-release.storage.googleapis.com/charts
