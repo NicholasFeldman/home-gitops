@@ -27,3 +27,13 @@ route:
           - name: fluidd
             port: 80
             namespace: printers
+
+persistence:
+  config:
+    enabled: true
+    type: configMap
+    name: fluidd-config
+    globalMounts:
+      - path: /usr/share/nginx/html/config.json
+        subpath: config.json
+        readOnly: true

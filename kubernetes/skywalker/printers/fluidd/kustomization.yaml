@@ -4,6 +4,8 @@ kind: Kustomization
 metadata:
   name: fluidd
 
+resources:
+  - fluidd-config.configmap.yaml
 
 helmCharts:
   - name: app-template
