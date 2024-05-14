@@ -18,3 +18,16 @@ spec:
           kind: Hostname
           name: printer-v02-8nhft.local
           port: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: printer-v02-8nhft
+spec:
+  hosts:
+  - printer-v02-8nhft.feldman.in
+  ports:
+  - number: 80
+    name: http-port
+    protocol: HTTP
+  resolution: DNS
