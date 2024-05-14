@@ -32,3 +32,41 @@ spec:
     protocol: HTTP
   resolution: DNS
   location: MESH_EXTERNAL
+---
+###########
+# Ender 3 #
+###########
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: HTTPRoute
+
+metadata:
+  name: ender3
+
+spec:
+  hostnames:
+    - ender3.feldman.in
+  parentRefs:
+    - group: gateway.networking.k8s.io
+      kind: Gateway
+      name: feldman-in
+      namespace: istio-system
+  rules:
+    - backendRefs:
+        - group: networking.istio.io
+          kind: Hostname
+          name: ender3.iot.local
+          port: 80
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: ServiceEntry
+metadata:
+  name: ender3
+spec:
+  hosts:
+  - ender3.iot.local
+  ports:
+  - number: 80
+    name: http
+    protocol: HTTP
+  resolution: DNS
+  location: MESH_EXTERNAL
