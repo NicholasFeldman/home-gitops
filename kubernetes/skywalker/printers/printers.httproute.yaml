@@ -2,7 +2,7 @@ apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
 
 metadata:
-  name: printer-
+  name: printer-v02-8nhft
 
 spec:
   hostnames:
@@ -14,9 +14,7 @@ spec:
       namespace: istio-system
   rules:
     - backendRefs:
-        - group: ''
-          kind: Service
-          name: spoolman
-          namespace: application
-          port: 8000
-          weight: 1
+        - group: networking.istio.io
+          kind: Hostname
+          name: printer-v02-8nhft.local
+          port: 80

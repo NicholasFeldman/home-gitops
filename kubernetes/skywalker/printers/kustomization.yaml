@@ -7,4 +7,6 @@ metadata:
 resources:
   - printers.namespace.yaml
 
+  - printers.httproute.yaml
+
   - fluidd
