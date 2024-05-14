@@ -5,6 +5,7 @@ metadata:
 spec:
   hosts:
     - printer-v02-8nhft.local
+    - printer-v02-8nhft.feldman.in
   ports:
   - number: 80
     name: http
