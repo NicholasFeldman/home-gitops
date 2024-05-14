@@ -35,5 +35,5 @@ persistence:
     name: fluidd-config
     globalMounts:
       - path: /usr/share/nginx/html/config.json
-        subpath: config.json
+        subPath: config.json
         readOnly: true
