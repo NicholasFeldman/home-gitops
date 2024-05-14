@@ -12,9 +12,9 @@ data:
         "fluidd.net"
       ],
       "endpoints": [
-        "http://printer-v02-8nhft.feldman.in/",
+        "https://printer-v02-8nhft.feldman.in/",
         "https://ender3.feldman.in",
-        "http://fake-printer.feldman.in/"
+        "https://fake-printer.feldman.in/"
       ],
       "hosted": false,
       "themePresets": [
