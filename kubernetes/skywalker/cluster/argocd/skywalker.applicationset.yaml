@@ -44,6 +44,7 @@ spec:
   generators:
     - list:
         elements:
+          - name: awx
           - name: application
           - name: cluster
           - name: database

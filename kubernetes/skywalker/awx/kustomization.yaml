@@ -1,0 +1,14 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: application
+
+resources:
+  - awx.namespace.yaml
+
+helmCharts:
+  - name: awx-operator
+    repo: https://ansible.github.io/awx-operator/
+    releaseName: awx-operator
+    version: 2.17.0
