@@ -14,3 +14,4 @@ helmCharts:
     repo: https://ansible.github.io/awx-operator/
     releaseName: awx-operator
     version: 2.17.0
+    includeCRDs: true
