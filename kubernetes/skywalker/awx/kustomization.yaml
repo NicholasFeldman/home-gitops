@@ -7,6 +7,8 @@ metadata:
 resources:
   - awx.namespace.yaml
 
+  - awx.awx.yaml
+
 helmCharts:
   - name: awx-operator
     repo: https://ansible.github.io/awx-operator/
