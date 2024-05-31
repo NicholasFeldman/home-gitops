@@ -1,6 +1,6 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 
-meta: 
+metadata: 
   name: unused
   namespace: democratic-csi
