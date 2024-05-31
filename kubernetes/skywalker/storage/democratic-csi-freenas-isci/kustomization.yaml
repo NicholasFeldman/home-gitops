@@ -21,4 +21,4 @@ helmCharts:
 patches:
   - path: "patch.yaml"
     target:
-      name: "democratic-csi-freenas-isci-controller-cr"
+      kind: "clusterrolebinding"
