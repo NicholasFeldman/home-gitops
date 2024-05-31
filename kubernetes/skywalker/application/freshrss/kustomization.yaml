@@ -7,3 +7,5 @@ metadata:
 resources:
   - freshrss.virtualservice.yaml
   - freshrss-env.sealed-secret.yaml
+
+  - volume.yaml

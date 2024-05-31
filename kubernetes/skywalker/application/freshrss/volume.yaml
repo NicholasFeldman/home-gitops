@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: freshrss-test
+  namespace: application
+spec:
+  storageClassName: "frenas-api-isci"
+  volumeName: freshrss-test
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: freshrss-test
+spec:
+  storageClassName: "frenas-api-isci"
+  claimRef:
+    name: freshrss-test
+    namespace: application
