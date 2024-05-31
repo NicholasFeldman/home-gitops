@@ -17,3 +17,8 @@ helmCharts:
     namespace: democratic-csi
     includeCRDs: true
     valuesFile: values.yaml
+
+patches:
+  - path: "patch.yaml"
+    target:
+      name: "democratic-csi-freenas-isci-controller-cr"
