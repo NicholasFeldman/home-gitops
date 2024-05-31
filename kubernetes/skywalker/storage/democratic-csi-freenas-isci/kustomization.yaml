@@ -21,4 +21,4 @@ helmCharts:
 patches:
   - path: "crb.patch.yaml"
     target:
-      kind: "clusterrolebinding"
+      kind: ClusterRoleBinding
