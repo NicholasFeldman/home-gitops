@@ -4,6 +4,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: freshrss-test
   namespace: application
+  labels:
+    type: csi
 
 spec:
   storageClassName: frenas-api-isci
