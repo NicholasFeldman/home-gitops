@@ -6,3 +6,5 @@ metadata:
 
 resources:
   - namespaces.yaml
+
+  - democratic-csi-freenas-isci
