@@ -6,7 +6,7 @@ metadata:
   namespace: application
 
 spec:
-  storageClassName: frenas-api-isci
+  storageClassName: frenas-api-iscsi
   accessModes:
     - ReadWriteOnce
   resources:
@@ -24,7 +24,7 @@ metadata:
     type: csi
 
 spec:
-  storageClassName: frenas-api-isci
+  storageClassName: frenas-api-iscsi
   capacity:
     storage: 2Gi
   accessModes:
