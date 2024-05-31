@@ -6,7 +6,7 @@ metadata:
   namespace: application
 
 spec:
-  storageClassName: frenas-api-iscsi
+  storageClassName: freenas-api-iscsi
   accessModes:
     - ReadWriteOnce
   resources:
@@ -21,7 +21,7 @@ metadata:
   namespace: application
 
 spec:
-  storageClassName: frenas-api-iscsi
+  storageClassName: freenas-api-iscsi
   capacity:
     storage: 2Gi
   accessModes:
