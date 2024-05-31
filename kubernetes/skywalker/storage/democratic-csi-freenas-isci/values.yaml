@@ -1,7 +1,7 @@
 csiDriver:
   name: org.democratic-csi.freenas-iscsi
 driver:
-  existingConfigSecret: democratic-csi-driver-config
+  existingConfigSecret: democratic-csi-freenas-isci-driver-config
   config:
     driver: freenas-api-iscsi
 storageClasses:
