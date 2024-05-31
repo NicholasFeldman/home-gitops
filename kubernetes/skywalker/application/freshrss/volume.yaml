@@ -19,6 +19,8 @@ kind: PersistentVolume
 metadata:
   name: freshrss-test
   namespace: application
+  labels:
+    type: csi
 
 spec:
   storageClassName: freenas-api-iscsi
