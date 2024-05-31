@@ -48,11 +48,11 @@ spec:
           - name: application
           - name: cluster
           - name: database
+          - name: democratic-csi
           - name: istio-system
           - name: kube-system
           - name: media
           - name: printers
-          - name: storage
   template:
     metadata:
       name: 'skywalker-{{name}}'
