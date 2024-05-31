@@ -1,18 +1,31 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
+
 metadata:
   name: freshrss-test
   namespace: application
+
 spec:
-  storageClassName: "frenas-api-isci"
+  storageClassName: frenas-api-isci
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
   volumeName: freshrss-test
 ---
 apiVersion: v1
 kind: PersistentVolume
+
 metadata:
   name: freshrss-test
+
 spec:
-  storageClassName: "frenas-api-isci"
+  storageClassName: frenas-api-isci
+  capacity:
+    storage: 2Gi
+  accessModes:
+    - ReadWriteOnce
   claimRef:
     name: freshrss-test
     namespace: application
