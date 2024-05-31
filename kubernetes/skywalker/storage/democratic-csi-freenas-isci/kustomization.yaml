@@ -19,6 +19,6 @@ helmCharts:
     valuesFile: values.yaml
 
 patches:
-  - path: "crb.patch.yaml"
+  - path: "cr.patch.yaml"
     target:
       kind: ClusterRole
