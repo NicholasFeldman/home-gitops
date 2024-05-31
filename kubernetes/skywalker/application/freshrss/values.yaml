@@ -22,3 +22,8 @@ persistence:
     mountPath: /var/www/FreshRSS/extensions
     accessMode: ReadWriteOnce
     size: 1Gi
+  data-new:
+    enabled: true
+    mountPath: /var/www/FreshRSS/data-new
+    accessMode: ReadWriteOnce
+    size: 2Gi
