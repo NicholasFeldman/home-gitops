@@ -8,8 +8,6 @@ resources:
   - freshrss.virtualservice.yaml
   - freshrss-env.sealed-secret.yaml
 
-  - clone.yaml
-
 helmCharts:
   - name: app-template
     repo: http://bjw-s.github.io/helm-charts/
