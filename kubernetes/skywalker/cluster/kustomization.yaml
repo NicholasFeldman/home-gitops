@@ -12,3 +12,5 @@ resources:
   - cert-manager
   - longhorn
   - metallb
+
+  - temp.sealed-secret.yaml
