@@ -22,15 +22,3 @@ persistence:
     mountPath: /var/www/FreshRSS/extensions
     accessMode: ReadWriteOnce
     size: 1Gi
-  data-clone:
-    enabled: true
-    storageClass: freenas-api-iscsi
-    mountPath: /var/www/FreshRSS/data-clone
-    accessMode: ReadWriteOnce
-    size: 2Gi
-  extensions-clone:
-    enabled: true
-    storageClass: freenas-api-iscsi
-    mountPath: /var/www/FreshRSS/extensions-clone
-    accessMode: ReadWriteOnce
-    size: 1Gi

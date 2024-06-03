@@ -48,9 +48,9 @@ spec:
           - name: application
           - name: cluster
           - name: database
-          - name: democratic-csi
           - name: istio-system
           - name: kube-system
+          - name: longhorn-system
           - name: media
           - name: printers
   template:
