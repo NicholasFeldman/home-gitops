@@ -16,4 +16,5 @@ helmCharts:
     repo: https://charts.longhorn.io
     releaseName: longhorn
     version: 1.6.1
+    namespace: longhorn-system
     valuesFile: values.yaml
