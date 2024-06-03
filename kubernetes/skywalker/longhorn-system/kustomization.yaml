@@ -4,8 +4,6 @@ kind: Kustomization
 metadata:
   name: longhorn-system
 
-  namespace: cluster
-
 resources:
   - longhorn-system.namespace.yaml
 

@@ -3,6 +3,7 @@ kind: RecurringJob
 
 metadata:
   name: default-backup
+  namespace: cluster
 
 spec:
   concurrency: 2

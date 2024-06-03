@@ -3,6 +3,7 @@ kind: VirtualService
 
 metadata:
   name: longhorn
+  namespace: cluster
 
 spec:
   gateways:
