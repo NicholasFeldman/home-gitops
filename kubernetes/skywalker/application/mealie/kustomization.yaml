@@ -5,6 +5,12 @@ metadata:
   name: mealie
 
 resources:
-  - mealie.application.yaml
   - mealie.virtualservice.yaml
   - mealie-env.sealed-secret.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: mealie
+    version: 1.5.1
+    valuesFile: values.yaml

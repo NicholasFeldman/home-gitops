@@ -1,0 +1,23 @@
+image:
+  repository: hkotel/mealie
+  tag: nightly
+env:
+  TZ: America/New_York
+  ALLOW_SIGNUP: false
+envFrom:
+  - secretRef:
+      name: mealie-env
+volumeMounts:
+  - name: api-data
+    mountPath: /app/data/
+service:
+  main:
+    ports:
+      http:
+        port: 9000
+persistence:
+  api-data:
+    enabled: true
+    mountPath: /app/data/
+    accessMode: ReadWriteOnce
+    size: 10Gi
