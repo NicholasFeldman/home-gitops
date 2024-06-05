@@ -6,6 +6,12 @@ metadata:
 
 resources:
   - authentik-env.sealed-secret.yaml
-  - authentik.application.yaml
   - authentik.postgres.yaml
   - authentik.virtual-service.yaml
+
+helmCharts:
+  - name: authentik
+    repo: https://charts.goauthentik.io/
+    releaseName: authentik
+    version: 2024.2.2
+    valuesFile: values.yaml
