@@ -1,6 +1,6 @@
 image:
   repository: hkotel/mealie
-  tag: nightly
+  tag: v1.8.0
 env:
   TZ: America/New_York
   ALLOW_SIGNUP: false
