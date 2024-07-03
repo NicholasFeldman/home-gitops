@@ -20,7 +20,7 @@ helmCharts:
   - name: istiod
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istiod
-    version: 1.21.1
+    version: 1.22.2
     namespace: istio-system
     valuesFile: values/istiod.yaml
 
