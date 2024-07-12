@@ -9,6 +9,15 @@ service:
       http:
         port: 8096
 persistence:
+  config-new:
+    enabled: true
+    type: custom
+    volumeSpec:
+      iscsi:
+        targetPortal: 10.10.90.30:3260
+        iqn: iqn.2005-10.org.freenas.ctl:skywalker-jellyfin-config
+        lun: 0
+        fsType: ext4
   config:
     enabled: true
     size: 6Gi
