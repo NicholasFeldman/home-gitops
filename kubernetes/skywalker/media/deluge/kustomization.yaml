@@ -10,3 +10,5 @@ helmCharts:
     releaseName: deluge
     version: 3.2.1
     valuesFile: deluge.values.yaml
+    apiVersions:
+      - gateway.networking.k8s.io/v1beta1/HTTPRoute
