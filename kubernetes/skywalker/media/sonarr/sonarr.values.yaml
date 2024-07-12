@@ -1,6 +1,6 @@
 image:
   repository: linuxserver/sonarr
-  tag: 4.0.6.1805
+  tag: 4.0.6
 env:
   TZ: America/New_York
 
