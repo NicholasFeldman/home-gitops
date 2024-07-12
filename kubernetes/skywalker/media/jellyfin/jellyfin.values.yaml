@@ -9,7 +9,7 @@ service:
       http:
         port: 8096
 persistence:
-  config-new:
+  config:
     enabled: true
     type: custom
     volumeSpec:
@@ -18,9 +18,6 @@ persistence:
         iqn: iqn.2005-10.org.freenas.ctl:skywalker-jellyfin-config
         lun: 0
         fsType: ext4
-  config:
-    enabled: true
-    size: 6Gi
   media:
     enabled: true
     type: nfs
