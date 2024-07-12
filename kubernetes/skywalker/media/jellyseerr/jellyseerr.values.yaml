@@ -1,0 +1,24 @@
+image:
+  repository: fallenbagel/jellyseerr
+  tag: 1.9.2
+env:
+  TZ: America/New_York
+persistence:
+  config:
+    enabled: true
+    mountPath: /app/config
+    size: 1Gi
+  config-new:
+    enabled: true
+    type: custom
+    volumeSpec:
+      iscsi:
+        targetPortal: 10.10.90.30:3260
+        iqn: iqn.2005-10.org.freenas.ctl:skywalker-jellyseerr-config
+        lun: 0
+        fsType: ext4
+service:
+  main:
+    ports:
+      http:
+        port: 5055

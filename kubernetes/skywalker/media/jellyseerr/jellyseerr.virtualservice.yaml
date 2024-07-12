@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: jellyseer
+  name: jellyseerr
 
 spec:
   gateways:
@@ -15,6 +15,6 @@ spec:
           prefix: /
       route:
         - destination:
-            host: jellyseer
+            host: jellyseerr
             port:
               number: 5055

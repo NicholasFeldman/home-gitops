@@ -9,7 +9,7 @@ resources:
 
   - deluge
   - jellyfin
-  - jellyseer
+  - jellyseerr
   - prowlarr
   - radarr
   - requestrr
