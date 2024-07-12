@@ -6,6 +6,7 @@ env:
 persistence:
   config:
     enabled: true
+    mountPath: /app/config
     type: custom
     volumeSpec:
       iscsi:
