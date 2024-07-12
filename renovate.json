@@ -5,7 +5,7 @@
   ],
   "dependencyDashboard": true,
   "helm-values": {
-    "fileMatch": ["\\.application\\.yaml$"]
+    "fileMatch": ["\\.yaml$"]
   },
   "argocd": {
     "fileMatch": ["\\.application\\.yaml$"]
