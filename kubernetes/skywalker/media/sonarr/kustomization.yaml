@@ -5,5 +5,11 @@ metadata:
   name: sonarr
 
 resources:
-  - sonarr.application.yaml
   - sonarr.virtualservice.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: sonarr
+    version: 1.5.1
+    valuesFile: sonarr.values.yaml
