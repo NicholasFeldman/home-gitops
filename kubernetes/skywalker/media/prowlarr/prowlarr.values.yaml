@@ -6,10 +6,6 @@ env:
 persistence:
   config:
     enabled: true
-    accessMode: ReadWriteOnce
-    size: 1Gi
-  config-new:
-    enabled: true
     type: custom
     volumeSpec:
       iscsi:
