@@ -4,6 +4,9 @@ kind: Kustomization
 metadata:
   name: deluge
 
-resources:
-  - deluge.application.yaml
-  - deluge.virtualservice.yaml
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: deluge
+    version: 3.2.1
+    valuesFile: deluge.values.yaml

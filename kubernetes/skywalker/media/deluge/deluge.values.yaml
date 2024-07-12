@@ -1,0 +1,47 @@
+controllers:
+  spoolman:
+    containers:
+      app:
+        image:
+          repository: lscr.io/linuxserver/deluge
+          tag: 2.1.1
+        env:
+          TZ: America/New_York
+
+persistence:
+  config:
+    enabled: true
+    type: custom
+    volumeSpec:
+      iscsi:
+        targetPortal: 10.10.90.30:3260
+        iqn: iqn.2005-10.org.freenas.ctl:skywalker-deluge-config
+        lun: 0
+        fsType: ext4
+  downloads:
+    enabled: true
+    type: custom
+    volumeSpec:
+      nfs:
+        server: truenas.feldman.in
+        path: /mnt/primary/Downloads
+
+service:
+  app:
+    controller: spoolman
+    ports:
+      http:
+        port: 8112
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: istio-system
+    hostnames: ["deluge.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: deluge
+            port: 8112
+            namespace: media
