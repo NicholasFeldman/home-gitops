@@ -1,5 +1,5 @@
 controllers:
-  spoolman:
+  deluge:
     containers:
       app:
         image:
@@ -28,7 +28,7 @@ persistence:
 
 service:
   app:
-    controller: spoolman
+    controller: deluge
     ports:
       http:
         port: 8112
