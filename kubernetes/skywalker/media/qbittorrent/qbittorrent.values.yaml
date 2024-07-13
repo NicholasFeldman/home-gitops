@@ -29,7 +29,7 @@ persistence:
 
 service:
   main:
-    controller: qbittorrent
+    controller: main
     ports:
       http:
         port: 8080
