@@ -1,5 +1,5 @@
 controllers:
-  qbittorrent:
+  main:
     containers:
       app:
         image:
@@ -7,6 +7,7 @@ controllers:
           tag: 4.6.5
         env:
           TZ: America/New_York
+          WEBUI_PORT: 8080
 
 persistence:
   config:
@@ -27,14 +28,14 @@ persistence:
         path: /mnt/primary/Downloads
 
 service:
-  app:
+  main:
     controller: qbittorrent
     ports:
       http:
         port: 8080
 
 route:
-  app:
+  main:
     enabled: true
     parentRefs:
       - name: feldman-in
