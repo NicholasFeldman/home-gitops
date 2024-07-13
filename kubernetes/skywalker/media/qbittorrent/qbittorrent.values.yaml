@@ -28,7 +28,7 @@ persistence:
         path: /mnt/primary/Downloads
 
 service:
-  main:
+  app:
     controller: main
     ports:
       http:
