@@ -1,5 +1,5 @@
 controllers:
-  main:
+  app:
     containers:
       main:
         image:
@@ -29,13 +29,13 @@ persistence:
 
 service:
   app:
-    controller: main
+    controller: app
     ports:
       http:
         port: 8080
 
 route:
-  main:
+  app:
     enabled: true
     parentRefs:
       - name: feldman-in
