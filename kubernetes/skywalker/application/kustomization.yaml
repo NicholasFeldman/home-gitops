@@ -10,6 +10,7 @@ resources:
   - authentik
   - freshrss
   - grafana
+  - grocy
   - home-assistant
   - homepage
   - mealie
