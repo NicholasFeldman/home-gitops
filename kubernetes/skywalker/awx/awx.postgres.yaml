@@ -26,3 +26,5 @@ spec:
     database: "{{.Database}}"
     username: "{{.Role}}"
     type: "unmanaged"
+    port: "5432" 
+    sslmode: "prefer" 
