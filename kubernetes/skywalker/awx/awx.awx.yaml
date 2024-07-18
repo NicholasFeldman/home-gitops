@@ -7,3 +7,4 @@ metadata:
 spec:
   service_type: clusterip
   postgres_data_volume_init: true
+  postgres_configuration_secret: awx-postgres-configuration
