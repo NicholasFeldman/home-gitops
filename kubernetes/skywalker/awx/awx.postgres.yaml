@@ -1,0 +1,28 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+
+metadata:
+  name: awx
+  namespace: awx
+
+spec:
+  database: awx
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: awx
+  namespace: awx
+
+spec:
+  role: awx
+  database: awx
+  secretName: awx-postgres-configuration
+  privileges: OWNER
+  secretTemplate:
+    password: "{{.Password}}"
+    host: "{{.Host}}.database.svc.cluster.local"
+    database: "{{.Database}}"
+    username: "{{.Role}}"
+    type: "unmanaged"

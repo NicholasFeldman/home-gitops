@@ -10,6 +10,7 @@ resources:
   - awx.namespace.yaml
 
   - awx.awx.yaml
+  - awx.postgres.yaml
 
 helmCharts:
   - name: awx-operator
