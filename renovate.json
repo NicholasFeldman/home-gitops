@@ -9,5 +9,19 @@
   },
   "argocd": {
     "fileMatch": ["\\.application\\.yaml$"]
-  }
+  },
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["major",],
+      "labels": ["Major"]
+    },
+    {
+      "matchUpdateTypes": ["minor",],
+      "labels": ["Minor"]
+    },
+    {
+      "matchUpdateTypes": ["patch",],
+      "labels": ["Patch"]
+    },
+  ]
 }
