@@ -1,7 +1,7 @@
 image:
   repository: snipe/snipe-it
   pullPolicy: IfNotPresent
-  tag: v7.0.7
+  tag: v7.0.10
 env:
   TZ: America/New_York
 service:
