@@ -12,15 +12,15 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["major",],
+      "matchUpdateTypes": ["major"],
       "labels": ["Major"]
     },
     {
-      "matchUpdateTypes": ["minor",],
+      "matchUpdateTypes": ["minor"],
       "labels": ["Minor"]
     },
     {
-      "matchUpdateTypes": ["patch",],
+      "matchUpdateTypes": ["patch"],
       "labels": ["Patch"]
     },
   ]
