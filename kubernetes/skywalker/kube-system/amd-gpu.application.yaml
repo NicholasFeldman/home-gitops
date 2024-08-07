@@ -12,8 +12,8 @@ spec:
   project: skywalker
   source:
     chart: amd-gpu
-    repoURL: https://radeonopencompute.github.io/k8s-device-plugin/
-    targetRevision: '0.10.0'
+    repoURL: https://rocm.github.io/k8s-device-plugin/
+    targetRevision: '0.13.0'
     helm:
       releaseName: amd-gpu
         
