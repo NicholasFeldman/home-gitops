@@ -1,6 +1,6 @@
 image:
   repository: hkotel/mealie
-  tag: v1.10.2
+  tag: v1.11.0
 env:
   TZ: America/New_York
   ALLOW_SIGNUP: false
