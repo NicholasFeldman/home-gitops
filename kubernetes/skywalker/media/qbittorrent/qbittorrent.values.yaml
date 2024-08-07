@@ -4,7 +4,7 @@ controllers:
       main:
         image:
           repository: lscr.io/linuxserver/qbittorrent
-          tag: 4.6.5
+          tag: 20.04.1
         env:
           TZ: America/New_York
           WEBUI_PORT: 8080
