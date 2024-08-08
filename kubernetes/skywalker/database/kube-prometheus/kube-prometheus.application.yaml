@@ -13,7 +13,7 @@ spec:
   source:
     chart: kube-prometheus
     repoURL: https://charts.bitnami.com/bitnami
-    targetRevision: 9.5.10
+    targetRevision: 9.5.11
     helm:
       releaseName: kube-prometheus
       valuesObject:
