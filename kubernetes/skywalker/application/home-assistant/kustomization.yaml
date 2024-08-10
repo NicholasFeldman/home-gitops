@@ -5,5 +5,13 @@ metadata:
   name: home-assistant
 
 resources:
-  - home-assistant.application.yaml
   - home-assistant.virtualservice.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: home-assistant
+    version: 3.1.0
+    valuesFile: home-assistant.values.yaml
+    apiVersions:
+      - gateway.networking.k8s.io/v1beta1/HTTPRoute
