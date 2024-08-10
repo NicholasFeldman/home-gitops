@@ -6,5 +6,13 @@ metadata:
 
 resources:
   - homepage-edit.virtualservice.yaml
-  - homepage.application.yaml
   - homepage.virtualservice.yaml
+
+helmCharts:
+  - name: app-template
+    repo: http://bjw-s.github.io/helm-charts/
+    releaseName: homepage
+    version: 1.5.1
+    valuesFile: homepage.values.yaml
+    apiVersions:
+      - gateway.networking.k8s.io/v1beta1/HTTPRoute
