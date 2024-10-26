@@ -6,6 +6,7 @@ metadata:
 
 resources:
   - cluster.namespace.yaml
+  - cluster.limitrange.yaml
   - gateway-api.yaml
 
   - argocd

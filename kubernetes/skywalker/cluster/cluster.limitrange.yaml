@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: LimitRange
+
+metadata:
+  name: cluster-limit-range
+
+spec:
+  limits:
+  - type: Container
+    default:
+      memory: 512Mi
+      cpu: 1000m
+    defaultRequest:
+      memory: 256Mi
+      cpu: 500m

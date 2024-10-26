@@ -6,6 +6,7 @@ metadata:
 
 resources:
   - application.namespace.yaml
+  - application.limitrange.yaml
 
   - authentik
   - freshrss
