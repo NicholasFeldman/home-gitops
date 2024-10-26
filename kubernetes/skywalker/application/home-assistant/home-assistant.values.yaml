@@ -14,12 +14,11 @@ controllers:
           - apk add openldap-clients && python3 -m homeassistant --config /config
         resources:
           requests:
-            cpu: 2
-            memory: 2G
+            cpu: 2000m
+            memory: 2Gi
           limits:
-            cpu: 4
-            memory: 4G
-      
+            cpu: 4000m
+            memory: 4Gi
 
 service:
   main:

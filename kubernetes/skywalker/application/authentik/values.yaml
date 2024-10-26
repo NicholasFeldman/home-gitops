@@ -6,10 +6,10 @@ global:
       name: authentik-database-env-authentik
   resources:
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 512Mi
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 1Gi
 server:
   metrics:
