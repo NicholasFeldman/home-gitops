@@ -9,9 +9,7 @@ resources:
   - application.limitrange.yaml
 
   - authentik
-  - freshrss
   - grafana
-  - grocy
   - home-assistant
   - homepage
   - mealie
