@@ -7,11 +7,4 @@ metadata:
 resources:
   - media.namespace.yaml
 
-  - qbittorrent
   - jellyfin
-  - jellyseerr
-  - prowlarr
-  - radarr
-  - requestrr
-  - sonarr
-  - tdarr
