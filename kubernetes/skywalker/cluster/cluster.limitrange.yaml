@@ -8,8 +8,8 @@ spec:
   limits:
   - type: Container
     default:
-      memory: 512Mi
-      cpu: 1000m
+      memory: 2Gi
+      cpu: 3000m
     defaultRequest:
       memory: 256Mi
       cpu: 500m
