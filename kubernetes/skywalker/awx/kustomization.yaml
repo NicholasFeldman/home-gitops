@@ -15,7 +15,7 @@ resources:
 
 helmCharts:
   - name: awx-operator
-    repo: https://ansible.github.io/awx-operator/
+    repo: https://ansible-community.github.io/awx-operator-helm/
     releaseName: awx-operator
     version: 2.19.1
     namespace: awx
