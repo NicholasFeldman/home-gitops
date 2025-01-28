@@ -27,6 +27,6 @@ helmCharts:
   - name: gateway
     repo: https://istio-release.storage.googleapis.com/charts
     releaseName: istio-gateway
-    version: 1.22.3
+    version: 1.24.2
     namespace: istio-system
     valuesFile: values/istio-gateway.yaml
