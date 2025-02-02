@@ -10,7 +10,7 @@ terraform {
     required_providers {
         authentik = {
             source = "goauthentik/authentik"
-            version = "2024.6.1"
+            version = "2024.12.0"
         }
         bitwarden = {
             source  = "maxlaverse/bitwarden"
