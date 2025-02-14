@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 
 metadata:
-  name: snipeit
+  name: tc-snipe
 
 spec:
   gateways:
