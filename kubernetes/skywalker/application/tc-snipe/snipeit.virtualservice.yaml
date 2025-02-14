@@ -1,0 +1,20 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: snipeit
+
+spec:
+  gateways:
+    - istio-system/feldman-tech
+  hosts:
+    - tc-snipe.feldman.tech
+  http:
+    - match:
+        - uri:
+            prefix: /
+      route:
+        - destination:
+            host: tc-snipe
+            port:
+              number: 80

@@ -1,0 +1,20 @@
+image:
+  repository: snipe/snipe-it
+  pullPolicy: IfNotPresent
+  tag: v7.1.16
+env:
+  TZ: America/New_York
+service:
+  main:
+    ports:
+      http:
+        port: 80
+envFrom:
+  - secretRef:
+      name: tc-snipe
+persistence:
+  data:
+    enabled: true
+    mountPath: /var/lib/snipeit
+    accessMode: ReadWriteOnce
+    size: 5Gi
