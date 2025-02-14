@@ -10,6 +10,7 @@ resources:
 
   - authentik
   - home-assistant
+  - grafana
   - homepage
   - mealie
   - node-red
