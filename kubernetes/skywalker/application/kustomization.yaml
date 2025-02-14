@@ -9,7 +9,6 @@ resources:
   - application.limitrange.yaml
 
   - authentik
-  - grafana
   - home-assistant
   - homepage
   - mealie
