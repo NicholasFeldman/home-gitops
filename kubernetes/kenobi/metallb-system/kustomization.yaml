@@ -5,6 +5,8 @@ metadata:
   name: metallb-system
 
 resources:
+  - metallb-system.namespace.yaml
+
   - default.addresspool.yaml
   - default.l2advertisement.yaml
 
