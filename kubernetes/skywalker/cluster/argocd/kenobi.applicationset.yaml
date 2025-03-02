@@ -12,6 +12,7 @@ spec:
           - name: metallb-system
           - name: istio-system
           - name: longhorn-system
+          - name: cluster
   template:
     metadata:
       name: 'kenobi-{{name}}'
