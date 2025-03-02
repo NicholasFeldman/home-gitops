@@ -1,0 +1,100 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+
+metadata:
+  name: feldman-in
+
+spec:
+  selector:
+    istio: gateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP2
+      hosts:
+        - "feldman.in"
+        - "*.feldman.in"
+      tls:
+        httpsRedirect: true
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - "feldman.in"
+        - "*.feldman.in"
+      tls:
+        mode: SIMPLE
+        credentialName: feldman-in-tls
+    - port:
+        number: 5432
+        name: tcp-postgres
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
+    - port:
+        number: 3306
+        name: tcp-mariadb
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
+    - port:
+        number: 389
+        name: tcp-ldap
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
+    - port:
+        number: 636
+        name: tcp-ldaps
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
+---
+apiVersion: gateway.networking.k8s.io/v1beta1
+kind: Gateway
+
+metadata:
+  name: feldman-in
+
+spec:
+  gatewayClassName: istio
+  listeners:
+    - name: http
+      hostname: "*.feldman.in"
+      port: 80
+      protocol: HTTP
+      allowedRoutes:
+        namespaces:
+          from: All
+    - name: https
+      hostname: "*.feldman.in"
+      port: 443
+      protocol: HTTPS
+      tls:
+        mode: Terminate
+        certificateRefs:
+        - kind: Secret
+          name: feldman-in-tls
+      allowedRoutes:
+        namespaces:
+          from: All
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: feldman-in-tls
+
+spec:
+  secretName: feldman-in-tls
+
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+
+  commonName: '*.feldman.in'
+  dnsNames:
+    - 'feldman.in'
+    - '*.feldman.in'

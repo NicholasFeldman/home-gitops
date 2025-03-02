@@ -21,6 +21,8 @@ data "talos_image_factory_extensions_versions" "this" {
     names = [
       "amdgpu",
       "qemu-guest-agent",
+      "iscsi-tools",
+      "util-linux-tools"
     ]
   }
 }

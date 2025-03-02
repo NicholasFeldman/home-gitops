@@ -10,6 +10,8 @@ spec:
     - list:
         elements:
           - name: metallb-system
+          - name: istio-system
+          - name: longhorn-system
   template:
     metadata:
       name: 'kenobi-{{name}}'
