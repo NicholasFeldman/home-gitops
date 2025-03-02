@@ -2,7 +2,7 @@ apiVersion: metallb.io/v1beta1
 kind: IPAddressPool
 metadata:
   name: default
-  namespace: cluster
+  namespace: metallb-system
 spec:
   addresses:
   - 10.10.90.110-10.10.90.120
