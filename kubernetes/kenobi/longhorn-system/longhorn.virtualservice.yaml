@@ -8,7 +8,7 @@ spec:
   gateways:
     - istio-system/feldman-in
   hosts:
-    - longhorn-new.feldman.in
+    - longhorn.feldman.in
   http:
     - match:
         - uri:

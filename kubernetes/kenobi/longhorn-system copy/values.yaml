@@ -1,7 +1,0 @@
-csi:
-  kubeletRootDir: /var/lib/kubelet
-persistence:
-  reclaimPolicy: Retain
-defaultSettings:
-  backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups 
-  createDefaultDiskLabeledNodes: true
