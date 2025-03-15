@@ -11,6 +11,7 @@ spec:
         elements:
           - name: metallb-system
           - name: istio-system
+          - name: kube-system
           - name: longhorn-system
           - name: cluster
   template:
