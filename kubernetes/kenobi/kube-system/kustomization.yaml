@@ -10,3 +10,4 @@ helmCharts:
     releaseName: sealed-secrets-controller
     version: 2.17.1
     namespace: kube-system
+    includeCRDs: true
