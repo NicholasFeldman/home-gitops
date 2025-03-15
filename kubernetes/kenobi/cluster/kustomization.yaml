@@ -8,4 +8,4 @@ resources:
   - cluster.namespace.yaml
   - gateway-api.yaml
 
-  - cert-manager/kustomization.yaml
+  - cert-manager
