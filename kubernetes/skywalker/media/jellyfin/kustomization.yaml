@@ -9,7 +9,7 @@ resources:
 
 helmCharts:
   - name: app-template
-    repo: http://bjw-s.github.io/helm-charts/
+    repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: jellyfin
     version: 1.5.1
     valuesFile: jellyfin.values.yaml

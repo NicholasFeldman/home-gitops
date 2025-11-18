@@ -9,7 +9,7 @@ resources:
 
 helmCharts:
   - name: app-template
-    repo: http://bjw-s.github.io/helm-charts/
+    repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: fluidd
     version: 3.1.0
     valuesFile: ../values/fluidd.yaml
