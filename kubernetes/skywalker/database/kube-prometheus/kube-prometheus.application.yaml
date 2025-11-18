@@ -11,8 +11,8 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    chart: kube-prometheus
-    repoURL: https://charts.bitnami.com/bitnami
+    path: .
+    repoURL: oci://registry-1.docker.io/bitnamicharts/kube-prometheus
     targetRevision: 10.2.4
     helm:
       releaseName: kube-prometheus
