@@ -4,7 +4,7 @@ controllers:
       app:
         image:
           repository: ghcr.io/fluidd-core/fluidd
-          tag: v1.31.4
+          tag: v1.36.0
         env:
           TZ: America/New_York
 
