@@ -16,7 +16,7 @@ service:
     controller: openspoolman
     ports:
       http:
-        port: 8001
+        port: 8000
 
 route:
   app:
@@ -28,5 +28,5 @@ route:
     rules:
       - backendRefs:
           - name: openspoolman
-            port: 8001
+            port: 8000
             namespace: printers
