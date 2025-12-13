@@ -6,10 +6,8 @@ metadata:
 
 resources:
   - printers.namespace.yaml
-
-  - printers.httproute.yaml
-
-  - fluidd
+  
+  - openspoolman-env.sealed-secret.yaml
 
 helmCharts:
   - name: app-template

@@ -7,6 +7,9 @@ controllers:
           tag: latest
         env:
           TZ: America/New_York
+        envFrom:
+          - secretRef:
+              name: openspoolman-env
 
 service:
   app:
