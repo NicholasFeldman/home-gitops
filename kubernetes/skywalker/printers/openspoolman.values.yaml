@@ -1,0 +1,29 @@
+controllers:
+  spoolman:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/drndos/openspoolman
+          tag: latest
+        env:
+          TZ: America/New_York
+
+service:
+  app:
+    controller: openspoolman
+    ports:
+      http:
+        port: 8001
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: istio-system
+    hostnames: ["openspoolman.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: openspoolman
+            port: 8001
+            namespace: printers
