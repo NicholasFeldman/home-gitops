@@ -8,12 +8,9 @@ resources:
   - home.namespace.yaml
   - home.limitrange.yaml
 
-  - authentik
-  - home-assistant
-  - grafana
-  - homepage
-  - mealie
-  - node-red
-  - snipe-it
-  - spoolman
-  - tc-snipe
+helmCharts:
+  - name: app-template
+    repo: https://bjw-s-labs.github.io/helm-charts
+    releaseName: esphome
+    version: 3.1.0
+    valuesFile: esphome.values.yaml
