@@ -18,7 +18,7 @@ service:
     controller: esphome
     ports:
       http:
-        port: 8000
+        port: 6052
 
 route:
   app:
