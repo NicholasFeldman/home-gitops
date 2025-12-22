@@ -30,5 +30,5 @@ route:
     rules:
       - backendRefs:
           - name: esphome
-            port: 8000
+            port: 6052
             namespace: home
