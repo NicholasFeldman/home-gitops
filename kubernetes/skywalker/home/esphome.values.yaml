@@ -1,0 +1,34 @@
+controllers:
+  esphome:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/esphome/esphome
+          tag: 2025.12
+        env:
+          TZ: America/New_York
+
+persistence:
+  config:
+    accessMode: ReadWriteOnce
+    size: 4Gi
+
+service:
+  app:
+    controller: esphome
+    ports:
+      http:
+        port: 8000
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: istio-system
+    hostnames: ["esphome.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: esphome
+            port: 8000
+            namespace: home
