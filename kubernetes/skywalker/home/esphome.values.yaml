@@ -7,6 +7,13 @@ controllers:
           tag: 2025.12
         env:
           TZ: America/New_York
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 512Mi
+          limits:
+            cpu: 2000m
+            memory: 1Gi
 
 persistence:
   config:
