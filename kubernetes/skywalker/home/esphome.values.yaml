@@ -18,7 +18,7 @@ controllers:
 persistence:
   config:
     accessMode: ReadWriteOnce
-    size: 4Gi
+    size: 8Gi
 
 service:
   app:
