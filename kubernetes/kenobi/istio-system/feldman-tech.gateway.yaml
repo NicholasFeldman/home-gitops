@@ -1,0 +1,47 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+
+metadata:
+  name: feldman-tech
+
+spec:
+  selector:
+    istio: gateway
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP2
+      hosts:
+        - "feldman.tech"
+        - "*.feldman.tech"
+      tls:
+        httpsRedirect: true
+    - port:
+        number: 443
+        name: https
+        protocol: HTTPS
+      hosts:
+        - "feldman.tech"
+        - "*.feldman.tech"
+      tls:
+        mode: SIMPLE
+        credentialName: feldman-tech-tls
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+
+metadata:
+  name: feldman-tech-tls
+
+spec:
+  secretName: feldman-tech-tls
+
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-prod
+
+  commonName: '*.feldman.tech'
+  dnsNames:
+    - 'feldman.tech'
+    - '*.feldman.tech'
