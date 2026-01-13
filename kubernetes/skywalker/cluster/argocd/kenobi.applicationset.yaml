@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+
+metadata:
+  name: kenobi
+  namespace: cluster
+
+spec:
+  generators:
+    - list:
+        elements:
+          - name: metallb-system
+          - name: istio-system
+          - name: kube-system
+          - name: longhorn-system
+          - name: cluster
+  template:
+    metadata:
+      name: 'kenobi-{{name}}'
+    spec:
+      project: kenobi
+      source:
+        repoURL: https://github.com/NicholasFeldman/home-gitops.git
+        targetRevision: HEAD
+        path: 'kubernetes/kenobi/{{name}}'
+      destination:
+        server: https://10.10.90.55:6443
+        namespace: '{{name}}'
+
+      ignoreDifferences:
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          name: istiod-default-validator
+          jsonPointers:
+            - /webhooks/0/failurePolicy
+        - group: admissionregistration.k8s.io
+          kind: ValidatingWebhookConfiguration
+          name: istio-validator-istio-system
+          jsonPointers:
+            - /webhooks/0/failurePolicy
+
+        - kind: ServiceAccount
+          name: feldman-in-istio

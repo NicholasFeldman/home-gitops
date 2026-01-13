@@ -10,3 +10,6 @@ resources:
   - argocd.virtualservice.yaml
   - skywalker.applicationset.yaml
   - skywalker.appproject.yaml
+
+  - kenobi.applicationset.yaml
+  - kenobi.appproject.yaml

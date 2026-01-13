@@ -13,7 +13,7 @@ spec:
   source:
     chart: amd-gpu
     repoURL: https://rocm.github.io/k8s-device-plugin/
-    targetRevision: '0.16.0'
+    targetRevision: '0.20.0'
     helm:
       releaseName: amd-gpu
         
