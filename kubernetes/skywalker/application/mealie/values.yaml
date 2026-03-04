@@ -1,6 +1,6 @@
 image:
   repository: ghcr.io/mealie-recipes/mealie
-  tag: v3.9.1
+  tag: v3.11.0 
 env:
   TZ: America/New_York
   ALLOW_SIGNUP: false
