@@ -1,0 +1,27 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+
+metadata:
+  name: playground
+  namespace: database
+
+spec:
+  database: playground
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: playground
+  namespace: database
+
+spec:
+  role: playground
+  database: playground
+  secretName: playground-database-env
+  privileges: OWNER
+  secretTemplate:
+    GF_DATABASE_PASSWORD: "{{.Password}}"
+    GF_DATABASE_HOST: "{{.Host}}.database.svc.cluster.local"
+    GF_DATABASE_NAME: "{{.Database}}"
+    GF_DATABASE_USER: "{{.Role}}"
