@@ -15,10 +15,11 @@ controllers:
 
 persistence:
   files:
-    accessMode: ReadWriteOnce
     enabled: true
-    mountPath: /app/vikunja/files
     size: 1Gi
+    accessMode: ReadWriteOnce
+    globalMounts: 
+      - path: /app/vikunja/files
 
 service:
   main:
