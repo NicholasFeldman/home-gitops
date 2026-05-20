@@ -40,3 +40,8 @@ route:
       - name: feldman-in
         namespace: istio-system
     hostnames: ["tasks.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: vikunja
+            port: 3456
+            namespace: home
