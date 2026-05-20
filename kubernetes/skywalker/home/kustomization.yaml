@@ -8,7 +8,7 @@ resources:
   - home.namespace.yaml
   - home.limitrange.yaml
   
-  - vikunjka-env.sealed-secret.json
+  - vikunja-env.sealed-secret.json
   - vikunja.postgres.yaml
 
 helmCharts:
