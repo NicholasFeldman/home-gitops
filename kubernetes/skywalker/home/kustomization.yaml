@@ -7,6 +7,9 @@ metadata:
 resources:
   - home.namespace.yaml
   - home.limitrange.yaml
+  
+  - vikunjka-env.sealed-secret.json
+  - vikunja.postgres.yaml
 
 helmCharts:
   - name: app-template
@@ -14,3 +17,8 @@ helmCharts:
     releaseName: esphome
     version: 3.1.0
     valuesFile: esphome.values.yaml
+  - name: app-template
+    repo: https://bjw-s-labs.github.io/helm-charts
+    releaseName: vikunja
+    version: 5.0.1
+    valuesFile: vikunja.values.yaml
