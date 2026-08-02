@@ -102,33 +102,30 @@ persistence:
     enabled: true
     type: nfs
     server: truenas.feldman.in
-    path: /mnt/primary/Documents
+    path: /mnt/primary/Documents/Paperless/media
     advancedMounts:
       main:
         main:
           - path: /usr/src/paperless/media
-            subPath: Paperless/media
   consume:
     enabled: true
     type: nfs
     server: truenas.feldman.in
-    path: /mnt/primary/Documents
+    path: /mnt/primary/Documents/Paperless/consume
     advancedMounts:
       main:
         main:
           - path: /usr/src/paperless/consume
-            subPath: Paperless/consume
   # not a paperless setting, just the conventional target for `document_exporter`
   export:
     enabled: true
     type: nfs
     server: truenas.feldman.in
-    path: /mnt/primary/Documents
+    path: /mnt/primary/Documents/Paperless/export
     advancedMounts:
       main:
         main:
           - path: /usr/src/paperless/export
-            subPath: Paperless/export
 
 service:
   main:
