@@ -28,6 +28,22 @@ spec:
         applicationSet:
           autoscaling:
             enabled: true
+        dex:
+          # Without these, dex joins the Service endpoints the instant the
+          # container starts but only binds :5556 ~19s later, so any OIDC
+          # provider query in that window fails with "connection refused".
+          readinessProbe:
+            enabled: true
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          livenessProbe:
+            enabled: true
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 2
+            failureThreshold: 3
         configs:
           cm:
             url: "https://argocd.feldman.in"
