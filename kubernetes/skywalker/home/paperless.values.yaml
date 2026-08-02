@@ -1,0 +1,151 @@
+controllers:
+  main:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/paperless-ngx/paperless-ngx
+          tag: 3.0.5
+        env:
+          TZ: America/New_York
+          PAPERLESS_TIME_ZONE: America/New_York
+          PAPERLESS_URL: https://paperless.feldman.in
+          PAPERLESS_PORT: "8000"
+          PAPERLESS_REDIS: redis://localhost:6379
+          PAPERLESS_OCR_LANGUAGE: eng
+          PAPERLESS_TASK_WORKERS: "2"
+          PAPERLESS_WEBSERVER_WORKERS: "2"
+
+          PAPERLESS_DATA_DIR: /usr/src/paperless/data
+          PAPERLESS_MEDIA_ROOT: /usr/src/paperless/media
+          PAPERLESS_CONSUMPTION_DIR: /usr/src/paperless/consume
+          PAPERLESS_EMPTY_TRASH_DIR: /usr/src/paperless/media/trash
+
+          # inotify is unreliable on NFS, poll the consume directory instead
+          PAPERLESS_CONSUMER_POLLING_INTERVAL: "60"
+          PAPERLESS_CONSUMER_STABILITY_DELAY: "10"
+          PAPERLESS_CONSUMER_RECURSIVE: "true"
+
+          # SSO only, via authentik
+          # https://integrations.goauthentik.io/documentation/paperless-ngx/
+          PAPERLESS_APPS: allauth.socialaccount.providers.openid_connect
+          PAPERLESS_LOGOUT_REDIRECT_URL: https://authentik.feldman.tech/application/o/paperless/end-session/
+          PAPERLESS_SOCIAL_AUTO_SIGNUP: "true"
+          PAPERLESS_SOCIALACCOUNT_ALLOW_SIGNUPS: "true"
+          PAPERLESS_DISABLE_REGULAR_LOGIN: "true"
+          PAPERLESS_REDIRECT_LOGIN_TO_SSO: "true"
+
+          USERMAP_UID: "1000"
+          USERMAP_GID: "1000"
+        envFrom:
+          - secretRef:
+              name: paperless-database-env-paperless
+          - secretRef:
+              name: paperless-env
+        resources:
+          requests:
+            cpu: 250m
+            memory: 1Gi
+          limits:
+            memory: 3Gi
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /accounts/login/
+                port: 8000
+              initialDelaySeconds: 60
+              periodSeconds: 30
+              failureThreshold: 5
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /accounts/login/
+                port: 8000
+              initialDelaySeconds: 30
+              periodSeconds: 15
+              failureThreshold: 5
+      broker:
+        image:
+          repository: docker.io/valkey/valkey
+          tag: 9-alpine
+        resources:
+          requests:
+            cpu: 25m
+            memory: 64Mi
+          limits:
+            memory: 256Mi
+
+persistence:
+  # search index, classification model, nltk data - regenerable
+  data:
+    enabled: true
+    size: 5Gi
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        main:
+          - path: /usr/src/paperless/data
+  redis:
+    enabled: true
+    size: 1Gi
+    accessMode: ReadWriteOnce
+    advancedMounts:
+      main:
+        broker:
+          - path: /data
+  media:
+    enabled: true
+    type: nfs
+    server: truenas.feldman.in
+    path: /mnt/primary/Documents
+    advancedMounts:
+      main:
+        main:
+          - path: /usr/src/paperless/media
+            subPath: Paperless/media
+  consume:
+    enabled: true
+    type: nfs
+    server: truenas.feldman.in
+    path: /mnt/primary/Documents
+    advancedMounts:
+      main:
+        main:
+          - path: /usr/src/paperless/consume
+            subPath: Paperless/consume
+  # not a paperless setting, just the conventional target for `document_exporter`
+  export:
+    enabled: true
+    type: nfs
+    server: truenas.feldman.in
+    path: /mnt/primary/Documents
+    advancedMounts:
+      main:
+        main:
+          - path: /usr/src/paperless/export
+            subPath: Paperless/export
+
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8000
+
+route:
+  main:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: istio-system
+    hostnames: ["paperless.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: paperless
+            port: 8000
+            namespace: home

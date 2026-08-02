@@ -13,6 +13,9 @@ resources:
   - vikunja-env.sealed-secret.json
   - vikunja.postgres.yaml
 
+  - paperless-env.sealed-secret.yaml
+  - paperless.postgres.yaml
+
 helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
@@ -24,3 +27,10 @@ helmCharts:
     releaseName: vikunja
     version: 5.0.1
     valuesFile: vikunja.values.yaml
+  - name: app-template
+    repo: https://bjw-s-labs.github.io/helm-charts
+    releaseName: paperless
+    version: 5.0.1
+    valuesFile: paperless.values.yaml
+    apiVersions:
+      - gateway.networking.k8s.io/v1/HTTPRoute

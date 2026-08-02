@@ -4,7 +4,7 @@ resource "authentik_provider_ldap" "snipeit-ldap" {
     name = "SnipeIT - LDAP"
     base_dn = "OU=snipeit,DC=ldap,DC=feldman,DC=tech"
     bind_flow = data.authentik_flow.default-authentication-flow.id
-    search_group = "e32d8adb-96ee-4e6f-b92b-2e294586b949"
+    unbind_flow = data.authentik_flow.default-provider-invalidation-flow.id
 }
 
 resource "authentik_application" "snipeit" {
@@ -23,7 +23,7 @@ resource "authentik_provider_ldap" "grocy-ldap" {
     name = "Grocy - LDAP"
     base_dn = "OU=grocy,DC=ldap,DC=feldman,DC=tech"
     bind_flow = data.authentik_flow.default-authentication-flow.id
-    search_group = "e32d8adb-96ee-4e6f-b92b-2e294586b949"
+    unbind_flow = data.authentik_flow.default-provider-invalidation-flow.id
 }
 
 resource "authentik_application" "grocy" {

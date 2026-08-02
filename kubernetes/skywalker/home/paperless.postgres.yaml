@@ -1,0 +1,29 @@
+apiVersion: db.movetokube.com/v1alpha1
+kind: Postgres
+
+metadata:
+  name: paperless
+  namespace: home
+
+spec:
+  database: paperless
+---
+apiVersion: db.movetokube.com/v1alpha1
+kind: PostgresUser
+
+metadata:
+  name: paperless
+  namespace: home
+
+spec:
+  role: paperless
+  database: paperless
+  secretName: paperless-database-env
+  privileges: OWNER
+  secretTemplate:
+    PAPERLESS_DBENGINE: "postgresql"
+    PAPERLESS_DBPORT: "5432"
+    PAPERLESS_DBPASS: "{{.Password}}"
+    PAPERLESS_DBHOST: "{{.Host}}.database.svc.cluster.local"
+    PAPERLESS_DBNAME: "{{.Database}}"
+    PAPERLESS_DBUSER: "{{.Role}}"

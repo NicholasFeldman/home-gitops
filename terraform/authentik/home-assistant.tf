@@ -2,6 +2,7 @@ resource "authentik_provider_ldap" "homeassistant-ldap" {
     name = "Home Assistant - LDAP"
     base_dn = "OU=homeassistant,DC=ldap,DC=feldman,DC=tech"
     bind_flow = data.authentik_flow.default-authentication-flow.id
+    unbind_flow = data.authentik_flow.default-provider-invalidation-flow.id
 }
 
 resource "authentik_application" "homeassistant" {
