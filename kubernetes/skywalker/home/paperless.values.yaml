@@ -56,9 +56,9 @@ controllers:
               httpGet:
                 path: /accounts/login/
                 port: 8000
-              initialDelaySeconds: 60
-              periodSeconds: 30
-              failureThreshold: 5
+              initialDelaySeconds: 180
+              periodSeconds: 60
+              failureThreshold: 10
           readiness:
             enabled: true
             custom: true
@@ -66,9 +66,9 @@ controllers:
               httpGet:
                 path: /accounts/login/
                 port: 8000
-              initialDelaySeconds: 30
-              periodSeconds: 15
-              failureThreshold: 5
+              initialDelaySeconds: 18-
+              periodSeconds: 60
+              failureThreshold: 10
       broker:
         image:
           repository: docker.io/valkey/valkey
