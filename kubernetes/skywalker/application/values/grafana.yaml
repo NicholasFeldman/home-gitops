@@ -24,6 +24,14 @@ controllers:
               name: grafana-env
           - secretRef:
               name: grafana-database-env-grafana
+        # Without this the namespace LimitRange caps grafana at 256Mi, which it
+        # outgrows as soon as a few dashboards are open
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            memory: 1Gi
         probes:
           liveness:
             custom: true
