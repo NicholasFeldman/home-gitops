@@ -66,7 +66,7 @@ controllers:
               httpGet:
                 path: /accounts/login/
                 port: 8000
-              initialDelaySeconds: 18-
+              initialDelaySeconds: 180
               periodSeconds: 60
               failureThreshold: 10
       broker:
