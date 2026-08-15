@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+metadata:
+  name: monitoring
+
+namespace: monitoring
+
+resources:
+  - monitoring.namespace.yaml
+
+  - probes.yaml
+
+helmCharts:
+  - name: loki
+    repo: https://grafana.github.io/helm-charts
+    releaseName: loki
+    namespace: monitoring
+    version: 7.3.0
+    valuesFile: loki.values.yaml
+    apiVersions:
+      - monitoring.coreos.com/v1/ServiceMonitor
+  - name: alloy
+    repo: https://grafana.github.io/helm-charts
+    releaseName: alloy
+    namespace: monitoring
+    version: 1.11.1
+    valuesFile: alloy.values.yaml

@@ -16,6 +16,9 @@ ansible/roles
 **/secrets/*
 !**/secrets/sealed-*
 
+# Charts pulled by `kustomize build --enable-helm`
+kubernetes/**/charts/
+
 # Terraform
 .terraform/
 .terraform.tfstate*

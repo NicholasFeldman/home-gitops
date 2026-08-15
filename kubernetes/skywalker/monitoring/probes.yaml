@@ -1,0 +1,235 @@
+# Blackbox probes, scraped by the kube-prometheus blackbox exporter in the
+# database namespace.
+
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: authentik
+
+spec:
+  jobName: authentik
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://authentik.feldman.tech
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: mealie
+
+spec:
+  jobName: mealie
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://mealie.feldman.tech
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: home-assistant
+
+spec:
+  jobName: home-assistant
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://home-assistant.feldman.tech
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: grafana
+
+spec:
+  jobName: grafana
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://grafana.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: freshrss
+
+spec:
+  jobName: freshrss
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://freshrss.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: homepage
+
+spec:
+  jobName: homepage
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://homepage.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: node-red
+
+spec:
+  jobName: node-red
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://node-red.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: spoolman
+
+spec:
+  jobName: spoolman
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://spoolman.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: snipe-it
+
+spec:
+  jobName: snipe-it
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://snipeit.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: argocd
+
+spec:
+  jobName: argocd
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://argocd.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: longhorn
+
+spec:
+  jobName: longhorn
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://longhorn.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: influxdb
+
+spec:
+  jobName: influxdb
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://influxdb.feldman.in
+
+---
+apiVersion: monitoring.coreos.com/v1
+kind: Probe
+
+metadata:
+  name: jellyfin
+
+spec:
+  jobName: jellyfin
+  interval: 15s
+  module: http_2xx
+  prober:
+    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
+  targets:
+    staticConfig:
+      static:
+        - https://jellyfin.feldman.in

@@ -2,41 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 
 metadata:
-  name: skywalker-jsonnet
-  namespace: cluster
-
-spec:
-  generators:
-    - list:
-        elements:
-          - name: monitoring
-  template:
-    metadata:
-      name: 'skywalker-{{name}}'
-    spec:
-      project: skywalker
-      source:
-        repoURL: https://github.com/NicholasFeldman/home-gitops.git
-        targetRevision: HEAD
-        path: 'kubernetes/skywalker/{{name}}'
-        directory:
-          jsonnet:
-            extVars:
-            - name: app
-              value: $ARGOCD_APP_NAME
-            tlas:
-              - name: ns
-                value: $ARGOCD_APP_NAMESPACE
-            libs:
-              - kubernetes/vendor
-      destination:
-        server: https://kubernetes.default.svc
-        namespace: '{{name}}'
----
-apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
-
-metadata:
   name: skywalker
   namespace: cluster
 
@@ -52,6 +17,7 @@ spec:
           - name: kube-system
           - name: longhorn-system
           - name: media
+          - name: monitoring
           - name: printers
   template:
     metadata:

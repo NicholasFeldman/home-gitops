@@ -4,7 +4,7 @@ controllers:
       main:
         image:
           repository: grafana/grafana
-          tag: "11.0.0-preview"
+          tag: "13.1.3"
         env:
           GF_SERVER_DOMAIN: grafana.feldman.in
           GF_SERVER_ROOT_URL: https://grafana.feldman.in
