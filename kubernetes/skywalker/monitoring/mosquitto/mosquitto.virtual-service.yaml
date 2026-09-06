@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+
+metadata:
+  name: mosquitto
+
+spec:
+  gateways:
+    - istio-system/feldman-in
+  hosts:
+    - mqtt.feldman.in
+  tcp:
+    - match:
+        - port: 1883
+      route:
+        - destination:
+            host: mosquitto.monitoring.svc.cluster.local
+            port:
+              number: 1883

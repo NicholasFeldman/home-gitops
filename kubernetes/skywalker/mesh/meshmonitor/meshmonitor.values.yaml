@@ -1,0 +1,89 @@
+controllers:
+  meshmonitor:
+    # SQLite on a ReadWriteOnce volume; never run two replicas against it
+    strategy: Recreate
+    containers:
+      app:
+        image:
+          repository: ghcr.io/yeraze/meshmonitor
+          tag: 4.15.2
+        env:
+          TZ: America/New_York
+          NODE_ENV: production
+          PORT: "3001"
+          DATABASE_PATH: /data/meshmonitor.db
+          # terminated at the istio gateway, so trust the forwarded headers
+          TRUST_PROXY: "true"
+          COOKIE_SECURE: "true"
+          COOKIE_SAMESITE: lax
+          ALLOWED_ORIGINS: https://meshmonitor.feldman.in
+        envFrom:
+          - secretRef:
+              name: meshmonitor-env
+        # without these the namespace LimitRange caps the container at 256Mi,
+        # which a node database plus the telemetry schedulers outgrows
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            memory: 1Gi
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/health
+                port: 3001
+              initialDelaySeconds: 30
+              periodSeconds: 30
+              failureThreshold: 5
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /api/health
+                port: 3001
+              initialDelaySeconds: 15
+              periodSeconds: 10
+              failureThreshold: 5
+
+defaultPodOptions:
+  securityContext:
+    # the image has no USER directive and would otherwise run as root, but
+    # /data is built as 1000:1000 and the app runs fine unprivileged
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+    fsGroupChangePolicy: OnRootMismatch
+
+persistence:
+  # sqlite database, backups, logs and apprise config all live here
+  data:
+    enabled: true
+    accessMode: ReadWriteOnce
+    size: 5Gi
+    globalMounts:
+      - path: /data
+
+service:
+  app:
+    controller: meshmonitor
+    ports:
+      http:
+        port: 3001
+
+route:
+  app:
+    enabled: true
+    parentRefs:
+      - name: feldman-in
+        namespace: istio-system
+    hostnames: ["meshmonitor.feldman.in"]
+    rules:
+      - backendRefs:
+          - name: meshmonitor
+            port: 3001
+            namespace: mesh

@@ -11,6 +11,8 @@ resources:
 
   - probes.yaml
 
+  - mosquitto
+
 helmCharts:
   - name: loki
     repo: https://grafana.github.io/helm-charts

@@ -51,6 +51,12 @@ spec:
         protocol: TCP
       hosts:
         - "*.feldman.in"
+    - port:
+        number: 1883
+        name: tcp-mqtt
+        protocol: TCP
+      hosts:
+        - "*.feldman.in"
 ---
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway

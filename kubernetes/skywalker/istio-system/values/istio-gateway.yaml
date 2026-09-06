@@ -32,3 +32,7 @@ service:
     port: 636
     protocol: TCP
     targetPort: 636
+  - name: tcp-mqtt
+    port: 1883
+    protocol: TCP
+    targetPort: 1883

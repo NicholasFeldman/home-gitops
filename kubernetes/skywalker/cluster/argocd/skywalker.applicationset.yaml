@@ -17,6 +17,7 @@ spec:
           - name: kube-system
           - name: longhorn-system
           - name: media
+          - name: mesh
           - name: monitoring
           - name: printers
   template:
