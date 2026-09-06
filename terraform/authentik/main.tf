@@ -21,6 +21,8 @@ terraform {
 
 provider "bitwarden" {
     email = "nick@feldman.tech"
+    // Point at the bw CLI's own appdata dir
+    vault_path = pathexpand("~/.config/Bitwarden CLI")
 }
 
 data "bitwarden_item_secure_note" "authentik_token" {

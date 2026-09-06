@@ -23,4 +23,6 @@ kubernetes/**/charts/
 .terraform/
 .terraform.tfstate*
 terraform.tfstate*
+# local vault cache written by the bitwarden provider (vault_path)
+.bitwarden/
 

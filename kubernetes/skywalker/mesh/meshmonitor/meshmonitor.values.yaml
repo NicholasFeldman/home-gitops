@@ -17,6 +17,17 @@ controllers:
           COOKIE_SECURE: "true"
           COOKIE_SAMESITE: lax
           ALLOWED_ORIGINS: https://meshmonitor.feldman.in
+
+          # SSO via authentik; the provider is defined in
+          # terraform/authentik/meshmonitor.tf. OIDC_CLIENT_SECRET comes from
+          # the sealed secret. Local login is deliberately still enabled --
+          # set DISABLE_LOCAL_AUTH once an OIDC login has been confirmed.
+          OIDC_ISSUER: https://authentik.feldman.tech/application/o/meshmonitor/
+          OIDC_CLIENT_ID: VO1NmjXQ1mlsp4IJYjWELNTSwZeBB50PWgv8qOwV
+          OIDC_REDIRECT_URI: https://meshmonitor.feldman.in/api/auth/oidc/callback
+          OIDC_SCOPES: openid profile email
+          OIDC_GROUPS_CLAIM: groups
+          OIDC_ADMIN_GROUPS: MeshMonitor Admins
         envFrom:
           - secretRef:
               name: meshmonitor-env
