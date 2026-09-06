@@ -12,6 +12,7 @@ resources:
   - probes.yaml
 
   - mosquitto
+  - mqttx-web
 
 helmCharts:
   - name: loki

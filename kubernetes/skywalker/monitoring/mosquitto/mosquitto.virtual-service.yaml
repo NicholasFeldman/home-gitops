@@ -9,6 +9,8 @@ spec:
     - istio-system/feldman-in
   hosts:
     - mqtt.feldman.in
+
+  # native MQTT for devices and in-cluster clients
   tcp:
     - match:
         - port: 1883
@@ -17,3 +19,23 @@ spec:
             host: mosquitto.monitoring.svc.cluster.local
             port:
               number: 1883
+
+  # the browser client, on the same hostname over https. mqtt.feldman.in points
+  # at the istio-gateway LB (10.10.90.100), which already serves 80/443 -- an
+  # HTTPRoute would attach to the Gateway API LB (10.10.90.101) instead and
+  # would need DNS repointed, breaking MQTT on 1883.
+  http:
+    # mosquitto accepts the websocket upgrade on any path, so no rewrite needed
+    - match:
+        - uri:
+            prefix: /mqtt
+      route:
+        - destination:
+            host: mosquitto.monitoring.svc.cluster.local
+            port:
+              number: 9001
+    - route:
+        - destination:
+            host: mqttx-web.monitoring.svc.cluster.local
+            port:
+              number: 80

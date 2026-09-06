@@ -10,6 +10,11 @@ data:
     listener 1883
     protocol mqtt
 
+    # browser clients cannot open raw TCP; this is what the web UI connects to.
+    # auth and the acl file below are global, so they cover this listener too.
+    listener 9001
+    protocol websockets
+
     allow_anonymous false
     password_file /run/secrets/mosquitto/passwd
     acl_file /mosquitto/config/acl
@@ -33,3 +38,9 @@ data:
   acl: |
     user meshcore
     topic readwrite meshcore/#
+
+    # read-only diagnostic account: every topic plus broker stats, writes nothing.
+    # "topic read #" does not cover $SYS -- mosquitto treats it as a separate tree.
+    user monitor
+    topic read #
+    topic read $SYS/#

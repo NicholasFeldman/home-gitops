@@ -1,0 +1,45 @@
+controllers:
+  mqttx-web:
+    containers:
+      app:
+        image:
+          repository: docker.io/emqx/mqttx-web
+          tag: v1.13.0
+        env:
+          TZ: America/New_York
+        # a static nginx file server; the browser does the MQTT work, not this pod
+        resources:
+          requests:
+            cpu: 10m
+            memory: 32Mi
+          limits:
+            memory: 128Mi
+        probes:
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 10
+              periodSeconds: 30
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              httpGet:
+                path: /
+                port: 80
+              initialDelaySeconds: 5
+              periodSeconds: 10
+
+# deliberately no runAsUser: nginx binds :80, which needs either root or a
+# relaxed ip_unprivileged_port_start that containerd does not guarantee
+
+service:
+  app:
+    controller: mqttx-web
+    ports:
+      http:
+        port: 80

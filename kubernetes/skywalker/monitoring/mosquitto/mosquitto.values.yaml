@@ -75,3 +75,6 @@ service:
         enabled: true
         primary: true
         port: 1883
+      ws:
+        enabled: true
+        port: 9001
