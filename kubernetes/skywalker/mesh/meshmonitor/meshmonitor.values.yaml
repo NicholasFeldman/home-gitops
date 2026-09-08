@@ -9,7 +9,7 @@ controllers:
           # release candidate, pinned deliberately: "MeshCore MQTT ingest" as a
           # source type first appears here, not in 4.15.2. Move to 4.16.0 final
           # when it ships. Image tags drop the leading "v" of the git tag.
-          tag: 4.16.0-rc5
+          tag: 4.16.0-rc6
         env:
           TZ: America/New_York
           NODE_ENV: production
