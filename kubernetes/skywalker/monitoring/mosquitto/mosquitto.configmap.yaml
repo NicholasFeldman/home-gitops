@@ -39,6 +39,11 @@ data:
     user meshcore
     topic readwrite meshcore/#
 
+    # read-only ingest account for corescope in the mesh namespace; it only
+    # consumes what the meshcore gateways publish and never writes
+    user corescope
+    topic read meshcore/#
+
     # read-only diagnostic account: every topic plus broker stats, writes nothing.
     # "topic read #" does not cover $SYS -- mosquitto treats it as a separate tree.
     user monitor

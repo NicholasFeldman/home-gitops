@@ -10,4 +10,4 @@ resources:
   - mesh.namespace.yaml
   - mesh.limitrange.yaml
 
-  - meshmonitor
+  - corescope
