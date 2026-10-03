@@ -11,5 +11,5 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: jellyfin
-    version: 1.5.1
+    version: 5.2.1
     valuesFile: jellyfin.values.yaml

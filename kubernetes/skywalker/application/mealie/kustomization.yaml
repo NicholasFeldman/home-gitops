@@ -12,5 +12,5 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: mealie
-    version: 1.5.1
+    version: 5.2.1
     valuesFile: values.yaml
