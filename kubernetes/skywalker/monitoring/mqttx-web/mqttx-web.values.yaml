@@ -4,7 +4,7 @@ controllers:
       app:
         image:
           repository: docker.io/emqx/mqttx-web
-          tag: v1.13.0
+          tag: v1.13.1
         env:
           TZ: America/New_York
         # a static nginx file server; the browser does the MQTT work, not this pod
