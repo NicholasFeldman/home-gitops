@@ -13,6 +13,6 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: mosquitto
-    version: 5.0.1
+    version: 5.2.1
     namespace: monitoring
     valuesFile: mosquitto.values.yaml
