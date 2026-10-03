@@ -8,7 +8,7 @@ controllers:
         image:
           repository: ghcr.io/kpa-clawbot/corescope
           # CoreScope's image tags keep the leading "v" of the git tag
-          tag: v3.10.1
+          tag: v3.12.0
         env:
           TZ: America/New_York
 
