@@ -4,7 +4,7 @@ controllers:
       main:
         image:
           repository: vikunja/vikunja
-          tag: 2.3.0
+          tag: 2.7.0
         env:
           TZ: America/New_York
         envFrom:
