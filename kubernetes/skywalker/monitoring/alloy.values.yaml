@@ -4,6 +4,11 @@ crds:
 
 controller:
   type: daemonset
+  # Also collect logs from tainted control-plane nodes
+  tolerations:
+    - key: node-role.kubernetes.io/control-plane
+      operator: Exists
+      effect: NoSchedule
 
 alloy:
   # No components outside the stable set are used below
