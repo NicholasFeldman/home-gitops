@@ -16,6 +16,13 @@
   },
   "packageRules": [
     {
+      "description": "Terraform providers can share names with Helm charts (e.g. authentik); keep their branches separate",
+      "matchManagers": [
+        "terraform"
+      ],
+      "additionalBranchPrefix": "terraform-"
+    },
+    {
       "matchUpdateTypes": [
         "major"
       ],
