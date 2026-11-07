@@ -3,7 +3,7 @@ global:
   - secretRef:
       name: authentik-env
   - secretRef:
-      name: authentik-database-env-authentik
+      name: authentik-database-env-authentik-db
   resources:
     requests:
       cpu: 1000m
