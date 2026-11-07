@@ -23,6 +23,8 @@ kubernetes/**/charts/
 .terraform/
 .terraform.tfstate*
 terraform.tfstate*
-# local vault cache written by the bitwarden provider (vault_path)
+# variable files hold secrets (e.g. terraform/authentik/secrets.auto.tfvars)
+*.tfvars
+# local vault cache left by the old bitwarden provider (vault_path)
 .bitwarden/
 
