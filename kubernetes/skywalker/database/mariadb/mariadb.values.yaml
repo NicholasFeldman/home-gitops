@@ -1,0 +1,96 @@
+controllers:
+  mariadb:
+    type: statefulset
+    statefulset:
+      # Reuses the data-mariadb-0 PVC left by the bitnami chart. Its data lives in
+      # the data/ subdirectory, owned by uid 1001.
+      volumeClaimTemplates:
+        - name: data
+          accessMode: ReadWriteOnce
+          size: 16Gi
+          storageClass: longhorn-static
+          globalMounts:
+            - path: /var/lib/mysql
+              subPath: data
+    containers:
+      app:
+        image:
+          repository: docker.io/library/mariadb
+          # Same server version the bitnami image ran, so the datadir needs no upgrade.
+          tag: 11.3.2
+        args:
+          - --skip-name-resolve
+          - --explicit-defaults-for-timestamp
+          - --max-allowed-packet=16M
+          - --character-set-server=utf8mb3
+          - --collation-server=utf8mb3_general_ci
+        env:
+          TZ: America/New_York
+          # Only used if the datadir is ever empty; the existing database keeps its users.
+          MARIADB_ROOT_PASSWORD:
+            secretKeyRef:
+              name: mariadb
+              key: mariadb-root-password
+          MARIADB_USER: nick
+          MARIADB_PASSWORD:
+            secretKeyRef:
+              name: mariadb
+              key: mariadb-password
+          MARIADB_DATABASE: default
+        resources:
+          requests:
+            cpu: 50m
+            memory: 256Mi
+          limits:
+            memory: 1Gi
+        probes:
+          # TCP rather than healthcheck.sh: the bitnami-initialised datadir has no
+          # healthcheck user for --connect to log in with.
+          liveness:
+            enabled: true
+            custom: true
+            spec:
+              tcpSocket:
+                port: 3306
+              initialDelaySeconds: 60
+              periodSeconds: 30
+              failureThreshold: 3
+          readiness:
+            enabled: true
+            custom: true
+            spec:
+              tcpSocket:
+                port: 3306
+              initialDelaySeconds: 10
+              periodSeconds: 10
+              failureThreshold: 3
+
+defaultPodOptions:
+  securityContext:
+    # the uid the bitnami image ran as, which owns the existing datadir
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    fsGroup: 1001
+    fsGroupChangePolicy: OnRootMismatch
+
+persistence:
+  run:
+    enabled: true
+    type: emptyDir
+    globalMounts:
+      - path: /run/mysqld
+  tmp:
+    enabled: true
+    type: emptyDir
+    globalMounts:
+      - path: /tmp
+
+service:
+  app:
+    controller: mariadb
+    ports:
+      mysql:
+        enabled: true
+        primary: true
+        port: 3306

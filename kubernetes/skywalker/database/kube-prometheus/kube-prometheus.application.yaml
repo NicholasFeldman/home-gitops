@@ -11,19 +11,49 @@ spec:
     name: in-cluster
   project: skywalker
   source:
-    path: .
-    repoURL: oci://registry-1.docker.io/bitnamicharts/kube-prometheus
-    targetRevision: 10.2.4
+    chart: kube-prometheus-stack
+    repoURL: https://prometheus-community.github.io/helm-charts
+    targetRevision: 93.0.0
     helm:
       releaseName: kube-prometheus
       valuesObject:
+        # Keep the service names the bitnami chart used (kube-prometheus-prometheus,
+        # kube-prometheus-alertmanager) so Grafana and the VirtualService keep working.
+        fullnameOverride: kube-prometheus
+
+        # Grafana is deployed separately in the application namespace.
+        grafana:
+          enabled: false
+
+        # k3s runs these inside the k3s binary and doesn't expose their metrics endpoints.
+        kubeControllerManager:
+          enabled: false
+        kubeScheduler:
+          enabled: false
+        kubeProxy:
+          enabled: false
+        kubeEtcd:
+          enabled: false
+
         prometheus:
-          retention: '10d'
-          retentionSize: "7GB"
-          resources:
-            requests:
-              cpu: 2
-              memory: 512Mi
-            limits:
-              cpu: 4
-              memory: 2Gi
+          prometheusSpec:
+            retention: '10d'
+            retentionSize: "7GB"
+            # Pick up every ServiceMonitor/PodMonitor/Probe/PrometheusRule in the cluster,
+            # not just the ones labelled for this release.
+            serviceMonitorSelectorNilUsesHelmValues: false
+            podMonitorSelectorNilUsesHelmValues: false
+            probeSelectorNilUsesHelmValues: false
+            ruleSelectorNilUsesHelmValues: false
+            scrapeConfigSelectorNilUsesHelmValues: false
+            resources:
+              requests:
+                cpu: 2
+                memory: 512Mi
+              limits:
+                cpu: 4
+                memory: 2Gi
+  syncPolicy:
+    syncOptions:
+      # The prometheus-operator CRDs are too large for client-side apply.
+      - ServerSideApply=true

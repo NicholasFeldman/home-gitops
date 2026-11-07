@@ -5,6 +5,13 @@ metadata:
   name: mariadb
 
 resources:
-  - mariadb.application.yaml
   - mariadb.sealed-secret.yaml
   - mariadb.virtual-service.yaml
+
+helmCharts:
+  - name: app-template
+    repo: https://bjw-s-labs.github.io/helm-charts
+    releaseName: mariadb
+    version: 5.0.1
+    namespace: database
+    valuesFile: mariadb.values.yaml

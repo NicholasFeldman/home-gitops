@@ -6,4 +6,5 @@ metadata:
 
 resources:
   - kube-prometheus.application.yaml
+  - blackbox-exporter.application.yaml
   - prometheus.virtualservice.yaml
