@@ -1,4 +1,8 @@
 global:
+  env:
+  # Required from authentik 2026.11; used for links and redirects from 2026.8.
+  - name: AUTHENTIK_WEB__BASE_URL
+    value: https://authentik.feldman.tech
   envFrom:
   - secretRef:
       name: authentik-env
