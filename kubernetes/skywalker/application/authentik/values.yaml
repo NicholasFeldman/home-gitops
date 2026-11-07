@@ -1,4 +1,7 @@
 global:
+  security:
+    # Newer bitnami subcharts refuse non-bitnami image repositories without this.
+    allowInsecureImages: true
   envFrom:
   - secretRef:
       name: authentik-env
@@ -19,6 +22,10 @@ server:
   
 redis:
   enabled: true
+  # Bitnami pulled its images from docker.io/bitnami; the same tags live on in bitnamilegacy.
+  # authentik drops Redis entirely in 2025.10.
+  image:
+    repository: bitnamilegacy/redis
   master:
     persistence:
       enabled: false
