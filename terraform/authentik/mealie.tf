@@ -6,8 +6,9 @@ resource "authentik_provider_oauth2" "mealie-oauth2" {
 
     allowed_redirect_uris = [
       {
-        matching_mode = "strict"
-        url           = "https://mealie.feldman.tech/login"
+        matching_mode     = "strict"
+        redirect_uri_type = "authorization"
+        url               = "https://mealie.feldman.tech/login"
       },
     ]
     property_mappings = [

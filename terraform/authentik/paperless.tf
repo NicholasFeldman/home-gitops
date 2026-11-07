@@ -7,8 +7,9 @@ resource "authentik_provider_oauth2" "paperless-oauth2" {
 
     allowed_redirect_uris = [
       {
-        matching_mode = "strict"
-        url           = "https://paperless.feldman.in/accounts/oidc/authentik/login/callback/"
+        matching_mode     = "strict"
+        redirect_uri_type = "authorization"
+        url               = "https://paperless.feldman.in/accounts/oidc/authentik/login/callback/"
       }
     ]
     property_mappings = [

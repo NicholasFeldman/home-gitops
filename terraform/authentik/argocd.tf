@@ -6,12 +6,14 @@ resource "authentik_provider_oauth2" "argocd-oauth2" {
 
     allowed_redirect_uris = [
       {
-        matching_mode = "strict"
-        url           = "https://argocd.feldman.in/auth/callback"
+        matching_mode     = "strict"
+        redirect_uri_type = "authorization"
+        url               = "https://argocd.feldman.in/auth/callback"
       },
       {
-        matching_mode = "strict"
-        url           = "https://argocd.feldman.in/api/dex/callback"
+        matching_mode     = "strict"
+        redirect_uri_type = "authorization"
+        url               = "https://argocd.feldman.in/api/dex/callback"
       },
     ]
     property_mappings = [

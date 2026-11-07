@@ -6,8 +6,9 @@ resource "authentik_provider_oauth2" "grafana-oauth2" {
 
     allowed_redirect_uris = [
       {
-        matching_mode = "strict"
-        url           = "https://grafana.feldman.in/login/generic_oauth"
+        matching_mode     = "strict"
+        redirect_uri_type = "authorization"
+        url               = "https://grafana.feldman.in/login/generic_oauth"
       },
     ]
     property_mappings = [
