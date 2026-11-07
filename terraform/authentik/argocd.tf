@@ -15,7 +15,7 @@ resource "authentik_provider_oauth2" "argocd-oauth2" {
       },
     ]
     property_mappings = [
-        data.authentik_property_mapping_provider_scope.scope-email.id,
+        authentik_property_mapping_provider_scope.scope-email-verified.id,
         data.authentik_property_mapping_provider_scope.scope-profile.id,
         data.authentik_property_mapping_provider_scope.scope-openid.id,
     ]
