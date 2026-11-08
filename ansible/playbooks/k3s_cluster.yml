@@ -21,4 +21,4 @@
   vars:
     swap_file_state: absent
     k3s_become: true
-    k3s_release_version: v1.31.14+k3s1
+    k3s_release_version: v1.32.13+k3s1
