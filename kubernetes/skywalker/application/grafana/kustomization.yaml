@@ -14,5 +14,6 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: grafana
+    namespace: application
     version: 3.7.3
     valuesFile: ../values/grafana.yaml

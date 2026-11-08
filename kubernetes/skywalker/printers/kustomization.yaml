@@ -13,6 +13,7 @@ helmCharts:
   - name: app-template
     repo: https://bjw-s-labs.github.io/helm-charts
     releaseName: openspoolman
+    namespace: printers
     version: 3.7.3
     valuesFile: ./openspoolman.values.yaml
     apiVersions:
