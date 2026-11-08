@@ -3,6 +3,8 @@ image:
   tag: v2.7.0
 env:
   TZ: America/New_York
+  # Required since v1.0; requests for any other Host are rejected
+  HOMEPAGE_ALLOWED_HOSTS: homepage.feldman.in
 service:
   main:
     ports:
