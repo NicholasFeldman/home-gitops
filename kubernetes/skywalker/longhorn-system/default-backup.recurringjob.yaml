@@ -1,10 +1,11 @@
-apiVersion: longhorn.io/v1beta1
+apiVersion: longhorn.io/v1beta2
 kind: RecurringJob
 
 metadata:
   name: default-backup
 
 spec:
+  name: default-backup
   concurrency: 2
   task: backup
   retain: 10

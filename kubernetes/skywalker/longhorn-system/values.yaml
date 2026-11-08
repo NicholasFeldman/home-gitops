@@ -3,5 +3,8 @@ csi:
 persistence:
   reclaimPolicy: Retain
 defaultSettings:
-  backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups 
+  backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups
   createDefaultDiskLabeledNodes: true
+  # Move volumes onto the new engine image after each Longhorn upgrade, one
+  # volume per node at a time
+  concurrentAutomaticEngineUpgradePerNodeLimit: 1
