@@ -73,6 +73,16 @@ defaultPodOptions:
     runAsNonRoot: true
     fsGroup: 1001
     fsGroupChangePolicy: OnRootMismatch
+  # b4k1d's disks are on naboo's HDD mirror, too slow for database writes
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: NotIn
+                values:
+                  - skywalker-worker-b4k1d
 
 persistence:
   run:

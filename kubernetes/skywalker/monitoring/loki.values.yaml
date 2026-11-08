@@ -50,6 +50,16 @@ singleBinary:
   extraEnv:
     - name: GOMEMLIMIT
       value: 1800MiB
+  # b4k1d's disks are on naboo's HDD mirror, too slow for Loki's writes
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: NotIn
+                values:
+                  - skywalker-worker-b4k1d
 
 gateway:
   enabled: false

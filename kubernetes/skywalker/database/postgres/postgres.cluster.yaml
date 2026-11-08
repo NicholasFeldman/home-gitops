@@ -11,6 +11,17 @@ spec:
     storageClass: local-path
     size: 6Gi
 
+  # b4k1d's disks are on naboo's HDD mirror, too slow for Postgres
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: kubernetes.io/hostname
+                operator: NotIn
+                values:
+                  - skywalker-worker-b4k1d
+
   monitoring:
     enablePodMonitor: true
 
