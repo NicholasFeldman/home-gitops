@@ -17,7 +17,7 @@ controllers:
         image:
           repository: docker.io/library/mariadb
           # Same server version the bitnami image ran, so the datadir needs no upgrade.
-          tag: 11.3.2
+          tag: 11.8.9
         args:
           - --skip-name-resolve
           - --explicit-defaults-for-timestamp
