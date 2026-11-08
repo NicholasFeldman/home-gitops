@@ -11,7 +11,9 @@ spec:
     storageClass: local-path
     size: 6Gi
 
-  # b4k1d's disks are on naboo's HDD mirror, too slow for Postgres
+  # local-path lives on each node's OS disk. Only vt5g6 and a7h7w have theirs on
+  # NVMe: b4k1d's is on naboo's HDD mirror, and k2h8d's and ga9vf's are on
+  # kamino's PNY SATA mirror, where Postgres writes stall etcd.
   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -21,6 +23,8 @@ spec:
                 operator: NotIn
                 values:
                   - skywalker-worker-b4k1d
+                  - skywalker-control-plane-k2h8d
+                  - skywalker-worker-ga9vf
 
   monitoring:
     enablePodMonitor: true
