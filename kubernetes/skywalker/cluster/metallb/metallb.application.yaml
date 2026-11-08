@@ -16,6 +16,10 @@ spec:
     targetRevision: 0.16.2
     helm:
       releaseName: metallb
+      # L2 mode only, so skip the frr-k8s BGP backend that 0.16 enables by default
+      valuesObject:
+        frrk8s:
+          enabled: false
   ignoreDifferences:
     - group: apiextensions.k8s.io
       kind: CustomResourceDefinition
