@@ -16,3 +16,7 @@ spec:
     targetRevision: 0.25.0
     helm:
       releaseName: cloudnative-pg
+  syncPolicy:
+    syncOptions:
+      # The CRDs are too large for the client-side last-applied annotation
+      - ServerSideApply=true
