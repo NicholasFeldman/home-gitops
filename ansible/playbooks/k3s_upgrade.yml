@@ -1,0 +1,26 @@
+# Rolling k3s upgrade, one node at a time: servers first, then agents.
+# Swaps the binary the way k3s_cluster.yml's role lays it out (versioned binary +
+# symlinks). Running that role with --limit or serial would treat the single node
+# as a standalone primary and rewrite its config, so don't upgrade through it.
+#
+# Usage, one minor version per run (k3s doesn't support skipping minors):
+#   ansible-playbook -i inventories/skywalker.yml playbooks/k3s_upgrade.yml -K -e k3s_version=v1.30.14+k3s2
+# Then set k3s_release_version in k3s_cluster.yml to match.
+
+- hosts: k3s_cluster_server[0]
+  become: true
+  tasks:
+    - name: Snapshot etcd before upgrading
+      ansible.builtin.command: k3s etcd-snapshot save --name pre-{{ k3s_version | replace('+', '-') }}
+
+- hosts: k3s_cluster_server
+  become: true
+  serial: 1
+  tasks:
+    - ansible.builtin.import_tasks: tasks/k3s_upgrade_node.yml
+
+- hosts: k3s_cluster_agent
+  become: true
+  serial: 1
+  tasks:
+    - ansible.builtin.import_tasks: tasks/k3s_upgrade_node.yml

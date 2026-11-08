@@ -1,0 +1,43 @@
+- name: Download k3s {{ k3s_version }}
+  ansible.builtin.get_url:
+    url: https://github.com/k3s-io/k3s/releases/download/{{ k3s_version | urlencode }}/k3s
+    checksum: sha256:https://github.com/k3s-io/k3s/releases/download/{{ k3s_version | urlencode }}/sha256sum-amd64.txt
+    dest: /usr/local/bin/k3s-{{ k3s_version }}
+    mode: "0755"
+
+- name: Point k3s and its tool symlinks at the new binary
+  ansible.builtin.file:
+    src: /usr/local/bin/k3s-{{ k3s_version }}
+    dest: /usr/local/bin/{{ item }}
+    state: link
+  loop: [k3s, kubectl, crictl, ctr]
+  register: k3s_links
+
+- name: Restart k3s
+  ansible.builtin.systemd:
+    name: k3s
+    state: restarted
+  when: k3s_links is changed
+
+- name: Wait for the node to be Ready on {{ k3s_version }}
+  ansible.builtin.command: >-
+    kubectl get node {{ inventory_hostname }}
+    -o jsonpath='{.status.nodeInfo.kubeletVersion} {.status.conditions[?(@.type=="Ready")].status}'
+  delegate_to: localhost
+  become: false
+  register: k3s_node_state
+  until: k3s_node_state.stdout == k3s_version ~ ' True'
+  retries: 60
+  delay: 10
+  changed_when: false
+
+- name: Wait for etcd to report healthy
+  ansible.builtin.command: kubectl get --raw /readyz/etcd
+  delegate_to: localhost
+  become: false
+  register: k3s_etcd_ready
+  until: k3s_etcd_ready.stdout == 'ok'
+  retries: 30
+  delay: 10
+  changed_when: false
+  when: inventory_hostname in groups['k3s_cluster_server']
