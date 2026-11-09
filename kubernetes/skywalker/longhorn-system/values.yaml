@@ -7,6 +7,11 @@ defaultSettings:
   # Move volumes onto the new engine image after each Longhorn upgrade, one
   # volume per node at a time
   concurrentAutomaticEngineUpgradePerNodeLimit: 1
+  # CPU each instance-manager pod requests, as a percentage of the node. Live
+  # engine upgrades leave the previous instance-manager running until its
+  # volumes reattach, so a node briefly runs several; at the 12% default the
+  # new one can't be scheduled.
+  guaranteedInstanceManagerCPU: '{"v1":"5"}'
 # Since 1.8 the backup target is a BackupTarget resource rather than a setting
 defaultBackupStore:
   backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups
