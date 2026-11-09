@@ -11,7 +11,7 @@ defaultSettings:
   # engine upgrades leave the previous instance-manager running until its
   # volumes reattach, so a node briefly runs several; at the 12% default the
   # new one can't be scheduled.
-  guaranteedInstanceManagerCPU: '{"v1":"5"}'
+  guaranteedInstanceManagerCPU: '{"v1":"5","v2":"15"}'
 # Since 1.8 the backup target is a BackupTarget resource rather than a setting
 defaultBackupStore:
   backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups
