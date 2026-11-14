@@ -1,3 +1,5 @@
 roles:
   - geerlingguy.swap
   - xanmanning.k3s
+collections:
+  - ansible.posix

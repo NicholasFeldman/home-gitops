@@ -16,3 +16,61 @@
         name: nfs-common
         state: present
         update_cache: yes
+
+    # Raised for Kubernetes workloads; these were set at runtime by the
+    # node-setup DaemonSet, which didn't survive reboots on its own
+    - name: Raise kernel limits
+      become: yes
+      ansible.posix.sysctl:
+        name: "{{ item.name }}"
+        value: "{{ item.value }}"
+        sysctl_file: /etc/sysctl.d/90-kubernetes.conf
+        reload: yes
+      loop:
+        - { name: fs.inotify.max_user_instances, value: "524288" }
+        - { name: fs.inotify.max_user_watches, value: "10485760" }
+        - { name: fs.aio-max-nr, value: "10485760" }
+        - { name: fs.file-max, value: "10485760" }
+        - { name: kernel.threads-max, value: "10485760" }
+
+    # Without this multipathd claims the /dev/sdX behind a Longhorn volume as an
+    # mpath map, and the volume then fails to mount with "already mounted or
+    # mount point busy".
+    # https://longhorn.io/kb/troubleshooting-volume-with-multipath/
+    # The control planes were given this blacklist by hand, without markers.
+    - name: Check for an existing multipath sd blacklist
+      become: yes
+      command: grep -q 'devnode "\^sd' /etc/multipath.conf
+      register: multipath_existing
+      changed_when: false
+      failed_when: false
+      check_mode: false
+
+    - name: Blacklist sd devices from multipath
+      when: multipath_existing.rc != 0
+      become: yes
+      blockinfile:
+        path: /etc/multipath.conf
+        create: yes
+        mode: "0644"
+        marker: "# {mark} Longhorn: keep multipathd off iSCSI devices"
+        block: |
+          blacklist {
+              devnode "^sd[a-z0-9]+"
+          }
+      notify:
+        - Restart multipathd
+        - Flush multipath maps
+
+  handlers:
+    - name: Restart multipathd
+      become: yes
+      systemd:
+        name: multipathd
+        state: restarted
+
+    # The VMs have no real multipath storage, so any map is one multipathd took
+    # from Longhorn
+    - name: Flush multipath maps
+      become: yes
+      command: multipath -F
