@@ -55,9 +55,15 @@
         autoremove: true
         autoclean: true
 
+    - name: Check for a pending reboot
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
     - name: Reboot into the updated release
       ansible.builtin.reboot:
         reboot_timeout: 1800
+      when: reboot_required.stat.exists
 
     # The non-interactive frontend keeps existing config files (multipath.conf,
     # sysctl.d) when a package ships a new default. Async so a dropped SSH

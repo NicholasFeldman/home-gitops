@@ -11,15 +11,22 @@
   delay: 10
   changed_when: false
 
-# Pods that are pending, starting, terminating or not yet ready
+# Pods that are pending, starting, terminating or not yet ready. pipefail so a
+# failed kubectl isn't read as zero.
 - name: Count unsettled pods
-  ansible.builtin.shell: &unsettled_pods >-
-    kubectl get pods -A --no-headers
-    | awk '$4 != "Completed" && ($4 != "Running" || (split($3, r, "/") && r[1] != r[2]))'
-    | wc -l
+  ansible.builtin.shell: &unsettled_pods
+    cmd: >-
+      set -o pipefail;
+      kubectl get pods -A --no-headers
+      | awk '$4 != "Completed" && ($4 != "Running" || (split($3, r, "/") && r[1] != r[2]))'
+      | wc -l
+    executable: /bin/bash
   delegate_to: localhost
   become: false
   register: unsettled_before
+  until: unsettled_before.rc == 0
+  retries: 30
+  delay: 10
   changed_when: false
 
 # Retries while a PDB refuses; a pod that's already gone counts as evicted
@@ -53,7 +60,7 @@
   delegate_to: localhost
   become: false
   register: unsettled_after
-  until: unsettled_after.stdout | int <= unsettled_before.stdout | int
+  until: unsettled_after.rc == 0 and unsettled_after.stdout | int <= unsettled_before.stdout | int
   retries: 60
   delay: 10
   changed_when: false

@@ -38,7 +38,9 @@
   delegate_to: localhost
   become: false
   register: longhorn_volumes
-  until: not (longhorn_volumes.stdout_lines | select('search', ' (degraded|faulted)$') | list)
+  until: longhorn_volumes.rc == 0
+         and longhorn_volumes.stdout_lines | length > 0
+         and not (longhorn_volumes.stdout_lines | select('search', ' (degraded|faulted)$') | list)
   retries: 180
   delay: 10
   changed_when: false
@@ -50,7 +52,8 @@
   delegate_to: localhost
   become: false
   register: cnpg_health
-  until: cnpg_health.stdout.split('/')[0] == cnpg_health.stdout.split('/')[1].split()[0]
+  until: cnpg_health.rc == 0
+         and cnpg_health.stdout.split('/')[0] == cnpg_health.stdout.split('/')[1].split()[0]
          and cnpg_health.stdout.endswith('Cluster in healthy state')
   retries: 60
   delay: 10

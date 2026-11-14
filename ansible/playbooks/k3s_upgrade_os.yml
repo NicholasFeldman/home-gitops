@@ -1,10 +1,11 @@
 # Rolling OS update, one node at a time: drain, dist-upgrade, reboot, uncordon,
 # then wait for etcd, Longhorn and CNPG to recover before the next node.
-# Workers go first so a bad kernel or package shows up away from etcd.
+# Workers go first so a bad kernel or package shows up away from etcd. Nodes
+# with nothing to install and no reboot pending are skipped before the drain.
 #
 # Usage:
 #   ansible-playbook -i inventories/skywalker.yml playbooks/k3s_upgrade_os.yml -K
-# A failed node is left cordoned; fix it, uncordon, and resume with --limit.
+# A failed node is left cordoned; fix it, uncordon, and re-run.
 
 - hosts: k3s_cluster_agent:k3s_cluster_server
   become: true
@@ -13,6 +14,29 @@
     cnpg_namespace: database
     cnpg_cluster: primary-cluster
   tasks:
+    - name: Refresh the package lists
+      ansible.builtin.apt:
+        update_cache: true
+      changed_when: false
+
+    - name: Count pending upgrades
+      ansible.builtin.command: apt-get -s dist-upgrade
+      register: pending_upgrades
+      changed_when: false
+      check_mode: false
+
+    # Left behind by an earlier update that was never rebooted into
+    - name: Check for a pending reboot
+      ansible.builtin.stat:
+        path: /var/run/reboot-required
+      register: reboot_required
+
+    - name: Skip {{ inventory_hostname }}, nothing to install and no reboot pending
+      ansible.builtin.meta: end_host
+      when:
+        - pending_upgrades.stdout_lines | select('match', 'Inst ') | list | length == 0
+        - not reboot_required.stat.exists
+
     - ansible.builtin.import_tasks: tasks/k3s_drain_node.yml
 
     - name: Upgrade packages
