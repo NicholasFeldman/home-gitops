@@ -1,0 +1,84 @@
+# Ubuntu release upgrade to the next LTS (e.g. 22.04 -> 24.04), one node at a
+# time, with the same drain and recovery checks as k3s_upgrade_os.yml.
+#
+# Run it for a single node with --limit, after k3s_upgrade_os.yml, and take a
+# Proxmox snapshot of that VM first: a release upgrade that leaves the VM
+# unbootable can only be rolled back from the snapshot.
+#   ansible-playbook -i inventories/skywalker.yml playbooks/k3s_upgrade_release.yml -K \
+#     --limit skywalker-worker-ga9vf -e release_target=24.04
+# Then re-run configure-vms.yml for that node and check k3s, Longhorn and
+# multipath before moving on to the next.
+
+- hosts: k3s_cluster_agent:k3s_cluster_server
+  become: true
+  serial: 1
+  vars:
+    cnpg_namespace: database
+    cnpg_cluster: primary-cluster
+  tasks:
+    - name: Require --limit and a target release
+      ansible.builtin.assert:
+        that:
+          - ansible_limit is defined
+          - release_target is defined
+        fail_msg: Release-upgrade one node at a time; pass --limit <node> -e release_target=<e.g. 24.04>
+      run_once: true
+      become: false
+
+    - name: Find the current release
+      ansible.builtin.command: lsb_release -rs
+      register: release_before
+      changed_when: false
+      check_mode: false
+
+    - name: Skip {{ inventory_hostname }}, already on {{ release_before.stdout }}
+      ansible.builtin.meta: end_host
+      when: release_before.stdout is version(release_target, '>=')
+
+    # The next LTS isn't always the one wanted (24.04 nodes are offered 26.04
+    # before k3s and Longhorn support it), so check it before draining
+    - name: Check the offered release is {{ release_target }}
+      ansible.builtin.command: do-release-upgrade -c
+      register: release_check
+      changed_when: false
+      failed_when: "\"New release '\" ~ release_target ~ \".\" not in release_check.stdout"
+      check_mode: false
+
+    - ansible.builtin.import_tasks: tasks/k3s_drain_node.yml
+
+    # do-release-upgrade refuses to run on an out-of-date system or one with a
+    # reboot pending
+    - name: Bring the current release up to date
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+        autoremove: true
+        autoclean: true
+
+    - name: Reboot into the updated release
+      ansible.builtin.reboot:
+        reboot_timeout: 1800
+
+    # The non-interactive frontend keeps existing config files (multipath.conf,
+    # sysctl.d) when a package ships a new default. Async so a dropped SSH
+    # session doesn't kill the upgrade halfway.
+    - name: Upgrade to the next LTS
+      ansible.builtin.command: do-release-upgrade -f DistUpgradeViewNonInteractive
+      async: 7200
+      poll: 30
+
+    - name: Reboot into the new release
+      ansible.builtin.reboot:
+        reboot_timeout: 1800
+
+    - name: Record the release after upgrading
+      ansible.builtin.command: lsb_release -rs
+      register: release_after
+      changed_when: false
+
+    - name: Check the node is on {{ release_target }}
+      ansible.builtin.assert:
+        that: release_after.stdout == release_target
+        fail_msg: On {{ release_after.stdout }}, not {{ release_target }}; check /var/log/dist-upgrade/ (node left cordoned)
+
+    - ansible.builtin.import_tasks: tasks/k3s_restore_node.yml

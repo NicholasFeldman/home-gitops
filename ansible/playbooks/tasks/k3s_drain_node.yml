@@ -1,0 +1,58 @@
+# Takes a node out of service before maintenance. Expects cnpg_namespace and
+# cnpg_cluster; pair with k3s_restore_node.yml once the node is back up.
+
+# CNPG instances sit on local-path volumes, so an evicted one can't start on
+# another node and the drain would hang on its PDB. Hand the primary role to
+# an instance elsewhere, then leave CNPG's pods out of the drain; the reboot
+# stops the replicas left here.
+- name: Find the CNPG instances
+  ansible.builtin.command: >-
+    kubectl get pods -n {{ cnpg_namespace }}
+    -l cnpg.io/cluster={{ cnpg_cluster }},cnpg.io/podRole=instance
+    -o jsonpath='{range .items[*]}{.spec.nodeName} {.metadata.labels.cnpg\.io/instanceRole} {.metadata.name}{"\n"}{end}'
+  delegate_to: localhost
+  become: false
+  register: cnpg_instances
+  changed_when: false
+
+- name: Move the CNPG primary off {{ inventory_hostname }}
+  when: cnpg_instances.stdout_lines | select('match', inventory_hostname ~ ' primary ') | list | length > 0
+  vars:
+    cnpg_target: >-
+      {{ (cnpg_instances.stdout_lines
+          | select('search', ' replica ')
+          | reject('match', inventory_hostname ~ ' ')
+          | first).split()[2] }}
+  block:
+    - name: Switch over to {{ cnpg_target }}
+      ansible.builtin.command: >-
+        kubectl patch clusters.postgresql.cnpg.io {{ cnpg_cluster }} -n {{ cnpg_namespace }}
+        --subresource=status --type=merge
+        -p '{{ {"status": {"targetPrimary": cnpg_target,
+                           "phase": "Switchover in progress",
+                           "phaseReason": "Switching over to " ~ cnpg_target ~ " for maintenance on " ~ inventory_hostname}}
+               | to_json }}'
+      delegate_to: localhost
+      become: false
+
+    - name: Wait for {{ cnpg_target }} to take over
+      ansible.builtin.command: >-
+        kubectl get clusters.postgresql.cnpg.io {{ cnpg_cluster }} -n {{ cnpg_namespace }}
+        -o jsonpath='{.status.currentPrimary} {.status.phase}'
+      delegate_to: localhost
+      become: false
+      register: cnpg_switchover
+      until: cnpg_switchover.stdout == cnpg_target ~ ' Cluster in healthy state'
+      retries: 60
+      delay: 10
+      changed_when: false
+
+# Longhorn's instance-manager PDB holds the drain until the node's volumes
+# have detached and, under its node drain policy, any last replica has been
+# moved elsewhere
+- name: Drain {{ inventory_hostname }}
+  ansible.builtin.command: >-
+    kubectl drain {{ inventory_hostname }} --ignore-daemonsets --delete-emptydir-data
+    --pod-selector='!cnpg.io/cluster' --timeout=30m
+  delegate_to: localhost
+  become: false
