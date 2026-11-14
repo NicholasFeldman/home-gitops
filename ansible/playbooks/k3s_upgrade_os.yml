@@ -1,0 +1,135 @@
+# Rolling OS update, one node at a time: drain, dist-upgrade, reboot, uncordon,
+# then wait for etcd, Longhorn and CNPG to recover before the next node.
+# Workers go first so a bad kernel or package shows up away from etcd.
+#
+# Usage:
+#   ansible-playbook -i inventories/skywalker.yml playbooks/k3s_upgrade_os.yml -K
+# A failed node is left cordoned; fix it, uncordon, and resume with --limit.
+
+- hosts: k3s_cluster_agent:k3s_cluster_server
+  become: true
+  serial: 1
+  vars:
+    cnpg_namespace: database
+    cnpg_cluster: primary-cluster
+  tasks:
+    # CNPG instances sit on local-path volumes, so an evicted one can't start on
+    # another node and the drain would hang on its PDB. Hand the primary role to
+    # an instance elsewhere, then leave CNPG's pods out of the drain; the reboot
+    # stops the replicas left here.
+    - name: Find the CNPG instances
+      ansible.builtin.command: >-
+        kubectl get pods -n {{ cnpg_namespace }}
+        -l cnpg.io/cluster={{ cnpg_cluster }},cnpg.io/podRole=instance
+        -o jsonpath='{range .items[*]}{.spec.nodeName} {.metadata.labels.cnpg\.io/instanceRole} {.metadata.name}{"\n"}{end}'
+      delegate_to: localhost
+      become: false
+      register: cnpg_instances
+      changed_when: false
+
+    - name: Move the CNPG primary off {{ inventory_hostname }}
+      when: cnpg_instances.stdout_lines | select('match', inventory_hostname ~ ' primary ') | list | length > 0
+      vars:
+        cnpg_target: >-
+          {{ (cnpg_instances.stdout_lines
+              | select('search', ' replica ')
+              | reject('match', inventory_hostname ~ ' ')
+              | first).split()[2] }}
+      block:
+        - name: Switch over to {{ cnpg_target }}
+          ansible.builtin.command: >-
+            kubectl patch clusters.postgresql.cnpg.io {{ cnpg_cluster }} -n {{ cnpg_namespace }}
+            --subresource=status --type=merge
+            -p '{{ {"status": {"targetPrimary": cnpg_target,
+                               "phase": "Switchover in progress",
+                               "phaseReason": "Switching over to " ~ cnpg_target ~ " to update " ~ inventory_hostname}}
+                   | to_json }}'
+          delegate_to: localhost
+          become: false
+
+        - name: Wait for {{ cnpg_target }} to take over
+          ansible.builtin.command: >-
+            kubectl get clusters.postgresql.cnpg.io {{ cnpg_cluster }} -n {{ cnpg_namespace }}
+            -o jsonpath='{.status.currentPrimary} {.status.phase}'
+          delegate_to: localhost
+          become: false
+          register: cnpg_switchover
+          until: cnpg_switchover.stdout == cnpg_target ~ ' Cluster in healthy state'
+          retries: 60
+          delay: 10
+          changed_when: false
+
+    # Longhorn's instance-manager PDB holds the drain until the node's volumes
+    # have detached and, under its node drain policy, any last replica has been
+    # moved elsewhere
+    - name: Drain {{ inventory_hostname }}
+      ansible.builtin.command: >-
+        kubectl drain {{ inventory_hostname }} --ignore-daemonsets --delete-emptydir-data
+        --pod-selector='!cnpg.io/cluster' --timeout=30m
+      delegate_to: localhost
+      become: false
+
+    - name: Upgrade packages
+      ansible.builtin.apt:
+        upgrade: dist
+        update_cache: true
+        autoremove: true
+        autoclean: true
+
+    - name: Reboot
+      ansible.builtin.reboot:
+        reboot_timeout: 1800
+
+    - name: Wait for the node to be Ready
+      ansible.builtin.command: >-
+        kubectl get node {{ inventory_hostname }}
+        -o jsonpath='{.status.conditions[?(@.type=="Ready")].status}'
+      delegate_to: localhost
+      become: false
+      register: node_ready
+      until: node_ready.stdout == 'True'
+      retries: 60
+      delay: 10
+      changed_when: false
+
+    - name: Uncordon {{ inventory_hostname }}
+      ansible.builtin.command: kubectl uncordon {{ inventory_hostname }}
+      delegate_to: localhost
+      become: false
+
+    - name: Wait for etcd to report healthy
+      ansible.builtin.command: kubectl get --raw /readyz/etcd
+      delegate_to: localhost
+      become: false
+      register: etcd_ready
+      until: etcd_ready.stdout == 'ok'
+      retries: 30
+      delay: 10
+      changed_when: false
+      when: inventory_hostname in groups['k3s_cluster_server']
+
+    # Replicas on the rebooted node rebuild before the next node goes down
+    - name: Wait for Longhorn volumes to recover
+      ansible.builtin.command: >-
+        kubectl get volumes.longhorn.io -n longhorn-system
+        -o jsonpath='{range .items[*]}{.metadata.name} {.status.robustness}{"\n"}{end}'
+      delegate_to: localhost
+      become: false
+      register: longhorn_volumes
+      until: not (longhorn_volumes.stdout_lines | select('search', ' (degraded|faulted)$') | list)
+      retries: 180
+      delay: 10
+      changed_when: false
+
+    - name: Wait for every CNPG instance to be ready
+      ansible.builtin.command: >-
+        kubectl get clusters.postgresql.cnpg.io {{ cnpg_cluster }} -n {{ cnpg_namespace }}
+        -o jsonpath='{.status.readyInstances}/{.spec.instances} {.status.phase}'
+      delegate_to: localhost
+      become: false
+      register: cnpg_health
+      until: cnpg_health.stdout.split('/')[0] == cnpg_health.stdout.split('/')[1].split()[0]
+             and cnpg_health.stdout.endswith('Cluster in healthy state')
+      retries: 60
+      delay: 10
+      changed_when: false

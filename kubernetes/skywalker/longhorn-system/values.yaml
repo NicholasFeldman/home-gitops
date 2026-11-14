@@ -12,6 +12,9 @@ defaultSettings:
   # volumes reattach, so a node briefly runs several; at the 12% default the
   # new one can't be scheduled.
   guaranteedInstanceManagerCPU: '{"v1":"5","v2":"15"}'
+  # home-assistant-config and homepage-config keep a single replica; on drain,
+  # move it to another node instead of blocking until someone does
+  nodeDrainPolicy: block-for-eviction-if-contains-last-replica
 # Since 1.8 the backup target is a BackupTarget resource rather than a setting
 defaultBackupStore:
   backupTarget: nfs://truenas.feldman.in:/mnt/primary/Longhorn-Backups
