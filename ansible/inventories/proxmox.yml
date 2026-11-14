@@ -1,9 +1,19 @@
+# The Proxmox VE cluster (the-republic). Hostnames match the PVE node names,
+# so a VM's node from /cluster/resources can be used directly with delegate_to.
 kenobi:
   hosts:
+    naboo:
+      ansible_user: root
+      ansible_host: 10.10.90.50
+    alderaan:
+      ansible_user: root
+      ansible_host: 10.10.90.51
     kamino:
       ansible_user: root
       ansible_host: 10.10.90.60
   children:
     proxmox:
       hosts:
+        naboo:
+        alderaan:
         kamino:

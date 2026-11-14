@@ -1,0 +1,88 @@
+# Snapshots the Proxmox VM behind inventory_hostname, so a node an upgrade
+# leaves unbootable can be rolled back with `qm rollback`. Expects snapshot_name;
+# needs inventories/proxmox.yml loaded alongside the cluster inventory.
+#
+# Every disk is snapshotted, the Longhorn one included. After a rollback,
+# Longhorn sees that disk's replicas as stale and rebuilds them.
+#
+# Sets pve_node and pve_vmid, for deleting the snapshot afterwards.
+
+- name: Find the Proxmox VM for {{ inventory_hostname }}
+  ansible.builtin.command: pvesh get /cluster/resources --type vm --output-format json
+  delegate_to: "{{ groups['proxmox'] | first }}"
+  become: false
+  register: pve_resources
+  changed_when: false
+  check_mode: false
+
+- name: Record where {{ inventory_hostname }} runs
+  vars:
+    pve_vm: >-
+      {{ pve_resources.stdout | from_json
+         | selectattr('type', 'equalto', 'qemu')
+         | selectattr('name', 'equalto', inventory_hostname) }}
+  ansible.builtin.set_fact:
+    pve_node: "{{ (pve_vm | first).node }}"
+    pve_vmid: "{{ (pve_vm | first).vmid }}"
+  failed_when: pve_vm | length != 1
+
+- name: List the existing snapshots of VM {{ pve_vmid }}
+  ansible.builtin.command: >-
+    pvesh get /nodes/{{ pve_node }}/qemu/{{ pve_vmid }}/snapshot --output-format json
+  delegate_to: "{{ pve_node }}"
+  become: false
+  register: pve_snapshots
+  changed_when: false
+  check_mode: false
+
+# A re-run after a failed upgrade keeps the snapshot from before the first try
+- name: Snapshot VM {{ pve_vmid }} on {{ pve_node }}
+  when: snapshot_name not in (pve_snapshots.stdout | from_json | map(attribute='name'))
+  block:
+    - name: Read the disks of VM {{ pve_vmid }}
+      ansible.builtin.command: >-
+        pvesh get /nodes/{{ pve_node }}/qemu/{{ pve_vmid }}/config --output-format json
+      delegate_to: "{{ pve_node }}"
+      become: false
+      register: pve_config
+      changed_when: false
+      check_mode: false
+
+    - name: Read free space on the storage behind VM {{ pve_vmid }}
+      vars:
+        pve_storages: >-
+          {{ pve_config.stdout | from_json | dict2items
+             | selectattr('key', 'match', '^(scsi|virtio|sata|ide|efidisk|tpmstate)[0-9]+$')
+             | rejectattr('value', 'search', 'media=cdrom')
+             | map(attribute='value') | map('split', ':') | map('first')
+             | unique }}
+      ansible.builtin.command: >-
+        pvesh get /nodes/{{ pve_node }}/storage/{{ item }}/status --output-format json
+      delegate_to: "{{ pve_node }}"
+      become: false
+      loop: "{{ pve_storages }}"
+      register: pve_storage_status
+      changed_when: false
+      check_mode: false
+
+    # A snapshot holds every block the upgrade overwrites, and a ZFS pool that
+    # fills up pauses every VM on it, not just this one
+    - name: Check each storage has {{ snapshot_min_free_gb }} GiB free
+      ansible.builtin.assert:
+        that: (item.stdout | from_json).avail > snapshot_min_free_gb * 1024 ** 3
+        fail_msg: >-
+          {{ item.item }} on {{ pve_node }} has
+          {{ ((item.stdout | from_json).avail / 1024 ** 3) | round(1) }} GiB free,
+          under {{ snapshot_min_free_gb }} GiB; free space or lower snapshot_min_free_gb
+        quiet: true
+      loop: "{{ pve_storage_status.results }}"
+      loop_control:
+        label: "{{ item.item }}"
+
+    # With the guest agent enabled, qm freezes the guest's filesystems first
+    - name: Snapshot VM {{ pve_vmid }} as {{ snapshot_name }}
+      ansible.builtin.command: >-
+        qm snapshot {{ pve_vmid }} {{ snapshot_name }}
+        --description "Before {{ snapshot_reason }}, {{ now(utc=true).strftime('%Y-%m-%d %H:%M') }} UTC"
+      delegate_to: "{{ pve_node }}"
+      become: false

@@ -1,13 +1,16 @@
-# Ubuntu release upgrade to the next LTS (e.g. 22.04 -> 24.04), one node at a
-# time, with the same drain and recovery checks as k3s_upgrade_os.yml.
+# Rolling Ubuntu release upgrade to the next LTS (e.g. 22.04 -> 24.04), one
+# node at a time, with the same drain and recovery checks as k3s_upgrade_os.yml.
+# Each VM is snapshotted in Proxmox before the drain; the snapshot is deleted
+# once the node is back and the cluster has recovered, unless keep_snapshot.
 #
-# Run it for a single node with --limit, after k3s_upgrade_os.yml, and take a
-# Proxmox snapshot of that VM first: a release upgrade that leaves the VM
-# unbootable can only be rolled back from the snapshot.
-#   ansible-playbook -i inventories/skywalker.yml playbooks/k3s_upgrade_release.yml -K \
-#     --limit skywalker-worker-ga9vf -e release_target=24.04
-# Then re-run configure-vms.yml for that node and check k3s, Longhorn and
-# multipath before moving on to the next.
+# Run it after k3s_upgrade_os.yml, with the Proxmox inventory loaded too:
+#   ansible-playbook -i inventories/skywalker.yml -i inventories/proxmox.yml \
+#     playbooks/k3s_upgrade_release.yml -K -e release_target=24.04
+# Then re-run configure-vms.yml.
+#
+# A failed node is left cordoned with its snapshot. To roll it back, on the
+# Proxmox node hosting it: qm rollback <vmid> pre-release-24-04 && qm start <vmid>
+# then uncordon it.
 
 - hosts: k3s_cluster_agent:k3s_cluster_server
   become: true
@@ -15,13 +18,17 @@
   vars:
     cnpg_namespace: database
     cnpg_cluster: primary-cluster
+    snapshot_name: pre-release-{{ release_target | replace('.', '-') }}
+    snapshot_reason: upgrading to Ubuntu {{ release_target }}
+    snapshot_min_free_gb: 20
+    keep_snapshot: false
   tasks:
-    - name: Require --limit and a target release
+    - name: Require a target release and the Proxmox inventory
       ansible.builtin.assert:
         that:
-          - ansible_limit is defined
           - release_target is defined
-        fail_msg: Release-upgrade one node at a time; pass --limit <node> -e release_target=<e.g. 24.04>
+          - groups['proxmox'] | default([]) | length > 0
+        fail_msg: Pass -e release_target=<e.g. 24.04> and -i inventories/proxmox.yml
       run_once: true
       become: false
 
@@ -43,6 +50,9 @@
       changed_when: false
       failed_when: "\"New release '\" ~ release_target ~ \".\" not in release_check.stdout"
       check_mode: false
+
+    # Before the drain, so a node without room for a snapshot fails untouched
+    - ansible.builtin.import_tasks: tasks/proxmox_snapshot.yml
 
     - ansible.builtin.import_tasks: tasks/k3s_drain_node.yml
 
@@ -88,3 +98,9 @@
         fail_msg: On {{ release_after.stdout }}, not {{ release_target }}; check /var/log/dist-upgrade/ (node left cordoned)
 
     - ansible.builtin.import_tasks: tasks/k3s_restore_node.yml
+
+    - name: Delete snapshot {{ snapshot_name }} of VM {{ pve_vmid }}
+      ansible.builtin.command: qm delsnapshot {{ pve_vmid }} {{ snapshot_name }}
+      delegate_to: "{{ pve_node }}"
+      become: false
+      when: not keep_snapshot | bool
