@@ -1,0 +1,59 @@
+# Evicts one pod (drain_pod: "<namespace> <name>") and waits for the cluster
+# to settle before the next. Used by k3s_drain_node.yml.
+
+- name: Wait for etcd to report healthy
+  ansible.builtin.command: kubectl get --raw /readyz/etcd
+  delegate_to: localhost
+  become: false
+  register: etcd_ready
+  until: etcd_ready.stdout == 'ok'
+  retries: 30
+  delay: 10
+  changed_when: false
+
+# Pods that are pending, starting, terminating or not yet ready
+- name: Count unsettled pods
+  ansible.builtin.shell: &unsettled_pods >-
+    kubectl get pods -A --no-headers
+    | awk '$4 != "Completed" && ($4 != "Running" || (split($3, r, "/") && r[1] != r[2]))'
+    | wc -l
+  delegate_to: localhost
+  become: false
+  register: unsettled_before
+  changed_when: false
+
+# Retries while a PDB refuses; a pod that's already gone counts as evicted
+- name: Evict {{ drain_pod | replace(' ', '/') }}
+  ansible.builtin.command:
+    argv:
+      - kubectl
+      - create
+      - --raw
+      - /api/v1/namespaces/{{ drain_pod.split()[0] }}/pods/{{ drain_pod.split()[1] }}/eviction
+      - -f
+      - "-"
+    stdin: >-
+      {{ {"apiVersion": "policy/v1", "kind": "Eviction",
+          "metadata": {"name": drain_pod.split()[1], "namespace": drain_pod.split()[0]}} | to_json }}
+  delegate_to: localhost
+  become: false
+  register: eviction
+  until: eviction.rc == 0 or 'NotFound' in eviction.stderr
+  failed_when: eviction.rc != 0 and 'NotFound' not in eviction.stderr
+  retries: 60
+  delay: 10
+
+# Gives the replacement time to be created and scheduled before counting
+- name: Pause for the replacement to appear
+  ansible.builtin.pause:
+    seconds: "{{ drain_pause | default(15) }}"
+
+- name: Wait for the replacement to start
+  ansible.builtin.shell: *unsettled_pods
+  delegate_to: localhost
+  become: false
+  register: unsettled_after
+  until: unsettled_after.stdout | int <= unsettled_before.stdout | int
+  retries: 60
+  delay: 10
+  changed_when: false

@@ -47,9 +47,38 @@
       delay: 10
       changed_when: false
 
-# Longhorn's instance-manager PDB holds the drain until the node's volumes
-# have detached and, under its node drain policy, any last replica has been
-# moved elsewhere
+- name: Cordon {{ inventory_hostname }}
+  ansible.builtin.command: kubectl cordon {{ inventory_hostname }}
+  delegate_to: localhost
+  become: false
+
+# kubectl drain evicts every pod at once, and the burst of image pulls and
+# container starts it causes elsewhere stalled k2h8d's disk and etcd with it.
+# Evict one pod at a time instead, letting each replacement start first.
+# DaemonSet pods stay, CNPG's are left for the reboot, and Longhorn's
+# instance-manager is left for the drain below.
+- name: List the pods to move off {{ inventory_hostname }}
+  ansible.builtin.shell: >-
+    kubectl get pods -A --field-selector spec.nodeName={{ inventory_hostname }},status.phase=Running -o json
+    | jq -r '.items[]
+      | select(.metadata.ownerReferences[0].kind | IN("DaemonSet", "InstanceManager") | not)
+      | select(.metadata.labels["cnpg.io/cluster"] == null)
+      | "\(.metadata.namespace) \(.metadata.name)"'
+  delegate_to: localhost
+  become: false
+  register: drain_pods
+  changed_when: false
+
+- name: Move pods off one at a time
+  ansible.builtin.include_tasks: k3s_evict_pod.yml
+  loop: "{{ drain_pods.stdout_lines }}"
+  loop_control:
+    loop_var: drain_pod
+    label: "{{ drain_pod | replace(' ', '/') }}"
+
+# Catches anything left. Longhorn's instance-manager PDB holds it until the
+# node's volumes have detached and, under its node drain policy, any last
+# replica has been moved elsewhere.
 - name: Drain {{ inventory_hostname }}
   ansible.builtin.command: >-
     kubectl drain {{ inventory_hostname }} --ignore-daemonsets --delete-emptydir-data
