@@ -23,6 +23,13 @@
       "additionalBranchPrefix": "terraform-"
     },
     {
+      "description": "Stay on the MariaDB 11.8 LTS; 12.x and later are quarterly rolling releases",
+      "matchPackageNames": [
+        "docker.io/library/mariadb"
+      ],
+      "allowedVersions": "<11.9"
+    },
+    {
       "matchUpdateTypes": [
         "major"
       ],
