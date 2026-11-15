@@ -16,7 +16,6 @@ controllers:
       app:
         image:
           repository: docker.io/library/mariadb
-          # Same server version the bitnami image ran, so the datadir needs no upgrade.
           tag: 11.8.9
         args:
           - --skip-name-resolve
@@ -26,6 +25,9 @@ controllers:
           - --collation-server=utf8mb3_general_ci
         env:
           TZ: America/New_York
+          # On a version change, the entrypoint backs up the system tables into the
+          # datadir and runs mariadb-upgrade before starting the server.
+          MARIADB_AUTO_UPGRADE: "1"
           # Only used if the datadir is ever empty; the existing database keeps its users.
           MARIADB_ROOT_PASSWORD:
             secretKeyRef:
