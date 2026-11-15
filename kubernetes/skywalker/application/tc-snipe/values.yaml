@@ -1,20 +1,39 @@
-image:
-  repository: snipe/snipe-it
-  pullPolicy: IfNotPresent
-  tag: v8.8.3
-env:
-  TZ: America/New_York
+controllers:
+  tc-snipe:
+    containers:
+      app:
+        image:
+          repository: snipe/snipe-it
+          pullPolicy: IfNotPresent
+          tag: v8.8.3
+        env:
+          TZ: America/New_York
+        envFrom:
+          - secretRef:
+              name: tc-snipe
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+
 service:
-  main:
+  app:
+    controller: tc-snipe
+    forceRename: tc-snipe
     ports:
       http:
         port: 80
-envFrom:
-  - secretRef:
-      name: tc-snipe
+
 persistence:
   data:
-    enabled: true
-    mountPath: /var/lib/snipeit
+    forceRename: tc-snipe-data
     accessMode: ReadWriteOnce
     size: 5Gi
+    globalMounts:
+      - path: /var/lib/snipeit
