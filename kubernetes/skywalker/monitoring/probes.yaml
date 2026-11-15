@@ -203,24 +203,6 @@ apiVersion: monitoring.coreos.com/v1
 kind: Probe
 
 metadata:
-  name: influxdb
-
-spec:
-  jobName: influxdb
-  interval: 15s
-  module: http_2xx
-  prober:
-    url: kube-prometheus-blackbox-exporter.database.svc.cluster.local:19115
-  targets:
-    staticConfig:
-      static:
-        - https://influxdb.feldman.in
-
----
-apiVersion: monitoring.coreos.com/v1
-kind: Probe
-
-metadata:
   name: jellyfin
 
 spec:
