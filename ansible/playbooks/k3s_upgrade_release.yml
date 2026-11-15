@@ -16,6 +16,10 @@
   become: true
   serial: 1
   vars:
+    # The discovered interpreter (python3.10 on 22.04) is removed by the
+    # upgrade, which leaves the async poll of do-release-upgrade failing
+    # until its timeout; /usr/bin/python3 exists on both releases
+    ansible_python_interpreter: /usr/bin/python3
     cnpg_namespace: database
     cnpg_cluster: primary-cluster
     snapshot_name: pre-release-{{ release_target | replace('.', '-') }}
@@ -80,7 +84,9 @@
     # session doesn't kill the upgrade halfway.
     - name: Upgrade to the next LTS
       ansible.builtin.command: do-release-upgrade -f DistUpgradeViewNonInteractive
-      async: 7200
+      # b4k1d's HDD-backed upgrade ran past 2h; at the limit async_wrapper kills
+      # the upgrade mid-dpkg
+      async: 21600
       poll: 30
 
     - name: Reboot into the new release
