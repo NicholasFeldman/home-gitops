@@ -6,6 +6,9 @@ metadata:
 
 spec:
   instances: 3
+  # The "system" image variant ships barman-cloud, which the in-tree
+  # barmanObjectStore backups below need; "standard" images don't.
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.16-system-bookworm
 
   storage:
     storageClass: local-path

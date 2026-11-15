@@ -30,6 +30,16 @@
       "allowedVersions": "<11.9"
     },
     {
+      "description": "PostgreSQL major upgrades need a planned CNPG major-version upgrade, not a tag bump",
+      "matchPackageNames": [
+        "ghcr.io/cloudnative-pg/postgresql"
+      ],
+      "matchUpdateTypes": [
+        "major"
+      ],
+      "enabled": false
+    },
+    {
       "matchUpdateTypes": [
         "major"
       ],
@@ -52,6 +62,20 @@
       "labels": [
         "Patch"
       ]
+    }
+  ],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "CloudNativePG Cluster imageName",
+      "managerFilePatterns": [
+        "/\\.cluster\\.yaml$/"
+      ],
+      "matchStrings": [
+        "imageName: (?<depName>ghcr\\.io/cloudnative-pg/postgresql):(?<currentValue>\\S+)"
+      ],
+      "datasourceTemplate": "docker",
+      "versioningTemplate": "regex:^(?<major>\\d+)\\.(?<minor>\\d+)-(?<compatibility>system-bookworm)$"
     }
   ]
 }
