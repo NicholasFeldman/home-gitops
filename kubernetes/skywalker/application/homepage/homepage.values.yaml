@@ -1,23 +1,55 @@
-image:
-  repository: ghcr.io/gethomepage/homepage
-  tag: v2.8.0
-env:
-  TZ: America/New_York
-  # Required since v1.0; requests for any other Host are rejected
-  HOMEPAGE_ALLOWED_HOSTS: homepage.feldman.in
+defaultPodOptions:
+  # homepage's kubernetes integration loads the in-cluster config
+  automountServiceAccountToken: true
+
+controllers:
+  homepage:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/gethomepage/homepage
+          tag: v2.8.0
+        env:
+          TZ: America/New_York
+          # Required since v1.0; requests for any other Host are rejected
+          HOMEPAGE_ALLOWED_HOSTS: homepage.feldman.in
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+      # Web editor for /app/config, reached through the homepage-edit VirtualService
+      codeserver:
+        image:
+          repository: ghcr.io/coder/code-server
+          tag: 4.13.0
+        args: ["--auth", "none", "--port", "12321", "/app/config"]
+        securityContext:
+          runAsUser: 0
+
 service:
-  main:
+  app:
+    controller: homepage
+    forceRename: homepage
     ports:
       http:
         port: 3000
+  codeserver:
+    controller: homepage
+    forceRename: homepage-addon-codeserver
+    ports:
+      codeserver:
+        port: 12321
+
 persistence:
   config:
-    enabled: true
-    mountPath: /app/config
+    forceRename: homepage-config
+    accessMode: ReadWriteOnce
     size: 1Gi
-addons:
-  codeserver:
-      enabled: true
-      volumeMounts:
-        - name: config
-          mountPath: /app/config
+    globalMounts:
+      - path: /app/config

@@ -17,6 +17,8 @@ controllers:
 
 persistence:
   config:
+    # keep the PVC name app-template <4 generated, so the existing volume is reused
+    forceRename: esphome-config
     accessMode: ReadWriteOnce
     size: 8Gi
 

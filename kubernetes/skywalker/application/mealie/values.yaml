@@ -1,32 +1,47 @@
-image:
-  repository: ghcr.io/mealie-recipes/mealie
-  tag: v3.31.0 
-env:
-  TZ: America/New_York
-  ALLOW_SIGNUP: false
-  ALLOW_PASSWORD_LOGIN: false
-envFrom:
-  - secretRef:
-      name: mealie-env
-volumeMounts:
-  - name: api-data
-    mountPath: /app/data/
-resources:
-  requests:
-    cpu: 1000m
-    memory: 512Mi
-  limits:
-    cpu: 2000m
-    memory: 1Gi
+controllers:
+  mealie:
+    containers:
+      app:
+        image:
+          repository: ghcr.io/mealie-recipes/mealie
+          tag: v3.31.0
+        env:
+          TZ: America/New_York
+          ALLOW_SIGNUP: false
+          ALLOW_PASSWORD_LOGIN: false
+        envFrom:
+          - secretRef:
+              name: mealie-env
+        resources:
+          requests:
+            cpu: 1000m
+            memory: 512Mi
+          limits:
+            cpu: 2000m
+            memory: 1Gi
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
 
 service:
-  main:
+  app:
+    controller: mealie
+    forceRename: mealie
     ports:
       http:
         port: 9000
+
 persistence:
   api-data:
-    enabled: true
-    mountPath: /app/data/
+    forceRename: mealie-api-data
     accessMode: ReadWriteOnce
     size: 10Gi
+    globalMounts:
+      - path: /app/data/

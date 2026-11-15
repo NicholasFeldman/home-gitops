@@ -1,23 +1,44 @@
-image:
-  repository: nodered/node-red
-  tag: 5.0.9
-env:
-  TZ: America/New_York
+defaultPodOptions:
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 1000
+    fsGroup: 1000
+
+controllers:
+  node-red:
+    containers:
+      app:
+        image:
+          repository: nodered/node-red
+          tag: 5.0.9
+        env:
+          TZ: America/New_York
+        securityContext:
+          runAsUser: 1000
+          runAsGroup: 1000
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+
 service:
-  main:
+  app:
+    controller: node-red
+    forceRename: node-red
     ports:
       http:
         port: 1880
+
 persistence:
   data:
-    enabled: true
-    mountPath: /data
+    forceRename: node-red-data
     accessMode: ReadWriteOnce
     size: 3Gi
-securityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-podSecurityContext:
-  runAsUser: 1000
-  runAsGroup: 1000
-  fsGroup: 1000
+    globalMounts:
+      - path: /data

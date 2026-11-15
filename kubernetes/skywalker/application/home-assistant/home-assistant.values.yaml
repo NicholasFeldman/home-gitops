@@ -29,6 +29,8 @@ service:
 
 persistence:
   config:
+    # keep the PVC name app-template <4 generated, so the existing volume is reused
+    forceRename: home-assistant-config
     enabled: true
     accessMode: ReadWriteOnce
     size: 4Gi

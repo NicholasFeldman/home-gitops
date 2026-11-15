@@ -1,16 +1,33 @@
-image:
-  repository: jellyfin/jellyfin
-  tag: 10.11.11
-env:
-  TZ: America/New_York
+controllers:
+  jellyfin:
+    containers:
+      app:
+        image:
+          repository: jellyfin/jellyfin
+          tag: 10.11.11
+        env:
+          TZ: America/New_York
+        probes:
+          liveness:
+            enabled: true
+          readiness:
+            enabled: true
+          startup:
+            enabled: true
+            spec:
+              failureThreshold: 30
+              periodSeconds: 5
+
 service:
-  main:
+  app:
+    controller: jellyfin
+    forceRename: jellyfin
     ports:
       http:
         port: 8096
+
 persistence:
   config:
-    enabled: true
     type: custom
     volumeSpec:
       iscsi:
@@ -18,9 +35,11 @@ persistence:
         iqn: iqn.2005-10.org.freenas.ctl:skywalker-jellyfin-config
         lun: 0
         fsType: ext4
+    globalMounts:
+      - path: /config
   media:
-    enabled: true
     type: nfs
     server: truenas.feldman.in
     path: /mnt/primary/Media
-    mountPath: /media
+    globalMounts:
+      - path: /media
