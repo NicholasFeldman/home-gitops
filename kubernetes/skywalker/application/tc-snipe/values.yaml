@@ -5,7 +5,7 @@ controllers:
         image:
           repository: snipe/snipe-it
           pullPolicy: IfNotPresent
-          tag: v8.8.3
+          tag: v8.8.4
         env:
           TZ: America/New_York
         envFrom:
